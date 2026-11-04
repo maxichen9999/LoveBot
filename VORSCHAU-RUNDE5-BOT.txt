@@ -1,0 +1,78 @@
+🎀 *Hilfe*
+_351 Befehle in 18 Bereichen_
+
+🧰 *Werkzeuge & Utilities*
+$rechner <Term>: *Terme ausrechnen*
+$umrechnen <Zahl> <von> in <zu>: *Einheiten umrechnen*
+$notiz <Text>: *Notizen anlegen*
+$erinner <Zeit> — <Text>: *Erinnerung stellen*
+$umfrage <Frage> | A | B: *Umfrage starten*
+$countdown TT.MM.JJJJ: *Tage bis zum Termin*
+$tagderwoche TT.MM.JJJJ: *Wochentag bestimmen*
+$zeitzone <Stadt>: *Uhrzeit anderswo*
+
+──────────────────
+💡 $menu <bereich> — einen Bereich anzeigen
+💡 $menu alle — alles auf einmal
+_HelloKitty Baby Maxi 🎀_
+
+🎀 *Profil*
+_Maxi_
+
+👤 *Profil*
+Name: *Maxi*
+Telefon: *+49 151 …*
+
+📈 *Fortschritt*
+Stufe: *12*
+XP: *4.820 von 6.000*
+
+▰▰▰▰▰▰▰▰▱▱  80 %
+
+🏅 *Rang*
+Platz: *3 von 128*
+
+🔥 *Serie*
+Tage hintereinander: *17*
+
+──────────────────
+💡 $me @user — fremdes Profil ansehen
+_HelloKitty Baby Maxi 🎀_
+
+🧮 *Ergebnis*
+
+📥 *Aufgabe*
+Term: *12 * (3 + 4)*
+
+📤 *Lösung*
+Ergebnis: *84*
+_HelloKitty Baby Maxi 🎀_
+
+📐 *Umgerechnet*
+_Temperatur_
+
+🔁 *Ergebnis*
+Rechnung: *20 °C = 68 °F*
+_HelloKitty Baby Maxi 🎀_
+
+📊 *Umfrage*
+_Nr. 2 · offen_
+
+❓ *Frage*
+
+*1.* Rosa
+▰▰▰▰▰▰▰▱▱▱  67 %
+*2.* Blau
+▱▱▱▱▱▱▱▱▱▱  0 %
+*3.* Grün
+▰▰▰▱▱▱▱▱▱▱  33 %
+
+──────────────────
+💡 $umfrage stimme 2 — für Antwort 2 stimmen
+_HelloKitty Baby Maxi 🎀_
+
+📝 *Notiz gespeichert*
+🐱 *Die Einheit „quatsch“ kenne ich nicht.*
+
+──────────────────
+💡 $umrechnen — alle Einheiten zeigen

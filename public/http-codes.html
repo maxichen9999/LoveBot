@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script src="/js/maintgate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/js/theme.js"></script>
+<title>HTTP-Statuscodes — HelloKitty Baby Maxi 💔</title>
+<meta name="description" content="Alle offiziellen HTTP-Statuscodes verständlich erklärt: 1xx Information, 2xx Erfolg, 3xx Umleitung, 4xx Client-Fehler, 5xx Server-Fehler — mit Suche und Filter. Im Bot: $http 404">
+<link rel="canonical" href="https://maxichen.de/http-codes.html">
+<meta property="og:title" content="HTTP-Statuscodes — HelloKitty Baby Maxi 💔">
+<meta property="og:description" content="Alle offiziellen HTTP-Statuscodes verständlich erklärt — mit Suche, Filter und Bot-Befehl $http.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://maxichen.de/http-codes.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#fff7fb">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/hello-kitty.css">
+<style>
+  .code-search { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin:18px 0 12px; }
+  .code-search input { flex:1 1 260px; }
+  .chipset { display:flex; gap:8px; flex-wrap:wrap; margin:0 0 18px; }
+  .chipset .chip { cursor:pointer; user-select:none; }
+  .chipset .chip.on { background:var(--surface-2); border-color:var(--line-2); color:var(--text); }
+  .codegrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(268px,1fr)); gap:12px; }
+  .codebox { padding:14px 16px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+  .codebox .top { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; }
+  .codebox .num { font-size:22px; font-weight:800; letter-spacing:-.02em; }
+  .codebox .en { font-size:12px; color:var(--faint); text-transform:uppercase; letter-spacing:.08em; }
+  .codebox .de { margin-top:6px; font-size:14px; color:var(--muted); line-height:1.5; }
+  .g1 .num { color:#22d3ee; } .g2 .num { color:#34d399; }
+  .g3 .num { color:#fbbf24; } .g4 .num { color:#fb7185; } .g5 .num { color:#f472b6; }
+  .codehint { margin-top:8px; font-size:12px; color:var(--faint); }
+  .kategorie { border-left:3px solid var(--line-2); padding-left:12px; margin:26px 0 12px; }
+  .kategorie h2 { font-size:16px; margin:0 0 2px; }
+  .kategorie p { margin:0; font-size:13px; color:var(--faint); }
+  .leer { padding:26px; text-align:center; color:var(--faint); }
+</style>
+</head>
+<body>
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<div class="wrap-page">
+
+  <section class="hero" style="padding-bottom:12px">
+    <span class="badge">🌐 Referenz</span>
+    <h1>HTTP<span class="grad">-Codes</span></h1>
+    <p class="sub">Was im Hintergrund passiert, wenn du eine Webseite aufrufst — alle offiziellen Statuscodes, kurz erklärt. Im Bot: <code>$http 404</code></p>
+  </section>
+
+  <section style="padding-top:8px">
+
+    <div class="code-search">
+      <input id="q" class="fld" type="search" placeholder="Suchen: 404 · teapot · Weiterleitung …" autocomplete="off">
+      <button class="btn ghost" id="reset" type="button">Alle zeigen</button>
+    </div>
+
+    <div class="chipset" id="filter">
+      <span class="chip on" data-g="">Alle</span>
+      <span class="chip" data-g="1">ℹ️ 1xx Information</span>
+      <span class="chip" data-g="2">✅ 2xx Erfolg</span>
+      <span class="chip" data-g="3">↪️ 3xx Umleitung</span>
+      <span class="chip" data-g="4">⚠️ 4xx Client-Fehler</span>
+      <span class="chip" data-g="5">💥 5xx Server-Fehler</span>
+    </div>
+
+    <p class="codehint" id="count"></p>
+    <div id="liste"></div>
+
+  </section>
+
+</div>
+
+<footer id="site-footer" data-foot-desc="Jeder Code ist offiziell von der IANA/HTTP-Spezifikation — die Erklärungen sind bewusst kurz und alltagstauglich."></footer>
+
+<script src="/js/site-shell.js"></script>
+<script src="/js/http-codes-data.js"></script>
+<script src="/js/common.js"></script>
+<script>
+(function () {
+  var CODES = (window.HTTP_CODES || []);
+  var GROUPS = (window.HTTP_GROUPS || {});
+  var liste = document.getElementById('liste');
+  var count = document.getElementById('count');
+  var q = document.getElementById('q');
+  var filter = document.getElementById('filter');
+  var state = { text: '', group: '' };
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c];
+    });
+  }
+
+  function passt(e) {
+    if (state.group && String(e.group) !== state.group) return false;
+    var t = state.text.toLowerCase();
+    if (!t) return true;
+    return String(e.code).indexOf(t) === 0 ||
+      e.name.toLowerCase().indexOf(t) !== -1 ||
+      e.desc.toLowerCase().indexOf(t) !== -1;
+  }
+
+  function zeichnen() {
+    var treffer = CODES.filter(passt);
+    count.textContent = treffer.length
+      ? treffer.length + ' von ' + CODES.length + ' Codes'
+      : '';
+
+    if (!treffer.length) {
+      liste.innerHTML = '<div class="leer">Kein Code gefunden. Versuch es mit <b>404</b>, <b>teapot</b> oder <b>Weiterleitung</b>.</div>';
+      return;
+    }
+
+    var nachGruppe = {};
+    treffer.forEach(function (e) { (nachGruppe[e.group] = nachGruppe[e.group] || []).push(e); });
+
+    liste.innerHTML = Object.keys(nachGruppe).sort().map(function (g) {
+      var info = GROUPS[g] || {};
+      var boxen = nachGruppe[g].map(function (e) {
+        return '<article class="codebox g' + g + '">' +
+          '<div class="top"><span class="num">' + e.code + '</span>' +
+          '<span class="en">' + esc(e.name) + '</span></div>' +
+          '<p class="de">' + esc(e.desc) + '</p></article>';
+      }).join('');
+      return '<div class="kategorie"><h2>' + (info.emoji || '') + ' ' + esc(info.title || (g + 'xx')) + '</h2>' +
+        '<p>' + esc(info.desc || '') + '</p></div>' +
+        '<div class="codegrid">' + boxen + '</div>';
+    }).join('');
+  }
+
+  var merker = null;
+  q.addEventListener('input', function () {
+    clearTimeout(merker);
+    merker = setTimeout(function () { state.text = q.value.trim(); zeichnen(); }, 120);
+  });
+
+  filter.addEventListener('click', function (ev) {
+    var chip = ev.target.closest ? ev.target.closest('.chip') : null;
+    if (!chip) return;
+    state.group = chip.getAttribute('data-g') || '';
+    Array.prototype.forEach.call(filter.querySelectorAll('.chip'), function (c) {
+      c.classList.toggle('on', c === chip);
+    });
+    zeichnen();
+  });
+
+  document.getElementById('reset').addEventListener('click', function () {
+    state.text = ''; state.group = ''; q.value = '';
+    Array.prototype.forEach.call(filter.querySelectorAll('.chip'), function (c, i) {
+      c.classList.toggle('on', i === 0);
+    });
+    zeichnen();
+  });
+
+  /* Deep-Link: /http-codes.html?code=404 oder ?q=teapot */
+  try {
+    var p = new URLSearchParams(location.search);
+    var c = p.get('code'), s = p.get('q');
+    if (c) { q.value = c; state.text = c.trim(); }
+    if (s) { q.value = s; state.text = s.trim(); }
+  } catch (e) { /* alte Browser: einfach ohne Vorbelegung */ }
+
+  zeichnen();
+})();
+</script>
+</body>
+</html>

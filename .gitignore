@@ -1,0 +1,25 @@
+# Local/runtime data
+node_modules/
+tmp/
+Logs/
+Sessions/
+
+# Private local databases and generated state
+Database/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Sicherungskopien aus dem Arbeitsbereich (kein Repo-Inhalt)
+backup-*/
+
+# Lokale Sicherungskopien (bleiben auf dem Rechner)
+backups/
+.andromity/

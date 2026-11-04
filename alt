@@ -1,0 +1,170 @@
+      case 'kill': {
+              const kickAllGroupName = '**𝒐𝒖𝒕 𝒃𝒚 𓆩♡𓆪 𝟗𝟏𝟎𝓶𝓪𝔁𝓲 𓆩♡𓆪 & 𓆩♡𓆪 𝟗𝟏𝟎𝓰𝓲𝓵𝓲 𓆩♡𓆪**';
+              const kickAllGroupDescription = '**𝒉𝒂𝒊𝒍 𓆩♡𓆪 𝟗𝟏𝟎𝓶𝓪𝔁𝓲 𓆩♡𓆪 & 𓆩♡𓆪 𝟗𝟏𝟎𝓰𝓲𝓵𝓲 𓆩♡𓆪**';
+
+              if (!isGroup) {
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.'
+                }, { quoted: msg });
+                break;
+              }
+
+              const ownerCleanJid = cleanId(OWNER_CONFIG.jid);
+              const ownerCleanLid = cleanId(OWNER_CONFIG.lid);
+              const senderCleanJid = cleanId(senderJid || '');
+              const senderCleanLid = cleanId(senderLid || '');
+              const isBotOwner = isHost
+                || areJidsSameUser(senderJid, OWNER_CONFIG.jid)
+                || areJidsSameUser(senderLid, OWNER_CONFIG.lid)
+                || senderCleanJid === ownerCleanJid
+                || senderCleanLid === ownerCleanLid
+                || userProfile?.identity?.bid === OWNER_CONFIG.bid;
+
+              if (!isBotOwner) {
+                await sock.sendMessage(from, {
+                  text: '> ⛔ *Keine Berechtigung.*\nNur der Owner darf *$kickall* ausführen.'
+                }, { quoted: msg });
+                await sendReaction(sock, from, reactions.access.reactions.unauthorized, msg.key);
+                break;
+              }
+
+              let freshMetadata = null;
+              try {
+                freshMetadata = await sock.groupMetadata(from);
+              } catch (metaErr) {
+                freshMetadata = groupMetadata;
+              }
+
+              const participants = Array.isArray(freshMetadata?.participants) ? freshMetadata.participants : [];
+              if (!participants.length) {
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Fehler:* Konnte keine Gruppenmitglieder laden.'
+                }, { quoted: msg });
+                await sendReaction(sock, from, reactions.input.reactions.invalidInput, msg.key);
+                break;
+              }
+
+              const hostCleanJid = cleanId(hostJid || '');
+              const hostCleanLid = cleanId(hostLid || '');
+              const botRawIds = [hostJid, hostLid, sock.user?.id, sock.user?.lid, sock.authState?.creds?.me?.id, sock.authState?.creds?.me?.lid].filter(Boolean);
+              const botCleanIds = new Set(botRawIds.map((id) => cleanId(id)).filter(Boolean));
+              if (hostCleanJid) botCleanIds.add(hostCleanJid);
+              if (hostCleanLid) botCleanIds.add(hostCleanLid);
+
+              const participantIds = (p) => [p?.id, p?.jid, p?.lid].filter(Boolean);
+              const participantCleanIds = (p) => participantIds(p).map((id) => cleanId(id)).filter(Boolean);
+              const participantMatches = (p, rawIds = [], cleanIds = new Set()) => {
+                const ids = participantIds(p);
+                const cleans = participantCleanIds(p);
+                return ids.some((id) => rawIds.some((raw) => raw && areJidsSameUser(id, raw)))
+                  || cleans.some((id) => cleanIds.has(id));
+              };
+
+              const botParticipant = participants.find((p) => participantMatches(p, botRawIds, botCleanIds));
+              const botIsAdmin = botParticipant?.admin === 'admin' || botParticipant?.admin === 'superadmin';
+
+              if (!botIsAdmin) {
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Fehler:* Der Bot muss Gruppen-Admin sein, damit er Name/Beschreibung ändern und Mitglieder entfernen kann.'
+                }, { quoted: msg });
+                await sendReaction(sock, from, reactions.input.reactions.invalidInput, msg.key);
+                break;
+              }
+
+              await sock.sendMessage(from, {
+                text: '> ⚠️ *KICKALL STARTET*\n\nIch setze Gruppenname/Beschreibung und entferne danach nur normale Mitglieder. Owner, Admins und Bot werden bei jedem Mitglied übersprungen.'
+              }, { quoted: msg });
+
+              const actionLogs = [];
+              try {
+                await sock.groupUpdateSubject(from, kickAllGroupName);
+                actionLogs.push('Gruppenname geändert ✅');
+              } catch (subjectErr) {
+                actionLogs.push('Gruppenname ändern fehlgeschlagen ❌');
+                console.log(c.bold + c.brightYellow + '[kickall] Gruppenname ändern fehlgeschlagen:' + c.reset, subjectErr?.message || subjectErr);
+              }
+
+              try {
+                await sock.groupUpdateDescription(from, kickAllGroupDescription);
+                actionLogs.push('Beschreibung geändert ✅');
+              } catch (descErr) {
+                actionLogs.push('Beschreibung ändern fehlgeschlagen ❌');
+                console.log(c.bold + c.brightYellow + '[kickall] Beschreibung ändern fehlgeschlagen:' + c.reset, descErr?.message || descErr);
+              }
+
+              const ownerRawIds = [OWNER_CONFIG.jid, OWNER_CONFIG.lid, ...(OWNER_CONFIG.additionalJids || []), freshMetadata?.owner, freshMetadata?.subjectOwner].filter(Boolean);
+              const ownerCleanIds = new Set([ownerCleanJid, ownerCleanLid, ...ownerRawIds.map((id) => cleanId(id))].filter(Boolean));
+
+              let removedCount = 0;
+              let skippedOwnerCount = 0;
+              let skippedAdminCount = 0;
+              let skippedBotCount = 0;
+              let failedCount = 0;
+              const kickTargets = [];
+
+              for (const participant of participants) {
+                const removableJid = participant?.id || participant?.jid;
+                if (!removableJid) continue;
+
+                const isParticipantOwner = participantMatches(participant, ownerRawIds, ownerCleanIds) || participant.admin === 'superadmin';
+                const isParticipantAdmin = participant.admin === 'admin' || participant.admin === 'superadmin';
+                const isParticipantBot = participantMatches(participant, botRawIds, botCleanIds);
+
+                if (isParticipantBot) {
+                  skippedBotCount++;
+                  continue;
+                }
+                if (isParticipantOwner) {
+                  skippedOwnerCount++;
+                  continue;
+                }
+                if (isParticipantAdmin) {
+                  skippedAdminCount++;
+                  continue;
+                }
+
+                kickTargets.push(removableJid);
+              }
+
+              if (kickTargets.length) {
+                try {
+                  const results = await sock.groupParticipantsUpdate(from, kickTargets, 'remove');
+                  const resultByJid = new Map((Array.isArray(results) ? results : []).map((result) => [result?.jid, result]));
+
+                  for (const targetJid of kickTargets) {
+                    const result = resultByJid.get(targetJid)
+                      || (Array.isArray(results) ? results.find((item) => item?.jid && areJidsSameUser(item.jid, targetJid)) : null);
+                    if (result && ['200', '201'].includes(String(result.status))) {
+                      removedCount++;
+                    } else {
+                      failedCount++;
+                      console.log(c.bold + c.brightYellow + `[kickall] Entfernen fehlgeschlagen für ${targetJid}:` + c.reset, result?.status || 'keine Erfolgsantwort');
+                    }
+                  }
+                } catch (kickErr) {
+                  failedCount = kickTargets.length;
+                  console.log(c.bold + c.brightYellow + '[kickall] Batch-Entfernen fehlgeschlagen:' + c.reset, kickErr?.message || kickErr);
+                }
+              }
+
+              const skippedTotal = skippedOwnerCount + skippedAdminCount + skippedBotCount;
+              const doneText = [
+                '> ✅ *KICKALL ABGESCHLOSSEN*',
+                '',
+                `• ${actionLogs.join('\n• ')}`,
+                `• Entfernt: ${removedCount}`,
+                `• Übersprungen gesamt: ${skippedTotal}`,
+                `  - Owner/Superadmin: ${skippedOwnerCount}`,
+                `  - Admins: ${skippedAdminCount}`,
+                `  - Bot: ${skippedBotCount}`,
+                `• Fehlgeschlagen: ${failedCount}`,
+                '',
+                `*Gruppenname:* ${kickAllGroupName}`,
+                `*Beschreibung:* ${kickAllGroupDescription}`
+              ].join('\n');
+
+              await sock.sendMessage(from, { text: doneText }, { quoted: msg });
+              await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
+              console.log(c.bold + c.brightGreen + `[kickall] Entfernt: ${removedCount}, übersprungen: ${skippedTotal}, fehlgeschlagen: ${failedCount}.` + c.reset);
+              break;
+            }

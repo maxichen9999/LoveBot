@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script src="/js/maintgate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/js/theme.js"></script>
+<title>Changelog — Was ist neu? | HelloKitty Baby Maxi 🎀</title>
+<meta name="description" content="Alle Änderungen am HelloKitty Baby Maxi-Bot: neue Befehle, neue Spiele und Website-Updates — mit Datum.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x32" href="/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#08060f">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/hello-kitty.css">
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<main id="main">
+<div class="wrap-page">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" style="padding-top:58px">
+    <div class="center">
+      <span class="badge"><span class="dot"></span> Immer in Bewegung</span>
+      <h1>Was ist <span class="grad">neu?</span></h1>
+      <p class="sub" style="margin:0 auto">Jede Änderung am Bot mit Datum — neue Befehle, neue Spiele und frische Optik. Tippe <b>$changelog</b> im Chat für die Kurzfassung.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ LEGENDE ══════════ -->
+  <section style="padding-block:10px 26px">
+    <div class="livebar">
+      <div class="cell"><div class="num">377</div><div class="lbl">Befehle</div></div>
+      <div class="cell"><div class="num">18</div><div class="lbl">Kategorien</div></div>
+      <div class="cell"><div class="num">308</div><div class="lbl">Abkürzungen</div></div>
+      <div class="cell"><div class="num">30+</div><div class="lbl">Spiele</div></div>
+      <div class="cell"><div class="st on"><span class="dot"></span> LIVE</div><div class="lbl">Bot</div></div>
+    </div>
+  </section>
+
+  <!-- ══════════ TIMELINE ══════════ -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker"><span>01</span> Verlauf</div>
+      <h2>Die <span class="grad">Zeitachse</span></h2>
+      <p>Neueste Änderungen oben. Jeder Eintrag ist im Bot mit <code>$changelog</code> auch im Chat abrufbar.</p>
+    </div>
+
+    <div class="timeline">
+
+      <article class="tl-item reveal frisch">
+        <div class="tl-datum">04.10.2026<span class="tl-version">v7.4</span></div>
+        <div class="tl-karte">
+          <h3>🎀 Voll Hello-Kitty — Website &amp; Bot <span class="chip-neu">Neu</span></h3>
+          <p>Ein kompletter Pink-Neon-Layer über der ganzen Website, 12 neue Bilder und eine eigene Galerie — und der Bot schickt bei Aktionen jetzt Bilder mit.</p>
+          <ul class="tl-list">
+            <li><b>Neues Theme</b> <code>hello-kitty.css</code> — Neon-Pink statt Lila, Neon-Glows statt Schatten, Bonbon-Buttons, 🎀-Kanten an Karten</li>
+            <li><b>Neue Seite /galerie.html</b> — 12 Bilder im Neon-Rahmen, verlinkt in Navigation und Fußzeile</li>
+            <li><b>Bilder auf bestehenden Seiten</b> — Maxichen im Hero, Love mit eigenem Avatar, die Macherin mit eigenem Abschnitt</li>
+            <li><b>Bot-Look</b> — 🎀-Karten-Köpfe, Pink-Trenner und Herz-Trenner in <code>botLook.js</code></li>
+            <li><b>Aktionsbilder</b> — <code>$kiss</code>, <code>$hug</code>, <code>$slap</code>, <code>$kill</code>, <code>$ship</code> schicken jetzt ein Bild mit</li>
+          </ul>
+          <div class="tl-chips"><span class="tchip">Pink 🎀</span><span class="tchip">Neon</span><span class="tchip">Galerie</span><span class="tchip">347 Tests grün</span></div>
+        </div>
+      </article>
+
+      <article class="tl-item reveal frisch">
+        <div class="tl-datum">04.10.2026<span class="tl-version">v7.2</span></div>
+        <div class="tl-karte">
+          <h3>🎮 Sieben neue Spiele &amp; Tools <span class="chip-neu">Neu</span></h3>
+          <ul class="tl-list">
+            <li><code>$hangman</code> — Galgenmännchen rund um die Liebe 🪢 (24 Wörter, 9 Versuche, Galgen-ASCII)</li>
+            <li><code>$connect4</code> — Vier gewinnt gegen Love 💜 (gewinnt, blockt, denkt mit)</li>
+            <li><code>$mastermind</code> — 4 Ziffern 1–6 knacken 🧠 (10 Versuche, echte Hinweise)</li>
+            <li><code>$bj</code> — Blackjack 21 gegen Love 🂱 (nur Spielchips, 2,5× bei Blackjack)</li>
+            <li><code>$stopuhr</code> — Stoppuhr mit Summierung über Start/Stop ⏱️</li>
+            <li><code>$alter</code> — exaktes Alter + Countdown zum Geburtstag 🎂</li>
+            <li><code>$todo</code> — persönliche Aufgabenliste mit Erledigt-Status ✅</li>
+          </ul>
+          <div class="tl-chips"><span class="tchip">offline</span><span class="tchip">gegen Love</span><span class="tchip">Punktestand</span></div>
+        </div>
+      </article>
+
+      <article class="tl-item reveal frisch">
+        <div class="tl-datum">04.10.2026<span class="tl-version">v7.1</span></div>
+        <div class="tl-karte">
+          <h3>🥠 Kleine Freuen &amp; 10 Spaß-Befehle</h3>
+          <ul class="tl-list">
+            <li><code>$glueckskeks</code> — Keks des Tages mit 6 Glückszahlen 🥠</li>
+            <li><code>$zungenbrecher</code> — dreimal schnell gesagt 👅</li>
+            <li><code>$sprueche</code> · <code>$motivation</code> · <code>$kw</code> · <code>$farbverlauf</code> — Weisheit, Kick, Kalenderwoche, CSS-Gradienten</li>
+            <li><code>$kampf</code> · <code>$teams</code> · <code>$zahlenraten</code> · <code>$ttt</code> — Kampf, Team-Los, Zahlenspiel, Tic-Tac-Toe</li>
+            <li><code>$ascii</code> · <code>$rot13</code> · <code>$umkehren</code> · <code>$wortzaehler</code> · <code>$promille</code> — Text-Werkzeuge</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-datum">04.10.2026<span class="tl-version">v7.0</span></div>
+        <div class="tl-karte">
+          <h3>🌐 Neue Adresse &amp; frische Website</h3>
+          <ul class="tl-list">
+            <li><b>maxichen.de</b> ist die Hauptadresse — <b>maxichen.de</b> bleibt die Subdomain</li>
+            <li>Direktzugriff über die Server-IP: <code>193.111.249.190:7777</code></li>
+            <li>Neuer Website-Stil für alle 42 Seiten — heller, runder, schneller</li>
+            <li>Live-Statistiken direkt auf der Startseite</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="tl-item reveal">
+        <div class="tl-datum">02.10.2026<span class="tl-version">v6.9</span></div>
+        <div class="tl-karte">
+          <h3>🏓 Schönerer Ping &amp; ehrliche KI</h3>
+          <ul class="tl-list">
+            <li><code>$ping</code> mit echten Fortschritts-Balken und Health-Score</li>
+            <li>KI sagt ehrlich, wenn sie etwas nicht weiß (kein Live-Wetter, keine News)</li>
+            <li>Mehr Offline-Wissen: Bank, Haustiere, Achievements, Datenschutz</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ══════════ WIE DU UPDATES BEKOMMST ══════════ -->
+  <section>
+    <div class="sec-head reveal">
+      <div class="kicker"><span>02</span> Immer auf dem Laufenden</div>
+      <h2>So bleibst du <span class="grad">dran</span>.</h2>
+    </div>
+    <div class="cards">
+      <div class="card reveal"><div class="ico">💬</div><h3>$changelog im Chat</h3><p>Tippe <code>$changelog</code> in jede Gruppe mit dem Bot — die drei neuesten Änderungen kommen direkt als Karte.</p></div>
+      <div class="card reveal"><div class="ico">📜</div><h3>Diese Seite</h3><p>Die vollständige Zeitachse mit allen Details — gespeichert, verlinkt, jederzeit abrufbar.</p></div>
+      <div class="card reveal"><div class="ico">🔔</div><h3>$newsession</h3><p>Größere Updates kündigt der Bot in der Gruppe selbst an — mit einer kurzen Zusammenfassung.</p></div>
+    </div>
+  </section>
+
+</div>
+
+<footer id="site-footer" data-foot-desc="Nie fertig — immer ein bisschen schöner. Dein HelloKitty Baby Maxi 💔 ☾"></footer>
+
+<script src="/js/site-shell.js"></script>
+<script src="/js/common.js"></script>
+<script>
+makeHearts(12);
+document.getElementById('year').textContent = new Date().getFullYear();
+(async function () {
+  const site = await api('/api/siteinfo');
+  if (site) document.getElementById('socials').innerHTML = buildSocials(site.links);
+})();
+</script>
+</body>
+</html>

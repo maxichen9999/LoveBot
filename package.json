@@ -1,0 +1,55 @@
+{
+  "name": "LoveBot",
+  "version": "1.0.0",
+  "description": "LoveBot für Maxichen",
+  "main": "Love.js",
+  "type": "module",
+  "scripts": {
+    "start": "node Love.js",
+    "watch": "node --watch Love.js",
+    "web": "node server.js",
+    "web:watch": "node --watch server.js",
+    "test:glass": "node scripts/glasscard-selftest.mjs",
+    "test:cmd": "node scripts/cmdpage-selftest.mjs",
+    "test:team": "node scripts/team-selftest.mjs",
+    "test:ping": "node scripts/ping-short-selftest.mjs",
+    "test:netping": "node scripts/netping-selftest.mjs",
+    "test:commands": "node --test tests/command-registry.test.mjs",
+    "test": "node --test tests/ && node scripts/site-smoke.mjs",
+    "test:unit": "node --test tests/siteSecurity.test.mjs",
+    "test:server": "node --test tests/server.test.mjs",
+    "test:site": "node scripts/site-smoke.mjs",
+    "build": "node scripts/build-assets.mjs",
+    "audit:css": "node scripts/css-audit.mjs"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "for-xois-challenge"
+  ],
+  "author": "Xois Challenger",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.3",
+    "@itsliaaa/baileys": "^0.4.4",
+    "@neelegirly/downloader": "0.1.66",
+    "@whiskeysockets/baileys": "^7.0.0-rc14",
+    "ffmpeg": "^1.1.3",
+    "ffmpeg-static": "^5.3.0",
+    "nayan-media-downloaders": "^0.1.8",
+    "node-webpmux": "^3.2.1",
+    "nodemailer": "^10.0.15",
+    "phoenix-baileys-v3": "^3.0.0-beta.1",
+    "pino": "^10.3.1",
+    "qrcode-terminal": "^0.12.0",
+    "sharp": "^0.35.4",
+    "yt-search": "^2.13.1"
+  },
+  "devDependencies": {
+    "jsdom": "^29.1.1"
+  }
+}

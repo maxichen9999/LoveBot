@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script src="/js/maintgate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/js/theme.js"></script>
+<title>Galerie 🎀 — HelloKitty Baby Maxi | maxichen.de</title>
+<meta name="description" content="Drei echte Einblicke in die Hello-Kitty-Welt von Maxichen: Owner-Artwork, Bot-Profilbild und Befehlsmenü.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#08060f">
+<meta property="og:title" content="Galerie 🎀 — HelloKitty Baby Maxi">
+<meta property="og:description" content="Owner-Artwork, Bot-Profilbild und Befehlsmenü aus der Welt von Maxichen.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/hello-kitty.css">
+<style>
+  .gal-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
+  .gal-item{position:relative}
+  .gal-item figcaption{margin-top:10px;font-size:.86rem;color:var(--muted,#e9c9e4);letter-spacing:.02em}
+  .gal-hero-img{display:block;width:min(560px,92vw);margin:26px auto 8px;border-radius:26px}
+  @media(max-width:640px){.gal-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<main id="main">
+<div class="wrap-page">
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero" style="padding-top:58px">
+    <div class="center">
+      <span class="badge"><span class="dot"></span> Galerie · 3 Einblicke</span>
+      <h1>Die <span class="grad">Hello-Kitty-Welt</span><br>von Maxichen.</h1>
+      <p class="sub" style="margin:0 auto">Pink, Neon, Schleifen und Herzen — die Bilder, die hinter dem Bot stecken. 🎀💖</p>
+    </div>
+    <img class="gal-hero-img hk-frame reveal" src="/assets/img/team/max.jpeg" alt="Hello-Kitty-Zimmer mit Neonlicht und Maxichen-Artwork" loading="eager" width="560" height="560">
+    <p class="hk-sign" style="text-align:center">by Maxichen ✨</p>
+  </section>
+
+  <div class="hk-trenner">💖 🎀 💖</div>
+
+  <!-- ══════════ GALERIE-GRID ══════════ -->
+  <section style="padding-block:20px">
+    <div class="gal-grid">
+      <figure class="gal-item reveal"><img class="hk-frame" src="/assets/img/team/owner.png" alt="Owner-Artwork mit Neon-Schrift und Social-Profilen" loading="lazy" width="667" height="1000"><figcaption>💗 Owner-Artwork</figcaption></figure>
+      <figure class="gal-item reveal"><img class="hk-frame" src="/assets/img/Profilbild.png" alt="Hello-Kitty-Profilbild mit Neonherzen" loading="lazy" width="1024" height="1024"><figcaption>🎀 Bot-Profilbild</figcaption></figure>
+    </div>
+  </section>
+
+  <div class="hk-trenner">🎀 💗 🎀</div>
+
+  <!-- ══════════ BOT-MENÜ ══════════ -->
+  <section class="hero" style="padding-block:40px">
+    <div class="center">
+      <span class="badge"><span class="dot"></span> Der Bot</span>
+      <h2>Das <span class="grad">Menü</span> des Bots</h2>
+      <p class="sub" style="margin:0 auto">So sieht <code>$menu</code> aus — 380 Befehle in 17 Kategorien, hübsch verpackt in Neon-Pink.</p>
+    </div>
+    <img class="gal-hero-img hk-frame reveal" src="/assets/img/team/menu.png" alt="Das Befehls-Menü des HelloKitty Baby Maxi Bots" loading="lazy" width="700" height="900" style="width:min(420px,86vw)">
+  </section>
+
+</div>
+</main>
+
+<footer id="site-footer" data-foot-desc="Die Hello-Kitty-Welt von Maxichen — Pink, Neon, Schleifen und ganz viel Liebe. 🎀"></footer>
+
+<script src="/js/site-shell.js"></script>
+<script src="/js/common.js"></script>
+<script>
+  /* Reveal-Animationen für Galerie-Bilder */
+  (function () {
+    try {
+      var io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.style.animation = 'riseIn .6s cubic-bezier(.2,.7,.3,1) both'; io.unobserve(e.target); } });
+      }, { threshold: .12 });
+      document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    } catch (e) { /* Deko darf nie brechen */ }
+  })();
+</script>
+</body>
+</html>

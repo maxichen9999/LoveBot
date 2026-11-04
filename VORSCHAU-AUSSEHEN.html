@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="light" data-akzent="pink">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aussehen — Pink · Rosa · Türkis 🎀</title>
+<style>
+  /* Dieselben Werte wie in public/css/style.css — hier nur für die Vorschau */
+  :root {
+    --bg0:#fff7fb; --bg1:#fff2f8; --bg2:#ffeaf3;
+    --surface:#ffffff; --surface-solid:#ffffff;
+    --line:#f3d9e6; --text:#2f2430; --muted:#7a6a76;
+    --brand-1:#d81b60; --brand-2:#e6003c; --brand-3:#b3327a;
+    --grad:linear-gradient(135deg,#d81b60 0%,#c1002f 50%,#a3002a 100%);
+    --grad-soft:linear-gradient(135deg,rgba(255,95,162,.16),rgba(230,0,60,.10));
+  }
+  /* Pink */
+  [data-akzent="pink"]{
+    --brand-1:#d81b60; --brand-2:#e6003c; --brand-3:#b3327a;
+    --grad:linear-gradient(135deg,#d81b60 0%,#c1002f 50%,#a3002a 100%);
+    --grad-soft:linear-gradient(135deg,rgba(255,95,162,.16),rgba(230,0,60,.10));
+  }
+  [data-theme="dark"][data-akzent="pink"]{
+    --brand-1:#f472b6; --brand-2:#ec4899; --brand-3:#fb7185;
+    --grad:linear-gradient(135deg,#f9a8d4 0%,#ec4899 55%,#c04a86 100%);
+  }
+  /* Rosa */
+  [data-akzent="rosa"]{
+    --brand-1:#c2185c; --brand-2:#e8608f; --brand-3:#ad4d7c;
+    --grad:linear-gradient(135deg,#ff8fb1 0%,#e8608f 55%,#c2185c 100%);
+    --grad-soft:linear-gradient(135deg,rgba(255,143,177,.22),rgba(232,96,143,.14));
+  }
+  [data-theme="dark"][data-akzent="rosa"]{
+    --brand-1:#ff8fb1; --brand-2:#ff6f9c; --brand-3:#ffb3cd;
+    --grad:linear-gradient(135deg,#ffc2d9 0%,#ff6f9c 55%,#e94f86 100%);
+  }
+  /* Türkis */
+  [data-akzent="tuerkis"]{
+    --brand-1:#0e7490; --brand-2:#14b8a6; --brand-3:#0f766e;
+    --grad:linear-gradient(135deg,#5eead4 0%,#14b8a6 55%,#0e7490 100%);
+    --grad-soft:linear-gradient(135deg,rgba(94,234,212,.22),rgba(20,184,166,.14));
+  }
+  [data-theme="dark"][data-akzent="tuerkis"]{
+    --brand-1:#5eead4; --brand-2:#2dd4bf; --brand-3:#14b8a6;
+    --grad:linear-gradient(135deg,#ccfbf1 0%,#2dd4bf 55%,#0d9488 100%);
+  }
+  /* Dunkel */
+  [data-theme="dark"]{
+    --bg0:#08060f; --bg1:#0c0919; --bg2:#120d24;
+    --surface:rgba(255,255,255,.045); --surface-solid:#0e0a1d;
+    --line:rgba(255,255,255,.10); --text:#f6f3ff; --muted:#b7afd6;
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg0);color:var(--text);
+       font:16px/1.6 "Segoe UI",system-ui,-apple-system,sans-serif;transition:background .2s,color .2s}
+  h1,h2,h3{font-family:Georgia,serif;margin:0}
+  a{color:var(--brand-1)}
+
+  /* ── Navigation wie auf der echten Seite ── */
+  header{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--line)}
+  .zeile{max-width:1100px;margin:0 auto;padding:0 22px;display:flex;align-items:center;gap:16px;height:70px;justify-content:space-between}
+  .marke{display:flex;align-items:center;gap:10px;font:600 15px/1.2 Georgia,serif;letter-spacing:.5px}
+  .marke .zeichen{width:36px;height:36px;border-radius:11px;background:var(--grad);display:grid;place-items:center;font-size:18px}
+  nav{display:flex;align-items:center;gap:18px;font-size:14.5px;color:var(--muted)}
+
+  /* 🎀 der Umschalter */
+  .look-switch{display:flex;align-items:center;gap:9px}
+  .theme-toggle{border:1px solid var(--line);background:transparent;color:inherit;font-size:16px;
+    width:36px;height:36px;border-radius:11px;cursor:pointer;transition:.15s}
+  .theme-toggle:hover{border-color:var(--brand-2)}
+  .akzente{display:inline-flex;align-items:center;gap:6px}
+  .akzent{width:15px;height:15px;padding:0;cursor:pointer;border:2px solid transparent;border-radius:50%;
+    background:var(--akzent-farbe);transition:transform .15s,box-shadow .15s}
+  .akzent[data-akzent="pink"]{--akzent-farbe:#e8608f}
+  .akzent[data-akzent="rosa"]{--akzent-farbe:#ff6f9c}
+  .akzent[data-akzent="tuerkis"]{--akzent-farbe:#14b8a6}
+  .akzent:hover{transform:scale(1.18)}
+  .akzent.aktiv{box-shadow:0 0 0 2px var(--surface-solid),0 0 0 4px var(--akzent-farbe)}
+
+  main{max-width:1100px;margin:0 auto;padding:36px 22px 70px}
+  .kicker{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--brand-2);margin-bottom:8px}
+  h1{font-size:31px;margin-bottom:8px}
+  .untertitel{color:var(--muted);margin:0 0 28px}
+  .karten{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+  .karte{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px 19px}
+  .karte .emoji{font-size:22px;display:block;margin-bottom:8px}
+  .karte h3{font-size:17px;margin-bottom:5px}
+  .karte p{margin:0;color:var(--muted);font-size:14px}
+  .knopf{display:inline-block;background:var(--grad);color:#fff;text-decoration:none;
+    border-radius:12px;padding:11px 20px;font-weight:600;font-size:14.5px}
+  .balken{height:10px;border-radius:99px;background:var(--grad-soft);overflow:hidden;margin-top:12px}
+  .balken i{display:block;height:100%;width:72%;background:var(--grad)}
+  .hinweis{margin-top:30px;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--brand-2);
+    border-radius:12px;padding:15px 18px;font-size:14.5px;color:var(--muted)}
+  .hinweis b{color:var(--text)}
+  footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:13.5px}
+  footer .zeile{height:auto}
+  @media (max-width:720px){ nav .nav-link{display:none} }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="zeile">
+    <div class="marke"><span class="zeichen">🎀</span><span>HELLOKITTY BABY MAXI</span></div>
+    <nav>
+      <a class="nav-link" href="#" onclick="return false">Start</a>
+      <a class="nav-link" href="#" onclick="return false">Befehle</a>
+      <a class="nav-link" href="#" onclick="return false">Level</a>
+      <a class="nav-link" href="#" onclick="return false">Status</a>
+      <div class="look-switch" role="group" aria-label="Aussehen">
+        <button class="theme-toggle" id="themeToggle" type="button" title="Hell / Dunkel umschalten">🌸</button>
+        <span class="akzente" id="akzente" role="group" aria-label="Akzentfarbe">
+          <button class="akzent" data-akzent="pink" type="button" title="Pink" aria-label="Akzent Pink"></button>
+          <button class="akzent" data-akzent="rosa" type="button" title="Rosa" aria-label="Akzent Rosa"></button>
+          <button class="akzent" data-akzent="tuerkis" type="button" title="Türkis" aria-label="Akzent Türkis"></button>
+        </span>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="kicker">Vorschau</div>
+  <h1>Hell oder dunkel — Pink, Rosa oder Türkis</h1>
+  <p class="untertitel">Klick oben rechts: die Blüte wechselt zwischen hell und dunkel, die drei Punkte setzen die Akzentfarbe. Genau so sitzt der Umschalter später in der Navigation der echten Webseite.</p>
+
+  <div class="karten">
+    <div class="karte">
+      <span class="emoji">📊</span>
+      <h3>Live-Status</h3>
+      <p>Der Bot ist online und antwortet.</p>
+      <div class="balken"><i></i></div>
+    </div>
+    <div class="karte">
+      <span class="emoji">⭐</span>
+      <h3>Level 12</h3>
+      <p>4.820 von 6.000 XP bis zur nächsten Stufe.</p>
+      <div class="balken"><i style="width:80%"></i></div>
+    </div>
+    <div class="karte">
+      <span class="emoji">🏆</span>
+      <h3>Platz 3</h3>
+      <p>Von 128 angemeldeten Nutzerinnen und Nutzern.</p>
+    </div>
+    <div class="karte">
+      <span class="emoji">📜</span>
+      <h3>351 Befehle</h3>
+      <p>Alle sauber nach Bereichen sortiert — <a href="#" onclick="return false">Befehle ansehen</a>.</p>
+    </div>
+  </div>
+
+  <p style="margin-top:26px"><a class="knopf" href="#" onclick="return false">Dashboard →</a></p>
+
+  <div class="hinweis">
+    <b>So wird es gemerkt:</b> Die Wahl liegt im Browser — und wenn du eingeloggt bist, zusätzlich auf dem Server
+    (<code>/api/look</code>). Als Owner kannst du deine Wahl ausserdem <b>als Standard für alle</b> übernehmen,
+    dann gilt sie auch für Gäste. Standard ist hell mit Pink.
+  </div>
+</main>
+
+<footer>
+  <div class="zeile">
+    <span>🎀 HelloKitty Baby Maxi by Maxichen · Vorschau des Umschalters</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var knopf = document.getElementById('themeToggle');
+  var punkte = document.querySelectorAll('#akzente .akzent');
+
+  function zeichen() {
+    var dunkel = root.getAttribute('data-theme') === 'dark';
+    knopf.textContent = dunkel ? '🌙' : '🌸';
+  }
+  function markieren() {
+    var gewaehlt = root.getAttribute('data-akzent');
+    for (var i = 0; i < punkte.length; i++) {
+      var aktiv = punkte[i].getAttribute('data-akzent') === gewaehlt;
+      punkte[i].classList.toggle('aktiv', aktiv);
+      punkte[i].setAttribute('aria-pressed', aktiv ? 'true' : 'false');
+    }
+  }
+  knopf.addEventListener('click', function () {
+    root.setAttribute('data-theme', root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+    zeichen();
+  });
+  for (var i = 0; i < punkte.length; i++) {
+    punkte[i].addEventListener('click', function () {
+      root.setAttribute('data-akzent', this.getAttribute('data-akzent'));
+      markieren();
+    });
+  }
+  zeichen();
+  markieren();
+})();
+</script>
+</body>
+</html>

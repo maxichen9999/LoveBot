@@ -1,0 +1,72 @@
+.contact-section {
+  display: grid;
+  grid-template-columns: minmax(220px, .82fr) minmax(0, 1.18fr);
+  gap: clamp(30px, 7vw, 88px);
+  align-items: start;
+  margin: 72px 0 34px;
+  padding: clamp(28px, 5vw, 58px) 0;
+  border-top: 1px solid var(--line-2);
+  background:
+    radial-gradient(ellipse at 2% 8%, rgba(244, 114, 182, .10), transparent 42%),
+    linear-gradient(115deg, transparent 55%, rgba(34, 211, 238, .035));
+}
+
+.contact-intro h2 { margin: 14px 0 12px; }
+.contact-intro > p { max-width: 34ch; color: var(--muted); line-height: 1.7; }
+.contact-direct {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration-color: var(--brand-2);
+  text-underline-offset: 5px;
+}
+.contact-direct span { color: var(--brand-2); }
+
+.contact-form { display: grid; gap: 16px; min-width: 0; }
+.contact-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.contact-form label {
+  display: grid;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  color: var(--text);
+  background: rgba(5, 7, 15, .72);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.5;
+  transition: border-color .18s ease, box-shadow .18s ease;
+}
+.contact-form textarea { min-height: 132px; resize: vertical; }
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--brand-2);
+  outline: 0;
+  box-shadow: 0 0 0 3px rgba(244, 114, 182, .14);
+}
+.contact-trap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.contact-submit-row { display: flex; justify-content: space-between; align-items: center; gap: 18px; }
+.contact-status { min-height: 1.5em; margin: 0; color: var(--muted); font-size: 13px; line-height: 1.5; }
+.contact-status.is-success { color: var(--ok); }
+.contact-status.is-error { color: var(--err); }
+.contact-form button:disabled { opacity: .62; cursor: wait; }
+
+@media (max-width: 700px) {
+  .contact-section { grid-template-columns: 1fr; gap: 28px; margin-top: 48px; }
+}
+@media (max-width: 640px) {
+  .contact-fields { grid-template-columns: 1fr; }
+  .contact-submit-row { align-items: stretch; flex-direction: column; }
+  .contact-submit-row .btn { justify-content: center; }
+}

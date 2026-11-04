@@ -1,0 +1,16 @@
+# HelloKitty Baby Maxi 💔 — Crawler-Regeln
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /control.html
+Disallow: /dashboard.html
+Disallow: /logs.html
+Disallow: /owners.html
+Disallow: /sessions.html
+Disallow: /settings.html
+Disallow: /bans.html
+Disallow: /broadcast.html
+Disallow: /tickets.html
+Disallow: /reports.html
+
+Sitemap: https://maxichen.de/sitemap.xml

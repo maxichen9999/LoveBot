@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script src="/js/maintgate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/js/theme.js"></script>
+<title>HelloKitty Baby Maxi 🎀 — Der fröhliche WhatsApp-Bot | maxichen.de</title>
+<meta name="description" content="HelloKitty Baby Maxi 🎀 by Maxichen — der fröhliche WhatsApp-Bot: Liebe &amp; Ehe, XP-Level, Economy, Haustiere, 30+ Spiele, Automod und ein Live-Dashboard. 380 Befehle, ein Präfix: $">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/img/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#08060f">
+<meta property="og:title" content="HelloKitty Baby Maxi 🎀 — Der fröhliche WhatsApp-Bot">
+<meta property="og:description" content="380 Befehle: Liebe &amp; Ehe, Economy, 24 Spiele, Automod &amp; ein Live-Dashboard. Direkt im Chat.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="/css/style.css?v=portal-1">
+<link rel="stylesheet" href="/css/hello-kitty.css?v=portal-1">
+<link rel="stylesheet" href="/css/home.css?v=live-hero-2">
+<link rel="stylesheet" href="/css/contact.css?v=1">
+</head>
+<body class="portal-home">
+<a class="skip" href="#main">Zum Inhalt springen</a>
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts" aria-hidden="true"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<main id="main">
+<div class="wrap-page">
+
+  <!-- ══════════ 01 · HERO ══════════ -->
+  <section class="hero home-hero">
+    <div class="home-hero-grid">
+      <div class="home-hero-copy">
+        <span class="hero-live st" id="cntBot" role="status" aria-live="polite"><span class="dot"></span> Live-Status wird geprüft</span>
+        <h1>HelloKitty<br><span class="grad">Baby Maxi</span></h1>
+        <p class="home-hero-sub">Der WhatsApp-Bot für Gruppen, die mehr wollen als Chat. <b>380+ Befehle</b> für Community, Spiele, Level, Schutz und KI — direkt in WhatsApp.</p>
+        <div class="platform-chips" aria-label="Bot-Funktionen">
+          <span class="pchip">💍 Liebe &amp; Ehe</span>
+          <span class="pchip">🎮 Spiele</span>
+          <span class="pchip">💰 Economy</span>
+          <span class="pchip">🐾 Haustiere</span>
+          <span class="pchip">🤖 KI Love</span>
+          <span class="pchip">🛡️ Gruppen-Schutz</span>
+        </div>
+        <div class="cta-row">
+          <a class="btn" href="/login.html">🎀 Dashboard öffnen</a>
+          <a class="btn ghost" href="/cmd.html">📜 Befehle entdecken</a>
+        </div>
+        <p class="home-hero-note">Für WhatsApp-Gruppen · Präfix <code>$</code> · von Maxichen</p>
+      </div>
+      <figure class="home-hero-art">
+        <img src="/assets/img/team/max.jpeg" alt="HelloKitty Baby Maxi — die Welt von Maxichen" width="360" height="480" fetchpriority="high">
+        <figcaption><span>BUILT FOR GROUP CHATS</span><span>by Maxichen ✦</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="home-stats" aria-label="Live-Statistiken">
+    <div class="livebar">
+      <div class="cell"><div class="num" id="cntUsers">…</div><div class="lbl">Nutzer</div></div>
+      <div class="cell"><div class="num" id="cntGroups">…</div><div class="lbl">Gruppen</div></div>
+      <div class="cell"><div class="num" id="cntCmds">…</div><div class="lbl">Befehle</div></div>
+      <div class="cell"><div class="num" id="cntSessions">…</div><div class="lbl">Sessions</div></div>
+      <div class="cell"><div class="num" id="cntPets">…</div><div class="lbl">Haustiere</div></div>
+      <div class="cell"><div class="num" id="cntCouples">…</div><div class="lbl">Paare</div></div>
+    </div>
+  </section>
+
+  <section class="home-chat" aria-label="Beispiel aus dem Gruppenchat">
+    <div class="home-chat-heading">
+      <div class="kicker"><span>LIVE</span> Direkt im Gruppenchat</div>
+      <h2>Ein Befehl. <span class="grad">Die Gruppe ist dabei.</span></h2>
+      <p>Keine neue App, kein kompliziertes Setup. LoveBot antwortet dort, wo eure Gruppe schon ist.</p>
+    </div>
+    <div class="chat-demo">
+      <div class="bub me"><code>$marry @Leni</code></div>
+      <div class="bub">💍 <b>Leni, willst du Maxichen heiraten?</b> — antworte mit <code>$marryja</code></div>
+      <div class="bub me"><code>$marryja</code> 💍</div>
+      <div class="bub">🌫️ <b>Herzlichen Glückwunsch!</b> Ihr seid jetzt verheiratet — Liebe +100 💕</div>
+      <div class="bub" id="demoTyping" style="display:none;align-self:flex-start"><span class="typing"><i></i><i></i><i></i></span></div>
+      <div class="bub" id="demoFinal" style="display:none">🎀 <i>…und der Bot bleibt da, freut sich über jede Nachricht und hilft gern weiter — immer. 🌸</i></div>
+    </div>
+    <script>
+      (function () {
+        try {
+          var typing = document.getElementById('demoTyping'), finalMessage = document.getElementById('demoFinal');
+          if (!typing || !finalMessage) return;
+          setTimeout(function () { typing.style.display = 'inline-flex'; }, 1800);
+          setTimeout(function () { typing.style.display = 'none'; finalMessage.style.display = 'block'; finalMessage.style.animation = 'riseIn .5s cubic-bezier(.2,.7,.3,1) both'; }, 4200);
+        } catch (e) {}
+      })();
+    </script>
+  </section>
+
+  <!-- ══════════ 03 · FEATURES ══════════ -->
+  <section id="features">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>01</span> Was der Bot kann</div>
+      <h2>Ein Bot. <span class="grad">Tausend Herzen.</span></h2>
+      <p>Unterhaltung, Spiele, Verwaltung und Schutz — sauber in einem System vereint, statt zehn Bots in der Gruppe.</p>
+    </div>
+    <div class="bento">
+      <div class="tile wide card reveal"><div class="ico">💍</div><h3>Liebe &amp; Ehe</h3><p>Echte Anträge mit Ja/Nein-Antwort, Scheidung, Ship &amp; Love-o-Meter, Küsse und Komplimente — inklusive gemeinsamer Tage, Love-XP und Couple-Level.</p><a class="card-link" href="/cmd.html">Befehle ansehen →</a></div>
+      <div class="tile wide card reveal frisch"><div class="ico">🎰</div><h3>Spiele &amp; Slot<span class="chip-neu">Neu</span></h3><p>Hangman 🪢, Vier gewinnt 🔴, Mastermind 🧠, Blackjack 🂱, Tic-Tac-Toe, Zahlenspiel, Kampf-Simulation ⚔️ — dazu Slot, Würfeln, 8-Ball, Quiz und Wahrheit oder Pflicht. Mit XP und Kupfer als Einsatz, Bestenliste inklusive.</p><a class="card-link" href="/spiele.html">Spiele ansehen →</a></div>
+      <div class="tile card reveal"><div class="ico">💰</div><h3>Economy &amp; Level</h3><p>XP für nette Nachrichten, 15 Ränge, 743 Level pro Prestige-Zyklus, Dailies, Arbeit und Belohnungen.</p><a class="card-link" href="/level.html">Level-System →</a></div>
+      <div class="tile card reveal"><div class="ico">👥</div><h3>Gruppen-Tools</h3><p>Willkommen, Spiele, Anti-Spam, Mention-Schutz und Gruppenverwaltung — viele Features per <b>$an</b> / <b>$aus</b> schaltbar.</p><a class="card-link" href="/features.html#gruppensteuerung">Alle Features →</a></div>
+      <div class="tile card reveal"><div class="ico">🛡️</div><h3>Automod &amp; Schutz</h3><p>Badword-Filter mit Warn-Kette, Anti-Link, Auto-Kick und ein Ban-System mit JID- und LID-Erkennung.</p><a class="card-link" href="/features.html">Mehr erfahren →</a></div>
+      <div class="tile card reveal"><div class="ico">🐾</div><h3>Haustiere &amp; Shop</h3><p>Adoptieren, füttern, leveln — und Rosen, Teddys oder Ringe aus dem Shop verschenken.</p><a class="card-link" href="/cmd.html">Befehle ansehen →</a></div>
+      <div class="tile card reveal"><div class="ico">🖥️</div><h3>Live-Dashboard</h3><p>Groups, Bans, Broadcasts, Logs und Live-Monitor im Browser — gesichert mit 2FA-Login.</p><a class="card-link" href="/login.html">Zum Login →</a></div>
+    </div>
+  </section>
+
+  <!-- ══════════ 03b · FRISCH AM 04.10. ══════════ -->
+  <section id="neu">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>02</span> Frisch am 04.10.2026<span class="datumm">Update</span></div>
+      <h2>Neu: <span class="grad">Mehr Spiele</span> — und neue Befehle.</h2>
+      <p>Dazu sechs neue Spiele und sieben kleine Freuden für den Alltag.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal frisch frisch-in"><div class="ico">🪢</div><h3>$hangman</h3><p>Galgenmännchen rund um die Liebe — 24 Wörter, neun Versuche, Galgen-ASCII und ein Siegzähler.</p><a class="card-link" href="/spiele.html">Alle Spiele →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">🔴</div><h3>$connect4</h3><p>Vier gewinnt gegen Love 💜 — der Bot gewinnt, blockt und denkt eine Runde weiter. Punktestand bleibt.</p><a class="card-link" href="/spiele.html">Alle Spiele →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">🧩</div><h3>$mastermind</h3><p>Vier Ziffern von 1–6, zehn Versuche, echte Hinweise: „2 richtig, 1 an der richtigen Stelle".</p><a class="card-link" href="/spiele.html">Alle Spiele →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">🂱</div><h3>$bj</h3><p>Blackjack 21 gegen Love — nur Spielchips, kein echtes Geld. Blackjack zahlt 2,5×.</p><a class="card-link" href="/spiele.html">Alle Spiele →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">✅</div><h3>$todo &amp; $stopuhr</h3><p>Aufgabenliste mit Erledigt-Status und eine Stoppuhr, die über Start/Stop hinweg summiert.</p><a class="card-link" href="/cmd.html">Zu den Werkzeugen →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">🥠</div><h3>Kleine Freuden</h3><p>Glückskeks mit Zahlen des Tages, Zungenbrecher, Spruch des Tages, Motivation und Kalenderwoche mit Fortschritt.</p><a class="card-link" href="/cmd.html">Zu den Werkzeugen →</a></div>
+      <div class="card reveal frisch frisch-in"><div class="ico">🎂</div><h3>$alter</h3><p>Exaktes Alter in Jahren, Monaten und Tagen — plus Wochentag der Geburt und Countdown zum nächsten.</p><a class="card-link" href="/cmd.html">Zu den Werkzeugen →</a></div>
+    </div>
+    <div class="center mt-lg reveal">
+      <a class="btn" href="/changelog.html">🆕 Alle Änderungen ansehen</a>
+    </div>
+  </section>
+
+  <!-- ══════════ 04 · BEFEHLE ══════════ -->
+  <section id="befehle">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>03</span> Befehle</div>
+      <h2><span id="cmdTotal">380</span> Befehle, <span class="grad">17 Kategorien</span></h2>
+      <p>Vom Heiraten bis zum Speedtest — live aus dem Bot ausgelesen. Die komplette Liste mit Suche findest du auf der Befehle-Seite.</p>
+    </div>
+    <div class="cmdgrid" id="cmdGrid"></div>
+    <div class="center mt-lg reveal">
+      <a class="btn" href="/cmd.html">📜 Alle Befehle durchstöbern</a>
+    </div>
+  </section>
+
+  <!-- ══════════ 05 · LEVEL ══════════ -->
+  <section id="levelsystem">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>04</span> Level-System</div>
+      <h2>Jede nette Nachricht bringt <span class="grad">Level</span>.</h2>
+      <p>XP für Nachrichten, Komplimente, Befehle, Dailies &amp; Spiele — 15 Ränge, 743 Level pro Prestige-Zyklus und Kupfer-Belohnungen bei jedem Aufstieg.</p>
+    </div>
+    <div class="lvl-wrap reveal">
+      <div class="lvl-card">
+        <div class="lvl-top">
+          <div class="lvl-avatar"></div>
+          <div>
+            <div class="lvl-name">maxichen <span class="lvl-rank-badge">🌷 Flirter</span></div>
+            <div class="lvl-sub" style="color:var(--faint);font-size:13px">Prestige 0 · Level 24 · 🔥 3 Tage Streak</div>
+          </div>
+        </div>
+        <div class="lvl-xp">
+          <div class="lvl-xp-labels spread" style="font-size:13.4px;color:var(--muted)"><span><b style="color:var(--text)">1.284 XP</b></span><span>Level 25 — noch 612 XP</span></div>
+          <div class="lvl-bar"><div class="lvl-bar-fill" style="--target:68%"></div></div>
+        </div>
+        <div class="chips mt">
+          <span class="chip">💬 Nachricht +5 XP</span>
+          <span class="chip">🥀 Kompliment ×2–×3</span>
+          <span class="chip">⚙️ Befehl +2 XP</span>
+          <span class="chip">💋 Liebes-Aktion +5 XP</span>
+          <span class="chip">🎮 Spiel-Sieg +15 XP</span>
+          <span class="chip">💎 $daily +50 XP</span>
+        </div>
+      </div>
+      <div class="lvl-ranks">
+        <div class="lvl-rank-row"><span class="r-emoji">🐣</span><span class="r-name">Neuling</span><span class="r-lv">Level 0</span></div>
+        <div class="lvl-rank-row"><span class="r-emoji">🥀</span><span class="r-name">Herzling</span><span class="r-lv">Level 10</span></div>
+        <div class="lvl-rank-row hot"><span class="r-emoji">🌷</span><span class="r-name">Flirter</span><span class="r-lv">Level 25</span></div>
+        <div class="lvl-rank-row"><span class="r-emoji">💕</span><span class="r-name">Romantiker</span><span class="r-lv">Level 50</span></div>
+        <div class="lvl-rank-row"><span class="r-emoji">🌹</span><span class="r-name">Rose des Herzens</span><span class="r-lv">Level 100</span></div>
+        <div class="lvl-rank-row"><span class="r-emoji">👑</span><span class="r-name">Herzfürst(in) <small style="color:var(--faint)">→ bis 🕊️ Prestige</small></span><span class="r-lv">Level 500</span></div>
+        <div class="lvl-rank-row"><span class="r-emoji">🕊️</span><span class="r-name">Mythisch</span><span class="r-lv">Level 743</span></div>
+      </div>
+    </div>
+    <div class="center mt-lg reveal"><a class="btn" href="/level.html">🏆 Level-System im Detail</a></div>
+  </section>
+
+  <!-- ══════════ 06 · LOSLEGEN ══════════ -->
+  <section id="anleitung">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>05</span> In 2 Minuten drin</div>
+      <h2>Bot rein, <span class="grad">Spaß an</span>.</h2>
+      <p>Drei Schritte, dann übernimmt der Bot — den Rest erklärt er dir selbst mit <b>$help</b>.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card reveal"><div class="nr">SCHRITT 01</div><h3>Bot in die Gruppe holen</h3><p>Schreib dem Owner direkt und schicke deinen Gruppen-Link — der Bot tritt bei.</p></div>
+      <div class="step-card reveal"><div class="nr">SCHRITT 02</div><h3>Registrieren &amp; Menü öffnen</h3><p>Einmal <code>$register Name.Alter.Status.Stadt</code> — danach zeigt <code>$menu</code> alles, was der Bot kann.</p></div>
+      <div class="step-card reveal"><div class="nr">SCHRITT 03</div><h3>Features anpassen</h3><p>Mit <code>$gi</code> siehst du alle 19 Gruppen-Features — etwa mit <code>$an antispam</code> einschalten.</p></div>
+    </div>
+  </section>
+
+  <!-- ══════════ 07 · DIE MACHERIN ══════════ -->
+  <section id="macherin">
+    <div class="sec-head reveal">
+      <div class="kicker"><span>06</span> Hinter dem Bot</div>
+      <h2>Gebaut von <span class="grad">Maxichen</span>.</h2>
+      <p>Hinter HelloKitty Baby Maxi steht eine Person mit viel Liebe zum Detail — Pink, Neon, Schleifen und ein Bot, der wirklich hilft.</p>
+    </div>
+    <div style="display:flex;gap:26px;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:26px">
+      <img src="/assets/img/team/owner.png" alt="Maxichen — die Macherin hinter HelloKitty Baby Maxi" class="hk-frame reveal" loading="lazy" width="360" height="480"
+           style="width:min(300px,74vw);border-radius:26px;aspect-ratio:3/4;object-fit:cover">
+      <div class="reveal" style="max-width:420px;text-align:left">
+        <p class="hk-sign">by Maxichen ✨</p>
+        <p style="color:var(--muted);line-height:1.75">„Der Bot soll nicht nur funktionieren — er soll sich auch gut anfühlen. Jede Antwort, jedes Bild und jeder Ton ist so gebaut, dass man sich beim Benutzen ein bisschen freut."</p>
+        <div class="cta-row" style="justify-content:flex-start;margin-top:18px">
+          <a class="btn ghost" href="/galerie.html">🎀 Galerie ansehen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="contact-section">
+    <div class="contact-intro">
+      <div class="kicker"><span>07</span> Kontakt</div>
+      <h2>Eine Frage? <span class="grad">Schreib uns.</span></h2>
+      <p>Deine Nachricht geht direkt an den Owner. Eine Antwort ist einfach per E-Mail möglich.</p>
+      <a class="contact-direct" href="mailto:contact@maxichen.de">contact@maxichen.de <span aria-hidden="true">↗</span></a>
+    </div>
+    <form class="contact-form" id="contactForm">
+      <div class="contact-fields">
+        <label>Name<input name="name" autocomplete="name" maxlength="80" required></label>
+        <label>E-Mail<input name="email" type="email" autocomplete="email" maxlength="254" required></label>
+      </div>
+      <label>Betreff<input name="subject" maxlength="120" required></label>
+      <label>Nachricht<textarea name="message" rows="5" minlength="10" maxlength="5000" required></textarea></label>
+      <label class="contact-trap" aria-hidden="true">Unternehmen<input name="company" tabindex="-1" autocomplete="off"></label>
+      <div class="contact-submit-row">
+        <p id="contactStatus" class="contact-status" role="status" aria-live="polite">Antwort meist direkt per E-Mail.</p>
+        <button class="btn" type="submit"><span>Nachricht senden</span> <span aria-hidden="true">↗</span></button>
+      </div>
+    </form>
+  </section>
+
+</div>
+</main>
+
+<footer id="site-footer" data-foot-desc="Der WhatsApp-Bot mit Herz — gebaut von Maxichen. Liebe, Spiele, Economy, KI und ein Live-Dashboard in einem System."></footer>
+
+<script src="/js/site-shell.js"></script>
+  <script src="/js/common.js"></script>
+<script src="/js/commands-data.js"></script>
+<script src="/js/landing.js"></script>
+<script src="/js/contact.js"></script>
+<script>
+  /* Level-Balken animieren, sobald sichtbar */
+  (function () {
+    var bar = document.querySelector('.lvl-bar-fill');
+    if (!bar) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting) { bar.style.width = bar.style.getPropertyValue('--target') || '68%'; io.disconnect(); }
+      });
+    }, { threshold: .4 });
+    io.observe(bar);
+  })();
+</script>
+</body>
+</html>

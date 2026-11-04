@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<script src="/js/theme.js"></script>
+<title>Login  — HelloKitty Baby Maxi 💔</title>
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#fff7fb">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/hello-kitty.css">
+<link rel="stylesheet" href="/css/login.css?v=portal-2">
+</head>
+<body class="portal-login">
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<div class="auth-wrap">
+  <section class="auth-aside">
+    <div class="auth-brand"><img src="/assets/img/logo.png" alt=""><span>HELLOKITTY<br>BABY MAXI</span></div>
+    <p class="auth-overline">BOT CONTROL CENTER</p>
+    <h1>Schön, dass du da bist.</h1>
+    <p class="auth-intro">Gruppen, Sessions und Bot-Funktionen sicher an einem Ort verwalten.</p>
+    <ul class="auth-points">
+      <li><span>01</span> Live-Dashboard &amp; Sessions</li>
+      <li><span>02</span> Gruppen, Logs &amp; Werkzeuge</li>
+      <li><span>03</span> Rollenbasierter Zugang</li>
+    </ul>
+    <div class="auth-system"><i></i> HelloKitty Baby Maxi · Control Center</div>
+  </section>
+  <div class="auth-card">
+    <div class="auth-form-head">
+      <p class="auth-form-overline">DEIN ZUGANG</p>
+      <h2>Einloggen</h2>
+      <p>Mit deinem registrierten Konto anmelden.</p>
+    </div>
+
+    <!-- Schritte: 1 Nummer · 2 Code (2FA) · 3 Passwort -->
+    <div class="steps">
+      <div class="s act" id="s1">1</div><div class="bar" id="b1"></div>
+      <div class="s" id="s2">2</div><div class="bar" id="b2"></div>
+      <div class="s" id="s3">3</div>
+    </div>
+    <div class="steps-lbl"><span>Nummer</span><span>WhatsApp-Code</span><span>Passwort</span></div>
+
+    <!-- SCHRITT 1 -->
+    <div id="step1">
+      <label class="fld" for="loginNumber">Deine Nummer oder JID</label>
+      <input id="loginNumber" placeholder="49151… oder 49151…@s.whatsapp.net"
+             onkeydown="if(event.key==='Enter')step1Go()">
+      <div class="row mt"><button class="btn full" id="btn1" onclick="step1Go()"> Weiter</button></div>
+      <div class="msg" id="msg1"></div>
+    </div>
+
+    <!-- SCHRITT 2: 2FA-Code -->
+    <div id="step2" style="display:none">
+      <div id="waLoginVerifyWrap">
+      <label class="fld" for="loginCode">📱 Code aus WhatsApp</label>
+      <input id="loginCode" class="code-input" maxlength="6" inputmode="numeric" placeholder="••••••"
+             onkeydown="if(event.key==='Enter')step2Go()">
+      <p class="hint">Der Bot sendet dir einen 6-stelligen Code per WhatsApp.<br>Er ist <b>5 Minuten</b> gültig. Ohne Code kein Login — auch nicht mit Passwort.</p>
+      <div class="row mt">
+        <button class="btn full" id="btn2" onclick="step2Go()">🔐 Code bestätigen</button>
+      </div>
+      <div class="row mt-s">
+        <button class="btn ghost sm" onclick="backTo(1)">← Andere Nummer</button>
+        <button class="btn ghost sm" id="resendBtn" onclick="requestCode()" style="margin-left:auto">↻ Code erneut senden</button>
+      </div>
+      <div class="msg" id="msg2"></div>
+      </div>
+      <div id="loginEmailVerifyWrap" style="display:none">
+        <label class="fld" for="loginVerifyEmail">Deine E-Mail-Adresse</label>
+        <input id="loginVerifyEmail" type="email" maxlength="254" autocomplete="email" placeholder="name@example.com">
+        <div class="row mt"><button class="btn full" id="loginEmailSendBtn" onclick="sendLoginEmailCode()">✉️ Bestätigungscode senden</button></div>
+        <label class="fld mt" for="loginEmailCode">Code aus der E-Mail</label>
+        <input id="loginEmailCode" class="code-input" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="••••••">
+        <div class="row mt"><button class="btn full" id="loginEmailVerifyBtn" onclick="verifyLoginEmailCode()">E-Mail bestätigen</button></div>
+        <div class="msg" id="loginEmailMsg"></div>
+      </div>
+    </div>
+
+    <!-- SCHRITT 3: Passwort (+ Benutzername & Geburtsdatum für den Owner) -->
+    <div id="step3" style="display:none">
+      <label class="fld" id="pwLabel" for="loginPassword">Passwort</label>
+      <input id="loginPassword" type="password" placeholder="••••••••"
+             onkeydown="if(event.key==='Enter')step3Go()">
+      <div id="ownerExtra" style="display:none">
+        <label class="fld mt" for="loginUser">👑 Benutzername</label>
+        <input id="loginUser" placeholder="Maxichen" autocomplete="off"
+               onkeydown="if(event.key==='Enter')step3Go()">
+        <label class="fld mt" for="loginBirthday">👑 Geburtsdatum</label>
+        <input id="loginBirthday" placeholder="03.10.2009" inputmode="numeric" autocomplete="off"
+               onkeydown="if(event.key==='Enter')step3Go()">
+        <p class="hint">Owner-Zugang braucht alle vier Angaben: Nummer · Passwort · Benutzername · Geburtsdatum.</p>
+      </div>
+      <div class="row mt"><button class="btn full" id="btn3" onclick="step3Go()"> Einloggen</button></div>
+      <div class="row mt-s"><button class="btn ghost sm" onclick="backTo(2)">← Zurück zum Code</button></div>
+      <div class="msg" id="msg3"></div>
+    </div>
+
+    <div id="banBox" class="banbox" style="display:none"></div>
+
+    <div class="sep"></div>
+    <section id="oauthSection" class="oauth-section" hidden aria-label="Mit einem Anbieter anmelden">
+      <p class="oauth-label">Anmelden oder Konto erstellen mit</p>
+      <div id="oauthProviders" class="oauth-providers"></div>
+      <label class="oauth-consent" for="oauthSignupConsent">
+        <input type="checkbox" id="oauthSignupConsent">
+        <span>Ich stimme der <a href="/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> zu und möchte, falls noch kein Konto besteht, ein USER-Konto mit meiner bestätigten Anbieter-E-Mail erstellen.</span>
+      </label>
+    </section>
+    <div class="sep" id="oauthAfterSep" hidden></div>
+    <div class="msg" id="oauthMsg" role="status" aria-live="polite"></div>
+    <div class="row center">
+      <button class="btn ghost sm full" id="regToggle" onclick="toggleReg()">+ Konto erstellen (jeder → USER)</button>
+    </div>
+    <div id="regWrap" style="display:none">
+      <label class="fld" for="regUsername">Username</label>
+      <input id="regUsername" placeholder="z. B. night_owl" maxlength="18" autocomplete="username">
+      <label class="fld" for="regNumber">Deine Nummer (für WhatsApp-Code)</label>
+      <input id="regNumber" placeholder="4915123456789" autocomplete="tel">
+      <label class="fld" for="regEmail">Deine E-Mail-Adresse (muss bestätigt werden)</label>
+      <input id="regEmail" type="email" maxlength="254" placeholder="name@example.com" autocomplete="email" required>
+      <div class="row mt"><button class="btn cyan full" id="regBtn1" onclick="regStart()">📱 Code anfordern</button></div>
+      <div id="regWhatsappWrap" style="display:none">
+        <label class="fld" for="regCode">Code aus WhatsApp</label>
+        <input id="regCode" class="code-input" maxlength="6" placeholder="••••••">
+        <div class="row mt"><button class="btn full" id="regWhatsappBtn" onclick="regVerifyWhatsapp()">WhatsApp bestätigen</button></div>
+      </div>
+      <div id="regEmailCodeWrap" style="display:none">
+        <p class="hint">Wir haben einen einmaligen Code an <b id="regEmailTarget"></b> gesendet. Er ist 10 Minuten gültig.</p>
+        <label class="fld" for="regEmailCode">Code aus der E-Mail</label>
+        <input id="regEmailCode" class="code-input" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="••••••">
+        <label class="fld" for="regPassword">Passwort (12 bis 128 Zeichen)</label>
+        <input id="regPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" placeholder="Mindestens 12 Zeichen">
+        <label class="fld" style="display:flex;align-items:flex-start;gap:9px;font-weight:400;cursor:pointer;margin-top:12px">
+          <input type="checkbox" id="regPrivacyOk" style="margin-top:3px;width:17px;height:17px;accent-color:#f472b6;flex-shrink:0">
+          <span>Ich habe die <a href="/datenschutz.html" target="_blank" rel="noopener" style="color:#f472b6;text-decoration:underline">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zu. <b>*</b></span>
+        </label>
+        <div class="row mt"><button class="btn full" onclick="regFinish()">💔 Konto erstellen</button></div>
+      </div>
+      <div class="msg" id="regMsg"></div>
+    </div>
+
+    <div class="sep"></div>
+    <button class="btn ghost sm full" id="forgotToggle" onclick="toggleForgot()">🔑 Passwort vergessen?</button>
+    <div id="forgotWrap" style="display:none">
+      <label class="fld mt" for="resetNumber">Deine Nummer mit Ländervorwahl</label>
+      <input id="resetNumber" type="tel" maxlength="16" autocomplete="tel" placeholder="49151…">
+      <p class="hint">Der Code geht an die bestätigte E-Mail-Adresse, falls vorhanden. Sonst senden wir ihn per WhatsApp.</p>
+      <div class="row mt"><button class="btn full" id="resetRequestBtn" onclick="requestPasswordReset()">Reset-Code anfordern</button></div>
+      <div id="resetCodeWrap" style="display:none">
+        <label class="fld mt" for="resetCode">Code aus E-Mail oder WhatsApp</label>
+        <input id="resetCode" class="code-input" maxlength="6" inputmode="numeric" autocomplete="one-time-code" placeholder="••••••">
+        <label class="fld mt" for="resetPassword">Neues Passwort (12 bis 128 Zeichen)</label>
+        <input id="resetPassword" type="password" minlength="12" maxlength="128" autocomplete="new-password" placeholder="Mindestens 12 Zeichen">
+        <div class="row mt"><button class="btn full" id="resetFinishBtn" onclick="finishPasswordReset()">Passwort ändern</button></div>
+      </div>
+      <div class="msg" id="resetMsg"></div>
+    </div>
+
+    <p class="hint center mt" style="font-style:italic">„stay a little longer.“</p>
+  </div>
+</div>
+
+<script src="/js/site-shell.js"></script>
+  <script src="/js/common.js"></script>
+<script src="/js/night/api.js"></script>
+<script src="/js/night/login.js?v=portal-1"></script>
+<script>makeHearts(14);</script>
+</body>
+</html>

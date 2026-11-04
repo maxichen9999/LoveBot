@@ -1,0 +1,501 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   🎀 HELLO KITTY THEME (hello-kitty.css) — „by Maxichen" Style
+   ─────────────────────────────────────────────────────────────────────
+   Ein Layer ÜBER style.css: setzt die Design-Tokens neu und gibt
+   Karten, Buttons, Navigation und Sektionen den Hello-Kitty-Look —
+   Neon-Pink, Schleifen, Herzen, Glow. Wirkt auf ALLE Seiten, weil
+   style.css nur noch die Variablen daraus liest.
+
+   Palette: Graphit · Mint · Koralle · Limette
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --bg0: #0b1114;
+  --bg1: #10191d;
+  --bg2: #172226;
+
+  --surface: rgba(226, 248, 242, .045);
+  --surface-2: rgba(226, 248, 242, .075);
+  --surface-solid: #121a1e;
+
+  --line: rgba(193, 226, 216, .12);
+  --line-2: rgba(193, 226, 216, .22);
+
+  --brand-1: #53dfc1;
+  --brand-2: #ff7488;
+  --brand-3: #c8ef78;
+  --grad: linear-gradient(120deg, #53dfc1 0%, #c8ef78 58%, #ff7488 100%);
+  --grad-soft: linear-gradient(135deg, rgba(83,223,193,.16), rgba(255,116,136,.10));
+
+  --ok: #63dfb2;
+  --warn: #f0c66d;
+  --err: #ff7184;
+
+  --text: #edf5f2;
+  --muted: #b3c4bf;
+  --faint: #82938e;
+
+  /* ── runder, niedlicher ── */
+  --r-lg: 10px;
+  --r-md: 8px;
+  --r-sm: 6px;
+
+  /* ── Neon-Glows statt Schlagschatten ── */
+  --shadow-card: 0 12px 32px -20px rgba(0,0,0,.72);
+  --shadow-pop: 0 18px 42px -26px rgba(0,0,0,.85), 0 0 0 1px rgba(83,223,193,.12);
+
+  /* ── niedliche Schreibweise ── */
+  --font: 'Quicksand', 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+/* Keep the brand type local so the site remains consistent under strict CSP. */
+
+/* ═══════════ Hintergrund: Pink-Aurora + Herzchen ═══════════ */
+
+.aurora {
+  background:
+    radial-gradient(60% 50% at 18% 8%, rgba(255, 79, 163, .22), transparent 60%),
+    radial-gradient(50% 40% at 85% 15%, rgba(79, 227, 245, .12), transparent 60%),
+    radial-gradient(70% 60% at 50% 100%, rgba(255, 110, 180, .14), transparent 65%),
+    linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 55%, var(--bg2) 100%) !important;
+}
+.grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 179, 217, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 179, 217, .05) 1px, transparent 1px) !important;
+  background-size: 46px 46px !important;
+}
+
+/* ═══════════ Schrift allgemein runder ═══════════ */
+body, button, input, textarea, select { font-family: var(--font) !important; letter-spacing: .002em; }
+h1, h2, h3 { letter-spacing: -.015em; font-weight: 700; }
+
+/* ═══════════ Navigation: Schleife vor dem aktiven Link ═══════════ */
+.topnav {
+  background: rgba(18, 3, 12, .82) !important;
+  border-bottom: 1px solid rgba(255, 110, 180, .22) !important;
+  backdrop-filter: blur(14px);
+  box-shadow: 0 8px 30px -12px rgba(255, 79, 163, .35);
+}
+.nav-links a { font-weight: 700; }
+.nav-links a::before { content: '🎀'; opacity: 0; transform: scale(.6) rotate(-12deg); transition: all .22s cubic-bezier(.2,.9,.3,1.4); display: inline-block; margin-right: 2px; }
+.nav-links a:hover::before, .nav-links a.active::before { opacity: 1; transform: scale(1) rotate(-8deg); }
+.nav-links a.active {
+  color: #ff8fd0 !important;
+  text-shadow: 0 0 14px rgba(255, 79, 163, .8);
+}
+.nav-links a:hover { color: #ffb3d9 !important; }
+
+/* ═══════════ Buttons: Bonbon-Look ═══════════ */
+.btn, .cta {
+  border-radius: 999px !important;
+  background: linear-gradient(135deg, #ff6eb4, #ff4fa3) !important;
+  border: 1px solid rgba(255, 179, 217, .5) !important;
+  color: #fff !important;
+  font-weight: 700 !important;
+  box-shadow: 0 10px 30px -10px rgba(255, 79, 163, .65), 0 1px 0 rgba(255,255,255,.35) inset !important;
+  transition: transform .2s cubic-bezier(.2,.9,.3,1.4), box-shadow .2s ease !important;
+}
+.btn:hover, .cta:hover {
+  transform: translateY(-2px) scale(1.025) !important;
+  box-shadow: 0 16px 40px -10px rgba(255, 79, 163, .8), 0 0 26px -6px rgba(79,227,245,.4), 0 1px 0 rgba(255,255,255,.4) inset !important;
+}
+.btn.ghost, button.ghost {
+  background: rgba(255, 110, 180, .1) !important;
+  border: 1px solid rgba(255, 110, 180, .35) !important;
+  color: #ffb3d9 !important;
+  box-shadow: none !important;
+}
+.btn.ghost:hover, button.ghost:hover { background: rgba(255, 110, 180, .18) !important; }
+
+/* ═══════════ Karten: Glow + Schleifen-Ecke ═══════════ */
+.card, .tile, .tl-karte, .step-card, .sess-card {
+  border-radius: var(--r-lg) !important;
+  border: 1px solid rgba(255, 110, 180, .2) !important;
+  background: linear-gradient(180deg, rgba(255, 110, 180, .06), rgba(255, 79, 163, .02) 60%, transparent), var(--surface) !important;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+.card::before, .tile::before, .tl-karte::before {
+  content: '🎀';
+  position: absolute; top: -6px; right: 10px; font-size: 20px;
+  opacity: 0; transform: rotate(18deg) scale(.7);
+  transition: all .3s cubic-bezier(.2,.9,.3,1.5);
+  filter: drop-shadow(0 0 8px rgba(255, 79, 163, .8));
+  pointer-events: none;
+}
+.card:hover::before, .tile:hover::before, .tl-karte:hover::before { opacity: .95; transform: rotate(-8deg) scale(1); }
+.card:hover, .tile:hover, .step-card:hover {
+  border-color: rgba(255, 110, 180, .5) !important;
+  box-shadow: var(--shadow-pop);
+}
+
+/* ═══════════ Badge & Pills: Neon ═══════════ */
+.badge {
+  background: linear-gradient(135deg, rgba(255,110,180,.18), rgba(79,227,245,.12)) !important;
+  border: 1px solid rgba(255, 110, 180, .45) !important;
+  color: #ffd6ea !important;
+  box-shadow: 0 0 30px -8px rgba(255, 79, 163, .6);
+}
+.chip, .pchip, .tchip {
+  background: rgba(255, 110, 180, .12) !important;
+  border: 1px solid rgba(255, 110, 180, .3) !important;
+  color: #ffd0e6 !important;
+  border-radius: 999px !important;
+}
+.pill.on { background: rgba(79, 227, 192, .15) !important; border-color: rgba(79, 227, 192, .4) !important; color: #7ef0d2 !important; }
+.pill.y { background: rgba(255, 209, 102, .14) !important; border-color: rgba(255, 209, 102, .4) !important; color: #ffd879 !important; }
+
+/* ═══════════ Verlaufs-Text: Pink→Cyan ═══════════ */
+.grad {
+  background: linear-gradient(100deg, #ff6eb4 0%, #ff4fa3 40%, #4fe3f5 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255, 79, 163, .45));
+}
+
+/* ═══════════ Sektions-Köpfe ═══════════ */
+.kicker {
+  color: #ff8fd0 !important;
+  font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+}
+.kicker span {
+  background: linear-gradient(135deg, #ff6eb4, #ff4fa3) !important;
+  box-shadow: 0 0 16px -4px rgba(255, 79, 163, .8);
+}
+.sec-head h2 { text-shadow: 0 0 30px rgba(255, 79, 163, .25); }
+
+/* ═══════════ Livebar: Bonbon-Zellen ═══════════ */
+.livebar {
+  border: 1px solid rgba(255, 110, 180, .22) !important;
+  background: linear-gradient(180deg, rgba(255, 110, 180, .07), transparent) !important;
+  border-radius: var(--r-lg) !important;
+  box-shadow: var(--shadow-card);
+}
+.livebar .num {
+  background: linear-gradient(100deg, #ff8fd0, #4fe3f5);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+.livebar .st.on { color: #7ef0d2; text-shadow: 0 0 12px rgba(79, 227, 192, .8); }
+
+/* ═══════════ Code-Blöcke & Terminal: rosa getönt ═══════════ */
+code, .terminal, pre {
+  background: rgba(255, 79, 163, .09) !important;
+  border: 1px solid rgba(255, 110, 180, .22) !important;
+  color: #ffd0e6 !important;
+  border-radius: 12px;
+}
+
+/* ═══════════ Scrollbar: Pink ═══════════ */
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #ff6eb4, #ff4fa3) !important; }
+
+/* ═══════════ Auswahl (Text markieren): Pink ═══════════ */
+::selection { background: rgba(255, 79, 163, .45); color: #fff; }
+
+/* ═══════════ Hello-Kitty-Bildelemente ═══════════ */
+
+/* runde Bilder mit Neon-Rand */
+.hk-frame {
+  border-radius: 28px;
+  border: 2px solid rgba(255, 110, 180, .45);
+  box-shadow: 0 0 40px -10px rgba(255, 79, 163, .55), 0 20px 50px -20px rgba(0,0,0,.7);
+  overflow: hidden;
+  position: relative;
+}
+.hk-frame::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(160deg, rgba(255,110,180,.12), transparent 40%, rgba(79,227,245,.1));
+}
+.hk-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* „by Maxichen"-Neonschrift als Bildunterschrift */
+.hk-sign {
+  font-family: 'Segoe Script', 'Bradley Hand', cursive;
+  font-size: clamp(28px, 5vw, 44px); font-weight: 700;
+  background: linear-gradient(100deg, #7df0ff, #4fe3f5 40%, #a5f3ff);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(79, 227, 245, .9)) drop-shadow(0 0 26px rgba(79, 227, 245, .5));
+}
+
+/* Herz-Trenner zwischen Sektionen */
+.hk-trenner { text-align: center; font-size: 18px; letter-spacing: 14px; padding: 6px 0; opacity: .8; user-select: none; }
+
+/* ═══════════ Footer ═══════════ */
+#site-footer, footer {
+  border-top: 1px solid rgba(255, 110, 180, .2) !important;
+  background: linear-gradient(180deg, transparent, rgba(255, 79, 163, .06)) !important;
+}
+
+/* ═══════════ Handy ═══════════ */
+@media (max-width: 640px) {
+  .card::before, .tile::before { font-size: 16px; top: -4px; }
+  :root { --r-lg: 22px; }
+}
+
+/* ═══════════ Weniger Bewegung (Respect prefers-reduced-motion) ═══════════ */
+@media (prefers-reduced-motion: reduce) {
+  .card::before, .tile::before, .nav-links a::before { transition: none !important; }
+  * { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
+}
+
+/* 2026 refresh: quieter control-center surfaces, clearer accent hierarchy. */
+:root {
+  --font: 'Aptos', 'Segoe UI', 'Trebuchet MS', sans-serif;
+}
+
+body, button, input, textarea, select, h1, h2, h3, p, a {
+  letter-spacing: 0 !important;
+}
+
+.aurora {
+  background:
+    radial-gradient(54% 48% at 10% 0%, rgba(83,223,193,.11), transparent 72%),
+    radial-gradient(48% 42% at 94% 8%, rgba(255,116,136,.09), transparent 72%),
+    linear-gradient(180deg, var(--bg0), var(--bg1) 56%, var(--bg2)) !important;
+}
+
+.aurora::before,
+.aurora::after {
+  display: none !important;
+}
+
+.grid-overlay {
+  background-image: radial-gradient(rgba(193,226,216,.075) .7px, transparent .7px) !important;
+  background-size: 28px 28px !important;
+}
+
+.topnav {
+  background: rgba(11,17,20,.94) !important;
+  border-bottom: 1px solid var(--line-2) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,.22) !important;
+}
+
+.nav-links a::before,
+.card::before,
+.tile::before,
+.tl-karte::before {
+  content: none !important;
+}
+
+.nav-links a.active {
+  color: var(--brand-1) !important;
+  background: rgba(83,223,193,.09) !important;
+  box-shadow: inset 0 0 0 1px rgba(83,223,193,.24) !important;
+  text-shadow: none !important;
+}
+
+.nav-links a:hover {
+  color: var(--text) !important;
+  background: var(--surface-2) !important;
+}
+
+.btn,
+.cta,
+.topnav .cta,
+.btn-cta {
+  border-radius: 8px !important;
+  background: linear-gradient(120deg, #38bda4, #76d7ba) !important;
+  border: 1px solid rgba(159,245,220,.32) !important;
+  color: #071715 !important;
+  box-shadow: 0 8px 22px -14px rgba(83,223,193,.6) !important;
+  transition: background .16s ease, border-color .16s ease, transform .16s ease !important;
+}
+
+.btn:hover,
+.cta:hover,
+.topnav .cta:hover,
+.btn-cta:hover {
+  transform: translateY(-1px) !important;
+  background: linear-gradient(120deg, #56d7bc, #a5e7c8) !important;
+  box-shadow: 0 10px 24px -14px rgba(83,223,193,.62) !important;
+}
+
+.btn.ghost,
+button.ghost,
+.btn.secondary {
+  background: rgba(222,244,238,.045) !important;
+  border-color: var(--line-2) !important;
+  color: var(--text) !important;
+  box-shadow: none !important;
+}
+
+.btn.ghost:hover,
+button.ghost:hover,
+.btn.secondary:hover {
+  background: rgba(83,223,193,.08) !important;
+  border-color: rgba(83,223,193,.42) !important;
+}
+
+.card,
+.tile,
+.step-card,
+.sess-card,
+.tl-karte,
+.box,
+.stat-card,
+.panel,
+.stat {
+  border-radius: 8px !important;
+  border-color: var(--line-2) !important;
+  box-shadow: var(--shadow-card) !important;
+}
+
+.card,
+.tile,
+.step-card,
+.box,
+.panel,
+.stat-card {
+  background: linear-gradient(145deg, rgba(222,244,238,.055), rgba(222,244,238,.018)) !important;
+}
+
+.card:hover,
+.tile:hover,
+.step-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(83,223,193,.38) !important;
+  box-shadow: var(--shadow-pop) !important;
+}
+
+.badge {
+  border-color: rgba(83,223,193,.28) !important;
+  background: rgba(83,223,193,.075) !important;
+  color: #b8f4e4 !important;
+  box-shadow: none !important;
+}
+
+.chip,
+.pchip,
+.tchip {
+  border-color: var(--line-2) !important;
+  background: rgba(222,244,238,.045) !important;
+  color: var(--muted) !important;
+}
+
+.grad {
+  background: linear-gradient(100deg, var(--brand-1), var(--brand-3) 58%, var(--brand-2)) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  filter: none !important;
+}
+
+.kicker,
+.sec-head .kicker {
+  color: var(--brand-1) !important;
+}
+
+.kicker span {
+  background: rgba(83,223,193,.13) !important;
+  color: var(--brand-1) !important;
+  box-shadow: none !important;
+}
+
+.sec-head h2 {
+  text-shadow: none !important;
+}
+
+.livebar,
+.chat-demo,
+.home-chat .chat-demo {
+  border-color: var(--line-2) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+.home-stats .livebar .cell,
+.home-chat .chat-demo {
+  background: rgba(15,23,26,.94) !important;
+}
+
+.livebar .num {
+  color: var(--brand-1);
+  background: none !important;
+  -webkit-text-fill-color: var(--brand-1) !important;
+}
+
+code,
+.terminal,
+pre {
+  background: rgba(83,223,193,.07) !important;
+  border-color: rgba(83,223,193,.2) !important;
+  color: #b8f4e4 !important;
+  border-radius: 6px !important;
+}
+
+.hk-frame,
+.home-hero-art img {
+  border-color: rgba(83,223,193,.34) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 20px 46px -30px rgba(0,0,0,.85) !important;
+}
+
+#site-footer,
+footer {
+  border-top-color: var(--line) !important;
+  background: linear-gradient(180deg, transparent, rgba(83,223,193,.035)) !important;
+}
+
+body.portal-home {
+  --bg0: #0b1114;
+  --bg1: #10191d;
+  --bg2: #172226;
+  --surface: rgba(226,248,242,.045);
+  --surface-2: rgba(226,248,242,.075);
+  --surface-solid: #121a1e;
+  --line: rgba(193,226,216,.12);
+  --line-2: rgba(193,226,216,.22);
+  --brand-1: #53dfc1;
+  --brand-2: #ff7488;
+  --brand-3: #c8ef78;
+  --grad: linear-gradient(120deg, #53dfc1, #c8ef78 58%, #ff7488);
+  --text: #edf5f2;
+  --muted: #b3c4bf;
+  --faint: #82938e;
+  --shadow-card: 0 12px 32px -20px rgba(0,0,0,.72);
+}
+
+body.portal-home .topnav .brand,
+body.portal-home .topnav .brand b,
+body.portal-home .nav-links a {
+  color: var(--text) !important;
+}
+
+body.portal-home .nav-links a:hover {
+  color: var(--brand-1) !important;
+  background: rgba(83,223,193,.08) !important;
+}
+
+body.portal-home .home-hero-art figcaption span:first-child {
+  color: var(--brand-1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card:hover,
+  .tile:hover,
+  .step-card:hover,
+  .btn:hover,
+  .cta:hover { transform: none !important; }
+}
+
+body.portal-home .topnav {
+  background: rgba(10, 9, 14, .92) !important;
+  border-bottom: 1px solid rgba(255, 190, 220, .16) !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .28) !important;
+}
+body.portal-home .topnav::after { opacity: .55; }
+body.portal-home .topnav .brand,
+body.portal-home .topnav .brand b,
+body.portal-home .nav-links a {
+  color: #f0dce6 !important;
+  text-shadow: none !important;
+}
+body.portal-home .topnav .brand b { background: none !important; }
+body.portal-home .nav-links a::before { content: none !important; }
+body.portal-home .nav-links a.active {
+  color: #fff !important;
+  background: var(--grad) !important;
+  text-shadow: none !important;
+}
+body.portal-home .nav-links a:hover { color: #55d9dc !important; background: rgba(85, 217, 220, .08) !important; }

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fff4fb"/>
+      <stop offset=".5" stop-color="#ff5eae"/>
+      <stop offset="1" stop-color="#e59bff"/>
+    </linearGradient>
+    <linearGradient id="plate" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#641943" stop-opacity=".98"/>
+      <stop offset="1" stop-color="#29132f" stop-opacity=".98"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="247" fill="none" stroke="#fff8ff" stroke-opacity=".82" stroke-width="3"/>
+  <circle cx="256" cy="256" r="240" fill="none" stroke="url(#rim)" stroke-width="4"/>
+  <text x="82" y="110" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="25" fill="#fff2fb" stroke="#e84c9c" stroke-width="1">♥</text>
+  <text x="430" y="172" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#fff2fb" stroke="#e84c9c" stroke-width="1">♥</text>
+  <text x="256" y="45" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="22" fill="#fff2fb" stroke="#e84c9c" stroke-width="1">♥</text>
+  <rect x="42" y="393" width="428" height="111" rx="27" fill="url(#plate)" stroke="#ffc5e3" stroke-opacity=".98" stroke-width="2"/>
+  <path d="M68 405h376" fill="none" stroke="#fff" stroke-opacity=".3"/>
+  <text x="256" y="426" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="18" font-weight="700" fill="#fff8fd">HelloKitty Baby Maxi</text>
+  <text x="256" y="447" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="700" fill="#ffc5e3">SESSION NAME</text>
+  <text x="256" y="470" text-anchor="middle" textLength="380" lengthAdjust="spacingAndGlyphs" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700" fill="#fff8fd">__SESSION_NAME__</text>
+  <text x="256" y="491" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="10" font-weight="600" fill="#ffc5e3">COMMUNITY · LOVE · GAMES</text>
+</svg>

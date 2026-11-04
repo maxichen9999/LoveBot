@@ -1,0 +1,28 @@
+/* LoveBot polish layer — bewusst klein und zentral, damit alle Seiten gleich aussehen. */
+:root { --focus-ring: 0 0 0 4px rgba(79,227,245,.18), 0 0 28px -8px rgba(255,79,163,.7); }
+body { background-attachment: fixed; }
+:focus-visible { outline: 2px solid #4fe3f5; outline-offset: 3px; box-shadow: var(--focus-ring); }
+.topnav .brand .h { object-fit: cover; }
+.topnav .brand { transition: transform .2s ease, filter .2s ease; }
+.topnav .brand:hover { transform: translateY(-1px); filter: drop-shadow(0 0 12px rgba(255,79,163,.5)); }
+.hero .hint b, .hint a { color: #ffd0e6; }
+.livebar { position: relative; overflow: hidden; }
+.livebar::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 20%, rgba(255,255,255,.07) 48%, transparent 70%); transform: translateX(-120%); animation: polish-shine 8s ease-in-out infinite; }
+@keyframes polish-shine { 0%, 58% { transform: translateX(-120%); } 78%, 100% { transform: translateX(120%); } }
+.card-link { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; }
+.card-link::after { content: '↗'; transition: transform .2s ease; }
+.card-link:hover::after { transform: translate(3px,-3px); }
+/* Befehle: Statusleiste und Favoriten */
+.cmd-toolbar { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 16px auto 0; }
+.cmd-toolbar button { border: 1px solid rgba(255,110,180,.3); color: #ffd0e6; background: rgba(255,110,180,.08); border-radius: 999px; padding: 8px 14px; cursor: pointer; font: inherit; font-weight: 700; transition: .2s ease; }
+.cmd-toolbar button:hover, .cmd-toolbar button.active { background: rgba(255,110,180,.2); border-color: rgba(79,227,245,.6); transform: translateY(-1px); }
+.cmdrow { transition: transform .2s cubic-bezier(.2,.9,.3,1.2), border-color .2s ease, box-shadow .2s ease; }
+.cmdrow.is-favorite { border-color: rgba(255,209,102,.65) !important; box-shadow: 0 0 0 1px rgba(255,209,102,.18) inset, 0 16px 40px -22px rgba(255,209,102,.8); }
+.cmdrow .favorite { margin-left: auto; border: 0; background: transparent; color: #a86e93; cursor: pointer; font-size: 18px; padding: 2px 5px; line-height: 1; }
+.cmdrow .favorite:hover, .cmdrow .favorite.on { color: #ffd166; filter: drop-shadow(0 0 8px rgba(255,209,102,.75)); }
+.cmdrow .copy { transition: transform .2s ease, color .2s ease; }
+.cmdrow .copy:hover { transform: scale(1.15); color: #4fe3f5; }
+.cmd-count-dot { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; }
+.cmd-count-dot::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #4fe3c0; box-shadow: 0 0 10px #4fe3c0; }
+@media (max-width: 640px) { .hero h1 { font-size: clamp(36px, 12vw, 54px); } .cmd-toolbar { margin-inline: 12px; } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }

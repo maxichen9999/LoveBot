@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<script src="/js/maintgate.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="/js/theme.js"></script>
+<title>Befehle  — HelloKitty Baby Maxi 💔</title>
+<meta name="description" content="Die interaktive LoveBot-Befehlszentrale: Befehle, Aliase, Rechte, Cooldowns, Beispiele und Feature-Kategorien auf einen Blick.">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+<meta name="theme-color" content="#fff7fb">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/hello-kitty.css">
+<link rel="stylesheet" href="/css/commands.css">
+</head>
+<body>
+<div class="aurora"></div>
+<div class="grid-overlay"></div>
+<div class="hearts" id="hearts"></div>
+
+<header class="topnav" id="site-nav"></header>
+
+<div class="wrap-page">
+
+  <section class="hero" style="padding-bottom:8px">
+    <span class="badge">🌙 LOVE BOT COMMAND CENTER · live aus dem Bot</span>
+    <h1>Dein Bot. <span class="grad">Deine Zentrale.</span></h1>
+    <p class="sub">Finde Befehle, entdecke Funktionen und sieh sofort, wie du sie nutzt: mit Beispiel, Aliasen, Berechtigungen und Cooldown. Präfix: <b>$</b>.</p>
+    <div class="cmdsearch-wrap">
+      <span class="search-ico">🔎</span>
+      <input type="search" id="cmdSearch" placeholder="Befehl, Alias oder Funktion suchen … z. B. marry, level, warn" autocomplete="off">
+      <span class="kbd">/</span>
+      <button class="search-clear" id="searchClear" aria-label="Suche löschen">✕</button>
+    </div>
+    <div class="cmd-toolbar" aria-label="Befehle filtern">
+      <button type="button" id="favoritesToggle" aria-pressed="false">☆ Meine Favoriten</button>
+      <label class="cmd-perm-filter" for="permissionFilter">Zugriff
+        <select id="permissionFilter">
+          <option value="all">Alle Befehle</option>
+          <option value="public">Für alle</option>
+          <option value="admin">Admin</option>
+          <option value="owner">Owner</option>
+        </select>
+      </label>
+      <span class="cmd-count-dot">Beispiel anklicken = kopieren</span>
+    </div>
+    <p class="hint" id="cmdCount" aria-live="polite"></p>
+  </section>
+
+  <section class="cmd-overview" aria-label="LoveBot im Überblick">
+    <div class="cmd-overview-heading">
+      <div><span class="cmd-eyebrow">ALLES AUF EINEN BLICK</span><h2>Ein Bot, viele Möglichkeiten.</h2></div>
+      <p>Von Gruppen-Schutz bis Minigames — wähle einen Bereich oder stöbere durch alle Funktionen.</p>
+    </div>
+    <div class="cmd-stat-grid">
+      <article class="cmd-stat"><span>📚</span><b id="statCommands">—</b><small>Befehle</small></article>
+      <article class="cmd-stat"><span>🧩</span><b id="statCategories">—</b><small>Bereiche</small></article>
+      <article class="cmd-stat"><span>✨</span><b id="statAliases">—</b><small>Aliase</small></article>
+      <article class="cmd-stat"><span>🔐</span><b id="statRestricted">—</b><small>Admin-/Owner-Befehle</small></article>
+    </div>
+    <div class="cmd-feature-grid" id="cmdFeatureGrid" aria-label="Beliebte Funktionsbereiche"></div>
+    <p class="cmd-note">🛡️ Rechte-Badges zeigen, ob ein Befehl für alle, Gruppen-Admins oder nur den Owner gedacht ist.</p>
+  </section>
+
+  <div class="catbar-sticky">
+    <div class="catbar" id="catbar"></div>
+  </div>
+
+  <section id="cmdPage" style="padding-top:16px">
+    <div class="cmdgrid" id="cmdFullGrid"></div>
+    <p class="hint" id="noResults" style="display:none">💔 Kein Befehl gefunden — probier ein anderes Wort.</p>
+  </section>
+
+</div>
+
+<footer id="site-footer" data-foot-desc="Alle Befehle live aus Love.js — direkt aus dem Bot ausgelesen, nicht von Hand gepflegt."></footer>
+
+<script src="/js/site-shell.js"></script>
+  <script src="/js/common.js"></script>
+<script src="/js/commands-data.js"></script>
+<script src="/js/cmd.js"></script>
+<p class="hint center" style="padding:14px"><a href="/docs.html">📚 Vollständige Dokumentation (auto-generiert aus der Registry)</a></p>
+</body>
+</html>
