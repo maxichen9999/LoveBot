@@ -1,0 +1,183 @@
+{
+  "groupId": "120363427698937970",
+  "groupJid": "120363427698937970@g.us",
+  "subject": "Teufel Gruppe + Satan",
+  "creator": "267766179344596@lid",
+  "owner": "267766179344596@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-23T20:53:51.368Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-23T20:53:38.647Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": true,
+    "antiflood": true,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": true,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 130,
+    "level": 0,
+    "msgs": 65,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 28,
+        "xp": 56,
+        "games": 0,
+        "last": 1792852907402
+      },
+      "88300853415952": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792827229879
+      },
+      "95782837461030": {
+        "m": 11,
+        "xp": 22,
+        "games": 0,
+        "last": 1792852864899
+      },
+      "267766179344596": {
+        "m": 15,
+        "xp": 30,
+        "games": 0,
+        "last": 1792853070730
+      },
+      "86861854859446": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792789389132
+      },
+      "19026822582466": {
+        "m": 5,
+        "xp": 10,
+        "games": 0,
+        "last": 1792827231424
+      },
+      "62011224400114": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792827231463
+      }
+    },
+    "week": {
+      "k": "2026-W44",
+      "xp": 40
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 130
+    },
+    "daily": {
+      "k": "2026-10-24",
+      "msgs": 20
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-10-24"
+    },
+    "history": {
+      "2026-10-23": 90,
+      "2026-10-24": 40
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-24",
+      "target": 50,
+      "progress": 20,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W44",
+      "target": 200,
+      "progress": 40,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1792790095174,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 13,
+  "adminCount": 6,
+  "metaAt": 1792827231200,
+  "autodl": true,
+  "welcome": true,
+  "goodbye": true,
+  "kick": true,
+  "promote": true,
+  "demote": true,
+  "liebe": true,
+  "fun": true,
+  "media": true,
+  "tools": true,
+  "badwords": true,
+  "antilink": true,
+  "night": true,
+  "afk": true
+}

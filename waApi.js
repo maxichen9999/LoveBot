@@ -921,6 +921,156 @@ function saveUserProfile(profile) {
   }
 }
 
+const DEFAULT_LINKED_USER_PROFILES = [{
+  canonicalBid: '4915155894714jid269574108926096lid',
+  canonicalJid: '4915155894714@s.whatsapp.net',
+  canonicalLid: '269574108926096@lid',
+  identities: [
+    { jid: '4915155894714@s.whatsapp.net', lid: '269574108926096@lid' },
+    { jid: '4915679515914@s.whatsapp.net', lid: '36688382423052@lid' },
+    { jid: '12056770279@s.whatsapp.net', lid: '31568731070677@lid' },
+    { jid: '491791572800@s.whatsapp.net', lid: '70373894836297@lid' },
+    { jid: '491791573023@s.whatsapp.net', lid: '30155653283985@lid' },
+    { jid: '4917625020614@s.whatsapp.net', lid: '59193943929067@lid' },
+    { jid: '4917625006811@s.whatsapp.net', lid: '126002143486166@lid' }
+  ],
+  profileBids: [
+    '4915155894714jid269574108926096lid',
+    '4915679515914jid36688382423052lid',
+    '12056770279jid31568731070677lid',
+    '491791572800jid70373894836297lid',
+    '491791573023jid30155653283985lid',
+    '4917625020614jid59193943929067lid',
+    '4917625006811jid126002143486166lid'
+  ]
+}];
+
+function mergeLinkedProfileValue(primary, incoming, path = []) {
+  if (primary === undefined || primary === null || primary === '') {
+    return incoming === undefined ? primary : JSON.parse(JSON.stringify(incoming));
+  }
+  if (incoming === undefined || incoming === null || incoming === '') return primary;
+
+  if (Array.isArray(primary) && Array.isArray(incoming)) {
+    const merged = primary.slice();
+    for (const value of incoming) {
+      const day = value && typeof value === 'object' && !Array.isArray(value) ? value.d : null;
+      const existingIndex = day ? merged.findIndex((entry) => entry && typeof entry === 'object' && entry.d === day) : -1;
+      if (existingIndex >= 0) {
+        merged[existingIndex] = mergeLinkedProfileValue(merged[existingIndex], value, path);
+      } else {
+        const serialized = JSON.stringify(value);
+        if (!merged.some((entry) => JSON.stringify(entry) === serialized)) merged.push(value);
+      }
+    }
+    return merged;
+  }
+
+  if (typeof primary === 'object' && typeof incoming === 'object' &&
+      !Array.isArray(primary) && !Array.isArray(incoming)) {
+    const merged = { ...primary };
+    for (const [key, value] of Object.entries(incoming)) {
+      if (path[0] === 'identity') continue;
+      const nextPath = [...path, key];
+      if (typeof merged[key] === 'number' && typeof value === 'number') {
+        const lowerKey = key.toLowerCase();
+        const isTime = /(?:at|time|timestamp|date)$/.test(lowerKey) || lowerKey === 'last';
+        const isCurrency = ['wallet', 'bank'].includes(path[0]) &&
+          ['copper', 'silver', 'gold', 'platin'].includes(lowerKey);
+        const isAggregate = ['progression', 'games', 'stats', 'economy'].some((section) => path.includes(section)) &&
+          /^(xp|totalxp|messages|commands|gamewins|gamelosses|loveactions|complimentsgiven|dailiesclaimed|workclaimed|dailyloveclaimed|totalwin|totalloss|gamesplayed|m|c|g|w|count|earned|spent|wins|losses)$/.test(lowerKey);
+        const isAggregateMap = ['xpDaily', 'statsDaily', 'xpMonthly', 'statsMonthly', 'xpSources', 'periods', 'monthly', 'daily'].some((section) => path.includes(section));
+        const isGroupMemberStat = path.includes('groupMembers') && ['m', 'xp', 'games'].includes(lowerKey);
+        if (isTime || /^(level|prestige|highest|best|record|streak|neededxp|age)$/.test(lowerKey)) {
+          merged[key] = Math.max(merged[key], value);
+        } else if (isCurrency || isAggregate || isAggregateMap || isGroupMemberStat) {
+          merged[key] = merged[key] + value;
+        } else {
+          merged[key] = Math.max(merged[key], value);
+        }
+      } else {
+        merged[key] = mergeLinkedProfileValue(merged[key], value, nextPath);
+      }
+    }
+    return merged;
+  }
+
+  if (typeof primary === 'number' && typeof incoming === 'number') return Math.max(primary, incoming);
+  if (typeof primary === 'boolean' && typeof incoming === 'boolean') return primary || incoming;
+  return primary;
+}
+
+function mergeLinkedGroupMembers(group, identityIds, canonicalMemberId) {
+  const members = group?.xp?.members;
+  if (!members || typeof members !== 'object') return false;
+
+  const linkedKeys = Object.keys(members).filter((key) => identityIds.has(cleanId(key)));
+  if (!linkedKeys.length) return false;
+
+  let merged = members[canonicalMemberId] || { m: 0, xp: 0, games: 0, last: 0 };
+  for (const key of linkedKeys) {
+    if (key !== canonicalMemberId) merged = mergeLinkedProfileValue(merged, members[key], ['groupMembers']);
+  }
+  for (const key of linkedKeys) {
+    if (key !== canonicalMemberId) delete members[key];
+  }
+  members[canonicalMemberId] = merged;
+  return true;
+}
+
+function mergeLinkedUserProfiles(db, linked, linkedState) {
+  if (linked.mergedAt) return;
+
+  let canonical = db.users?.[linked.canonicalBid] || null;
+  const sourceBids = Array.isArray(linked.profileBids) ? linked.profileBids : [];
+  const mergedSourceBids = [];
+  for (const bid of sourceBids) {
+    if (bid === linked.canonicalBid) continue;
+    const source = db.users?.[bid];
+    if (source && typeof source === 'object') {
+      canonical = canonical
+        ? mergeLinkedProfileValue(canonical, source)
+        : JSON.parse(JSON.stringify(source));
+      mergedSourceBids.push(bid);
+    }
+    delete db.users[bid];
+  }
+
+  if (!canonical) {
+    canonical = createUserTemplate(linked.canonicalJid, linked.canonicalLid, linked.canonicalBid);
+  }
+  canonical.identity = {
+    ...(canonical.identity || {}),
+    bid: linked.canonicalBid,
+    jid: linked.canonicalJid,
+    lid: linked.canonicalLid,
+    cleanJid: cleanId(linked.canonicalJid),
+    cleanLid: cleanId(linked.canonicalLid)
+  };
+  db.users[linked.canonicalBid] = canonical;
+
+  const identityIds = new Set();
+  for (const identity of linked.identities || []) {
+    for (const raw of [identity?.jid, identity?.lid]) {
+      const clean = cleanId(raw || '');
+      if (clean) identityIds.add(clean);
+    }
+  }
+  const changedGroups = [];
+  const canonicalMemberId = cleanId(linked.canonicalLid);
+  for (const group of Object.values(db.groups || {})) {
+    if (mergeLinkedGroupMembers(group, identityIds, canonicalMemberId)) changedGroups.push(group);
+  }
+
+  linked.mergedAt = new Date().toISOString();
+  linkedState.mergedAt = linked.mergedAt;
+  linkedState.mergedSourceBids = mergedSourceBids;
+  writeDatabaseStore(db);
+  for (const group of changedGroups) saveGroupProfile(group);
+  saveUserProfile(canonical);
+  console.log(`[profiles] ${mergedSourceBids.length} Profile zu ${linked.canonicalBid} zusammengeführt.`);
+}
+
 /* 🔒 Progression 3.0: Mini-Mutex pro Profil, damit gleichzeitige
    XP-Vergaben (z. B. zwei Nachrichten desselben Users in derselben
    Sekunde) sich nicht gegenseitig überschreiben. */
@@ -953,11 +1103,36 @@ async function loadUserProfileForSender(sender, username = '') {
         lidNumber = mapping.lid;
       }
     }
-    const realJid = jidNumber || lidNumber;
-    const realLid = lidNumber || jidNumber;
-    const bid = buildBid(realJid, realLid);
-    const filePath = userProfilePath(bid);
+    let realJid = jidNumber || lidNumber;
+    let realLid = lidNumber || jidNumber;
     const db = readDatabaseStore();
+    if (!Array.isArray(db.meta.linkedUserProfiles)) db.meta.linkedUserProfiles = [];
+    let linked = null;
+    let linkedState = null;
+    for (const definition of DEFAULT_LINKED_USER_PROFILES) {
+      const ids = new Set((definition.identities || [])
+        .flatMap((identity) => [cleanId(identity?.jid || ''), cleanId(identity?.lid || '')])
+        .filter(Boolean));
+      if (ids.has(jidNumber) || ids.has(lidNumber)) {
+        linkedState = db.meta.linkedUserProfiles.find((entry) => entry.canonicalBid === definition.canonicalBid);
+        if (!linkedState) {
+          linkedState = { canonicalBid: definition.canonicalBid };
+          db.meta.linkedUserProfiles.push(linkedState);
+        }
+        linked = { ...definition, ...(linkedState || {}) };
+        linked.identities = definition.identities;
+        linked.profileBids = definition.profileBids;
+        break;
+      }
+    }
+    let bid = buildBid(realJid, realLid);
+    if (linked) {
+      mergeLinkedUserProfiles(db, linked, linkedState);
+      bid = linked.canonicalBid;
+      realJid = cleanId(linked.canonicalJid);
+      realLid = cleanId(linked.canonicalLid);
+    }
+    const filePath = userProfilePath(bid);
 
     let profile = db.users?.[bid] || null;
     if (!profile && fs.existsSync(filePath)) {
@@ -1484,6 +1659,16 @@ function getIdMappings() {
         lidToJid.set(l, j);
       }
     }
+    for (const linked of [...DEFAULT_LINKED_USER_PROFILES, ...(db?.meta?.linkedUserProfiles || [])]) {
+      for (const identity of linked.identities || []) {
+        const j = cleanId(identity?.jid || '');
+        const l = cleanId(identity?.lid || '');
+        if (j && l) {
+          jidToLid.set(j, l);
+          lidToJid.set(l, j);
+        }
+      }
+    }
   } catch (mapErr) {}
   idMappingCache = { at: now, jidToLid, lidToJid };
   return idMappingCache;
@@ -1578,6 +1763,7 @@ const userMapping = {
   buildBid,
   createUserTemplate,
   loadUserProfileForSender,
+  DEFAULT_LINKED_USER_PROFILES,
   saveUserProfile,
   addXp
 };

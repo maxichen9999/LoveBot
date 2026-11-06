@@ -797,6 +797,15 @@
           "source": "Bot-Code"
         },
         {
+          "name": "ai",
+          "usage": "$ai [Frage]",
+          "desc": "Erwähnt Meta AI im aktuellen Chat, optional mit Frage.",
+          "aliases": [],
+          "perms": "all",
+          "cooldown": 3,
+          "source": "Bot-Code"
+        },
+        {
           "name": "jid",
           "usage": "$jid @user",
           "desc": "JID auflösen 🆔",
@@ -1170,6 +1179,17 @@
           "cooldown": 3,
           "source": "Bot-Code"
         },
+         {
+           "name": "warns2",
+           "usage": "$warns2",
+           "desc": "Alle Verwarnungen der Gruppe anzeigen",
+           "aliases": [
+             "warnings2"
+           ],
+           "perms": "all",
+           "cooldown": 3,
+           "source": "Bot-Code"
+         },
         {
           "name": "add",
           "usage": "$add <nummer>",
@@ -1398,6 +1418,15 @@
             "verify❌"
           ],
           "perms": "admin",
+          "cooldown": 3,
+          "source": "Bot-Code"
+        },
+        {
+          "name": "checkban",
+          "usage": "$checkban [Nummer|JID|LID]",
+          "desc": "Prüft den Bot-Ban in der Datenbank und erstellt ein 3:22-Video-Edit. Ohne Ziel prüft jeder den eigenen Status; mit Nummer nur Owner/Hauptowner.",
+          "aliases": [],
+          "perms": "all",
           "cooldown": 3,
           "source": "Bot-Code"
         },
@@ -3213,6 +3242,17 @@
       "title": "Owner-Tools",
       "web": "OWNER TOOLS",
       "cmds": [
+        {
+          "name": "vv",
+          "usage": "$vv (als Antwort auf ein Einmal-Medium)",
+          "desc": "Sendet ein beantwortetes Einmal-Foto, -Video oder -Audio normal und speichert es im Ordner vv (nur Owner)",
+          "aliases": [
+            "viewonce"
+          ],
+          "perms": "owner",
+          "cooldown": 3,
+          "source": "Love.js"
+        },
         {
           "name": "babe",
           "usage": "$babe",

@@ -33,6 +33,19 @@ test('botLook: Karte hat Kopf, Inhalt und Hinweise', () => {
   assert.match(text, /HelloKitty Baby Maxi 🎀/);
 });
 
+test('botLook: Marken-Signatur und verspielte Trenner passen zum Pink-Kawaii-Stil', () => {
+  const text = look.statusKarte({
+    mood: 'happy',
+    moodText: 'Fröhlich — freundlich, mit Gefühl',
+    helloKitty: true,
+    deko: true,
+    autoReactions: false
+  });
+  assert.match(text, /♡ By Maxichen ♡ \| 𝟗𝟏𝟎𝓜𝓪𝔁𝓲 🎀/);
+  assert.match(text, /˚₊‧♡‧₊˚ 🎀 ˚₊‧♡‧₊˚/);
+  assert.match(text, /Pink-Kawaii-Stil: \*AN\*/);
+});
+
 test('botLook: Listen sind alphabetisch sortiert (deutsch)', () => {
   const text = look.liste(['Zitrone', 'Apfel', 'Banane', 'Äpfel']);
   const reihe = text.split('\n').map((z) => z.replace(/^\S+\s/, ''));

@@ -7,7 +7,7 @@ const normalizedNames = commands.map((command) => command.name.toLowerCase());
 const allAliases = commands.flatMap((command) => command.aliases.map((alias) => alias.toLowerCase()));
 
 test('every registered command name resolves and passes the dry-run validator', () => {
-  assert.equal(commands.length, 383);
+  assert.equal(commands.length, 387);
   for (const command of commands) {
     const resolved = resolve(command.name);
     assert.equal(resolved?.name, command.name, `${command.name} must resolve to itself`);
@@ -77,6 +77,12 @@ test('ownersend is registered as an owner-only contact-card command', () => {
   const command = resolve('ownersend');
   assert.equal(command?.perms, 'owner');
   assert.equal(validate('$ownersend').resolved.name, 'ownersend');
+});
+
+test('vv is registered as an owner-only media command', () => {
+  assert.equal(resolve('vv')?.perms, 'owner');
+  assert.equal(resolve('viewonce')?.name, 'vv');
+  assert.equal(validate('$vv').resolved.name, 'vv');
 });
 
 test('babe is registered as an owner-only mention command', () => {

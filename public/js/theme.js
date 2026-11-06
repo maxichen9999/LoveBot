@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════
-    🎀  AUSSEHEN  —  dunkles Theme + Akzentfarbe (Pink · Rosa · Türkis)
+    🎀  AUSSEHEN  —  dunkles Theme + Akzentfarbe (Pink · Rosa)
    ───────────────────────────────────────────────────────────────────────
    Läuft im <head>, bevor die Seite gemalt wird — damit nichts kurz
    aufblitzt.
@@ -12,8 +12,8 @@
 (function () {
   'use strict';
 
-  var KEY_AKZENT = 'lovebot-akzent';    /* neu: 'pink' | 'rosa' | 'tuerkis' */
-  var AKZENTE = ['pink', 'rosa', 'tuerkis'];
+  var KEY_AKZENT = 'lovebot-akzent';
+  var AKZENTE = ['pink', 'rosa'];
   var root = document.documentElement;
 
   function anwenden() {

@@ -1,0 +1,94 @@
+{
+  "identity": {
+    "username": "",
+    "bid": "491639061641jid7512300511460lid",
+    "phone": "+491639061641",
+    "jid": "491639061641@s.whatsapp.net",
+    "lid": "7512300511460@lid",
+    "cleanJid": "491639061641",
+    "cleanLid": "7512300511460"
+  },
+  "registration": {
+    "registered": false,
+    "name": "",
+    "age": "",
+    "status": "",
+    "city": "",
+    "value": "",
+    "registeredAt": null
+  },
+  "status": {
+    "dsgvo": {
+      "accepted": false,
+      "acceptedAt": null,
+      "rejected": false,
+      "rejectedAt": null
+    },
+    "cookie": {
+      "accepted": false,
+      "acceptedAt": null,
+      "rejected": false,
+      "rejectedAt": null,
+      "analytics": false
+    },
+    "verified": false,
+    "verifiedAt": null,
+    "unverified": true,
+    "unverifiedAt": null,
+    "mappedAt": "2026-10-11T17:05:21.991Z"
+  },
+  "progression": {
+    "level": 0,
+    "prestige": 0,
+    "xp": 0,
+    "neededXpForLvOrPrestigeUp": 743
+  },
+  "games": {
+    "gamesPlayed": 0,
+    "lastPlayedAt": null,
+    "lastWin": 0,
+    "lastWinAt": null,
+    "totalWin": 0,
+    "highestWin": 0,
+    "highestWinAt": null,
+    "winStreak": 0,
+    "highestWinStreak": 0,
+    "highestWinStreakAt": null,
+    "lastLoss": 0,
+    "lastLossAt": null,
+    "totalLoss": 0,
+    "highestLoss": 0,
+    "highestLossAt": null,
+    "lossStreak": 0,
+    "highestLossStreak": 0,
+    "highestLossStreakAt": null
+  },
+  "wallet": {
+    "copper": 0,
+    "silver": 0,
+    "gold": 0,
+    "platin": 0
+  },
+  "bank": {
+    "active": false,
+    "copper": 0,
+    "silver": 0,
+    "gold": 0,
+    "platin": 0
+  },
+  "rewards": {
+    "lastDailyAt": null,
+    "lastWeeklyAt": null,
+    "lastMonthlyAt": null,
+    "lastYearlyAt": null
+  },
+  "love": {
+    "married": true,
+    "spouseName": "vinc",
+    "spouseKey": "159769276993573",
+    "spouseBid": "14142849426jid159769276993573lid",
+    "marriedAt": "2026-10-11T17:29:21.446Z",
+    "divorcedAt": null,
+    "marriages": 1
+  }
+}

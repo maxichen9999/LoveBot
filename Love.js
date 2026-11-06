@@ -1,4 +1,5 @@
 import * as phoenixBaileys from 'phoenix-baileys-v3';
+import { getMetaAiMessageText, isMetaAiMessage, META_AI_BOT_JID } from './metaAiMessage.js';
 import makeWASocket, {
   useMultiFileAuthState,
   fetchLatestBaileysVersion,
@@ -157,7 +158,9 @@ import {
 import { isProtectedAdmin, isSavedAdmin, listSavedAdmins, removeSavedAdmin, saveAdmin } from './savedAdmins.js';
 import { isAdminSaveSession, resolveSessionMode, sessionCanProcessMessages, sessionCanProtectSavedAdmins } from './sessionPolicy.js';
 import { sendGroupNoticeOnce } from './adminSaveGroupNotice.js';
-import { createCheck2Edit } from './check2Edit.js';
+import { createCheck2Edit, createDatabaseBanCheckEdit } from './check2Edit.js';
+import { getRememberedMediaMessage, rememberMediaMessage, saveAndSendMedia } from './vvMedia.js';
+
 import {
   fs,
   path,
@@ -763,9 +766,23 @@ const ADDITIONAL_OWNER = {
   lid: '31568731070677@lid',
   bid: '12056770279jid31568731070677lid'
 };
+const THIRD_OWNER = {
+  number: '4915679515914',
+  jid: '4915679515914@s.whatsapp.net',
+  lid: '36688382423052@lid',
+  bid: '4915679515914jid36688382423052lid'
+};
+const LINKED_OWNER_IDENTITIES = [
+  { number: '491791572800', jid: '491791572800@s.whatsapp.net', lid: '70373894836297@lid', bid: '491791572800jid70373894836297lid' },
+  { number: '491791573023', jid: '491791573023@s.whatsapp.net', lid: '30155653283985@lid', bid: '491791573023jid30155653283985lid' },
+  { number: '4917625020614', jid: '4917625020614@s.whatsapp.net', lid: '59193943929067@lid', bid: '4917625020614jid59193943929067lid' },
+  { number: '4917625006811', jid: '4917625006811@s.whatsapp.net', lid: '126002143486166@lid', bid: '4917625006811jid126002143486166lid' }
+];
 const OWNER_IDENTITIES = [
   { number: OWNER_NUMBER, jid: OWNER_JID, lid: OWNER_LID, bid: '4915155894714jid269574108926096lid' },
-  ADDITIONAL_OWNER
+  ADDITIONAL_OWNER,
+  THIRD_OWNER,
+  ...LINKED_OWNER_IDENTITIES
 ];
 
 /* Standard-Quelle: der HelloKitty Baby Maxi 💔-Kanal von Maxichen. Weitere Kanäle können
@@ -798,7 +815,7 @@ const recentMessageIds = new Map(); // key.id → Zeitstempel (ms)
    Konfiguration (Database.json → meta.channelRelay)
    ───────────────────────────────────────────────────────────────────── */
 function normalizeConfig(cfg) {
-  if (!cfg || typeof cfg !== 'object') cfg = {};
+  if (!cfg || typeof cfg !== 'object')  cfg = {};
   if (typeof cfg.enabled !== 'boolean') cfg.enabled = true;
   if (!Array.isArray(cfg.sources)) cfg.sources = DEFAULT_CHANNEL_SOURCES.slice();
   if (!Array.isArray(cfg.targets)) cfg.targets = [];
@@ -7646,8 +7663,7 @@ const OWNER_CONFIG = {
   lid: '269574108926096@lid',
   bid: '4915155894714jid269574108926096lid',
   owners: [
-    { jid: '4915155894714@s.whatsapp.net', lid: '269574108926096@lid', bid: '4915155894714jid269574108926096lid' },
-    ADDITIONAL_OWNER
+    ...OWNER_IDENTITIES
   ]
 };
 
@@ -10271,21 +10287,28 @@ async function handleMarryPlainTextAnswer(sock, msg, from, trimmed) {
    Ein Befehl nur noch Dort definieren → automatisch in $help, Website, Tester & Doku.
    Session-Befehle sind als Kategorie 'session' bereits enthalten. */
 const HELP_CATEGORIES = getHelpCategories();
+const MENUNEW_LINK_CATEGORIES = [
+  { slug: 'social', title: '📱 SOCIAL MEDIA', description: 'TikTok, YouTube, Instagram und Spotify' },
+  { slug: 'community', title: '💬 COMMUNITY', description: 'WhatsApp, Telegram, Discord, Signal und LoveBot' },
+  { slug: 'website', title: '🌐 WEBSITE & KONTAKT', description: 'Website, Dashboard und Kontaktmöglichkeiten' },
+  { slug: 'about', title: '👤 ÜBER MAXICHEN', description: 'Name und Profil' }
+];
 const MENUNEW_LINKS = [
-  { slug: 'name', title: '👤 Name: Maxichen', label: 'Name', value: 'Maxichen' },
-  { slug: 'whatsapp', title: '💬 WhatsApp', label: 'WhatsApp', value: 'https://wa.me/4915155894714' },
-  { slug: 'owner-email', title: '✉️ Owner-E-Mail', label: 'Owner-E-Mail', value: 'mailto:owner@maxichen.de' },
-  { slug: 'support', title: '🛟 Support', label: 'Support', value: 'mailto:contact@maxichen.de' },
-  { slug: 'tiktok', title: '🎵 TikTok', label: 'TikTok', value: 'https://www.tiktok.com/@maxichensworld?_r=1&_t=ZG-99NMQ8UbEi8' },
-  { slug: 'youtube', title: '▶️ YouTube', label: 'YouTube', value: 'https://youtube.com/@masterofmax9214?si=S5DHg-4T14AnWQK0' },
-  { slug: 'instagram', title: '📸 Instagram', label: 'Instagram', value: 'https://www.instagram.com/max_.kstr?igsi=MXduaWVrZW9pbnBzbg==' },
-  { slug: 'website', title: '🌐 Website', label: 'Website', value: 'https://maxichen.de' },
-  { slug: 'dashboard', title: '🕯️ Trauer-Dashboard', label: 'Trauer-Dashboard (niemand da)', value: 'https://maxichen.de' },
-  { slug: 'spotify', title: '🎧 Spotify', label: 'Spotify', value: 'https://open.spotify.com/user/31bpwvrczx5gcc5lw5mmqcl6dbru?si=cQlXegAJR92eq8YFNGYSng&utm_source=copy-link' },
-  { slug: 'telegram', title: '✈️ Telegram', label: 'Telegram', value: 'https://t.me/masterofmax09' },
-  { slug: 'discord', title: '🎮 Discord', label: 'Discord', value: 'https://discord.gg/qS2GTkXR' },
-  { slug: 'signal', title: '🔐 Signal', label: 'Signal', value: 'https://signal.me/#eu/Q2KHr5d5w7XsEtJwGGkP6EkCmRNbtqZUWyb2lw4BT5-Ct_0cSVNMkKGNJdJ0q2ug' },
-  { slug: 'lovebot-channel', title: '📣 LoveBot-Kanal', label: 'LoveBot-Kanal', value: 'https://whatsapp.com/channel/0029VbEGoXx1iUxdGqlzLz3n' }
+  { slug: 'name', category: 'about', title: '👤 Name: Maxichen', label: 'Name', value: 'Maxichen' },
+  { slug: 'whatsapp', category: 'community', title: '💬 WhatsApp', label: 'WhatsApp', value: 'https://wa.me/4915155894714' },
+  { slug: 'lovebot-group', category: 'community', title: '👥 LoveBot-Gruppe', label: 'LoveBot-Gruppe', value: MAIN_GROUP_LINK },
+  { slug: 'owner-email', category: 'website', title: '✉️ Owner-E-Mail', label: 'Owner-E-Mail', value: 'mailto:owner@maxichen.de' },
+  { slug: 'support', category: 'website', title: '🛟 Support', label: 'Support', value: 'mailto:contact@maxichen.de' },
+  { slug: 'tiktok', category: 'social', title: '🎵 TikTok', label: 'TikTok', value: 'https://www.tiktok.com/@maxichensworld?_r=1&_t=ZG-99NMQ8UbEi8' },
+  { slug: 'youtube', category: 'social', title: '▶️ YouTube', label: 'YouTube', value: 'https://youtube.com/@masterofmax9214?si=S5DHg-4T14AnWQK0' },
+  { slug: 'instagram', category: 'social', title: '📸 Instagram', label: 'Instagram', value: 'https://www.instagram.com/max_.kstr?igsi=MXduaWVrZW9pbnBzbg==' },
+  { slug: 'website', category: 'website', title: '🌐 Website', label: 'Website', value: 'https://maxichen.de' },
+  { slug: 'dashboard', category: 'website', title: '🕯️ Dashboard', label: 'Dashboard', value: 'https://maxichen.de' },
+  { slug: 'spotify', category: 'social', title: '🎧 Spotify', label: 'Spotify', value: 'https://open.spotify.com/user/31bpwvrczx5gcc5lw5mmqcl6dbru?si=cQlXegAJR92eq8YFNGYSng&utm_source=copy-link' },
+  { slug: 'telegram', category: 'community', title: '✈️ Telegram', label: 'Telegram', value: 'https://t.me/masterofmax09' },
+  { slug: 'discord', category: 'community', title: '🎮 Discord', label: 'Discord', value: 'https://discord.gg/qS2GTkXR' },
+  { slug: 'signal', category: 'community', title: '🔐 Signal', label: 'Signal', value: 'https://signal.me/#eu/Q2KHr5d5w7XsEtJwGGkP6EkCmRNbtqZUWyb2lw4BT5-Ct_0cSVNMkKGNJdJ0q2ug' },
+  { slug: 'lovebot-channel', category: 'community', title: '📣 LoveBot-Kanal', label: 'LoveBot-Kanal', value: NEWSLETTER_BOT_LINK }
 ];
 
 function findHelpCategory(query) {
@@ -10721,7 +10744,9 @@ async function runGroupGuards(sock, msg, from, trimmed, sessionPath, pref) {
     ensureGroupExtras(gp);
     let sender = null;
     try { sender = await userMapping.resolveSender(msg, sock, sessionPath); } catch (e) {}
-    const bid = sender ? String(cleanId(sender.lid || sender.jid || '')).split('@')[0] : '';
+    const linkedUserProfile = sender ? await loadUserProfileForSender(sender) : null;
+    const bid = linkedUserProfile?.identity?.cleanLid ||
+      (sender ? String(cleanId(sender.lid || sender.jid || '')).split('@')[0] : '');
     const gid = cleanId(from);
     const s = getGset(gp);
     const isCmd = trimmed.startsWith(pref);
@@ -11000,12 +11025,7 @@ function isMainOwner(jid, lid) {
 }
 
 function isPrimaryOwner(jid, lid) {
-  try {
-    if (jid && areJidsSameUser(jid, OWNER_CONFIG.jid)) return true;
-    if (lid && areJidsSameUser(lid, OWNER_CONFIG.lid)) return true;
-  } catch (primaryOwnerErr) {}
-  return cleanId(jid || '') === cleanId(OWNER_CONFIG.jid)
-    || cleanId(lid || '') === cleanId(OWNER_CONFIG.lid);
+  return isMainOwner(jid, lid);
 }
 
 /* ---------- 💰 ECONOMY- & FUN-DATEN -------------------------------- */
@@ -11905,7 +11925,7 @@ async function sendBanCard(sock, jid, payloadObj) {
   };
 }
 
-/* Sendet ein natives SINGLE-SELECT-Menü. */
+/* Sendet ein natives SINGLE-SELECT-Menü mit kompatiblen Fallbacks. */
 async function sendInteractiveMenu(sock, jid, options = {}) {
   try {
     const sections = (options.sections || []).map((section) => ({
@@ -11921,24 +11941,457 @@ async function sendInteractiveMenu(sock, jid, options = {}) {
         };
       })
     }));
+
+    const bodyText = options.description || options.title || 'Menü';
+    const title = options.title || '';
+    const footer = options.footerText || '';
+    const buttonText = options.buttonText || 'Auswählen';
+    const buttonParamsJson = JSON.stringify({ title: buttonText, sections });
+    const additionalNodes = [{
+      tag: 'biz',
+      attrs: {},
+      content: [{
+        tag: 'interactive',
+        attrs: { type: 'native_flow', v: '1' },
+        content: [{
+          tag: 'native_flow',
+          attrs: { v: '9', name: 'mixed' }
+        }]
+      }]
+    }];
+    if (!String(jid || '').endsWith('@g.us')) {
+      additionalNodes.push({ tag: 'bot', attrs: { biz_bot: '1' } });
+    }
+
+    if (options.image) {
+      try {
+        const upload = sock.waUploadToServer;
+        if (typeof upload !== 'function') {
+          throw new Error('waUploadToServer ist nicht verfügbar.');
+        }
+        const media = await prepareWAMessageMedia({
+          image: options.image,
+          mimetype: options.imageMimetype || 'image/jpeg'
+        }, { upload });
+        if (!media?.imageMessage) {
+          throw new Error('Das Menübild konnte nicht für WhatsApp vorbereitet werden.');
+        }
+
+        const mediaContext = { mediaDomainInfo: { mediaKeyDomain: 'MEDIA_KEY_DOMAIN_NON_E2EE' } };
+        const payload = {
+          viewOnceMessage: {
+            message: {
+              messageContextInfo: {
+                deviceListMetadata: {},
+                deviceListMetadataVersion: 2
+              },
+              interactiveMessage: {
+                header: {
+                  ...(title ? { title } : {}),
+                  imageMessage: media.imageMessage,
+                  hasMediaAttachment: true
+                },
+                body: { text: bodyText },
+                ...(footer ? { footer: { text: footer } } : {}),
+                nativeFlowMessage: {
+                  buttons: [{ name: 'single_select', buttonParamsJson }],
+                  messageVersion: 1,
+                  messageParamsJson: JSON.stringify({
+                    bottom_sheet: { in_thread_buttons_limit: 3, divider_indices: [] }
+                  })
+                },
+                contextInfo: mediaContext
+              }
+            }
+          }
+        };
+        let androidImageKey = null;
+        try {
+          const phoenixContent = await phoenixBaileys.generateWAMessageContent({
+            text: bodyText,
+            title: title || undefined,
+            footer: footer || undefined,
+            interactiveButtons: [{
+              name: 'single_select',
+              buttonParamsJson: {
+                title: buttonText,
+                sections
+              }
+            }]
+          }, {});
+          const phoenixInteractive = phoenixContent?.viewOnceMessage?.message?.interactiveMessage;
+          if (!phoenixInteractive) {
+            throw new Error('Phoenix hat keine interaktive Menü-Nachricht erzeugt.');
+          }
+          phoenixInteractive.header = {
+            ...(title ? { title } : {}),
+            imageMessage: media.imageMessage,
+            hasMediaAttachment: true
+          };
+          const phoenixMsg = phoenixBaileys.generateWAMessageFromContent(jid, phoenixContent, {
+            quoted: options.quoted || undefined,
+            userJid: sock.user?.id,
+            contextInfo: mediaContext
+          });
+          await sock.relayMessage(jid, phoenixMsg.message, {
+            messageId: phoenixMsg.key.id,
+            additionalNodes
+          });
+          console.log(c.brightGreen + '[menu] Android Phoenix Bild + Single-Select + additionalNodes gesendet' + c.reset);
+          androidImageKey = phoenixMsg.key;
+        } catch (phoenixInteractiveErr) {
+          console.warn(c.brightYellow + '[menu] Phoenix Bildmenü fehlgeschlagen, versuche Standard-Relay: ' + c.reset, phoenixInteractiveErr?.message || phoenixInteractiveErr);
+          try {
+            const fullMsg = generateWAMessageFromContent(
+              jid,
+              proto.Message.fromObject(payload),
+              { userJid: sock.user?.id, quoted: options.quoted || undefined, contextInfo: mediaContext }
+            );
+            await sock.relayMessage(jid, fullMsg.message, {
+              messageId: fullMsg.key.id,
+              additionalNodes
+            });
+            console.log(c.brightGreen + '[menu] Bild + Standard Native-Flow + additionalNodes gesendet' + c.reset);
+            androidImageKey = fullMsg.key;
+          } catch (standardRelayErr) {
+            console.warn(c.brightYellow + '[menu] Standard-Relay mit Bild fehlgeschlagen, versuche Phoenix-Proto: ' + c.reset, standardRelayErr?.message || standardRelayErr);
+            try {
+              const phoenixMsg = generatePhoenixWAMessageFromContent(
+                jid,
+                payload,
+                { userJid: sock.user?.id, quoted: options.quoted || undefined, contextInfo: mediaContext }
+              );
+              await sock.relayMessage(jid, phoenixMsg.message, {
+                messageId: phoenixMsg.key.id,
+                additionalNodes
+              });
+              console.log(c.brightGreen + '[menu] Bild + Phoenix Native-Flow + additionalNodes gesendet' + c.reset);
+              androidImageKey = phoenixMsg.key;
+            } catch (phoenixImageErr) {
+              console.warn(c.brightYellow + '[menu] Phoenix-Relay mit Bild fehlgeschlagen: ' + c.reset, phoenixImageErr?.message || phoenixImageErr);
+            }
+          }
+        }
+
+        let iosImageMenuKey = null;
+        try {
+          const iosMsg = await sock.sendMessage(jid, {
+            text: bodyText,
+            title: title || undefined,
+            footer: footer || undefined,
+            buttonText,
+            sections: sections.map((section) => ({
+              title: section.title,
+              rows: section.rows.map((row) => ({
+                title: row.title,
+                description: row.description || '',
+                rowId: row.id
+              }))
+            }))
+          }, { quoted: options.quoted || undefined });
+          iosImageMenuKey = iosMsg?.key || null;
+          if (iosImageMenuKey) {
+            console.log(c.brightGreen + '[menu] iOS ListMessage zusätzlich zum Bildmenü gesendet' + c.reset);
+          }
+        } catch (iosImageErr) {
+          console.warn(c.brightYellow + '[menu] iOS ListMessage zum Bildmenü fehlgeschlagen: ' + c.reset, iosImageErr?.message || iosImageErr);
+        }
+        return androidImageKey || iosImageMenuKey;
+      } catch (mediaMenuErr) {
+        console.error(c.bold + c.brightRed + '[menu] Bild mit Single-Select konnte nicht gesendet werden:' + c.reset, mediaMenuErr);
+        return null;
+      }
+    }
+
+    let androidKey = null;
+    try {
+      const phoenixContent = await phoenixBaileys.generateWAMessageContent({
+        text: bodyText,
+        title: title || undefined,
+        footer: footer || undefined,
+        interactiveButtons: [{
+          name: 'single_select',
+          buttonParamsJson: {
+            title: buttonText,
+            sections
+          }
+        }]
+      }, {});
+      const phoenixMessage = phoenixBaileys.generateWAMessageFromContent(jid, phoenixContent, {
+        quoted: options.quoted || undefined,
+        userJid: sock.user?.id
+      });
+      await sock.relayMessage(jid, phoenixMessage.message, {
+        messageId: phoenixMessage.key.id,
+        additionalNodes
+      });
+      androidKey = phoenixMessage.key;
+      console.log(c.brightGreen + '[menu] Android Phoenix interactiveButtons + additionalNodes gesendet' + c.reset);
+    } catch (phoenixInteractiveErr) {
+      console.log(c.brightYellow + '[menu] Android Phoenix interactiveButtons fehlgeschlagen: ' + (phoenixInteractiveErr?.message || phoenixInteractiveErr) + c.reset);
+    }
+
+    if (!androidKey) {
+      try {
+        const interactiveMsg = await sock.sendMessage(jid, {
+          text: bodyText,
+          title: title || undefined,
+          footer: footer || undefined,
+          interactiveButtons: [{
+            name: 'single_select',
+            buttonParamsJson: {
+              title: buttonText,
+              sections
+            }
+          }]
+        }, {
+          quoted: options.quoted || undefined,
+          skipNewsletter: options.skipNewsletter === true
+        });
+        androidKey = interactiveMsg?.key || null;
+        if (androidKey) {
+          console.log(c.brightGreen + '[menu] Android sendMessage interactiveButtons gesendet' + c.reset);
+        }
+      } catch (intErr) {
+        console.log(c.brightYellow + '[menu] Android sendMessage interactiveButtons fehlgeschlagen: ' + (intErr?.message || intErr) + c.reset);
+      }
+    }
+
+    const nativeFlowPayload = {
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: {
+            deviceListMetadata: {},
+            deviceListMetadataVersion: 2
+          },
+          interactiveMessage: {
+            body: { text: bodyText },
+            ...(footer ? { footer: { text: footer } } : {}),
+            ...(title ? { header: { title, hasMediaAttachment: false } } : {}),
+            nativeFlowMessage: {
+              buttons: [{
+                name: 'single_select',
+                buttonParamsJson
+              }],
+              messageParamsJson: JSON.stringify({
+                from: 'api',
+                templateId: 'testmenu_v1'
+              })
+            }
+          }
+        }
+      }
+    };
+
+    if (!androidKey) {
+      try {
+        const fullMsg = generateWAMessageFromContent(
+          jid,
+          proto.Message.fromObject(nativeFlowPayload),
+          { userJid: sock.user?.id, quoted: options.quoted || undefined }
+        );
+        await sock.relayMessage(jid, fullMsg.message, {
+          messageId: fullMsg.key.id,
+          additionalNodes
+        });
+        androidKey = fullMsg.key;
+        console.log(c.brightGreen + '[menu] Android Native-Flow-Relay + additionalNodes gesendet' + c.reset);
+      } catch (relayErr) {
+        console.log(c.brightYellow + '[menu] Native-Flow-Relay fehlgeschlagen: ' + (relayErr?.message || relayErr) + c.reset);
+      }
+    }
+
+    if (!androidKey) {
+      try {
+        const phoenixMsg = generatePhoenixWAMessageFromContent(
+          jid,
+          nativeFlowPayload,
+          { userJid: sock.user?.id, quoted: options.quoted || undefined }
+        );
+        await sock.relayMessage(jid, phoenixMsg.message, {
+          messageId: phoenixMsg.key.id,
+          additionalNodes
+        });
+        androidKey = phoenixMsg.key;
+        console.log(c.brightGreen + '[menu] Phoenix Native-Flow + additionalNodes gesendet' + c.reset);
+      } catch (phoenixErr) {
+        console.log(c.brightYellow + '[menu] Phoenix Native-Flow fehlgeschlagen: ' + (phoenixErr?.message || phoenixErr) + c.reset);
+      }
+    }
+
+    let iosKey = null;
+    try {
+      const listMsg = await sock.sendMessage(jid, {
+        text: bodyText,
+        title: title || undefined,
+        footer: footer || undefined,
+        buttonText,
+        sections: sections.map((section) => ({
+          title: section.title,
+          rows: section.rows.map((row) => ({
+            title: row.title,
+            description: row.description || '',
+            rowId: row.id
+          }))
+        }))
+      }, { quoted: options.quoted || undefined });
+      iosKey = listMsg?.key || null;
+      if (iosKey) {
+        console.log(c.brightGreen + '[menu] iOS ListMessage gesendet' + c.reset);
+      }
+    } catch (listErr) {
+      console.log(c.brightYellow + '[menu] ListMessage-Fallback fehlgeschlagen: ' + (listErr?.message || listErr) + c.reset);
+    }
+    return androidKey || iosKey || null;
+  } catch (menuErr) {
+    console.error(c.bold + c.brightRed + 'Fehler beim Senden des Interaktiven Menüs:' + c.reset, menuErr);
+    return null;
+  }
+}
+
+async function sendInteractiveListMenu(sock, jid, options = {}) {
+  try {
+    const sections = (options.sections || []).map((section) => ({
+      title: section.title || '',
+      rows: (section.rows || []).map((row) => {
+        const rowId = row.rowId || row.id || row.title || 'Option';
+        const id = String(rowId).startsWith('cmd:') ? String(rowId) : `cmd:${rowId}`;
+        return {
+          title: row.title || 'Option',
+          description: row.description || '',
+          rowId: id
+        };
+      })
+    }));
     const sent = await sock.sendMessage(jid, {
       text: options.description || options.title || 'Menü',
       title: options.title || undefined,
       footer: options.footerText || undefined,
-      interactiveButtons: [{
-        name: 'single_select',
-        buttonParamsJson: {
-          title: options.buttonText || 'Auswählen',
-          sections
-        }
-      }]
-    }, {
-      quoted: options.quoted || undefined,
-      skipNewsletter: options.skipNewsletter === true
+      buttonText: options.buttonText || 'Auswählen',
+      sections
+    }, { quoted: options.quoted || undefined });
+    if (sent?.key) {
+      console.log(c.brightGreen + '[menu] iOS ListMessage gesendet' + c.reset);
+      return sent.key;
+    }
+    return null;
+  } catch (listErr) {
+    console.warn(c.brightYellow + '[menu] iOS ListMessage fehlgeschlagen: ' + (listErr?.message || listErr) + c.reset);
+    return null;
+  }
+}
+
+/* Android: sichtbare Quick-Reply-Buttons statt Single-Select-Dropdown. */
+async function sendAndroidQuickButtons(sock, jid, options = {}) {
+  const bodyText = options.description || options.title || 'Menü';
+  const title = options.title || '';
+  const footer = options.footerText || '';
+  const quoted = options.quoted || undefined;
+  const rows = (options.sections || []).flatMap((section) =>
+    (section.rows || []).map((row) => {
+      const rawId = String(row.rowId || row.id || row.title || 'Option');
+      return {
+        display_text: String(row.title || 'Option').slice(0, 25),
+        id: rawId.startsWith('cmd:') ? rawId : `cmd:${rawId}`
+      };
+    })
+  ).slice(0, 5);
+  if (!rows.length) {
+    console.warn(c.brightYellow + '[menu] Quick-Reply-Menü hat keine Einträge.' + c.reset);
+    return null;
+  }
+  const buttons = rows.map((row) => ({
+    name: 'quick_reply',
+    buttonParamsJson: {
+      display_text: row.display_text,
+      id: row.id
+    }
+  }));
+  const additionalNodes = [{
+    tag: 'biz',
+    attrs: {},
+    content: [{
+      tag: 'interactive',
+      attrs: { type: 'native_flow', v: '1' },
+      content: [{ tag: 'native_flow', attrs: { v: '9', name: 'mixed' } }]
+    }]
+  }];
+  if (!String(jid || '').endsWith('@g.us')) {
+    additionalNodes.push({ tag: 'bot', attrs: { biz_bot: '1' } });
+  }
+
+  try {
+    const content = await phoenixBaileys.generateWAMessageContent({
+      text: bodyText,
+      title: title || undefined,
+      footer: footer || undefined,
+      interactiveButtons: buttons
+    }, {});
+    const full = phoenixBaileys.generateWAMessageFromContent(jid, content, {
+      quoted,
+      userJid: sock.user?.id
     });
-    return sent?.key || null;
-  } catch (menuErr) {
-    console.error(c.bold + c.brightRed + 'Fehler beim Senden des Interaktiven Menüs:' + c.reset, menuErr);
+    await sock.relayMessage(jid, full.message, {
+      messageId: full.key.id,
+      additionalNodes
+    });
+    console.log(c.brightGreen + '[menu] Android quick_reply (Phoenix) gesendet' + c.reset);
+    return full.key;
+  } catch (phoenixErr) {
+    console.warn(c.brightYellow + '[menu] quick_reply Phoenix fehlgeschlagen: ' + (phoenixErr?.message || phoenixErr) + c.reset);
+  }
+
+  try {
+    const sent = await sock.sendMessage(jid, {
+      text: bodyText,
+      title: title || undefined,
+      footer: footer || undefined,
+      interactiveButtons: buttons
+    }, { quoted });
+    if (sent?.key) {
+      console.log(c.brightGreen + '[menu] Android quick_reply (sendMessage) gesendet' + c.reset);
+      return sent.key;
+    }
+  } catch (sendErr) {
+    console.warn(c.brightYellow + '[menu] quick_reply sendMessage fehlgeschlagen: ' + (sendErr?.message || sendErr) + c.reset);
+  }
+
+  try {
+    const payload = {
+      viewOnceMessage: {
+        message: {
+          messageContextInfo: {
+            deviceListMetadata: {},
+            deviceListMetadataVersion: 2
+          },
+          interactiveMessage: {
+            body: { text: bodyText },
+            ...(footer ? { footer: { text: footer } } : {}),
+            ...(title ? { header: { title, hasMediaAttachment: false } } : {}),
+            nativeFlowMessage: {
+              buttons: buttons.map((button) => ({
+                name: button.name,
+                buttonParamsJson: JSON.stringify(button.buttonParamsJson)
+              })),
+              messageParamsJson: '{}'
+            }
+          }
+        }
+      }
+    };
+    const full = generateWAMessageFromContent(
+      jid,
+      proto.Message.fromObject(payload),
+      { userJid: sock.user?.id, quoted }
+    );
+    await sock.relayMessage(jid, full.message, {
+      messageId: full.key.id,
+      additionalNodes
+    });
+    console.log(c.brightGreen + '[menu] Android quick_reply (viewOnce) gesendet' + c.reset);
+    return full.key;
+  } catch (relayErr) {
+    console.error(c.bold + c.brightRed + '[menu] quick_reply konnte nicht gesendet werden:' + c.reset, relayErr);
     return null;
   }
 }
@@ -12033,6 +12486,131 @@ async function sendNativeFlowCarouselMenu(sock, jid, msg, options = {}) {
   }
 }
 
+async function sendTestmenuCarousel(sock, jid, msg) {
+  try {
+    const upload = sock.waUploadToServer;
+    let menuImage = null;
+    let funImage = null;
+
+    if (typeof upload === 'function') {
+      const imageDir = path.join(path.dirname(fileURLToPath(import.meta.url)), 'Bilder');
+      const prepareCardImage = async (fileName) => {
+        const imagePath = path.join(imageDir, fileName);
+        if (!fs.existsSync(imagePath)) {
+          console.warn(c.brightYellow + `[testmenu] Kartenbild fehlt: ${fileName}` + c.reset);
+          return null;
+        }
+        const media = await prepareWAMessageMedia({
+          image: fs.readFileSync(imagePath),
+          mimetype: 'image/png'
+        }, { upload });
+        if (!media?.imageMessage) {
+          throw new Error(`Kartenbild konnte nicht vorbereitet werden: ${fileName}`);
+        }
+        return media.imageMessage;
+      };
+
+      try {
+        [menuImage, funImage] = await Promise.all([
+          prepareCardImage('Menu-cover.png'),
+          prepareCardImage('owner.png')
+        ]);
+      } catch (imageErr) {
+        console.warn(c.bold + c.brightYellow + '[testmenu] Carousel wird ohne Kartenbilder gesendet: ' + c.reset, imageErr?.message || imageErr);
+      }
+    } else {
+      console.warn(c.brightYellow + '[testmenu] waUploadToServer fehlt; Carousel wird ohne Kartenbilder gesendet.' + c.reset);
+    }
+
+    const makeSelectButton = (title, rows) => ({
+      name: 'single_select',
+      buttonParamsJson: JSON.stringify({
+        title,
+        sections: [{
+          title,
+          rows: rows.map((row) => ({
+            title: row.title,
+            description: row.description || '',
+            id: String(row.rowId || '').startsWith('cmd:') ? row.rowId : `cmd:${row.rowId}`
+          }))
+        }]
+      })
+    });
+    const messageParamsJson = JSON.stringify({
+      bottom_sheet: { in_thread_buttons_limit: 3, divider_indices: [] }
+    });
+    const makeCard = ({ title, text, image, buttonTitle, rows }) => ({
+      header: {
+        title,
+        ...(image ? { imageMessage: image, hasMediaAttachment: true } : { hasMediaAttachment: false })
+      },
+      body: { text },
+      nativeFlowMessage: {
+        buttons: [makeSelectButton(buttonTitle, rows)],
+        messageVersion: 1,
+        messageParamsJson
+      }
+    });
+    const cards = [
+      makeCard({
+        title: '🧪 TESTMENU',
+        text: 'Wische nach rechts für weitere Karten. Tippe auf den Button und wähle.',
+        image: menuImage,
+        buttonTitle: '📋 TEST WÄHLEN',
+        rows: [
+          { rowId: 'cmd:testmenu ping', title: '🏓 Ping', description: 'Antwort-Test' },
+          { rowId: 'cmd:testmenu info', title: 'ℹ️ Info', description: 'Menü-Info' },
+          { rowId: 'cmd:testmenu close', title: '❌ Schließen', description: 'Menü beenden' }
+        ]
+      }),
+      makeCard({
+        title: '🎮 SPAẞ',
+        text: 'Spiele & Zufall — wähle eine Option.',
+        image: funImage,
+        buttonTitle: '🎮 SPIEL WÄHLEN',
+        rows: [
+          { rowId: 'cmd:witz', title: '😂 Witz', description: 'Zufälliger Witz' },
+          { rowId: 'cmd:8ball', title: '🎱 Magic 8-Ball', description: 'Frage das Orakel' },
+          { rowId: 'cmd:münzwurf', title: '🪙 Münzwurf', description: 'Kopf oder Zahl' }
+        ]
+      }),
+      makeCard({
+        title: '⚙️ SYSTEM',
+        text: 'Hilfe und Kontakt zum Owner.',
+        buttonTitle: '⚙️ SYSTEM WÄHLEN',
+        rows: [
+          { rowId: 'cmd:help', title: '📚 Hilfe', description: 'Befehlsübersicht' },
+          { rowId: 'cmd:owner', title: '👑 Owner', description: 'Owner-Kontakt anzeigen' }
+        ]
+      })
+    ];
+    const mediaContext = {
+      mediaDomainInfo: { mediaKeyDomain: 'MEDIA_KEY_DOMAIN_NON_E2EE' }
+    };
+    const payload = {
+      interactiveMessage: {
+        header: { title: '🧪 HELLOKITTY · TESTMENU' },
+        body: { text: '⬅️➡️ Wische zwischen den Karten und wähle eine Option.' },
+        carouselMessage: {
+          cards,
+          messageVersion: 1,
+          carouselCardType: 'HSCROLL_CARDS'
+        },
+        contextInfo: mediaContext
+      }
+    };
+    const message = generateWAMessageFromContent(jid, proto.Message.fromObject(payload), {
+      quoted: msg,
+      contextInfo: mediaContext
+    });
+    await sock.relayMessage(jid, message.message, { messageId: message.key.id });
+    return message.key;
+  } catch (carouselErr) {
+    console.error(c.bold + c.brightRed + '[testmenu] Carousel konnte nicht gesendet werden:' + c.reset, carouselErr);
+    return null;
+  }
+}
+
 function buildNativeFlowMenuButtons(prefix) {
   const commands = HELP_CATEGORIES.flatMap((category) => (category.cmds || []).map(([usage, description]) => {
     const primaryUsage = String(usage || '').split(' / ')[0].trim();
@@ -12089,8 +12667,15 @@ async function sendBotCommandMenu(sock, jid, msg, prefix, view = {}) {
   const pageSize = 6;
   const page = Math.max(1, Number.parseInt(view.page, 10) || 1);
   const category = isCommandPage ? findHelpCategory(view.category) : null;
+  const linkCategory = isLinksPage && view.category && view.category !== 'all'
+    ? MENUNEW_LINK_CATEGORIES.find((item) => item.slug === view.category)
+    : null;
   if (isCommandPage && !category) {
     await sock.sendMessage(jid, { text: `> ❓ Kategorie nicht gefunden. Nutze *${prefix}menunew* für die Übersicht.` }, { quoted: msg });
+    return;
+  }
+  if (isLinksPage && view.category && view.category !== 'all' && !linkCategory) {
+    await sock.sendMessage(jid, { text: `> ❓ Link-Kategorie nicht gefunden. Nutze *${prefix}menu* für die Übersicht.` }, { quoted: msg });
     return;
   }
 
@@ -12105,29 +12690,50 @@ async function sendBotCommandMenu(sock, jid, msg, prefix, view = {}) {
     description = `Seite ${page} · ${category.cmds.length} Befehle · Eintrag antippen`;
     rows = commands.map(([usage, commandDescription]) => {
       const firstUsage = String(usage || '').split(' / ')[0].trim();
-      const command = firstUsage.replace(/^\$+/, '').split(/\s+/)[0];
+      const commandLine = firstUsage.replace(/^\$+/, '').split(/\s+/)
+        .filter((token, index) => index === 0 || (!/[<>|]/.test(token) && !token.startsWith('@')))
+        .join(' ');
       return {
-        rowId: `cmd:${command}`,
-        title: `${prefix}${command}`.slice(0, 24),
+        rowId: `cmd:${commandLine}`,
+        title: `${prefix}${commandLine}`.slice(0, 24),
         description: String(commandDescription || firstUsage).slice(0, 72)
       };
     });
     if (start > 0) rows.push({ rowId: `cmd:menunew commands ${category.slug} ${page - 1}`, title: '⬅️ Vorherige Seite', description: 'Zurück in dieser Kategorie' });
     if (start + pageSize < category.cmds.length) rows.push({ rowId: `cmd:menunew commands ${category.slug} ${page + 1}`, title: '➡️ Weitere Befehle', description: 'Nächste Befehlsseite öffnen' });
     rows.push({ rowId: `cmd:menunew categories 1`, title: '↩️ Kategorien', description: 'Zurück zur Menü-Übersicht' });
-  } else if (isLinksPage) {
+  } else if (isLinksPage && (view.category || view.category === 'all')) {
     const start = (page - 1) * pageSize;
-    const links = MENUNEW_LINKS.slice(start, start + pageSize);
-    title = '🔗 MAXICHEN · LINKS';
-    description = `Seite ${page} · ${MENUNEW_LINKS.length} Links · Eintrag antippen`;
+    const categoryLinks = view.category === 'all'
+      ? MENUNEW_LINKS
+      : MENUNEW_LINKS.filter((link) => link.category === linkCategory.slug);
+    const links = categoryLinks.slice(start, start + pageSize);
+    title = linkCategory?.title || '🔗 ALLE LINKS';
+    description = `${linkCategory ? `${linkCategory.description} · ` : ''}Seite ${page} · ${categoryLinks.length} Links`;
     rows = links.map((link) => ({
       rowId: `cmd:menunew link ${link.slug}`,
       title: link.title.slice(0, 24),
       description: link.value.slice(0, 72)
     }));
-    if (start > 0) rows.push({ rowId: `cmd:menunew links ${page - 1}`, title: '⬅️ Vorherige Seite', description: 'Zurück zu weiteren Links' });
-    if (start + pageSize < MENUNEW_LINKS.length) rows.push({ rowId: `cmd:menunew links ${page + 1}`, title: '➡️ Weitere Links', description: 'Nächste Link-Seite öffnen' });
-    rows.push({ rowId: 'cmd:menunew categories 1', title: '↩️ Menü-Kategorien', description: 'Zurück zur Befehlsübersicht' });
+    const linkPagePrefix = `cmd:menunew links ${view.category}`;
+    if (start > 0) rows.push({ rowId: `${linkPagePrefix} ${page - 1}`, title: '⬅️ Vorherige Seite', description: 'Zurück zu weiteren Links' });
+    if (start + pageSize < categoryLinks.length) rows.push({ rowId: `${linkPagePrefix} ${page + 1}`, title: '➡️ Weitere Links', description: 'Nächste Link-Seite öffnen' });
+    rows.push({ rowId: 'cmd:menunew links', title: '↩️ Link-Kategorien', description: 'Zurück zur Link-Übersicht' });
+    rows.push({ rowId: 'cmd:menunew categories 1', title: '↩️ Hauptmenü', description: 'Zurück zu allen Menübereichen' });
+  } else if (isLinksPage) {
+    title = '🔗 MAXICHEN · LINK-KATEGORIEN';
+    description = `Wähle einen Bereich mit ${MENUNEW_LINKS.length} hinterlegten Links.`;
+    rows = MENUNEW_LINK_CATEGORIES.map((item) => ({
+      rowId: `cmd:menunew links ${item.slug} 1`,
+      title: item.title.slice(0, 24),
+      description: `${MENUNEW_LINKS.filter((link) => link.category === item.slug).length} Links · ${item.description}`.slice(0, 72)
+    }));
+    rows.push({
+      rowId: 'cmd:menunew links all 1',
+      title: '🔗 Alle Links',
+      description: `Alle ${MENUNEW_LINKS.length} hinterlegten Links anzeigen`
+    });
+    rows.push({ rowId: 'cmd:menunew categories 1', title: '↩️ Hauptmenü', description: 'Zurück zu allen Menübereichen' });
   } else {
     const start = (page - 1) * pageSize;
     const categories = HELP_CATEGORIES.slice(start, start + pageSize);
@@ -12143,8 +12749,24 @@ async function sendBotCommandMenu(sock, jid, msg, prefix, view = {}) {
     });
     if (start > 0) rows.push({ rowId: `cmd:menunew categories ${page - 1}`, title: '⬅️ Vorherige Seite', description: 'Weitere Menübereiche' });
     if (start + pageSize < HELP_CATEGORIES.length) rows.push({ rowId: `cmd:menunew categories ${page + 1}`, title: '➡️ Weitere Kategorien', description: 'Nächste Kategorien anzeigen' });
-    rows.push({ rowId: 'cmd:menunew links 1', title: '🔗 Maxichen · Links', description: 'WhatsApp, Socials, E-Mail und mehr' });
+    rows.push({ rowId: 'cmd:menunew links', title: '🔗 Maxichen · Links', description: `${MENUNEW_LINKS.length} Links in ${MENUNEW_LINK_CATEGORIES.length} Kategorien` });
     rows.push({ rowId: `cmd:help all`, title: '📚 Alle Befehle als Text', description: 'Vollständige Übersicht ohne Auswahlmenü' });
+  }
+
+  if (!view.mode && !isCommandPage && !isLinksPage) {
+    const menuImage = resolveStaticImage();
+    if (menuImage.path) {
+      try {
+        const ext = path.extname(menuImage.path).toLowerCase();
+        const mimetype = ext === '.png' ? 'image/png' : ext === '.webp' ? 'image/webp' : 'image/jpeg';
+        view.menuImage = fs.readFileSync(menuImage.path);
+        view.menuImageMimetype = mimetype;
+      } catch (menuImageErr) {
+        console.warn(c.bold + c.brightYellow + '[menu] tomp4-Standbild konnte nicht geladen werden: ' + c.reset, menuImageErr?.message || menuImageErr);
+      }
+    } else {
+      console.warn(c.bold + c.brightYellow + '[menu] Kein tomp4-Standbild konfiguriert; Menü wird ohne Bild gesendet.' + c.reset);
+    }
   }
 
   const sent = await sendInteractiveMenu(sock, jid, {
@@ -12152,6 +12774,9 @@ async function sendBotCommandMenu(sock, jid, msg, prefix, view = {}) {
     description,
     buttonText: category ? '☰ BEFEHLE WÄHLEN' : isLinksPage ? '🔗 LINKS WÄHLEN' : '☰ MENÜBEREICH WÄHLEN',
     footerText: '🌸 HelloKitty Baby Maxi · maxichen.de',
+    quoted: msg,
+    image: view.menuImage,
+    imageMimetype: view.menuImageMimetype,
     sections: [{
       title: category ? 'Befehle' : isLinksPage ? 'Links' : 'Menübereiche',
       rows
@@ -12233,7 +12858,7 @@ function buildMenuSections(pref) {  const r = (cmd, title, desc) => ({ rowId: `c
         r('afklist', `${pref}afklist`, 'Alle aktuell AFK'),
         r('check', `${pref}check`, 'ID/JID/LID prüfen'),
         r('check2', `${pref}check2`, 'WhatsApp-Ban-Check'),
-        r('checkban', `${pref}checkban`, 'Ban-Status prüfen (Edit)'),
+        r('checkban', `${pref}checkban`, 'Bot-Ban prüfen und 3:22-Video-Edit erstellen'),
         r('jid', `${pref}jid @user`, 'JID auflösen 🆔'),
         r('lid', `${pref}lid @user`, 'LID auflösen 🆔'),
         r('ids', `${pref}ids @user`, 'JID + LID zusammen 🆔')
@@ -13474,6 +14099,9 @@ async function startBot(options = {}) {
           if (!unwrapped) {
             continue;
           }
+          if (['imageMessage', 'videoMessage', 'audioMessage'].includes(getContentType(unwrapped))) {
+            rememberMediaMessage(msg);
+          }
           const contentTypes = Object.keys(unwrapped);
           if (!contentTypes.length || contentTypes.every((type) => SKIP_CONTENT_TYPES.has(type))) {
             continue;
@@ -13484,7 +14112,10 @@ async function startBot(options = {}) {
             || unwrapped.imageMessage?.caption
             || unwrapped.videoMessage?.caption
             || '';
-          let commandInputText = messageText;
+          const isMetaAiSender = isMetaAiMessage(msg, unwrapped);
+          let commandInputText = isMetaAiSender
+            ? getMetaAiMessageText(unwrapped)
+            : messageText;
           if (String(from).endsWith('@g.us') && unwrapped.extendedTextMessage?.contextInfo) {
             const mentionedJids = unwrapped.extendedTextMessage.contextInfo.mentionedJid || [];
             const botJids = [
@@ -13512,6 +14143,12 @@ async function startBot(options = {}) {
                 commandInputText = `${pref}${commandBody}`;
               }
             }
+          }
+
+          /* Meta AI darf nur explizite Bot-Befehle ausführen. Freitext ignorieren,
+             damit LoveBot und Meta AI sich nicht gegenseitig endlos antworten. */
+          if (isMetaAiSender && !commandInputText.trim().startsWith(pref)) {
+            continue;
           }
 
           /* Eigene Nachrichten nur als bewusste Bot-Befehle verarbeiten. */
@@ -13633,15 +14270,21 @@ async function startBot(options = {}) {
           }
 
           const parts = withoutPrefix.split(/\s+/);
-          const command = parts[0].toLowerCase();
-          const args = parts.slice(1);
+          let command = parts[0].toLowerCase();
+          let args = parts.slice(1);
+
+          if (['testmenu', 'testmenü', 'testbutton'].includes(command) &&
+              ['help', 'owner', 'witz', 'joke', '8ball', 'münzwurf', 'muenzwurf'].includes(String(args[0] || '').toLowerCase())) {
+            command = String(args[0]).toLowerCase();
+            args = args.slice(1);
+          }
 
           if (!command) {
             continue;
           }
 
           if (new Set([
-            'ai', 'ki', 'ask', 'askai', 'frag', 'aimemory', 'aigedaechtnis',
+            'ki', 'ask', 'askai', 'frag', 'aimemory', 'aigedaechtnis',
             'aistatus', 'aimodel', 'aiclear', 'aistop', 'aiconfig',
             'imagine', 'genimg', 'animate', 'genavid',
             'metaforward', 'metafw'
@@ -13684,11 +14327,11 @@ async function startBot(options = {}) {
           const senderJid = senderInfo.jid || normalizeJid(msg.key.fromMe ? hostRawId : (isGroup ? msg.key.participant : from));
           const senderLid = senderInfo.lid || normalizeLid(msg.key.fromMe ? hostRawLid : (isGroup ? msg.key.participantAlt : msg.key.remoteJidAlt));
           const isRegisteredOwner = Boolean(getRegisteredOwner(readDb(), senderJid, senderLid));
-          let isHost = msg.key.fromMe ||
+          let isHost = !isMetaAiSender && (msg.key.fromMe ||
             isMainOwner(senderJid, senderLid) ||
             isRegisteredOwner ||
             areJidsSameUser(senderJid, hostJid) ||
-            userMapping.isHost(msg, senderInfo, sock);
+            userMapping.isHost(msg, senderInfo, sock));
 
           const senderSid = isHost ? hostSid : parseSessionId(msg.key.participant || from);
           const senderLidUser = senderLid.split('@')[0];
@@ -15038,7 +15681,11 @@ break;
               const menuView = menuMode === 'commands'
                 ? { mode: 'commands', category: menuCategory, page: menuPage }
                 : menuMode === 'links'
-                  ? { mode: 'links', page: menuCategory }
+                  ? {
+                    mode: 'links',
+                    category: menuCategory && !/^\d+$/.test(menuCategory) ? menuCategory : menuCategory ? 'all' : null,
+                    page: menuPage || (/^\d+$/.test(menuCategory || '') ? menuCategory : 1)
+                  }
                   : { mode: 'categories', page: menuMode === 'categories' ? menuCategory : 1 };
               await sendBotCommandMenu(sock, from, msg, pref, menuView);
               await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
@@ -15837,116 +16484,175 @@ break;
                 break;
             }
             case 'checkban': {
-              /* 🚫 CHECKBAN — eigene Nummer darf jeder, fremde Nummer nur Owner */
-              let isSelfCheck = false;
-              let rawTarget = '';
-
-              if (args[0]) {
-                /* Fremde Nummer geprüft — nur Owner erlaubt */
+              /* Bot-Ban direkt in der Datenbank prüfen; keine WhatsApp-Abfrage. */
+              let jid = '';
+              let lid = '';
+              const rawTarget = args[0] || '';
+              if (rawTarget) {
+                /* Fremde Identität geprüft — nur Owner/Hauptowner erlaubt. */
                 if (!isMainOwner(senderJid, senderLid) && !isOwnerSenderKey(msg)) {
                   await sock.sendMessage(from, {
-                    text: `> ❌ *Nur der Owner darf fremde Nummern prüfen.*\n\n> *Nutzung (eigene Nummer):* ${pref}checkban\n> *Nutzung (Owner):* ${pref}checkban <Nummer>`
+                    text: `> ❌ *Nur Owner dürfen fremde Bot-Bans prüfen.*\n\n> *Eigener Status:* ${pref}checkban\n> *Fremde Nummer (Owner):* ${pref}checkban <Nummer>`
                   }, { quoted: msg });
                   await sendReaction(sock, from, reactions.access.reactions.unauthorized, msg.key);
                   break;
                 }
-                rawTarget = args[0];
+                const cleaned = String(rawTarget).trim().replace(/^@/, '');
+                if (/@lid$/i.test(cleaned)) {
+                  lid = normalizeLid(cleaned);
+                } else {
+                  const digitsOnly = cleaned.replace(/\D/g, '');
+                  if (!digitsOnly || digitsOnly.length < 8 || digitsOnly.length > 15) {
+                    await sock.sendMessage(from, {
+                      text: `> ❌ *Ungültige Nummer*\n\n> *Nutzung:* ${pref}checkban <Nummer>\n> *Beispiel:* ${pref}checkban 4915123456789`
+                    }, { quoted: msg });
+                    await sendReaction(sock, from, reactions.access.reactions.unauthorized, msg.key);
+                    break;
+                  }
+                  jid = `${digitsOnly}@s.whatsapp.net`;
+                }
               } else {
-                /* Eigene Nummer — jeder darf */
-                isSelfCheck = true;
-                rawTarget = senderJid;
+                const ownSenderIds = msg.key?.fromMe
+                  ? [hostRawId, hostRawLid]
+                  : (isGroup
+                    ? [msg.key?.participant, msg.key?.participantAlt]
+                    : [msg.key?.remoteJid, msg.key?.remoteJidAlt]);
+                const ownRawJid = ownSenderIds.find((id) =>
+                  typeof id === 'string' && id.toLowerCase().endsWith('@s.whatsapp.net')
+                ) || '';
+                const ownRawLid = ownSenderIds.find((id) =>
+                  typeof id === 'string' && id.toLowerCase().endsWith('@lid')
+                ) || '';
+                jid = normalizeJid(senderJid || ownRawJid);
+                lid = normalizeLid(senderLid || ownRawLid);
+                if (!jid && !lid) {
+                  await sock.sendMessage(from, {
+                    text: '> ❌ *Deine Bot-Identität konnte nicht ermittelt werden.*'
+                  }, { quoted: msg });
+                  break;
+                }
               }
 
-              const cleaned = String(rawTarget || '').trim().replace(/^@/, '');
-
-              if (/@lid$/i.test(cleaned)) {
-                await sock.sendMessage(from, {
-                  text: `> ❌ *Ban-Check braucht eine Telefonnummer*\n\n` +
-                    `Eine LID lässt sich nicht als Rufnummer prüfen.\n` +
-                    `> ${pref}checkban 4915123456789`
-                }, { quoted: msg });
-                await sendReaction(sock, from, reactions.access.reactions.unauthorized, msg.key);
-                break;
-              }
-
-              const digitsOnly = cleaned.replace(/\D/g, '');
-              const targetJid = cleaned.includes('@') ? normalizeJid(cleaned) : `${digitsOnly}@s.whatsapp.net`;
-
-              if (!digitsOnly || digitsOnly.length < 8 || digitsOnly.length > 15) {
-                await sock.sendMessage(from, {
-                  text: `> ❌ *Ungültige Nummer*\n\n> *Nutzung:* ${pref}checkban <Nummer>\n> *Beispiel:* ${pref}checkban 4915123456789`
-                }, { quoted: msg });
-                await sendReaction(sock, from, reactions.access.reactions.unauthorized, msg.key);
-                break;
-              }
-
-              const displayTarget = `+${digitsOnly}`;
-              const target = {
-                phone: digitsOnly,
-                jid: targetJid
-              };
-
-              const checkedAt = new Date();
-              const signals = await probeBanStatus(sock, target, null);
-              const verdict = evaluateBanVerdict(signals);
-              const answerText = formatBanResult(signals, verdict, displayTarget);
-              const songTextFile = path.resolve('edit', 'songText.txt');
-              let songText = null;
-              try {
-                const raw = await fs.readFile(songTextFile, 'utf8');
-                songText = String(raw || '').trim() || null;
-              } catch (e) {
-                /* Kein Songtext-Datei — ohne Songtext-Overlay. */
-              }
-
-              const videoFile = path.resolve('edit', 'editVideoBeispiel.mp4');
-              let videoPath = null;
-              try {
-                await fs.access(videoFile);
-                videoPath = videoFile;
-              } catch (e) {
-                /* Kein Video im edit-Ordner → Edit läuft ohne Video-Layer. */
-              }
-
-              let editResult;
-              try {
-                editResult = await createCheckBanEdit({
-                  phone: digitsOnly,
-                  signals,
-                  videoPath,
-                  audioPath: path.resolve('edit', 'editAudio.mp3'),
-                  outputDirectory: path.resolve('edit'),
-                  ffmpegPath: await getFfmpegBinary(),
-                  checkedAt,
-                  songText,
-                  apkSignal: signals.apkBanSignal,
-                  isSelfCheck
+              const db = readDb();
+              const identities = [{ jid, lid }];
+              const targetJidId = cleanId(jid || '');
+              const targetLidId = cleanId(lid || '');
+              const matchingProfile = Object.values(db.users || {}).find((profile) =>
+                (targetJidId && cleanId(profile?.identity?.jid || '') === targetJidId) ||
+                (targetLidId && cleanId(profile?.identity?.lid || '') === targetLidId)
+              );
+              if (matchingProfile?.identity) {
+                identities.push({
+                  jid: matchingProfile.identity.jid || '',
+                  lid: matchingProfile.identity.lid || ''
                 });
+              }
+              for (const linked of db.meta?.linkedUserProfiles || []) {
+                const linkedIds = (linked.identities || []).map((identity) => ({
+                  jid: identity?.jid || '',
+                  lid: identity?.lid || ''
+                }));
+                const matchesLinkedIdentity = linkedIds.some((identity) =>
+                  (targetJidId && cleanId(identity.jid) === targetJidId) ||
+                  (targetLidId && cleanId(identity.lid) === targetLidId)
+                );
+                if (matchesLinkedIdentity) identities.push(...linkedIds);
+              }
+
+              let ban = null;
+              for (const identity of identities) {
+                ban = isUserBanned(db, identity.jid, identity.lid);
+                if (ban) break;
+              }
+              let targetJid = String(jid || '').toLowerCase().endsWith('@s.whatsapp.net')
+                ? normalizeJid(jid)
+                : '';
+              if (!targetJid && lid) {
+                const resolvedTargetJid = await findJidByLid(lid, sessionPath, sock);
+                targetJid = String(resolvedTargetJid || '').toLowerCase().endsWith('@s.whatsapp.net')
+                  ? normalizeJid(resolvedTargetJid)
+                  : '';
+              }
+              const displayTarget = targetJid || 'JID nicht verfügbar';
+              let bannedByJid = String(ban?.bannedBy || '').toLowerCase().endsWith('@s.whatsapp.net')
+                ? normalizeJid(ban.bannedBy)
+                : '';
+              if (!bannedByJid && ban?.bannedByLid) {
+                const resolvedBannedByJid = await findJidByLid(ban.bannedByLid, sessionPath, sock);
+                bannedByJid = String(resolvedBannedByJid || '').toLowerCase().endsWith('@s.whatsapp.net')
+                  ? normalizeJid(resolvedBannedByJid)
+                  : '';
+              }
+              const displayBan = ban ? { ...ban, bannedBy: bannedByJid } : null;
+              const safeText = (value, fallback) =>
+                String(value || fallback).replace(/[\r\n]+/g, ' ').trim().slice(0, 240);
+              let text = `> 🔎 *BOT-BAN-CHECK · DATENBANK*\n\n> *Geprüfte JID:* ${displayTarget}\n`;
+              if (ban) {
+                text +=
+                  '> *Status:* 🔴 Im Bot gebannt\n' +
+                  `> *Grund:* ${safeText(ban.reason, 'Kein Grund angegeben')}\n` +
+                  `> *Seit:* ${formatDateTime(ban.bannedAt)}\n` +
+                  `> *Gebannt von (JID):* ${safeText(bannedByJid, 'JID nicht gespeichert')}`;
+              } else {
+                text += '> *Status:* 🟢 Nicht im Bot gebannt';
+              }
+              const checkedAt = new Date();
+              try {
+                const editResult = await createDatabaseBanCheckEdit({
+                  target: displayTarget,
+                  ban: displayBan,
+                  checkedAt,
+                  audioPath: path.resolve('edit', 'editAudio.mp3'),
+                  outputDirectory: path.resolve('edit', 'database-ban-check'),
+                  ffmpegPath: await getFfmpegBinary()
+                });
+                await sock.sendMessage(from, {
+                  video: editResult.videoBuffer,
+                  mimetype: 'video/mp4',
+                  caption: `${text}\n\n🎬 *Bot-Ban-Edit · HelloKitty Baby Maxi (LoveBot)*\nLänge: 3:22\n💾 Gespeichert: edit/database-ban-check/${path.basename(editResult.videoPath)}`
+                }, { quoted: msg });
+                console.log(c.bold + c.brightGreen + `[checkban] ${displayTarget} → ${ban ? 'Botban gefunden' : 'kein Botban'}; Edit ${editResult.videoPath}.` + c.reset);
               } catch (editError) {
                 console.error(c.bold + c.brightRed + '[checkban] Edit-Erstellung fehlgeschlagen:' + c.reset, editError?.message || editError);
                 await sock.sendMessage(from, {
-                  text: `> ❌ *Checkban-Edit konnte nicht erstellt werden.*\n\n${editError?.message || 'Unbekannter Fehler'}\n\nDer Ban-Status wurde nicht verifiziert.`
+                  text: `${text}\n\n> ❌ *Video-Edit konnte nicht erstellt werden.*\n${safeText(editError?.message, 'Unbekannter Fehler')}`
                 }, { quoted: msg });
+              }
+              break;
+            }
+            case 'ai': {
+              if (isMetaAiSender) {
+                /* Kein Meta-AI-zu-Meta-AI-Zyklus. */
                 break;
               }
-
-              const mediaCaption = answerText + '\n\n💾 Edit gespeichert: edit/' + path.basename(editResult.videoPath);
-              await sock.sendMessage(from, {
-                image: editResult.imageBuffer,
-                mimetype: 'image/png',
-                caption: mediaCaption
-              }, { quoted: msg });
-              await sock.sendMessage(from, {
-                video: editResult.videoBuffer,
-                mimetype: 'video/mp4',
-                caption: `🎬 *CHECKBAN EDIT* · ${displayTarget}\n${verdict.verdict}\nAPK: ${signals.apkBanSignal?.availableCount || 0} banchecker-APK(s) analysiert\nby 𓆩♡𓆪 910maxi 𓆩♡𓆪`
-              }, { quoted: msg });
-
-              console.log(c.bold + c.brightGreen + `[checkban] ${displayTarget} → Edit erstellt und gesendet; ${verdict.verdict}.` + c.reset);
-              console.log(c.cyan + `[checkban] Medien: ${editResult.imagePath} · ${editResult.videoPath}` + c.reset);
-              console.log(c.cyan + `[checkban] Signale: exists=${signals.exists} onWhatsApp=${signals.onWhatsAppExists} devices=${signals.deviceCount} errors=${JSON.stringify(signals.usyncErrorCodes)}` + c.reset);
-              if (signals.probeErrors.length) {
-                console.log(c.bold + c.brightYellow + '[checkban] Probe-Fehler: ' + signals.probeErrors.join(' | ') + c.reset);
+              const prompt = args.join(' ').trim();
+              const text = prompt ? `@867051314767696 ${prompt}` : '@867051314767696';
+              try {
+                await sock.sendJson(from, {
+                  extendedTextMessage: {
+                    text,
+                    previewType: 'NONE',
+                    contextInfo: {
+                      mentionedJid: [META_AI_BOT_JID],
+                      botMessageSharingInfo: { forwardScore: 0 }
+                    },
+                    inviteLinkGroupTypeV2: 'DEFAULT'
+                  },
+                  messageContextInfo: {
+                    botMetadata: {
+                      botRenderingConfigMetadata: {
+                        bloksVersioningId: '1437ef8e17fec95c14c68593cd1bb70d53058feb5909cd1974ff29bc62f26914',
+                        pixelDensity: 2.8125
+                      }
+                    }
+                  }
+                });
+                console.log(c.bold + c.brightGreen + `[ai] Meta AI erwähnt in ${from}.` + c.reset);
+              } catch (aiSendError) {
+                console.error(c.bold + c.brightRed + '[ai] Meta-AI-Erwähnung fehlgeschlagen:' + c.reset, aiSendError?.message || aiSendError);
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Meta-AI-Erwähnung konnte nicht gesendet werden.*'
+                }, { quoted: msg });
               }
               break;
             }
@@ -16038,6 +16744,266 @@ break;
               await handlePingCommand({ sock, msg, from, args, pref });
               break;
             }
+
+
+
+case 'snak':
+case 'snake': {
+  try {
+    if (!globalThis.__snakeGames) globalThis.__snakeGames = new Map();
+    const gid = String(senderJid || from);
+    const sub = String(args[0] || '').toLowerCase();
+
+    const W = 10, H = 10, CELL = 32;
+    const SPEEDS = [220, 140, 90];
+    const SPEED_NAMES = ['Leicht', 'Mittel', 'Schwer'];
+
+    const newGame = () => ({
+      body: [{ x: 2, y: 5 }, { x: 1, y: 5 }, { x: 0, y: 5 }],
+      dir: { x: 1, y: 0 },
+      food: { x: 7, y: 5 },
+      score: 0,
+      alive: true,
+      speedIdx: 1,
+      hist: [],
+      msgKey: null,
+      status: 'Du bist am Zug'
+    });
+
+    const placeFood = (g) => {
+      let f, ok = false;
+      while (!ok) {
+        f = { x: Math.floor(Math.random() * W), y: Math.floor(Math.random() * H) };
+        ok = !g.body.some((s) => s.x === f.x && s.y === f.y);
+      }
+      g.food = f;
+    };
+
+    /* Brett wie Schach-Bild (helles Holz-Raster) */
+    const renderBoard = async (g) => {
+      const pw = W * CELL, ph = H * CELL;
+      let cells = '';
+      for (let y = 0; y < H; y++) {
+        for (let x = 0; x < W; x++) {
+          const bg = (x + y) % 2 === 0 ? '#e8d5b7' : '#b08968';
+          cells += `<rect x="${x * CELL}" y="${y * CELL}" width="${CELL}" height="${CELL}" fill="${bg}"/>`;
+        }
+      }
+      cells += `<circle cx="${g.food.x * CELL + CELL / 2}" cy="${g.food.y * CELL + CELL / 2}" r="${CELL * 0.28}" fill="#e63946"/>`;
+      g.body.forEach((s, i) => {
+        const col = i === 0 ? '#1b4332' : '#2d6a4f';
+        cells += `<rect x="${s.x * CELL + 3}" y="${s.y * CELL + 3}" width="${CELL - 6}" height="${CELL - 6}" rx="6" fill="${col}"/>`;
+        if (i === 0) {
+          cells += `<circle cx="${s.x * CELL + CELL * 0.35}" cy="${s.y * CELL + CELL * 0.38}" r="2.2" fill="#fff"/>`;
+          cells += `<circle cx="${s.x * CELL + CELL * 0.65}" cy="${s.y * CELL + CELL * 0.38}" r="2.2" fill="#fff"/>`;
+        }
+      });
+      const svg = `<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="${pw + 20}" height="${ph + 20}">
+  <rect width="${pw + 20}" height="${ph + 20}" rx="16" fill="#1c1426"/>
+  <g transform="translate(10,10)">${cells}</g>
+</svg>`;
+      return sharp(Buffer.from(svg)).png().toBuffer();
+    };
+
+    /* Text-Layout wie SCHACH im Video */
+    const captionFor = (g) => {
+      const stufe = SPEED_NAMES[g.speedIdx] || 'Mittel';
+      if (!g.alive) {
+        return (
+          `🐍 *SNAKE*\n` +
+          `Gegen den Bot · 🏆 *${g.score}* · ${stufe}\n\n` +
+          `💀 *Game Over*\n\n` +
+          `_Tippe NEU für eine neue Runde._`
+        );
+      }
+      return (
+        `🐍 *SNAKE*\n` +
+        `Gegen den Bot · 🏆 *${g.score}* · ${stufe}\n\n` +
+        `*${g.status}*\n\n` +
+        `_Richtung tippen · ZURÜCK · STUFE · NEU_`
+      );
+    };
+
+    /* Buttons wie ZURÜCK / STUFE / NEU + Richtungen */
+    const buttonsFor = (g) => {
+      const B = (text, id) => ({
+        name: 'quick_reply',
+        buttonParamsJson: JSON.stringify({ display_text: text, id })
+      });
+      if (!g.alive) {
+        return [B('🔄 NEU', 'cmd:snak neu')];
+      }
+      return [
+        B('⬆️', 'cmd:snak w'),
+        B('⬇️', 'cmd:snak s'),
+        B('⬅️', 'cmd:snak a'),
+        B('➡️', 'cmd:snak d'),
+        B('↩ ZURÜCK', 'cmd:snak undo'),
+        B('STUFE', 'cmd:snak stufe'),
+        B('🔄 NEU', 'cmd:snak neu')
+      ];
+    };
+
+    /* Senden oder gleiche Bubble editieren (wie Schach) */
+    const pushBoard = async (g) => {
+      const png = await renderBoard(g);
+      const caption = captionFor(g);
+
+      if (g.msgKey) {
+        try {
+          await sock.sendMessage(from, { image: png, caption, edit: g.msgKey });
+          return;
+        } catch (e) {
+          console.log(c.brightYellow + '[snak] edit fail: ' + (e?.message || e) + c.reset);
+          g.msgKey = null;
+        }
+      }
+
+      try {
+        const content = await phoenixBaileys.generateWAMessageContent({
+          image: png,
+          caption,
+          interactiveButtons: buttonsFor(g)
+        }, { upload: sock.waUploadToServer });
+
+        const full = phoenixBaileys.generateWAMessageFromContent(from, content, {
+          quoted: msg,
+          userJid: sock.user?.id
+        });
+        await sock.relayMessage(from, full.message, { messageId: full.key.id });
+        g.msgKey = full.key;
+        return;
+      } catch (e2) {
+        console.log(c.brightYellow + '[snak] interactive: ' + (e2?.message || e2) + c.reset);
+      }
+
+      const sent = await sock.sendMessage(from, { image: png, caption }, { quoted: msg });
+      g.msgKey = sent?.key || null;
+    };
+
+    const saveHist = (g) => {
+      g.hist.push({
+        body: g.body.map((s) => ({ ...s })),
+        food: { ...g.food },
+        score: g.score,
+        dir: { ...g.dir },
+        alive: g.alive
+      });
+      if (g.hist.length > 25) g.hist.shift();
+    };
+
+    const doMove = async (g, move) => {
+      if (!g.alive) return;
+      if (g.dir.x + move.x === 0 && g.dir.y + move.y === 0) {
+        g.status = 'Nicht rückwärts';
+        await pushBoard(g);
+        return;
+      }
+      saveHist(g);
+      g.dir = move;
+      const head = { x: g.body[0].x + g.dir.x, y: g.body[0].y + g.dir.y };
+      if (
+        head.x < 0 || head.y < 0 || head.x >= W || head.y >= H ||
+        g.body.some((s) => s.x === head.x && s.y === head.y)
+      ) {
+        g.alive = false;
+        g.status = 'Game Over';
+        await pushBoard(g);
+        await sendReaction(sock, from, '💀', msg.key);
+        return;
+      }
+      g.body.unshift(head);
+      if (head.x === g.food.x && head.y === g.food.y) {
+        g.score += 10;
+        placeFood(g);
+        g.status = '🍎 +10 · Du bist am Zug';
+      } else {
+        g.body.pop();
+        g.status = 'Du bist am Zug';
+      }
+      await pushBoard(g);
+    };
+
+    /* ── Unterbefehle ── */
+    if (sub === 'neu' || sub === 'new' || sub === 'start' || !sub) {
+      const g = newGame();
+      placeFood(g);
+      globalThis.__snakeGames.set(gid, g);
+      await pushBoard(g);
+      await sendReaction(sock, from, '🐍', msg.key);
+      break;
+    }
+
+    if (sub === 'stufe' || sub === 'speed' || sub === 'level') {
+      let g = globalThis.__snakeGames.get(gid);
+      if (!g) { g = newGame(); placeFood(g); }
+      g.speedIdx = (g.speedIdx + 1) % SPEEDS.length;
+      g.status = 'Stufe: ' + SPEED_NAMES[g.speedIdx];
+      globalThis.__snakeGames.set(gid, g);
+      await pushBoard(g);
+      break;
+    }
+
+    if (sub === 'undo' || sub === 'zurück' || sub === 'zuruck') {
+      let g = globalThis.__snakeGames.get(gid);
+      if (!g || !g.hist.length) {
+        await sock.sendMessage(from, { text: '> ↩ Nichts zum Zurücknehmen' }, { quoted: msg });
+        break;
+      }
+      const p = g.hist.pop();
+      g.body = p.body;
+      g.food = p.food;
+      g.score = p.score;
+      g.dir = p.dir;
+      g.alive = true;
+      g.status = 'Zug zurückgenommen';
+      globalThis.__snakeGames.set(gid, g);
+      await pushBoard(g);
+      break;
+    }
+
+    const keyMap = {
+      w: { x: 0, y: -1 }, up: { x: 0, y: -1 }, oben: { x: 0, y: -1 },
+      s: { x: 0, y: 1 }, down: { x: 0, y: 1 }, unten: { x: 0, y: 1 },
+      a: { x: -1, y: 0 }, left: { x: -1, y: 0 }, links: { x: -1, y: 0 },
+      d: { x: 1, y: 0 }, right: { x: 1, y: 0 }, rechts: { x: 1, y: 0 }
+    };
+    const move = keyMap[sub];
+    if (!move) {
+      await sock.sendMessage(from, {
+        text:
+          `> 🐍 *SNAKE* (wie Schach im Video)\n\n` +
+          `• *${pref}snak* — Start\n` +
+          `• Buttons: ⬆️⬇️⬅️➡️ · ZURÜCK · STUFE · NEU\n` +
+          `• oder *${pref}snak w/a/s/d*`
+      }, { quoted: msg });
+      break;
+    }
+
+    let g = globalThis.__snakeGames.get(gid);
+    if (!g) {
+      g = newGame();
+      placeFood(g);
+      globalThis.__snakeGames.set(gid, g);
+      await pushBoard(g);
+    }
+    await doMove(g, move);
+    globalThis.__snakeGames.set(gid, g);
+  } catch (err) {
+    console.error(c.bold + c.brightRed + '[snak] Fehler:' + c.reset, err);
+    await sock.sendMessage(from, {
+      text: `> ❌ *SNAK Fehler*\n\n_${String(err?.message || err).slice(0, 120)}_`
+    }, { quoted: msg });
+  }
+  break;
+}
+
+
+
+
+
+            
             case 'http':
             case 'httpcode':
             case 'statuscode':
@@ -18217,6 +19183,204 @@ break;
               console.log(c.bold + c.brightGreen + `[activate] Gruppe ${from} aktiviert.` + c.reset);
               break;
             }
+
+
+
+
+case 'botstatus':
+case 'groupstatus': {
+  if (!isGroup) {
+    await sock.sendMessage(from, {
+      text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.'
+    }, { quoted: msg });
+    break;
+  }
+
+  const active = groupProfile?.active !== false; // default: an, wenn Feld fehlt
+  const isCloseFriends = groupProfile?.closeFriends === true;
+  const whenOn = groupProfile?.activatedAt
+    ? new Date(groupProfile.activatedAt).toLocaleString('de-DE')
+    : '—';
+  const whenOff = groupProfile?.deactivatedAt
+    ? new Date(groupProfile.deactivatedAt).toLocaleString('de-DE')
+    : '—';
+  const whenCloseFriends = groupProfile?.closeFriendsAt
+    ? new Date(groupProfile.closeFriendsAt).toLocaleString('de-DE')
+    : '—';
+  const activatedBy = groupProfile?.activatedBy || '—';
+  const deactivatedBy = groupProfile?.deactivatedBy || '—';
+  const closeFriendsBy = groupProfile?.closeFriendsBy || '—';
+
+  await sock.sendMessage(from, {
+    text:
+      `> 🛡️ *BOT STATUS*\n\n` +
+      `Gruppe: *${groupProfile?.subject || from}*\n` +
+      `Status: ${active ? '✅ *Aktiv*' : '🔒 *Deaktiviert*'}\n` +
+      `Enge Freunde: ${isCloseFriends ? '💜 *Ja*' : '❌ *Nein*'}\n` +
+      `Aktiviert: ${whenOn}\n` +
+      `Aktiviert von: ${activatedBy}\n` +
+      `Deaktiviert: ${whenOff}\n` +
+      `Deaktiviert von: ${deactivatedBy}\n` +
+      `Enge Freunde geändert: ${whenCloseFriends}\n` +
+      `Enge Freunde geändert von: ${closeFriendsBy}\n\n` +
+      `_Admin: ${pref}activate · ${pref}deactivate · ${pref}engestatus on/off_`
+  }, { quoted: msg });
+  break;
+}
+
+
+
+
+case 'engestatus':
+case 'efstatus':
+case 'closefriends':
+case 'engefreunde': {
+  try {
+    const sub = String(args[0] || '').toLowerCase();
+
+    /* ── Gruppe als Enge-Freunde markieren / demarkieren ── */
+    if (sub === 'on' || sub === 'an' || sub === 'set' || sub === 'off' || sub === 'aus' || sub === 'unset') {
+      if (!isGroup) {
+        await sock.sendMessage(from, {
+          text: '> ❌ *Fehler:* Markieren geht nur in einer Gruppe.'
+        }, { quoted: msg });
+        break;
+      }
+      if (userRole !== 'host' && userRole !== 'superadmin' && userRole !== 'admin') {
+        await sock.sendMessage(from, {
+          text: '> ⛔ *Zugriff verweigert:* Nur Admins, Superadmin oder Host.'
+        }, { quoted: msg });
+        break;
+      }
+      if (!groupProfile) {
+        await sock.sendMessage(from, {
+          text: '> ❌ Kein Gruppenprofil gefunden.'
+        }, { quoted: msg });
+        break;
+      }
+
+      const enable = sub === 'on' || sub === 'an' || sub === 'set';
+      groupProfile.closeFriends = enable;
+      groupProfile.closeFriendsAt = new Date().toISOString();
+      groupProfile.closeFriendsBy = senderJid;
+      /* optional: Enge-Freunde-Gruppen automatisch aktivieren */
+      if (enable && groupProfile.active !== true) {
+        groupProfile.active = true;
+        groupProfile.activatedAt = new Date().toISOString();
+        groupProfile.activatedBy = senderJid;
+      }
+      saveGroupProfile(groupProfile);
+
+      await announceGroupProcess(sock, from, {
+        action: enable
+          ? 'Als Enge-Freunde-Gruppe markiert'
+          : 'Enge-Freunde-Markierung entfernt',
+        targetId: from,
+        actorId: senderJid,
+        groupName: groupProfile?.subject,
+        actorUsername: senderUn,
+        quoted: msg,
+        sessionPath
+      });
+      await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
+      console.log(
+        c.bold + (enable ? c.brightGreen : c.brightYellow) +
+        `[engestatus] ${from} closeFriends=${enable}` + c.reset
+      );
+      break;
+    }
+
+    /* ── Liste aller Enge-Freunde-Gruppen ── */
+    if (sub === 'list' || sub === 'liste' || sub === 'all') {
+      if (userRole !== 'host' && userRole !== 'superadmin' && !isHost) {
+        await sock.sendMessage(from, {
+          text: '> ⛔ *Nur Host/Superadmin* können die komplette Liste sehen.'
+        }, { quoted: msg });
+        break;
+      }
+
+      /* groupProfile-Store: passe den Pfad an dein System an */
+      let list = [];
+      try {
+        const dbDir = path.join('Database', 'groups');
+        if (fs.existsSync(dbDir)) {
+          for (const f of fs.readdirSync(dbDir)) {
+            if (!f.endsWith('.json')) continue;
+            try {
+              const g = JSON.parse(fs.readFileSync(path.join(dbDir, f), 'utf8'));
+              if (g?.closeFriends === true) {
+                list.push({
+                  id: g.id || f.replace(/\.json$/, ''),
+                  name: g.subject || g.name || '—',
+                  active: g.active !== false
+                });
+              }
+            } catch (e) {}
+          }
+        }
+      } catch (e) {}
+
+      if (!list.length) {
+        await sock.sendMessage(from, {
+          text:
+            `> 💜 *ENGE FREUNDE — LISTE*\n\n` +
+            `_Keine Gruppe ist als Enge Freunde markiert._\n\n` +
+            `In einer Gruppe: *${pref}engestatus on*`
+        }, { quoted: msg });
+        break;
+      }
+
+      let text = `> 💜 *ENGE FREUNDE — LISTE*\n\n`;
+      list.forEach((g, i) => {
+        text += `*${i + 1}.* ${g.name}\n`;
+        text += `   ${g.active ? '✅ aktiv' : '🔒 deaktiviert'}\n`;
+        text += `   \`${g.id}\`\n\n`;
+      });
+      text += `_Gesamt: ${list.length}_`;
+      await sock.sendMessage(from, { text }, { quoted: msg });
+      break;
+    }
+
+    /* ── Status dieser Gruppe (Standard) ── */
+    if (!isGroup) {
+      await sock.sendMessage(from, {
+        text:
+          `> 💜 *ENGE FREUNDE*\n\n` +
+          `• *${pref}engestatus* — Status (nur in Gruppe)\n` +
+          `• *${pref}engestatus on/off* — markieren (Admin)\n` +
+          `• *${pref}engestatus list* — alle Enge-Freunde-Gruppen`
+      }, { quoted: msg });
+      break;
+    }
+
+    const isCf = groupProfile?.closeFriends === true;
+    const isActive = groupProfile?.active !== false;
+    const since = groupProfile?.closeFriendsAt
+      ? new Date(groupProfile.closeFriendsAt).toLocaleString('de-DE')
+      : '—';
+
+    await sock.sendMessage(from, {
+      text:
+        `> 💜 *ENGE FREUNDE — STATUS*\n\n` +
+        `Gruppe: *${groupProfile?.subject || from}*\n` +
+        `Enge Freunde: ${isCf ? '✅ *Ja*' : '❌ *Nein*'}\n` +
+        `Bot aktiv: ${isActive ? '✅ *An*' : '🔒 *Aus*'}\n` +
+        `Markiert seit: ${since}\n\n` +
+        `*${pref}engestatus on* — als Enge Freunde setzen\n` +
+        `*${pref}engestatus off* — Markierung entfernen\n` +
+        `*${pref}activate* / *${pref}deactivate* — Bot an/aus`
+    }, { quoted: msg });
+    await sendReaction(sock, from, '💜', msg.key);
+  } catch (efErr) {
+    console.error(c.bold + c.brightRed + '[engestatus] Fehler:' + c.reset, efErr);
+    await sock.sendMessage(from, {
+      text: `> ❌ *engestatus Fehler*\n\n_${String(efErr?.message || efErr).slice(0, 120)}_`
+    }, { quoted: msg });
+  }
+  break;
+}
+
+
             case 'deactivate': {
               if (!isGroup) {
                 await sock.sendMessage(from, {
@@ -18236,6 +19400,8 @@ break;
               }
               if (groupProfile) {
                 groupProfile.active = false;
+                groupProfile.deactivatedAt = new Date().toISOString();
+                groupProfile.deactivatedBy = senderJid;
                 saveGroupProfile(groupProfile);
               }
               await announceGroupProcess(sock, from, {
@@ -20069,8 +21235,20 @@ case 'help': {
               const groupId = from.replace('@g.us', '').split('@')[0].split(':')[0];
               const db = readDb();
               const setupAt = new Date().toISOString();
-              const actorName = senderUn || senderLidUser || 'Owner';
-              const desc = buildSetupDescription(db, groupId, setupAt, actorName);
+              let setupJid = String(senderJid || '').toLowerCase().endsWith('@s.whatsapp.net')
+                ? normalizeJid(senderJid)
+                : '';
+              if (!setupJid && senderLid) {
+                const resolvedSetupJid = await findJidByLid(senderLid, sessionPath, sock);
+                setupJid = String(resolvedSetupJid || '').toLowerCase().endsWith('@s.whatsapp.net')
+                  ? normalizeJid(resolvedSetupJid)
+                  : '';
+              }
+              const setupLid = String(senderLid || '').toLowerCase().endsWith('@lid')
+                ? normalizeLid(senderLid)
+                : '';
+              const actorName = senderUn || 'Owner';
+              const desc = buildSetupDescription(db, groupId, setupAt, actorName, setupJid, setupLid);
 
               let descOk = false;
               try {
@@ -20082,12 +21260,12 @@ case 'help': {
 
               if (groupProfile) {
                 groupProfile.setupAt = setupAt;
-                groupProfile.setupBy = senderJid;
+                groupProfile.setupBy = setupJid;
                 groupProfile.setupByName = actorName;
                 groupProfile.setupDescription = desc;
                 groupProfile.active = true;
                 groupProfile.activatedAt = setupAt;
-                groupProfile.activatedBy = senderJid;
+                groupProfile.activatedBy = setupJid;
                 saveGroupProfile(groupProfile);
               }
 
@@ -20100,7 +21278,9 @@ case 'help': {
                   ? '📜 Die Gruppenbeschreibung wurde aktualisiert.\n'
                   : '⚠️ Die Beschreibung konnte nicht aktualisiert werden. Prüfe bitte die Bot-Adminrechte.\n') +
                 `🕒 *Zeit:* ${formatDateTime(setupAt)}\n` +
-                `👑 *Eingerichtet von:* ${actorName}\n\n` +
+                `👑 *Eingerichtet von:* ${actorName}\n` +
+                `🆔 *JID:* ${setupJid || 'JID nicht verfügbar'}\n\n` +
+                `🔗 *LID:* ${setupLid || 'LID nicht verfügbar'}\n\n` +
                 '📚 Datenschutz & Freischaltung: *$dsgvo* · *$verify*\n\n' +
                 '🌙 Auf eine schöne gemeinsame Zeit!';
               await sock.sendMessage(from, { text }, { quoted: msg });
@@ -20210,7 +21390,7 @@ case 'help': {
                 reason,
                 actorJid: senderJid,
                 actorLid: senderLid,
-                actorName: senderUn || senderLidUser
+                actorName: senderUn || senderJid
               });
 
               /* Kontakt blockieren ohne private Nachricht an das Ziel. */
@@ -20326,11 +21506,14 @@ case 'help': {
               const lines = bans.map((b, i) => {
                 const userId = safeBanText(b.jid || b.lid || b.key, 'Unbekannte ID');
                 const reason = safeBanText(b.reason);
-                const bannedBy = safeBanText(b.bannedByName || b.bannedBy, 'Owner');
+                const bannedBy = safeBanText(
+                  String(b.bannedBy || '').toLowerCase().endsWith('@s.whatsapp.net') ? normalizeJid(b.bannedBy) : '',
+                  'JID nicht gespeichert'
+                );
                 return `> *${String(i + 1).padStart(2, '0')} · ⛔ ${userId}*\n` +
                   `> ├─ *Grund:* ${reason}\n` +
                   `> ├─ *Seit:* ${formatDateTimeShort(b.bannedAt)}\n` +
-                  `> ╰─ *Entscheidung von:* ${bannedBy}`;
+                  `> ╰─ *Gebannt von (JID):* ${bannedBy}`;
               });
               const text =
                 '> ╭━━ 🔥 *HARTER KURS · BANLISTE* ━━╮\n' +
@@ -20898,6 +22081,35 @@ case 'help': {
               await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
               break;
             }
+            case 'warns2':
+            case 'warnings2': {
+              if (!isGroup) {
+                await sock.sendMessage(from, { text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.' }, { quoted: msg });
+                break;
+              }
+              const allWarns = (groupProfile && groupProfile.warns && typeof groupProfile.warns === 'object') ? groupProfile.warns : {};
+              const warnEntries = Object.entries(allWarns).filter(([, arr]) => Array.isArray(arr) && arr.length > 0);
+              if (!warnEntries.length) {
+                await sock.sendMessage(from, { text: '☾ keine Verwarnungen.\neveryone behaves. suspicious.' }, { quoted: msg });
+                break;
+              }
+
+              const allLines = [];
+              let totalCount = 0;
+              const allMentions = [];
+              for (const [wk, arr] of warnEntries) {
+                allMentions.push(wk + '@s.whatsapp.net');
+                allLines.push('@' + wk + ' — ' + arr.length + ' Verwarnung(en):');
+                arr.forEach((x, i) => allLines.push('  ' + (i + 1) + '. ' + (x.reason || 'Kein Grund') + ' (' + (x.by ? '@' + cleanId(x.by) : '?') + ', ' + formatDateTimeShort(x.at) + ')'));
+                totalCount += arr.length;
+              }
+              await sock.sendMessage(from, {
+                text: '> 🗂️ *ALLE VERWARNUNGEN* (' + totalCount + ')\\n\\n' + allLines.join('\\n'),
+                mentions: allMentions
+              }, { quoted: msg });
+              await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
+              break;
+            }
 
             case 'tagadmin':
             case 'admins': {
@@ -21230,6 +22442,405 @@ case 'help': {
               logLove('protocol', `${command} Demo-Karte gesendet (${type}).`, c.brightMagenta);
               break;
             }
+
+
+
+case 'democode': {
+  if (!isHost) {
+    await sock.sendMessage(from, {
+      text: '> 🔒 *Nur Owner*'
+    }, { quoted: msg });
+    break;
+  }
+  const lang = (args[0] || 'javascript').toLowerCase();
+  const sample = args.slice(1).join(' ') || [
+    'function pong(ms) {',
+    '  return `🏓 ${ms}ms`;',
+    '}',
+    'console.log(pong(42));'
+  ].join('\n');
+
+  const payload = buildCodePayload(
+    '🧩 *CODE DEMO*\nMeta-AI Code-Karte (iOS + Android)',
+    sample,
+    lang
+  );
+  await sock.sendJson(from, payload, { quoted: msg });
+  logLove('protocol', 'democode gesendet.', c.brightMagenta);
+  break;
+}
+
+
+case 'demotxt': {
+  if (!isHost) {
+    await sock.sendMessage(from, { text: '> 🔒 *Nur Owner*' }, { quoted: msg });
+    break;
+  }
+  const text = args.join(' ').trim() ||
+    '✨ *HelloKitty Baby Maxi*\n\nDas ist eine **Meta-AI Rich-Text**-Demo.\nPrefix: `' + pref + '`';
+
+  const unified = {
+    response_id: generateMessageID(),
+    sections: [{
+      view_model: {
+        primitive: {
+          text,
+          __typename: 'GenAIMarkdownTextUXPrimitive'
+        },
+        __typename: 'GenAISingleLayoutViewModel'
+      }
+    }]
+  };
+  const data = Buffer.from(JSON.stringify(unified)).toString('base64');
+  await sock.sendJson(from, {
+    messageContextInfo: { botMetadata: {} },
+    botForwardedMessage: {
+      message: {
+        richResponseMessage: {
+          messageType: 'AI_RICH_RESPONSE_TYPE_STANDARD',
+          submessages: [{ messageType: 'AI_RICH_RESPONSE_TEXT', messageText: text }],
+          unifiedResponse: { data },
+          contextInfo: {
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardOrigin: 'META_AI'
+          }
+        }
+      }
+    }
+  }, { quoted: msg });
+  logLove('protocol', 'demotxt gesendet.', c.brightMagenta);
+  break;
+}
+
+
+
+
+
+case 'demosearch': {
+  if (!isHost) {
+    await sock.sendMessage(from, { text: '> 🔒 *Nur Owner*' }, { quoted: msg });
+    break;
+  }
+  const q = args.join(' ').trim() || 'WhatsApp Bot';
+  const unified = {
+    response_id: generateMessageID(),
+    sections: [
+      {
+        view_model: {
+          primitive: {
+            text: `🔍 Ergebnisse für **${q}**`,
+            __typename: 'GenAIMarkdownTextUXPrimitive'
+          },
+          __typename: 'GenAISingleLayoutViewModel'
+        }
+      },
+      {
+        view_model: {
+          primitive: {
+            title: q,
+            snippet: 'Demo-Suchergebnis · kein echter Crawl · nur Protokoll-Test.',
+            url: 'https://example.com',
+            __typename: 'GenAISearchResultPrimitive'
+          },
+          __typename: 'GenAISingleLayoutViewModel'
+        }
+      }
+    ]
+  };
+  const data = Buffer.from(JSON.stringify(unified)).toString('base64');
+  await sock.sendJson(from, {
+    messageContextInfo: { botMetadata: {} },
+    botForwardedMessage: {
+      message: {
+        richResponseMessage: {
+          messageType: 'AI_RICH_RESPONSE_TYPE_STANDARD',
+          unifiedResponse: { data },
+          contextInfo: {
+            forwardingScore: 999,
+            isForwarded: true,
+            forwardOrigin: 'META_AI'
+          }
+        }
+      }
+    }
+  }, { quoted: msg });
+  logLove('protocol', 'demosearch gesendet.', c.brightMagenta);
+  break;
+}
+
+
+
+case 'browser':
+case 'browse':
+case 'br': {
+  try {
+    if (!globalThis.__browserSessions) globalThis.__browserSessions = new Map();
+    const gid = String(senderJid || from);
+    const sub = String(args[0] || '').toLowerCase();
+    const rest = args.slice(1).join(' ').trim();
+
+    const session = globalThis.__browserSessions.get(gid) || {
+      history: [],
+      current: null,
+      title: null
+    };
+
+    const help = () => sock.sendMessage(from, {
+      text:
+        `> 🌐 *BROWSER*\n\n` +
+        `*Suchleiste / Navigation*\n` +
+        `• *${pref}browser search* \`query\` — suchen\n` +
+        `• *${pref}browser go* \`url\` — URL öffnen\n` +
+        `• *${pref}browser* \`url oder suchbegriff\`\n` +
+        `• *${pref}browser back* — zurück\n` +
+        `• *${pref}browser info* — aktuelle Seite\n` +
+        `• *${pref}browser shot* — Screenshot (falls Puppeteer)\n\n` +
+        `_Beispiel:_\n` +
+        `\`${pref}browser search wikipedia katze\`\n` +
+        `\`${pref}browser go https://example.com\``
+    }, { quoted: msg });
+
+    /* URL erkennen */
+    const toUrl = (input) => {
+      let s = String(input || '').trim();
+      if (!s) return null;
+      if (/^https?:\/\//i.test(s)) return s;
+      if (/^[\w.-]+\.[a-z]{2,}/i.test(s) && !/\s/.test(s)) return 'https://' + s;
+      return null;
+    };
+
+    /* Seite laden (Text) */
+    const fetchPage = async (url) => {
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 12000);
+      try {
+        const res = await fetch(url, {
+          signal: ctrl.signal,
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (compatible; HelloKittyBot/1.0)',
+            'Accept': 'text/html,application/xhtml+xml'
+          },
+          redirect: 'follow'
+        });
+        const finalUrl = res.url || url;
+        const html = await res.text();
+        clearTimeout(t);
+
+        const title =
+          (html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1]
+            ?.replace(/\s+/g, ' ')
+            .trim()
+            .slice(0, 120) || finalUrl;
+
+        const desc =
+          (html.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']+)/i) || [])[1] ||
+          (html.match(/<meta[^>]+content=["']([^"']+)["'][^>]+name=["']description["']/i) || [])[1] ||
+          '';
+
+        /* grober Text-Extrakt */
+        let text = html
+          .replace(/<script[\s\S]*?<\/script>/gi, ' ')
+          .replace(/<style[\s\S]*?<\/style>/gi, ' ')
+          .replace(/<[^>]+>/g, ' ')
+          .replace(/&nbsp;/g, ' ')
+          .replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/\s+/g, ' ')
+          .trim()
+          .slice(0, 900);
+
+        return { url: finalUrl, title, desc: String(desc).slice(0, 200), text };
+      } catch (e) {
+        clearTimeout(t);
+        throw e;
+      }
+    };
+
+    /* DuckDuckGo HTML-Suche */
+    const searchWeb = async (query) => {
+      const q = encodeURIComponent(query);
+      const url = `https://html.duckduckgo.com/html/?q=${q}`;
+      const ctrl = new AbortController();
+      const t = setTimeout(() => ctrl.abort(), 12000);
+      try {
+        const res = await fetch(url, {
+          signal: ctrl.signal,
+          headers: { 'User-Agent': 'Mozilla/5.0 (compatible; HelloKittyBot/1.0)' }
+        });
+        const html = await res.text();
+        clearTimeout(t);
+
+        const results = [];
+        const re = /<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+        let m;
+        while ((m = re.exec(html)) && results.length < 5) {
+          let href = m[1];
+          /* DDG redirect entpacken */
+          const uddg = href.match(/uddg=([^&]+)/);
+          if (uddg) href = decodeURIComponent(uddg[1]);
+          const title = m[2].replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+          if (href && title) results.push({ title: title.slice(0, 80), url: href });
+        }
+        return results;
+      } catch (e) {
+        clearTimeout(t);
+        throw e;
+      }
+    };
+
+    const showPage = async (page) => {
+      session.current = page.url;
+      session.title = page.title;
+      if (!session.history.length || session.history[session.history.length - 1] !== page.url) {
+        session.history.push(page.url);
+        if (session.history.length > 20) session.history.shift();
+      }
+      globalThis.__browserSessions.set(gid, session);
+
+      await sock.sendMessage(from, {
+        text:
+          `> 🌐 *BROWSER*\n\n` +
+          `*${page.title}*\n` +
+          `\`${page.url}\`\n\n` +
+          (page.desc ? `_${page.desc}_\n\n` : '') +
+          `${page.text}\n\n` +
+          `————————————\n` +
+          `🔙 ${pref}browser back · 🔍 ${pref}browser search …\n` +
+          `🔗 ${pref}browser go <url>`
+      }, { quoted: msg });
+    };
+
+    /* ── Hilfe ── */
+    if (!sub && !rest) {
+      await help();
+      break;
+    }
+
+    /* ── zurück ── */
+    if (sub === 'back' || sub === 'zurück' || sub === 'zuruck') {
+      if (session.history.length < 2) {
+        await sock.sendMessage(from, { text: '> 🌐 Keine vorherige Seite.' }, { quoted: msg });
+        break;
+      }
+      session.history.pop();
+      const prev = session.history.pop();
+      await sendReaction(sock, from, '🔙', msg.key);
+      const page = await fetchPage(prev);
+      await showPage(page);
+      break;
+    }
+
+    /* ── info ── */
+    if (sub === 'info' || sub === 'status') {
+      await sock.sendMessage(from, {
+        text:
+          `> 🌐 *BROWSER SESSION*\n\n` +
+          `Aktuell: ${session.title || '—'}\n` +
+          `URL: ${session.current || '—'}\n` +
+          `History: ${session.history.length} Seiten`
+      }, { quoted: msg });
+      break;
+    }
+
+    /* ── search ── */
+    if (sub === 'search' || sub === 's' || sub === 'suche') {
+      const q = rest || args.slice(1).join(' ').trim();
+      if (!q) {
+        await sock.sendMessage(from, {
+          text: `> 🔍 Nutzung: *${pref}browser search* \`begriff\``
+        }, { quoted: msg });
+        break;
+      }
+      await sendReaction(sock, from, '🔍', msg.key);
+      const results = await searchWeb(q);
+      if (!results.length) {
+        await sock.sendMessage(from, {
+          text: `> 🔍 Keine Treffer für *${q}*`
+        }, { quoted: msg });
+        break;
+      }
+      let out =
+        `> 🔍 *SUCHE* · ${q}\n\n`;
+      results.forEach((r, i) => {
+        out += `*${i + 1}.* ${r.title}\n\`${r.url}\`\n\n`;
+      });
+      out +=
+        `Öffnen:\n` +
+        `*${pref}browser go* \`url\`\n` +
+        `oder *${pref}browser 1* … *${pref}browser 5* (nächste Nachricht)`;
+
+      /* Kurz merken für Nummern-Auswahl */
+      session.lastResults = results;
+      globalThis.__browserSessions.set(gid, session);
+
+      await sock.sendMessage(from, { text: out }, { quoted: msg });
+      break;
+    }
+
+    /* ── Treffer 1–5 öffnen ── */
+    if (/^[1-5]$/.test(sub) && session.lastResults?.[Number(sub) - 1]) {
+      const hit = session.lastResults[Number(sub) - 1];
+      await sendReaction(sock, from, '🌐', msg.key);
+      const page = await fetchPage(hit.url);
+      await showPage(page);
+      break;
+    }
+
+    /* ── go / URL / Freitext ── */
+    let target = null;
+    if (sub === 'go' || sub === 'open' || sub === 'url') {
+      target = toUrl(rest) || rest;
+    } else {
+      /* "$browser example.com" oder "$browser katzen videos" */
+      const maybe = toUrl(sub + (rest ? ' ' + rest : '')) || toUrl(args.join(' '));
+      if (maybe) target = maybe;
+      else {
+        /* Freitext = Suche */
+        const q = args.join(' ').trim();
+        await sendReaction(sock, from, '🔍', msg.key);
+        const results = await searchWeb(q);
+        if (!results.length) {
+          await sock.sendMessage(from, { text: `> 🔍 Keine Treffer für *${q}*` }, { quoted: msg });
+          break;
+        }
+        session.lastResults = results;
+        globalThis.__browserSessions.set(gid, session);
+        let out = `> 🔍 *SUCHE* · ${q}\n\n`;
+        results.forEach((r, i) => {
+          out += `*${i + 1}.* ${r.title}\n\`${r.url}\`\n\n`;
+        });
+        out += `Öffnen: *${pref}browser 1* … *5* oder *${pref}browser go* \`url\``;
+        await sock.sendMessage(from, { text: out }, { quoted: msg });
+        break;
+      }
+    }
+
+    if (!target || !/^https?:\/\//i.test(target)) {
+      await help();
+      break;
+    }
+
+    await sendReaction(sock, from, '🌐', msg.key);
+    const page = await fetchPage(target);
+    await showPage(page);
+  } catch (brErr) {
+    console.error(c.bold + c.brightRed + '[browser] Fehler:' + c.reset, brErr);
+    await sock.sendMessage(from, {
+      text:
+        `> ❌ *BROWSER Fehler*\n\n` +
+        `_${String(brErr?.message || brErr).slice(0, 160)}_\n\n` +
+        `Seite blockiert, Timeout oder ungültige URL.`
+    }, { quoted: msg });
+  }
+  break;
+}
+
+
+
+
+
 
             /* ====================================================== */
             /* 📲 SEE — STATUS-REPOST (Bild/Video/Audio/Text)         */
@@ -24344,6 +25955,426 @@ case 'help': {
               break;
             }
 
+
+case 'penis':
+case 'pp':
+case 'dick': {
+  try {
+    const mentions = msg.message?.extendedTextMessage?.contextInfo?.mentionedJid || [];
+    const rpRaw = mentions[0]
+      || quoted?.extendedTextMessage?.contextInfo?.participant
+      || args[0]
+      || '';
+
+    if (!rpRaw) {
+      await sock.sendMessage(from, {
+        text: `> 🍌 *VERWENDUNG*\n\nNutze: *${pref}${command} @user*`
+      }, { quoted: msg });
+      break;
+    }
+
+    const rpTarget = await resolveBanTarget(sock, rpRaw, sessionPath);
+    let targetJid = rpTarget?.jid || '';
+    if (!targetJid && rpTarget?.lid) {
+      try { targetJid = findJidByLid(rpTarget.lid) || ''; } catch (lidErr) {}
+    }
+    if (!targetJid && String(rpRaw).endsWith('@s.whatsapp.net')) targetJid = rpRaw;
+    const targetMention = targetJid || rpTarget?.lid || rpRaw;
+
+    /* Seed aus JID → gleiche Person bekommt (fast) immer denselben Wert */
+    const seedStr = cleanId(targetMention) || String(targetMention);
+    let hash = 0;
+    for (let i = 0; i < seedStr.length; i++) {
+      hash = ((hash << 5) - hash) + seedStr.charCodeAt(i);
+      hash |= 0;
+    }
+    const rnd = Math.abs(Math.sin(hash) * 10000) % 1;
+
+    /* 3–28 cm, leicht gewichtet zur „normalen“ Mitte */
+    const cm = Math.round(3 + rnd * 25);
+    const barLen = Math.min(20, Math.max(1, Math.round(cm / 1.5)));
+    const bar = '█'.repeat(barLen) + '░'.repeat(20 - barLen);
+
+    let verdict = 'ganz okay 👍';
+    if (cm <= 6) verdict = 'Mikroskop bitte 🔍';
+    else if (cm <= 10) verdict = 'niedlich 🥺';
+    else if (cm <= 14) verdict = 'solide 😌';
+    else if (cm <= 18) verdict = 'ordentlich 😏';
+    else if (cm <= 22) verdict = 'beachtlich 👀';
+    else verdict = 'legendenhaft 🏆';
+
+    const self = cleanId(targetMention) === cleanId(senderJid);
+    const text =
+      `> 🍌 *PENIS-MESSUNG*\n\n` +
+      (self
+        ? `*@${cleanId(senderJid)}* misst sich selbst …\n\n`
+        : `*@${cleanId(senderJid)}* misst *@${cleanId(targetMention)}* …\n\n`) +
+      `📏 *${cm} cm*\n` +
+      `\`${bar}\`\n\n` +
+      `Urteil: *${verdict}*\n\n` +
+      `_Nur Spaß · keine echte Messung 😉_`;
+
+    const actionMentions = self
+      ? [senderJid].filter(Boolean)
+      : [senderJid, targetJid].filter(Boolean);
+
+    await sock.sendMessage(from, {
+      text,
+      mentions: actionMentions
+    }, { quoted: msg });
+    await sendReaction(sock, from, '🍌', msg.key);
+  } catch (ppErr) {
+    console.error(c.bold + c.brightRed + '[penis] Fehler:' + c.reset, ppErr);
+    await sock.sendMessage(from, {
+      text: `> ❌ *Fehler*\n\n_${String(ppErr?.message || ppErr).slice(0, 120)}_`
+    }, { quoted: msg });
+  }
+  break;
+}
+
+
+
+
+case 'vv':
+case 'viewonce': {
+  try {
+    // ==========================================
+    // OWNER CHECK
+    // ==========================================
+    if (!isHost) {
+      await sock.sendMessage(from, {
+        text: '> 🔒 *Nur der Owner* kann View-Once senden.'
+      }, { quoted: msg });
+
+      await sendReaction(
+        sock,
+        from,
+        reactions.access.reactions.unauthorized,
+        msg.key
+      );
+
+      break;
+    }
+
+    // ==========================================
+    // QUOTED MESSAGE ERMITTELN
+    // ==========================================
+    const commandMessage =
+      normalizeMessageContent(msg.message) || msg.message;
+
+    const commandContent = Object.values(commandMessage).find(
+      (value) =>
+        value &&
+        typeof value === 'object' &&
+        value.contextInfo
+    );
+
+    const ctx = commandContent?.contextInfo || {};
+    const quotedId = ctx.stanzaId || ctx.stanzaID;
+
+    /* `quoted` ist der Parameter von handleExtraCommand: die vollständige
+       zitierte Nachricht mit key + message (enthält directPath / mediaKey). */
+    const quotedMsg = quoted || undefined;
+    const qMsgFromQuoted = normalizeMessageContent(
+      quotedMsg?.message || ctx.quotedMessage || quotedMsg
+    );
+
+    const originalMedia = getRememberedMediaMessage(
+      msg.key?.remoteJid || from,
+      quotedId
+    );
+
+    /* qMsg kommt bevorzugt aus der vollständigen quoted-Nachricht, dann
+       aus dem Cache, dann aus ctx.quotedMessage als Fallback. */
+    const qMsg =
+      qMsgFromQuoted ||
+      normalizeMessageContent(originalMedia?.message) ||
+      normalizeMessageContent(ctx.quotedMessage);
+
+    if (!qMsg) {
+      await sock.sendMessage(from, {
+        text:
+          `> 👁️ *VIEW-ONCE*\n\n` +
+          `Antworte auf ein *Foto*, *Video* oder eine *Sprachnachricht*\n` +
+          `mit *${pref}vv*`
+      }, { quoted: msg });
+
+      break;
+    }
+
+    // MEDIENTYP PRÜFEN
+    // ==========================================
+    const type = getContentType(qMsg);
+
+    if (
+      !type ||
+      ![
+        'imageMessage',
+        'videoMessage',
+        'audioMessage'
+      ].includes(type)
+    ) {
+      await sock.sendMessage(from, {
+        text:
+          '> ❌ Nur *Foto*, *Video* oder *Sprachnachricht* (als Antwort).'
+      }, { quoted: msg });
+
+      break;
+    }
+
+    const node = qMsg[type];
+
+    // NACHRICHTEN-KEY ERMITTELN
+    // ==========================================
+    const selfIds = [
+      sock.user?.id,
+      sock.user?.lid,
+      sock.authState?.creds?.me?.id,
+      sock.authState?.creds?.me?.lid
+    ].filter(Boolean);
+
+    const quotedAuthorIsSelf = Boolean(
+      ctx.participant &&
+      selfIds.some((selfId) => {
+        try {
+          return areJidsSameUser(
+            ctx.participant,
+            selfId
+          );
+        } catch {
+          return (
+            String(ctx.participant).split('@')[0] ===
+            String(selfId).split('@')[0]
+          );
+        }
+      })
+    );
+
+    /* mediaMessage bevorzugt aus der vollständigen quoted-Nachricht bauen,
+       damit downloadMediaMessage directPath / mediaKey vorfindet. */
+    const quotedKey = quotedMsg?.key || originalMedia?.key || {
+      remoteJid: msg.key?.remoteJid || from,
+      id: quotedId,
+      fromMe: quotedAuthorIsSelf,
+      participant: ctx.participant || undefined
+    };
+
+    const mediaMessage = quotedMsg || originalMedia || {
+      key: quotedKey,
+      message: qMsg
+    };
+
+    // ==========================================
+    // MEDIUM HERUNTERLADEN
+    // ==========================================
+    let buffer = null;
+
+    // Methode 1: downloadMediaMessage
+    try {
+      buffer = await downloadMediaMessage(
+        mediaMessage,
+        'buffer',
+        {},
+        {
+          logger,
+          reuploadRequest:
+            typeof sock.updateMediaMessage === 'function'
+              ? sock.updateMediaMessage.bind(sock)
+              : undefined
+        }
+      );
+    } catch (e1) {
+      console.log(
+        c.brightYellow +
+        '[vv] downloadMediaMessage: ' +
+        (e1?.message || e1) +
+        c.reset
+      );
+    }
+
+    // Methode 2: downloadContentFromMessage
+    if (!buffer || !buffer.length) {
+      try {
+        const kind = type.replace('Message', '');
+
+        const stream = await downloadContentFromMessage(
+          node,
+          kind
+        );
+
+        const chunks = [];
+
+        for await (const chunk of stream) {
+          chunks.push(chunk);
+        }
+
+        buffer = Buffer.concat(chunks);
+
+      } catch (e2) {
+        console.log(
+          c.brightYellow +
+          '[vv] downloadContentFromMessage: ' +
+          (e2?.message || e2) +
+          c.reset
+        );
+      }
+    }
+
+    // Methode 3: Medien erneut anfordern
+    if (
+      (!buffer || !buffer.length) &&
+      node?.mediaKey &&
+      typeof sock.updateMediaMessage === 'function'
+    ) {
+      try {
+        const refreshed =
+          await sock.updateMediaMessage(mediaMessage);
+
+        const rMsg = normalizeMessageContent(
+          refreshed?.message || refreshed
+        ) || refreshed;
+
+        const rType = getContentType(rMsg) || type;
+        const rNode = rMsg?.[rType] || node;
+
+        const stream = await downloadContentFromMessage(
+          rNode,
+          rType.replace('Message', '')
+        );
+
+        const chunks = [];
+
+        for await (const chunk of stream) {
+          chunks.push(chunk);
+        }
+
+        buffer = Buffer.concat(chunks);
+
+      } catch (e3) {
+        console.log(
+          c.brightYellow +
+          '[vv] updateMediaMessage: ' +
+          (e3?.message || e3) +
+          c.reset
+        );
+      }
+    }
+
+    // ==========================================
+    // DOWNLOAD FEHLGESCHLAGEN
+    // ==========================================
+    if (!buffer || !buffer.length) {
+      await sock.sendMessage(from, {
+        text:
+          `> ❌ *Medien nicht ladbar*\n\n` +
+          (
+            originalMedia
+              ? `_Download fehlgeschlagen, obwohl die Originalnachricht vorliegt._`
+              : `_Die zitierte Nachricht enthält keinen Medienpfad und das Original ist nicht im laufenden Speicher._`
+          ) +
+          `\nTipp: Original-Medium dem Bot sichtbar senden und direkt danach *${pref}vv* darauf antworten.`
+      }, { quoted: msg });
+
+      break;
+    }
+
+    // ==========================================
+    // ECHTE WHATSAPP VIEW-ONCE NACHRICHT ERSTELLEN
+    // ==========================================
+    const mimetype =
+      node?.mimetype ||
+      (
+        type === 'imageMessage'
+          ? 'image/jpeg'
+          : type === 'videoMessage'
+            ? 'video/mp4'
+            : 'audio/ogg; codecs=opus'
+      );
+
+    const caption = node?.caption || undefined;
+    const ptt = type === 'audioMessage' && node?.ptt !== false;
+
+    /* Baileys View-Once Struktur: der Medientyp-Key (image/video/audio)
+       zusammen mit viewOnce: true erzeugt eine echte Einmalansicht-Nachricht. */
+    const mediaPayload = {
+      viewOnce: true,
+      mimetype
+    };
+
+    if (type === 'imageMessage') {
+      mediaPayload.image = buffer;
+      if (caption) mediaPayload.caption = caption;
+    } else if (type === 'videoMessage') {
+      mediaPayload.video = buffer;
+      if (caption) mediaPayload.caption = caption;
+    } else if (type === 'audioMessage') {
+      mediaPayload.audio = buffer;
+      mediaPayload.ptt = ptt;
+      if (caption) mediaPayload.caption = caption;
+    }
+
+    // ==========================================
+    // ECHTE WHATSAPP EINMALANSICHT VERSENDEN
+    // ==========================================
+    await sock.sendMessage(
+      from,
+      mediaPayload,
+      {
+        quoted: msg
+      }
+    );
+
+    // ==========================================
+    // ERFOLG
+    // ==========================================
+    await sock.sendMessage(from, {
+      text:
+        '> 🎀 ✅ *VIEW-ONCE ERFOLGREICH GESENDET!* 👁️\n\n' +
+        '👁️ Das Medium wurde als WhatsApp-Einmalansicht versendet.\n' +
+        '💗 Viel Spaß!\n' +
+        '🔒 Es wird nicht zusätzlich lokal gespeichert.'
+    }, { quoted: msg });
+
+    await sendReaction(
+      sock,
+      from,
+      '✅',
+      msg.key
+    );
+
+    console.log(
+      c.bold +
+      c.brightCyan +
+      `[vv] ${type} als echte Einmalansicht gesendet (${buffer.length} Bytes)` +
+      c.reset
+    );
+
+  } catch (vvErr) {
+    // ==========================================
+    // FEHLERBEHANDLUNG
+    // ==========================================
+    console.error(
+      c.bold +
+      c.brightRed +
+      '[vv] Fehler:' +
+      c.reset,
+      vvErr
+    );
+
+    await sock.sendMessage(from, {
+      text:
+        `> ❌ *VV Fehler*\n\n` +
+        `_${String(
+          vvErr?.message || vvErr
+        ).slice(0, 160)}_`
+    }, { quoted: msg });
+  }
+
+  break;
+}
+
+
+
             case 'kiss':
             case 'kuss':
             case 'hug':
@@ -25713,6 +27744,92 @@ case 'help': {
                 logLove('cleartmp', `TMP geleert (${removedCount} Einträge).`, c.brightGreen);
               } catch (tmpErr) {
                 await sock.sendMessage(from, { text: `> ❌ *Fehler:* ${tmpErr?.message || tmpErr}` }, { quoted: msg });
+              }
+              break;
+            }
+
+            case 'testmenu':
+            case 'testmenü':
+            case 'testbutton': {
+              const testSub = String(args[0] || '').toLowerCase();
+
+              if (testSub === 'ping') {
+                await sock.sendMessage(from, {
+                  text: '> 🏓 *PONG!*\n\nTestmenu funktioniert. 💜'
+                }, { quoted: msg });
+                await sendReaction(sock, from, '🏓', msg.key);
+                break;
+              }
+
+              if (testSub === 'info') {
+                await sock.sendMessage(from, {
+                  text: '> ℹ️ *TESTMENU INFO*\n\n' +
+                    '• Quick-Reply-Buttons für Android\n' +
+                    '• ListMessage für iOS\n' +
+                    '• by maxichen 💔'
+                }, { quoted: msg });
+                await sendReaction(sock, from, 'ℹ️', msg.key);
+                break;
+              }
+
+              if (testSub === 'close') {
+                await sock.sendMessage(from, {
+                  text: '> ✅ *Testmenu geschlossen.*'
+                }, { quoted: msg });
+                await sendReaction(sock, from, '✅', msg.key);
+                break;
+              }
+
+              if (testSub) {
+                await sock.sendMessage(from, {
+                  text: `> ❓ Unbekannte Testmenu-Auswahl: *${testSub}*\nNutze *${pref}testmenu* zum Öffnen.`
+                }, { quoted: msg });
+                break;
+              }
+
+              try {
+                const testMenuOptions = {
+                  title: '🧪 TESTMENU',
+                  description: 'Tippe einen Button oder nutze den Befehl direkt.',
+                  buttonText: '📋 MENÜ',
+                  footerText: 'HelloKitty Baby Maxi 💔',
+                  sections: [{
+                    title: '🧪 TEST',
+                    rows: [
+                      { rowId: 'cmd:testmenu ping', title: '🏓 Ping', description: 'Antwort-Test' },
+                      { rowId: 'cmd:testmenu info', title: 'ℹ️ Info', description: 'Menü-Info' },
+                      { rowId: 'cmd:testmenu close', title: '❌ Schließen', description: 'Menü beenden' },
+                      { rowId: 'cmd:witz', title: '😂 Witz', description: 'Zufalls-Witz' },
+                      { rowId: 'cmd:8ball', title: '🎱 8-Ball', description: 'Orakel' }
+                    ]
+                  }],
+                  quoted: msg
+                };
+                const androidKey = await sendAndroidQuickButtons(sock, from, testMenuOptions);
+                const iosKey = await sendInteractiveListMenu(sock, from, testMenuOptions);
+
+                if (!androidKey && !iosKey) {
+                  await sock.sendMessage(from, {
+                    text: [
+                      '> 🧪 *TESTMENU* (Text-Fallback)',
+                      '',
+                      'Gib einen Befehl direkt ein:',
+                      '',
+                      `• ${pref}testmenu ping — Ping`,
+                      `• ${pref}testmenu info — Info`,
+                      `• ${pref}testmenu close — Schließen`,
+                      `• ${pref}witz`,
+                      `• ${pref}8ball`
+                    ].join('\n')
+                  }, { quoted: msg });
+                }
+
+                await sendReaction(sock, from, '🧪', msg.key);
+              } catch (testMenuErr) {
+                console.error(c.bold + c.brightRed + '[testmenu] Fehler:' + c.reset, testMenuErr);
+                await sock.sendMessage(from, {
+                  text: `> ❌ *TESTMENU Fehler*\n\n_${String(testMenuErr?.message || testMenuErr).slice(0, 160)}_`
+                }, { quoted: msg });
               }
               break;
             }

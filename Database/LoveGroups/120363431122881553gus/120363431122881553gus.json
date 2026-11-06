@@ -1,0 +1,316 @@
+{
+  "groupId": "120363431122881553",
+  "groupJid": "120363431122881553@g.us",
+  "subject": "Chill vibes ❤️",
+  "creator": "197461842862188@lid",
+  "owner": "197461842862188@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-12T19:44:10.736Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-12T19:10:15.586Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": true,
+    "antiflood": true,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": true,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 1180,
+    "level": 3,
+    "msgs": 590,
+    "games": 0,
+    "members": {
+      "197461842862188": {
+        "m": 28,
+        "xp": 56,
+        "games": 0,
+        "last": 1791868539121
+      },
+      "61929754247256": {
+        "m": 17,
+        "xp": 34,
+        "games": 0,
+        "last": 1791836580734
+      },
+      "159769276993573": {
+        "m": 281,
+        "xp": 562,
+        "games": 0,
+        "last": 1791863317898
+      },
+      "102164856844324": {
+        "m": 96,
+        "xp": 192,
+        "games": 0,
+        "last": 1791862342796
+      },
+      "7512300511460": {
+        "m": 98,
+        "xp": 196,
+        "games": 0,
+        "last": 1791862317466
+      },
+      "265025872777236": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791832294684
+      },
+      "269574108926096": {
+        "m": 28,
+        "xp": 56,
+        "games": 0,
+        "last": 1791869495952
+      },
+      "243637086589036": {
+        "m": 12,
+        "xp": 24,
+        "games": 0,
+        "last": 1791852529378
+      },
+      "51231108165710": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791833799852
+      },
+      "163943783907546": {
+        "m": 3,
+        "xp": 6,
+        "games": 0,
+        "last": 1791855114903
+      },
+      "86861854859446": {
+        "m": 9,
+        "xp": 18,
+        "games": 0,
+        "last": 1791852057622
+      },
+      "237100062531728": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791848421441
+      },
+      "222616929476682": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791857221043
+      },
+      "null": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791859847932
+      },
+      "171760725033133": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791866252126
+      },
+      "237911559684294": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791866262765
+      }
+    },
+    "week": {
+      "k": "2026-W42",
+      "xp": 1180
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 1180
+    },
+    "daily": {
+      "k": "2026-10-13",
+      "msgs": 457
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-10-13"
+    },
+    "history": {
+      "2026-10-12": 266,
+      "2026-10-13": 914
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-13",
+      "target": 50,
+      "progress": 457,
+      "claimed": true
+    },
+    "weekly": {
+      "k": "2026-W42",
+      "target": 200,
+      "progress": 1180,
+      "claimed": true
+    }
+  },
+  "gach": {
+    "gmsg_100": 1791836431383,
+    "gxp_1k": 1791861376353
+  },
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1791833756356,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1791834242789,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1791836431383,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1791852375134,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1791862023722,
+      "actor": "guard",
+      "action": "warn",
+      "detail": "159769276993573: Anti-Flood (5)"
+    },
+    {
+      "ts": 1791862024655,
+      "actor": "guard",
+      "action": "kick",
+      "detail": "159769276993573: Anti-Flood"
+    }
+  ],
+  "gtreasury": {
+    "balance": 2160,
+    "log": [
+      {
+        "ts": 1791833756356,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791836431383,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1791836431383,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1791851794985,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      },
+      {
+        "ts": 1791852375134,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791858051246,
+        "delta": 120,
+        "reason": "Group-Level 2"
+      },
+      {
+        "ts": 1791861376353,
+        "delta": 150,
+        "reason": "Achievement Sammelphase"
+      },
+      {
+        "ts": 1791861997930,
+        "delta": 130,
+        "reason": "Group-Level 3"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 35,
+  "adminCount": 11,
+  "metaAt": 1791869496275,
+  "setupAt": "2026-10-12T19:44:10.736Z",
+  "setupBy": "4915155894714@s.whatsapp.net",
+  "setupByName": "269574108926096",
+  "setupDescription": "╭─ 🎀 *HELLOKITTY BABY MAXI* ─╮\n│ ✨ Jetzt aktiv in *Chill vibes ❤️*\n│\n│ 💜 Schön, dass ich euch begleiten darf!\n│ 📜 Infos zu Datenschutz & Freischaltung:\n│    *$dsgvo* · *$verify*\n├────────────────────\n│ 🕒 Eingerichtet: Mo., 12.10.2026, 21:44:10\n│ 👑 Von: 269574108926096\n╰─ 🌙 Habt eine schöne gemeinsame Zeit!",
+  "warns": {},
+  "autodl": true,
+  "welcome": true,
+  "goodbye": true,
+  "kick": true,
+  "promote": true,
+  "demote": true,
+  "liebe": true,
+  "fun": true,
+  "media": true,
+  "tools": true,
+  "badwords": true,
+  "antilink": true,
+  "night": true,
+  "afk": true
+}

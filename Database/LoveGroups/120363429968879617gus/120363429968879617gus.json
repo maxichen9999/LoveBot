@@ -1,0 +1,165 @@
+{
+  "groupId": "120363429968879617",
+  "groupJid": "120363429968879617@g.us",
+  "subject": "🥳Dating💕with 🥰first 💖 Love 🥳",
+  "creator": "unknown",
+  "owner": "unknown",
+  "ownerUsername": null,
+  "active": false,
+  "activatedAt": null,
+  "activatedBy": null,
+  "createdAt": "2026-10-30T21:29:58.633Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 26,
+    "level": 0,
+    "msgs": 13,
+    "games": 0,
+    "members": {
+      "18387409309848": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793395798642
+      },
+      "269157648040010": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793395847875
+      },
+      "99948318175477": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1793396128545
+      },
+      "135846091043001": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1793396105337
+      },
+      "269574108926096": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1793710715539
+      }
+    },
+    "week": {
+      "k": "2026-W45",
+      "xp": 4
+    },
+    "month": {
+      "k": "2026-11",
+      "xp": 4
+    },
+    "daily": {
+      "k": "2026-11-03",
+      "msgs": 2
+    },
+    "streak": {
+      "c": 1,
+      "last": "2026-11-03"
+    },
+    "history": {
+      "2026-10-30": 22,
+      "2026-11-03": 4
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-11-03",
+      "target": 50,
+      "progress": 2,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W45",
+      "target": 200,
+      "progress": 4,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1793710715904,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 310,
+  "adminCount": 8,
+  "metaAt": 1793710877368,
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false
+}

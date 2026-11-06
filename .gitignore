@@ -1,25 +1,20 @@
-# Local/runtime data
-node_modules/
-tmp/
-Logs/
-Sessions/
-
-# Private local databases and generated state
-Database/
-
-# Secrets and local configuration
+﻿
+# Private LoveBot data
 .env
 .env.*
 !.env.example
-
-# OS/editor files
-.DS_Store
-Thumbs.db
-.vscode/
-
-# Sicherungskopien aus dem Arbeitsbereich (kein Repo-Inhalt)
-backup-*/
-
-# Lokale Sicherungskopien (bleiben auf dem Rechner)
-backups/
-.andromity/
+**/Neelegirly_Sessions/
+**/sessions/
+**/session/
+**/auth_info_baileys/
+**/.wwebjs_auth/
+**/.wwebjs_cache/
+**/owner.json
+**/database.json
+**/creds.json
+**/credentials.json
+**/token.json
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx

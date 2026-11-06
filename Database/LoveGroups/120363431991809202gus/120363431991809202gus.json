@@ -1,0 +1,140 @@
+{
+  "groupId": "120363431991809202",
+  "groupJid": "120363431991809202@g.us",
+  "subject": "🎀 𝟗𝟏𝟎𝓜𝓪𝔁𝓲’s Pink Paradise 🩷",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": false,
+  "activatedAt": null,
+  "activatedBy": null,
+  "createdAt": "2026-11-01T13:22:52.980Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 2,
+    "level": 0,
+    "msgs": 1,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793539372992
+      }
+    },
+    "week": {
+      "k": "2026-W45",
+      "xp": 2
+    },
+    "month": {
+      "k": "2026-11",
+      "xp": 2
+    },
+    "daily": {
+      "k": "2026-11-01",
+      "msgs": 1
+    },
+    "streak": {
+      "c": 1,
+      "last": "2026-11-01"
+    },
+    "history": {
+      "2026-11-01": 2
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-11-01",
+      "target": 50,
+      "progress": 1,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W45",
+      "target": 200,
+      "progress": 2,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1793539373268,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 103,
+  "adminCount": 5,
+  "metaAt": 1793539373217,
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false
+}

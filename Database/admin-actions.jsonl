@@ -1,0 +1,85 @@
+{"time":"2026-09-10T06:39:03.299Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"185.47.•.•"}
+{"time":"2026-09-10T06:39:19.911Z","actor":"910maxi","action":"session.delete","target":"test910","name":"test910"}
+{"time":"10.9.2026, 11:15:07","actor":"910maxi","action":"download.zip","target":"LoveBot-All-in-One","files":8,"size":657970,"ip":"185.47.•.•"}
+{"time":"2026-09-10T10:01:34.133Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"185.47.•.•"}
+{"time":"10.9.2026, 12:01:42","actor":"910maxi","action":"export.xlsx","target":"owner-export","sheets":"Übersicht, Gruppen, Nutzer & Profile, Nutzer-Details (Spiele · Bank), Accounts & Rechte, Konten-Historie, Web-Sessions, IP-Übersicht & Standorte, Sperren & Bans, Bot-Sessions, Audit-Log, Admin-Aktionen, Rollen-Matrix","via":"reauth"}
+{"time":"2026-09-10T10:02:37.824Z","actor":"910maxi","action":"feature.toggle","target":"120363411386930403 | 𓆩♡𓆪 910maxi 𓆩♡𓆪 Dev gruppe | antilink","key":"antilink","on":false,"before":true,"reason":"Brauche ich ned","group":"𓆩♡𓆪 910maxi 𓆩♡𓆪 Dev gruppe"}
+{"time":"2026-09-11T08:49:41.358Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"185.47.•.•"}
+{"time":"2026-09-11T21:02:32.998Z","actor":"910maxi","action":"reauth.failed","target":"reauth.verify","ip":"193.111.•.•"}
+{"time":"2026-09-11T21:02:38.530Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"193.111.•.•"}
+{"time":"2026-09-13T08:41:30.151Z","actor":"owner","action":"mute","detail":"269724751503435 · permanent"}
+{"time":"2026-09-13T08:44:12.382Z","actor":"269574108926096","action":"ai-group","group":"120363411386930403","detail":"an"}
+{"time":"2026-09-13T09:21:19.050Z","actor":"owner","action":"unmute","detail":"269724751503435"}
+{"time":"2026-09-13T09:22:42.673Z","actor":"self:491793904099jid269724751503435lid","action":"account.unregister","target":"491793904099jid269724751503435lid","backup":"491793904099jid269724751503435lid--2026-09-13T09-22-42-654Z.json","deleted":{"profile":1,"afk":0,"warns":0,"proposals":0,"plusUser":1,"plusCouples":0,"coreUser":0,"coreCouples":0,"sessions":0,"mails":0,"partnerFreed":false,"groupMembers":3,"eventsAnon":7},"reason":"self-service confirmed"}
+{"time":"2026-09-14T07:52:22.348Z","actor":"910maxi","action":"team.role","target":"support_test → user"}
+{"time":"2026-09-14T09:13:39.263Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"185.47.•.•"}
+{"time":"14.9.2026, 11:13:49","actor":"910maxi","action":"download.zip","target":"LoveBot-All-in-One","files":8,"size":669500,"ip":"185.47.•.•"}
+{"time":"2026-09-14T23:39:00.877Z","actor":"910maxi","action":"feature.toggle","target":"120363411386930403 | 𓆩♡𓆪 910maxi 𓆩♡𓆪 Dev gruppe | welcome","key":"welcome","on":true,"before":true,"reason":"Lass an","group":"𓆩♡𓆪 910maxi 𓆩♡𓆪 Dev gruppe"}
+{"time":"2026-09-16T11:53:32.940Z","actor":"owner","action":"mute","detail":"257565715894382 · 2026-09-18T11:53:32.671Z"}
+{"time":"2026-09-16T13:34:49.067Z","actor":"owner","action":"unmute","detail":"257565715894382"}
+{"time":"2026-09-19T09:02:24.408Z","actor":"910maxi","action":"session.create","target":"maxichen10","name":"LoveBot_Maxichen10","mode":"qr","spawned":true,"spawnEnabled":true}
+{"time":"2026-09-19T09:04:50.829Z","actor":"910maxi","action":"session.delete","target":"maxichen10","name":"LoveBot_Maxichen10"}
+{"time":"2026-09-20T21:07:21.735Z","actor":"269574108926096","action":"ai-group","group":"120363427972273321","detail":"an"}
+{"time":"2026-10-02T17:34:20.396Z","actor":"269574108926096","action":"ai-group","group":"120363427483026291","detail":"an"}
+{"time":"2026-10-02T17:45:05.033Z","actor":"269574108926096","action":"ai-group","group":"120363411722505265","detail":"an"}
+{"time":"2026-10-04T16:13:41.531Z","actor":"269574108926096","action":"ai-group","group":"120363428932187519","detail":"an"}
+{"time":"2026-10-05T10:48:28.380Z","actor":"31568731070677","action":"ai-group","group":"120363427483026291","detail":"an"}
+{"time":"2026-10-05T19:08:03.434Z","actor":"269574108926096","action":"ai-group","group":"120363427483026291","detail":"an"}
+{"time":"2026-10-06T18:26:45.267Z","actor":"269574108926096","action":"ai-group","group":"120363430773130473","detail":"an"}
+{"time":"2026-10-08T10:08:33.915Z","actor":"910maxi","action":"ticket.close","target":"T-0008","role":"owner"}
+{"time":"2026-10-08T10:08:35.328Z","actor":"910maxi","action":"ticket.reopen","target":"T-0008","role":"owner"}
+{"time":"2026-10-08T10:08:41.984Z","actor":"910maxi","action":"ticket.close","target":"T-0008","role":"owner"}
+{"time":"2026-10-08T10:08:47.855Z","actor":"910maxi","action":"ticket.close","target":"T-0007","role":"owner"}
+{"time":"2026-10-08T10:08:54.640Z","actor":"910maxi","action":"ticket.close","target":"T-0006","role":"owner"}
+{"time":"2026-10-08T10:09:01.027Z","actor":"910maxi","action":"ticket.close","target":"T-0001","role":"owner"}
+{"time":"2026-10-08T10:24:21.756Z","actor":"910maxi","action":"ticket.close","target":"T-0005","role":"owner"}
+{"time":"2026-10-08T10:24:25.589Z","actor":"910maxi","action":"ticket.close","target":"T-0004","role":"owner"}
+{"time":"2026-10-08T10:24:29.466Z","actor":"910maxi","action":"ticket.close","target":"T-0003","role":"owner"}
+{"time":"2026-10-08T10:24:34.334Z","actor":"910maxi","action":"ticket.close","target":"T-0002","role":"owner"}
+{"time":"2026-10-09T14:24:10.132Z","actor":"owner","action":"mute","detail":"249563503960246 · permanent"}
+{"time":"2026-10-09T16:15:32.823Z","actor":"owner","action":"mute","detail":"220164352114797 · permanent"}
+{"time":"2026-10-09T16:25:54.920Z","actor":"owner","action":"unmute","detail":"220164352114797"}
+{"time":"2026-10-10T06:09:36.186Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"87.106.•.•"}
+{"time":"2026-10-10T07:09:55.796Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-10T07:23:51.465Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"AdminSave"}
+{"time":"2026-10-10T07:24:17.568Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"pair","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-10T07:24:29.288Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"AdminSave"}
+{"time":"2026-10-10T07:30:34.729Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-10T07:43:05.420Z","actor":"910maxi","action":"session.restart","target":"adminsave","started":true}
+{"time":"2026-10-10T07:44:53.445Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-10T07:46:00.824Z","actor":"910maxi","action":"session.create","target":"adminsave_2","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-10T18:26:03.356Z","actor":"910maxi","action":"session.delete","target":"adminsave_2","name":"adminsave_2"}
+{"time":"2026-10-10T18:26:07.033Z","actor":"910maxi","action":"session.delete","target":"support","name":"support"}
+{"time":"2026-10-10T18:26:09.988Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-10T18:27:00.059Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-11T07:39:57.529Z","actor":"owner","action":"unmute","detail":"249563503960246"}
+{"time":"2026-10-11T17:18:56.011Z","actor":"self:436502240179jid256478971691210lid","action":"account.unregister","target":"436502240179jid256478971691210lid","backup":"436502240179jid256478971691210lid--2026-10-11T17-18-55-957Z.json","deleted":{"profile":1,"afk":0,"warns":0,"proposals":0,"plusUser":1,"plusCouples":0,"coreUser":0,"coreCouples":0,"sessions":0,"mails":0,"partnerFreed":false,"groupMembers":3,"eventsAnon":8},"reason":"self-service confirmed"}
+{"time":"2026-10-11T17:33:11.124Z","actor":"owner","action":"mute","detail":"78817112645806 · permanent"}
+{"time":"2026-10-11T17:33:27.728Z","actor":"owner","action":"unmute","detail":"78817112645806"}
+{"time":"2026-10-11T18:13:50.701Z","actor":"owner","action":"mute","detail":"93033487982614 · permanent"}
+{"time":"2026-10-12T04:37:45.810Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-12T04:38:03.570Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-12T04:41:00.180Z","actor":"owner","action":"mute","detail":"272838535721102 · 2026-10-12T06:41:00.000Z"}
+{"time":"2026-10-12T14:56:28.015Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-12T14:56:56.198Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-14T09:51:59.186Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-14T09:52:44.496Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-14T09:53:52.707Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"AdminSave"}
+{"time":"2026-10-14T09:54:09.487Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-14T17:12:59.078Z","actor":"owner","action":"mute","detail":"119864568102927 · permanent"}
+{"time":"2026-10-14T17:15:16.932Z","actor":"owner","action":"unmute","detail":"119864568102927"}
+{"time":"2026-10-18T18:35:14.038Z","actor":"910maxi","action":"reauth.ok","target":"reauth.verify","ip":"87.106.•.•"}
+{"time":"2026-10-21T18:06:17.466Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-21T18:06:32.083Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-21T18:08:12.745Z","actor":"910maxi","action":"session.restart","target":"adminsave","started":true}
+{"time":"2026-10-21T18:09:36.203Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"AdminSave"}
+{"time":"2026-10-21T18:09:48.109Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"pair","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-21T18:12:57.272Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"AdminSave"}
+{"time":"2026-10-21T18:15:31.677Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-23T20:54:06.318Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-23T20:54:27.905Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}
+{"time":"2026-10-23T20:54:43.578Z","actor":"910maxi","action":"session.restart","target":"adminsave","started":true}
+{"time":"2026-10-24T07:34:48.295Z","actor":"910maxi","action":"session.start_all","target":"0 gestartet","skipped":0}
+{"time":"2026-10-24T11:22:42.181Z","actor":"910maxi","action":"session.start_all","target":"0 gestartet","skipped":0}
+{"time":"2026-10-30T21:31:24.867Z","actor":"910maxi","action":"session.delete","target":"adminsave","name":"adminsave"}
+{"time":"2026-10-30T21:31:40.124Z","actor":"910maxi","action":"session.create","target":"adminsave","name":"AdminSave","mode":"qr","sessionMode":"admin-save","spawned":true,"spawnEnabled":true}

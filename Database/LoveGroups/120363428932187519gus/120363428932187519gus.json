@@ -1,0 +1,102 @@
+{
+  "groupId": "120363428932187519",
+  "groupJid": "120363428932187519@g.us",
+  "subject": "🌙 𝟗𝟏𝟎𝑺𝒄𝒉𝒂𝒕𝒕𝒆𝒏𝒉𝒆𝒓𝒛𝒆𝒏 💗",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-04T16:09:30.694Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-04T16:08:54.145Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": false,
+    "commandProtection": false,
+    "aiEnabled": true,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 14,
+    "level": 0,
+    "msgs": 7,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791130424439
+      }
+    },
+    "week": {
+      "k": "2026-W41",
+      "xp": 14
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 14
+    },
+    "daily": {
+      "k": "2026-10-04",
+      "msgs": 7
+    },
+    "streak": {
+      "c": 1,
+      "last": "2026-10-04"
+    },
+    "history": {
+      "2026-10-04": 14
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-04",
+      "target": 50,
+      "progress": 7,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W41",
+      "target": 200,
+      "progress": 14,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1791130421523,
+      "actor": "269574108926096",
+      "action": "setting",
+      "detail": "aiEnabled → an"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 5,
+  "adminCount": 5,
+  "metaAt": 1791130134340,
+  "setupAt": "2026-10-04T16:09:30.694Z",
+  "setupBy": "4915155894714@s.whatsapp.net",
+  "setupByName": "269574108926096",
+  "setupDescription": "🖤 *HelloKitty Baby Maxi 💔* ist in @🌙 𝟗𝟏𝟎𝑺𝒄𝒉𝒂𝒕𝒕𝒆𝒏𝒉𝒆𝒓𝒛𝒆𝒏 💗 aktiv 🤖\nNutze *$dsgvo* / *$verify* für weitere Infos.\n\n⏱️ *Setup gesetzt:* So., 04.10.2026, 18:09:30\n🎮 *von:* 269574108926096"
+}

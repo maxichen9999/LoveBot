@@ -1,0 +1,701 @@
+{
+  "groupId": "120363430024402610",
+  "groupJid": "120363430024402610@g.us",
+  "subject": "Chill Vibes ❤️",
+  "creator": "197461842862188@lid",
+  "owner": "197461842862188@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-11T17:30:30.952Z",
+  "activatedBy": "4917625006811@s.whatsapp.net",
+  "createdAt": "2026-10-11T17:02:00.886Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "commandProtection": true,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 2196,
+    "level": 5,
+    "msgs": 1098,
+    "games": 0,
+    "members": {
+      "6481525141537": {
+        "m": 11,
+        "xp": 22,
+        "games": 0,
+        "last": 1791750528272
+      },
+      "183485968998555": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791823369810
+      },
+      "197461842862188": {
+        "m": 203,
+        "xp": 406,
+        "games": 0,
+        "last": 1791830537349
+      },
+      "159769276993573": {
+        "m": 273,
+        "xp": 546,
+        "games": 0,
+        "last": 1791830489243
+      },
+      "163943783907546": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1791744637143
+      },
+      "7512300511460": {
+        "m": 152,
+        "xp": 304,
+        "games": 0,
+        "last": 1791828657096
+      },
+      "30679186305248": {
+        "m": 8,
+        "xp": 16,
+        "games": 0,
+        "last": 1791741047814
+      },
+      "48730900283531": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791754641569
+      },
+      "78817112645806": {
+        "m": 22,
+        "xp": 44,
+        "games": 0,
+        "last": 1791827476110
+      },
+      "197663639257176": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791740898964
+      },
+      "209371820740705": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791741187579
+      },
+      "50379966415084": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1791743854811
+      },
+      "61929754247256": {
+        "m": 34,
+        "xp": 68,
+        "games": 0,
+        "last": 1791830531694
+      },
+      "84998057160890": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791823697360
+      },
+      "256478971691210": {
+        "m": 29,
+        "xp": 58,
+        "games": 0,
+        "last": 1791744815659
+      },
+      "71133449682977": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791743943923
+      },
+      "57634266865810": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791743794128
+      },
+      "91500369191035": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791743896458
+      },
+      "264961381109830": {
+        "m": 28,
+        "xp": 56,
+        "games": 0,
+        "last": 1791819791161
+      },
+      "232796454969458": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791743924124
+      },
+      "51231108165710": {
+        "m": 16,
+        "xp": 32,
+        "games": 0,
+        "last": 1791830496993
+      },
+      "191835435741360": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791750579657
+      },
+      "90628776038549": {
+        "m": 8,
+        "xp": 16,
+        "games": 0,
+        "last": 1791827351141
+      },
+      "280057805303927": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791748912276
+      },
+      "129047258501247": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791820880713
+      },
+      "105372962541701": {
+        "m": 9,
+        "xp": 18,
+        "games": 0,
+        "last": 1791757044103
+      },
+      "27238883938323": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791759874472
+      },
+      "11201375391925": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791759970699
+      },
+      "243637086589036": {
+        "m": 9,
+        "xp": 18,
+        "games": 0,
+        "last": 1791826911697
+      },
+      "237911559684294": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1791765315582
+      },
+      "269574108926096": {
+        "m": 84,
+        "xp": 168,
+        "games": 0,
+        "last": 1791830545683
+      },
+      "82622369783962": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1791822285884
+      },
+      "272838535721102": {
+        "m": 5,
+        "xp": 10,
+        "games": 0,
+        "last": 1791779990977
+      },
+      "86861854859446": {
+        "m": 24,
+        "xp": 48,
+        "games": 0,
+        "last": 1791826549067
+      },
+      "4174943141924": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1791818226502
+      },
+      "80647339135083": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791817879833
+      },
+      "178241193119772": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791819286337
+      },
+      "15350850662408": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791828402209
+      },
+      "281428017287328": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791823732023
+      },
+      "237100062531728": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791826903080
+      },
+      "276480550523073": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1791826558723
+      },
+      "189390911492273": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791825839925
+      },
+      "83983991845005": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791826865964
+      },
+      "222616929476682": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1791827928577
+      }
+    },
+    "week": {
+      "k": "2026-W42",
+      "xp": 2196
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 2196
+    },
+    "daily": {
+      "k": "2026-10-12",
+      "msgs": 526
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-10-12"
+    },
+    "history": {
+      "2026-10-11": 1144,
+      "2026-10-12": 1052
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-12",
+      "target": 50,
+      "progress": 526,
+      "claimed": true
+    },
+    "weekly": {
+      "k": "2026-W42",
+      "target": 200,
+      "progress": 2196,
+      "claimed": true
+    }
+  },
+  "gach": {
+    "gmsg_100": 1791741147210,
+    "gxp_1k": 1791755749864,
+    "gmsg_1k": 1791827196549
+  },
+  "gbadges": {
+    "g_love": 1791827196550
+  },
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1791738403492,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "commandProtection → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1791738805759,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    },
+    {
+      "ts": 1791739009989,
+      "actor": "126002143486166",
+      "action": "promote",
+      "detail": "Zum Admin befördert: 491791573023"
+    },
+    {
+      "ts": 1791740867642,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1791741056974,
+      "actor": "126002143486166",
+      "action": "kick",
+      "detail": "Gekickt: 4917646022929"
+    },
+    {
+      "ts": 1791741147210,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "commandProtection → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1791741509164,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    },
+    {
+      "ts": 1791743574058,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1791744821781,
+      "actor": "197461842862188",
+      "action": "kick",
+      "detail": "Gekickt: 436502240179"
+    },
+    {
+      "ts": 1791753114941,
+      "actor": "guard",
+      "action": "warn",
+      "detail": "159769276993573: Anti-Spam (1)"
+    },
+    {
+      "ts": 1791779788445,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "commandProtection → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1791818223874,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "commandProtection → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1791825152783,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1791830546150,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    }
+  ],
+  "gtreasury": {
+    "balance": 2600,
+    "log": [
+      {
+        "ts": 1791738403492,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791741147210,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1791741147211,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1791743849200,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      },
+      {
+        "ts": 1791746565452,
+        "delta": 120,
+        "reason": "Group-Level 2"
+      },
+      {
+        "ts": 1791755749865,
+        "delta": 150,
+        "reason": "Achievement Sammelphase"
+      },
+      {
+        "ts": 1791756300777,
+        "delta": 130,
+        "reason": "Group-Level 3"
+      },
+      {
+        "ts": 1791779788445,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791820880713,
+        "delta": 140,
+        "reason": "Group-Level 4"
+      },
+      {
+        "ts": 1791827196549,
+        "delta": 150,
+        "reason": "Group-Level 5"
+      },
+      {
+        "ts": 1791827196550,
+        "delta": 150,
+        "reason": "Achievement Redselig"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 58,
+  "adminCount": 11,
+  "metaAt": 1791829673793,
+  "warns": {},
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false,
+  "setupAt": "2026-10-11T17:19:48.611Z",
+  "setupBy": "4917625006811@s.whatsapp.net",
+  "setupByName": "126002143486166",
+  "setupDescription": "╭─ 🎀 *HELLOKITTY BABY MAXI* ─╮\n│ ✨ Jetzt aktiv in *Chill vibes ❤️*\n│\n│ 💜 Schön, dass ich euch begleiten darf!\n│ 📜 Infos zu Datenschutz & Freischaltung:\n│    *$dsgvo* · *$verify*\n├────────────────────\n│ 🕒 Eingerichtet: So., 11.10.2026, 19:19:48\n│ 👑 Von: 126002143486166\n╰─ 🌙 Habt eine schöne gemeinsame Zeit!"
+}

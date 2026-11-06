@@ -1,0 +1,235 @@
+{
+  "groupId": "120363431254743060",
+  "groupJid": "120363431254743060@g.us",
+  "subject": "Session Test",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-30T21:37:26.801Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-30T21:34:20.390Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 352,
+    "level": 1,
+    "msgs": 176,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 120,
+        "xp": 240,
+        "games": 0,
+        "last": 1793492038047
+      },
+      "168895914721394": {
+        "m": 33,
+        "xp": 66,
+        "games": 0,
+        "last": 1793450091557
+      },
+      "31396361941215": {
+        "m": 21,
+        "xp": 42,
+        "games": 0,
+        "last": 1793490460641
+      }
+    },
+    "week": {
+      "k": "2026-W45",
+      "xp": 194
+    },
+    "month": {
+      "k": "2026-11",
+      "xp": 2
+    },
+    "daily": {
+      "k": "2026-11-01",
+      "msgs": 1
+    },
+    "streak": {
+      "c": 3,
+      "last": "2026-11-01"
+    },
+    "history": {
+      "2026-10-30": 158,
+      "2026-10-31": 192,
+      "2026-11-01": 2
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-11-01",
+      "target": 50,
+      "progress": 1,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W45",
+      "target": 200,
+      "progress": 194,
+      "claimed": false
+    }
+  },
+  "gach": {
+    "gmsg_100": 1793434988983
+  },
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1793396366162,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1793396775016,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1793445414252,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1793492038732,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1793492038732,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1793492038733,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1793492038733,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1793492038733,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1793492038733,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    }
+  ],
+  "gtreasury": {
+    "balance": 760,
+    "log": [
+      {
+        "ts": 1793396775016,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1793434988983,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1793445414252,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1793449530454,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 5,
+  "adminCount": 5,
+  "metaAt": 1793449627859,
+  "setupAt": "2026-10-30T21:35:04.712Z",
+  "setupBy": "4915155894714@s.whatsapp.net",
+  "setupByName": "269574108926096",
+  "setupDescription": "╭─ 🎀 *HELLOKITTY BABY MAXI* ─╮\n│ ✨ Jetzt aktiv in *Session Test*\n│\n│ 💜 Schön, dass ich euch begleiten darf!\n│ 📜 Infos zu Datenschutz & Freischaltung:\n│    *$dsgvo* · *$verify*\n├────────────────────\n│ 🕒 Eingerichtet: Fr., 30.10.2026, 22:35:04\n│ 👑 Von: 269574108926096\n╰─ 🌙 Habt eine schöne gemeinsame Zeit!",
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false
+}

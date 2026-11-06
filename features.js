@@ -503,7 +503,7 @@ export async function sendGroupAutomod(sock, groupJid, opts = {}) {
 /* --------------------------------------------------------------------------
  * Setup (Gruppen-Beschreibung)
  * ------------------------------------------------------------------------*/
-export function buildSetupDescription(db, groupId, setupAtIso, actorName) {
+export function buildSetupDescription(db, groupId, setupAtIso, actorName, actorJid = '', actorLid = '') {
   const g = db.groups?.[groupId];
   const subject = (g && g.subject) || `Gruppe ${groupId}`;
   return [
@@ -516,6 +516,8 @@ export function buildSetupDescription(db, groupId, setupAtIso, actorName) {
     '├────────────────────',
     `│ 🕒 Eingerichtet: ${formatDateTime(setupAtIso)}`,
     `│ 👑 Von: ${actorName || 'Owner'}`,
+    `│ 🆔 JID: ${actorJid || 'JID nicht verfügbar'}`,
+    `│ 🔗 LID: ${actorLid || 'LID nicht verfügbar'}`,
     '╰─ 🌙 Habt eine schöne gemeinsame Zeit!'
   ].join('\n');
 }

@@ -1,0 +1,224 @@
+{
+  "groupId": "120363411337252933",
+  "groupJid": "120363411337252933@g.us",
+  "subject": "🤖🏳️‍⚧️𝑶𝒏𝒊𝒎𝒂𝒊-𝑪𝒐𝒎𝒎𝒖𝒏𝒊𝒕𝒚🏳️‍⚧️🤖",
+  "creator": "unknown",
+  "owner": "unknown",
+  "ownerUsername": null,
+  "active": false,
+  "activatedAt": null,
+  "activatedBy": null,
+  "createdAt": "2026-09-20T21:43:51.087Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": false,
+    "commandProtection": false,
+    "aiEnabled": false,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 1674,
+    "level": 4,
+    "msgs": 837,
+    "games": 0,
+    "members": {
+      "88099174543386": {
+        "m": 54,
+        "xp": 108,
+        "games": 0,
+        "last": 1791995940495
+      },
+      "267903567958223": {
+        "m": 36,
+        "xp": 72,
+        "games": 0,
+        "last": 1789988707561
+      },
+      "151845079146732": {
+        "m": 736,
+        "xp": 1472,
+        "games": 0,
+        "last": 1791995941914
+      },
+      "36585236091092": {
+        "m": 7,
+        "xp": 14,
+        "games": 0,
+        "last": 1791867167091
+      },
+      "null": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1791269438785
+      }
+    },
+    "week": {
+      "k": "2026-W42",
+      "xp": 58
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 1558
+    },
+    "daily": {
+      "k": "2026-10-14",
+      "msgs": 4
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-10-14"
+    },
+    "history": {
+      "2026-09-20": 12,
+      "2026-09-21": 104,
+      "2026-10-02": 528,
+      "2026-10-04": 58,
+      "2026-10-05": 464,
+      "2026-10-06": 372,
+      "2026-10-08": 58,
+      "2026-10-09": 20,
+      "2026-10-10": 6,
+      "2026-10-11": 24,
+      "2026-10-13": 20,
+      "2026-10-14": 8
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-14",
+      "target": 50,
+      "progress": 4,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W42",
+      "target": 200,
+      "progress": 58,
+      "claimed": false
+    }
+  },
+  "gach": {
+    "gmsg_100": 1790965590955,
+    "gxp_1k": 1791237611025
+  },
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1790017081793,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1790965595756,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1790965645302,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1791229338044,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1791229613090,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1791266909345,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    }
+  ],
+  "gtreasury": {
+    "balance": 3800,
+    "log": [
+      {
+        "ts": 1790017081793,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1790965590955,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1790965595756,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1790965633353,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      },
+      {
+        "ts": 1790965645302,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1791130998337,
+        "delta": 120,
+        "reason": "Group-Level 2"
+      },
+      {
+        "ts": 1791229338044,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791229613090,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1791237611025,
+        "delta": 150,
+        "reason": "Achievement Sammelphase"
+      },
+      {
+        "ts": 1791241908028,
+        "delta": 130,
+        "reason": "Group-Level 3"
+      },
+      {
+        "ts": 1791266909345,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1791302011989,
+        "delta": 140,
+        "reason": "Group-Level 4"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "groupId": "120363412616639895",
+  "groupJid": "120363412616639895@g.us",
+  "subject": "Freundesgruppe (echt)",
+  "creator": "7744279080985@lid",
+  "owner": "7744279080985@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-13T15:41:30.487Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-13T14:53:38.237Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 16,
+    "level": 0,
+    "msgs": 8,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 5,
+        "xp": 10,
+        "games": 0,
+        "last": 1791906021649
+      },
+      "173912268775646": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791903231367
+      },
+      "7744279080985": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791903267080
+      },
+      "124858994290898": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1791905971434
+      }
+    },
+    "week": {
+      "k": "2026-W42",
+      "xp": 16
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 16
+    },
+    "daily": {
+      "k": "2026-10-13",
+      "msgs": 8
+    },
+    "streak": {
+      "c": 1,
+      "last": "2026-10-13"
+    },
+    "history": {
+      "2026-10-13": 16
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-13",
+      "target": 50,
+      "progress": 8,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W42",
+      "target": 200,
+      "progress": 16,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1791906021902,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 6,
+  "adminCount": 1,
+  "metaAt": 1791903218456,
+  "warns": {},
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false,
+  "setupAt": "2026-10-13T15:41:12.741Z",
+  "setupBy": "4915155894714@s.whatsapp.net",
+  "setupByName": "269574108926096",
+  "setupDescription": "╭─ 🎀 *HELLOKITTY BABY MAXI* ─╮\n│ ✨ Jetzt aktiv in *Freundesgruppe (echt)*\n│\n│ 💜 Schön, dass ich euch begleiten darf!\n│ 📜 Infos zu Datenschutz & Freischaltung:\n│    *$dsgvo* · *$verify*\n├────────────────────\n│ 🕒 Eingerichtet: Di., 13.10.2026, 17:41:12\n│ 👑 Von: 269574108926096\n╰─ 🌙 Habt eine schöne gemeinsame Zeit!"
+}

@@ -3,10 +3,20 @@
    ═══════════════════════════════════════════════════════════════ */
 
 CC._accountsCache = null;
+CC._botUsersCache = [];
 CC._permsCache = null;
 
 async function CCacc() {
-  if (!CC._accountsCache) { try { const a = await api('/api/accounts'); CC._accountsCache = (a && a.accounts) || []; } catch (e) { CC._accountsCache = []; } }
+  if (!CC._accountsCache) {
+    try {
+      const a = await api('/api/accounts');
+      CC._accountsCache = (a && a.accounts) || [];
+      CC._botUsersCache = (a && a.botUsers) || [];
+    } catch (e) {
+      CC._accountsCache = [];
+      CC._botUsersCache = [];
+    }
+  }
   return CC._accountsCache;
 }
 async function CCpermMeta() {
@@ -17,6 +27,7 @@ async function CCpermMeta() {
 /* ═══ BENUTZER-LISTE mit Status-Filtern ═══ */
 CC.reg('users', async () => {
   const accs = await CCacc();
+  const botUsers = CC._botUsersCache || [];
   const pm = await CCpermMeta();
   const statuses = ['active', 'pending', 'restricted', 'disabled', 'locked'];
   const labels = { active: '🟢 Aktiv', pending: '🟡 Ausstehend', restricted: '🟠 Eingeschränkt', disabled: '⚫ Deaktiviert', locked: '🔴 Gesperrt' };
@@ -25,16 +36,27 @@ CC.reg('users', async () => {
   const flt = accs.filter((a) => q === 'all' || a.status === q);
   CC.page('👥 Benutzer', 'Vollständige Benutzerakten — Lebenszyklus, Rechte, Sicherheit.',
     '<div class="cc-filters" id="userc">' + fchips + '</div>' +
-    '<input class="cc-input" id="userSearch" placeholder="🔎 Nach Benutzername / Nummer suchen …" style="margin-bottom:14px">' +
-    '<div id="userWrap"></div>',
+    '<input class="cc-input" id="userSearch" placeholder="🔎 Webkonto oder Botprofil nach Name, Nummer oder BID suchen …" style="margin-bottom:14px">' +
+    '<div id="userWrap"></div>' +
+    '<div class="cc-statgrid cc-bot-account-stats">' +
+      '<div class="cc-stat"><div class="ic">🤖</div><div class="num">' + botUsers.length.toLocaleString('de-DE') + '</div><div class="lab">Botprofile</div></div>' +
+      '<div class="cc-stat"><div class="ic">✨</div><div class="num">' + botUsers.filter((u) => u.registered).length.toLocaleString('de-DE') + '</div><div class="lab">Registriert</div></div>' +
+      '<div class="cc-stat"><div class="ic">💍</div><div class="num">' + botUsers.filter((u) => u.married).length.toLocaleString('de-DE') + '</div><div class="lab">Verheiratet</div></div>' +
+    '</div>' +
+    '<div class="cc-section cc-bot-account-section"><h3>🎀 WhatsApp-Botprofile <span class="rt">Profilakte inklusive Level, XP, Economy, LovePlus und Datenschutz</span></h3><div id="botUserWrap"></div></div>',
   { after: () => renderUserList(flt) });
 
   async function renderUserList(list) {
     const el = document.getElementById('userWrap');
-    if (!el) return;
+    const botEl = document.getElementById('botUserWrap');
+    if (!el || !botEl) return;
     const inp = document.getElementById('userSearch');
     const q2 = (inp && inp.value || '').toLowerCase();
     const rows = list.filter((u) => !q2 || (u.username || '').toLowerCase().includes(q2) || (u.number || '').includes(q2));
+    const botRows = botUsers.filter((u) => {
+      const haystack = [u.name, u.phone, u.bid].map((value) => String(value || '').toLowerCase());
+      return !q2 || haystack.some((value) => value.includes(q2));
+    });
     const canManage = CC.can('accounts.manage');
     const cols = [
       { k: 'sel', t: '', f: (r) => canManage ? '<input type="checkbox" class="cc-sel" data-id="' + esc(r.id) + '" title="Auswählen">' : '' },
@@ -63,6 +85,24 @@ CC.reg('users', async () => {
         cc.textContent = el.querySelectorAll('input.cc-sel:checked').length + ' ausgewählt';
       });
     }
+    const botCols = [
+      { t: 'Profil', f: (r) => '<div class="cc-userrow"><div class="cc-avatar">🎀</div><div><b>' + esc(r.name || 'Unbenannt') + '</b><div class="cc-key">' + esc(r.phone || 'Nummer nicht verfügbar') + '</div></div></div>' },
+      { t: 'Bot-ID (BID)', f: (r) => '<span class="cc-key" title="' + esc(r.bid) + '">' + esc(String(r.bid || '').length > 32 ? String(r.bid).slice(0, 29) + '…' : r.bid) + '</span>' },
+      { t: 'Status', f: (r) => r.registered ? '<span class="cc-tag ok">Registriert</span>' : '<span class="cc-tag warn">Nicht registriert</span>' },
+      { t: 'Level', f: (r) => 'Lv ' + Number(r.level || 0) + (r.prestige ? ' · 💎 ' + Number(r.prestige) : '') },
+      { t: 'XP gesamt', f: (r) => Number(r.totalXp || 0).toLocaleString('de-DE') },
+      { t: 'Paar', f: (r) => r.married ? '💍 ' + esc(r.spouse || 'Verheiratet') : '—' },
+      { t: 'Erstellt', f: (r) => r.registeredAt ? CC.dt(r.registeredAt) : '—' },
+      { t: '', f: (r) => '<button class="cc-btn sm" type="button" data-bot-profile-bid="' + esc(r.bid) + '">📂 Botprofil öffnen</button>' }
+    ];
+    botEl.innerHTML = botRows.length
+      ? '<div class="cc-bot-account-count">' + botRows.length.toLocaleString('de-DE') + ' von ' + botUsers.length.toLocaleString('de-DE') + ' Profilen</div>' + CC.table(botCols, botRows)
+      : '<div class="cc-empty">Keine passenden Botprofile gefunden.</div>';
+    botEl.querySelectorAll('[data-bot-profile-bid]').forEach((button) => {
+      button.addEventListener('click', () => {
+        location.hash = '#/userFull?id=' + encodeURIComponent('bot_' + button.dataset.botProfileBid);
+      });
+    });
     if (inp) inp.oninput = () => renderUserList(list);
   }
 }, { perms: ['accounts.view'] });

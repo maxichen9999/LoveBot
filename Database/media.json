@@ -1,0 +1,394 @@
+{
+  "users": {
+    "4915155894714jid269574108926096lid": {
+      "achievements": {
+        "couple_7": 1788689092241,
+        "married": 1788689092241,
+        "first_pet": 1788991943885,
+        "first_msg": 1789102581450,
+        "together_30": 1789102581453,
+        "second_chance": 1789102581455,
+        "first_cmd": 1789102792717,
+        "goal_daily_1": 1789107475631,
+        "first_daily": 1789107487858,
+        "rich_1000": 1789163264410,
+        "level_10": 1789163264412,
+        "level_25": 1789163264414,
+        "level_50": 1789163264416,
+        "xp_10k": 1789163264418,
+        "xp_100k": 1789163264421,
+        "xp_1k": 1789163264423,
+        "titles_5": 1789163264425,
+        "level_5": 1789163264438,
+        "badges_5": 1789163264443,
+        "goal_weekly_1": 1789199805682,
+        "hours_12": 1789200269171,
+        "goalstreak_3": 1789291175310,
+        "goals_daily_7": 1789291176040,
+        "cmd_100": 1789291759395,
+        "dailyxp_500": 1789323644515,
+        "msg_100": 1789324838245,
+        "hours_20": 1789340583267,
+        "first_game": 1789380562098,
+        "rich_10k": 1789380562101,
+        "prog_streak_7": 1789534967332,
+        "goals_weekly_4": 1789661766116,
+        "goals_daily_30": 1791284949111,
+        "cmd_500": 1791558101966,
+        "msg_500": 1791572063606
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": "2026-9-6",
+        "streak": 1
+      },
+      "pet": {
+        "name": "Simba",
+        "type": "🐹",
+        "createdAt": 1788991943885,
+        "lastTick": 1789123747323,
+        "love": 60,
+        "hunger": 76,
+        "mood": 100,
+        "energy": 100,
+        "level": 2,
+        "xp": 90,
+        "totalCare": 13
+      },
+      "inventory": {},
+      "cooldowns": {
+        "rob": 1789380512800
+      }
+    },
+    "420721199654jid155019043160306lid": {
+      "achievements": {
+        "first_cmd": 1789388053298,
+        "goal_daily_1": 1789458481769,
+        "first_msg": 1789808566731
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "420606990992jid108813734645801lid": {
+      "achievements": {
+        "first_msg": 1789324306595,
+        "goal_daily_1": 1789324658963,
+        "first_cmd": 1789327336568,
+        "hours_12": 1789427065788,
+        "goalstreak_3": 1789467119573,
+        "rich_1000": 1789471003971,
+        "first_game": 1789471003975,
+        "msg_100": 1789477378894,
+        "goals_daily_7": 1789563387486
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {
+        "rob": 1789470990207
+      }
+    },
+    "4555207028jid69415898980503lid": {
+      "achievements": {
+        "first_msg": 1789326332196
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "41767076660jid87089790083286lid": {
+      "achievements": {
+        "first_msg": 1789326628297
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "4915222360533jid97642273091831lid": {
+      "achievements": {
+        "first_msg": 1789426337986,
+        "first_cmd": 1789426917210,
+        "goal_daily_1": 1789427000492,
+        "married": 1789427197639
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "4915751515239jid119864568102927lid": {
+      "achievements": {
+        "first_cmd": 1789427145871,
+        "first_msg": 1789427155181,
+        "married": 1789427197639,
+        "hours_12": 1791268796183,
+        "goal_daily_1": 1791568741780
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "4917625006811jid126002143486166lid": {
+      "achievements": {
+        "first_cmd": 1791738287925,
+        "first_msg": 1791738314025,
+        "goal_daily_1": 1791738549748
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    },
+    "14142849426jid159769276993573lid": {
+      "achievements": {
+        "first_msg": 1791738370556,
+        "first_cmd": 1791738595807,
+        "goal_daily_1": 1791738631405,
+        "first_daily": 1791738631412
+      },
+      "counters": {},
+      "lovebonus": {
+        "lastAt": 0,
+        "streak": 0
+      },
+      "pet": null,
+      "inventory": {},
+      "cooldowns": {}
+    }
+  },
+  "couples": {
+    "269574108926096|57956708180043": {
+      "loveXp": 40,
+      "streak": 1,
+      "lastDay": "2026-9-6",
+      "memories": 0,
+      "n1": "maxichen",
+      "n2": "4915758256378"
+    },
+    "4915222360533|4915751515239": {
+      "loveXp": 100,
+      "streak": 0,
+      "lastDay": "",
+      "memories": 0,
+      "n1": "Jetzt",
+      "n2": "ꪶ𝚯𝚩⁰⁶⁶ꫂ𝔰𝔠𝔥𝔞𝔱𝔱𝔢\ud835",
+      "marriedAt": "2026-09-14T23:06:37.639Z"
+    }
+  },
+  "games": {},
+  "live": [
+    {
+      "id": "ff9fcbe8-b7e6-458b-b8c9-10c89bf0b8ce",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1793819802562
+    },
+    {
+      "id": "e2c27602-7c16-4d1e-8897-63b253f5ea39",
+      "command": "tomp4",
+      "user": "♡𓆩♡𓆪 910maxi 𓆩♡𓆪♡",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1793452919296
+    },
+    {
+      "id": "ec0a27a2-e637-4cbc-ac9a-17d1a7a72b55",
+      "command": "sticker",
+      "user": "♡𓆩♡𓆪 910maxi 𓆩♡𓆪♡",
+      "group": "120363431254743060@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1793447854124
+    },
+    {
+      "id": "0457ddbe-2573-4dfc-a29a-9d7b8c1e8798",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792793395641
+    },
+    {
+      "id": "b6ce93d3-1c69-46c8-a20c-95901e35c0ee",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "120363412681870607@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792778704700
+    },
+    {
+      "id": "b4a47014-5793-415e-887f-daaeba317fb4",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792524276409
+    },
+    {
+      "id": "4b0620a1-c6f3-4f3d-a03b-103a28923227",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "120363412681870607@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792512283025
+    },
+    {
+      "id": "4f2c161b-8e0f-461b-a00e-0d938af7933b",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792362932021
+    },
+    {
+      "id": "1f9beedf-22d6-4af5-aa4e-584254692e12",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792347558468
+    },
+    {
+      "id": "82cf1520-b1b3-4db0-8eb8-4b558de9f01f",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792343218126
+    },
+    {
+      "id": "2d6eb46c-39aa-4dc4-ab67-61a7961913db",
+      "command": "tomp4",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792343170791
+    },
+    {
+      "id": "7edd6616-7fab-4c04-98ed-da6a865a3d99",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "120363412681870607@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792243217824
+    },
+    {
+      "id": "287e9685-4ca0-48d8-bebc-2a511ae3bfac",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "120363412681870607@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792243188058
+    },
+    {
+      "id": "d937dede-741d-434d-9da0-d1e6aac0fa3e",
+      "command": "sticker",
+      "user": "𓆩♡𓆪 910maxi 𓆩♡𓆪",
+      "group": "120363412681870607@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1792241657564
+    },
+    {
+      "id": "f22f51a3-ebff-4133-a817-f8bc688ec067",
+      "command": "tomp4",
+      "user": "☞ 910ꪑꪖ᥊ꪱ ☜ 💗✨",
+      "group": "120363427483026291@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791988994929
+    },
+    {
+      "id": "31d3f141-310b-4430-bc2b-e854db748802",
+      "command": "sticker",
+      "user": "☞ 910ꪑꪖ᥊ꪱ ☜ 💗✨",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791867650134
+    },
+    {
+      "id": "46d6d0d3-3d34-46ce-9109-5142e30f54c6",
+      "command": "sticker",
+      "user": "Maxi+Gili=🫂♾️💍❤😘",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791817640409
+    },
+    {
+      "id": "02efd2c4-4ca1-4a06-8049-e734ae57d507",
+      "command": "sticker",
+      "user": "Maxi+Gili=🫂♾️💍❤😘",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791817613508
+    },
+    {
+      "id": "a4079a15-66b7-4218-929c-1d67911556ff",
+      "command": "sticker",
+      "user": "Maxi+Gili=🫂♾️💍❤😘",
+      "group": "Privat",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791752142222
+    },
+    {
+      "id": "69eb9854-5076-47c1-aa16-a40e407952dd",
+      "command": "sticker",
+      "user": "hailey",
+      "group": "120363430024402610@g.us",
+      "session": "main",
+      "status": "läuft",
+      "ts": 1791742219733
+    }
+  ]
+}

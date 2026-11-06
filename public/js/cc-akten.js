@@ -11,13 +11,15 @@ CC.reg('userFull', async () => {
   const id = params.get('id');
   let tab = params.get('tab') || 'overview';
   if (!id) { CC.viewErr('Keine Benutzer-ID angegeben.'); return; }
-  const d = await api('/api/accounts/' + id + '/detail/full').catch(() => null);
+  const d = await api('/api/accounts/' + encodeURIComponent(id) + '/detail/full').catch(() => null);
   if (!d || !d.ok) { CC.viewErr('Akte nicht verfügbar (Berechtigung oder Account unbekannt).'); return; }
   const a = d.account;
   const pr = d.profile;
   const lp = d.loveplus || {};
-  const canManage = CC.can('accounts.manage');
-  const canAssign = CC.can('roles.assign');
+  const isBotProfile = !!a.isBotProfile;
+  const canManage = CC.can('accounts.manage') && !isBotProfile;
+  const canAssign = CC.can('roles.assign') && !isBotProfile;
+  const rank = pr?.rank || '';
 
   const wallet = pr?.wallet || {};
   const coins = (['copper', 'silver', 'gold', 'platin'].reduce((s, k) => s + (Number(wallet[k]) || 0), 0));
@@ -51,6 +53,7 @@ CC.reg('userFull', async () => {
         '<div class="cc-section"><h3>👤 Status</h3>' + kv([
           ['Account-Status', CC.pill(a.status)],
           ['Rolle', CC.rolepill(a.role)],
+          ['Profiltyp', isBotProfile ? '<span class="cc-tag info">WhatsApp-Botprofil</span>' : '<span class="cc-tag dim">Dashboard-Konto</span>'],
           ['Registriert (Bot)', pr ? (pr.registered ? '<span class="cc-tag ok">JA</span> ' + (pr.registeredAt ? CC.dt(pr.registeredAt) : '') : '<span class="cc-tag warn">NEIN</span>') : '—'],
           ['Letzte Aktivität', a.lastLoginAt ? CC.dt(a.lastLoginAt) : 'nie'],
           ['Aktive Sessions', (d.activeSessions || []).length],
@@ -74,6 +77,9 @@ CC.reg('userFull', async () => {
       ['Interne Account-ID', '<span class="cc-key">' + esc(a.id) + '</span>'],
       ['WhatsApp-Nummer', '<span class="cc-key">' + esc(a.number || '—') + '</span>'],
       ['Öffentliches Profil (bid)', pr ? '<span class="cc-key" style="font-size:10.5px">' + esc(pr.bid) + '</span>' : '<span class="cc-hint">Kein Bot-Profil gefunden</span>'],
+      ['JID', pr?.jid ? '<span class="cc-key">' + esc(pr.jid) + '</span>' : '—'],
+      ['LID', pr?.lid ? '<span class="cc-key">' + esc(pr.lid) + '</span>' : '—'],
+      ['Dashboard-Login', isBotProfile ? '<span class="cc-tag dim">Kein Webkonto verknüpft</span>' : '<span class="cc-tag ok">Webkonto</span>'],
       ['Account-Zustand', CC.pill(a.status)],
       ['Erstellt', CC.dt(a.createdAt)],
       ['Letzter Login', a.lastLoginAt ? CC.dt(a.lastLoginAt) : 'nie'],
@@ -210,9 +216,9 @@ CC.reg('userFull', async () => {
   CC.page('👤 ' + esc(a.username || id), 'Vollständige Benutzerakte — eine Quelle, alle Systeme (WhatsApp &amp; Website).',
     '<div class="cc-aktenhead">' +
       '<div class="cc-avatar xl"></div>' +
-      '<div><div style="font-size:20px;font-weight:800">' + esc(a.username || '—') + ' ' + CC.rolepill(a.role) + ' ' + CC.pill(a.status) + '</div>' +
+      '<div><div style="font-size:20px;font-weight:800">' + esc(a.username || '—') + ' ' + (isBotProfile ? '<span class="cc-tag info">BOTPROFIL</span>' : CC.rolepill(a.role)) + ' ' + CC.pill(a.status) + '</div>' +
       '<div class="cc-subline" style="margin:4px 0 0">Nummer: <span class="cc-key">' + esc(a.number || '—') + '</span> · erstellt ' + CC.dt(a.createdAt) + (a.lastLoginAt ? ' · zuletzt ' + CC.rel(a.lastLoginAt) : '') + '</div></div>' +
-      (canManage ? '<button class="cc-btn sm" style="margin-left:auto" onclick="history.back()">← Zurück zur Liste</button>' : '') +
+      '<button class="cc-btn sm" style="margin-left:auto" onclick="location.hash=\'#/users\'">← Zurück zur Liste</button>' +
     '</div>' +
     '<div class="cc-tabbar">' + TABS.map(([tid, label]) => '<button class="cc-tab' + (tab === tid ? ' on' : '') + '" onclick="window._aktenTab(\'' + tid + '\')">' + label + '</button>').join('') + '</div>' +
     '<div id="aktenBody">' + body + '</div>'
@@ -318,4 +324,3 @@ CC.ticketAction = async (action, id, button) => {
     if (button.isConnected) button.disabled = false;
   }
 };
-

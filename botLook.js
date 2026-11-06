@@ -32,7 +32,7 @@ let STIMMUNG = null;
 export function stimmung(neu) {
   if (neu) { STIMMUNG = neu; return STIMMUNG; }
   if (!STIMMUNG) {
-    try { STIMMUNG = getMood() || 'neutral'; } catch (e) { STIMMUNG = 'neutral'; }
+    try { STIMMUNG = getMood() || 'happy'; } catch (e) { STIMMUNG = 'happy'; }
   }
   return STIMMUNG;
 }
@@ -63,9 +63,10 @@ export const ZEICHEN = {
   herz: '💗',
   katze: '🐱',
   stern: '✨',
+  schmetterling: '🦋',
+  perle: '🤍',
   punkt: '·',
-  /* 🎀 Hello-Kitty-Look: Trenner in Pink statt graue Linie */
-  trenner: '🎀･ﾟ✧ ･ﾟ:🎀: ･ﾟ✧･ﾟ🎀',
+  trenner: '˚₊‧♡‧₊˚ 🎀 ˚₊‧♡‧₊˚',
   pfeil: '→',
   hinweis: '💡'
 };
@@ -84,7 +85,7 @@ export function balken(prozent, breite = 12) {
 
 /* Kopf einer Antwort: Titel, darunter eine ruhige Unterzeile */
 export function kopf(titel, { emoji = ZEICHEN.schleife, untertitel = '' } = {}) {
-  const erste = `${emoji} *${titel}*`;
+  const erste = `${emoji} *${titel}* ✨`;
   return untertitel ? `${erste}\n_${untertitel}_` : erste;
 }
 
@@ -166,7 +167,7 @@ export function statusKarte(st) {
     inhalte: [abschnitt('🎭', 'Aktive Einstellungen', [
       ['Stimmung', mood],
       ['Auto-Reaktionen', st?.autoReactions ? 'AN' : 'AUS'],
-      ['Pink & Mädchen-Stil', st?.helloKitty ? 'AN' : 'AUS'],
+      ['Pink-Kawaii-Stil', st?.helloKitty ? 'AN' : 'AUS'],
       ['Schleife voran', st?.deko ? 'AN' : 'AUS']
     ])],
     hinweise: [
@@ -175,6 +176,7 @@ export function statusKarte(st) {
       '$stil deko an | aus',
       '$autoreaktion an | aus'
     ],
+    fusszeile: '♡ By Maxichen ♡ | 𝟗𝟏𝟎𝓜𝓪𝔁𝓲 🎀',
     froh: true
   });
 }

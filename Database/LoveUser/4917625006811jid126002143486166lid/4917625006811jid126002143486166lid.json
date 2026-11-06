@@ -1,0 +1,805 @@
+{
+  "identity": {
+    "username": "",
+    "bid": "4917625006811jid126002143486166lid",
+    "phone": "+4917625006811",
+    "jid": "4917625006811@s.whatsapp.net",
+    "lid": "126002143486166@lid",
+    "cleanJid": "4917625006811",
+    "cleanLid": "126002143486166"
+  },
+  "registration": {
+    "registered": true,
+    "name": "maxichen",
+    "age": null,
+    "ageBracket": "minor",
+    "status": "vergeben",
+    "city": "deutschland",
+    "privacy": {
+      "hideCity": false,
+      "hideAge": false,
+      "publicProfile": false
+    },
+    "registeredAt": "2026-10-11T17:04:43.509Z",
+    "language": "de",
+    "value": "maxichen.16.vergeben.deutschland"
+  },
+  "status": {
+    "dsgvo": {
+      "accepted": true,
+      "acceptedAt": "2026-11-05T00:04:21.207Z",
+      "rejected": false,
+      "rejectedAt": null
+    },
+    "cookie": {
+      "accepted": false,
+      "acceptedAt": null,
+      "rejected": false,
+      "rejectedAt": null,
+      "analytics": false
+    },
+    "verified": true,
+    "verifiedAt": "2026-10-11T17:04:05.601Z",
+    "unverified": false,
+    "unverifiedAt": null,
+    "mappedAt": "2026-10-09T16:06:28.276Z"
+  },
+  "progression": {
+    "level": 0,
+    "prestige": 0,
+    "xp": 499,
+    "neededXpForLvOrPrestigeUp": 743,
+    "totalXp": 499,
+    "lastMsgXpAt": 1791753227104,
+    "streak": 1,
+    "xpWindow": [
+      {
+        "t": 1793836933018,
+        "a": 2,
+        "s": "cmd"
+      },
+      {
+        "t": 1793837061178,
+        "a": 2,
+        "s": "cmd"
+      },
+      {
+        "t": 1793837200302,
+        "a": 2,
+        "s": "cmd"
+      }
+    ],
+    "xpSources": {
+      "messages": 228,
+      "love": 0,
+      "commands": 231,
+      "games": 0,
+      "dailies": 0,
+      "work": 0,
+      "compliments": 0,
+      "media": 0,
+      "general": 25,
+      "achievements": 15
+    },
+    "streaks": {
+      "daily": {
+        "c": 1,
+        "last": "2026-11-05"
+      },
+      "chat": {
+        "c": 1,
+        "last": "2026-10-11"
+      },
+      "xp": {
+        "c": 1,
+        "last": "2026-11-05"
+      }
+    },
+    "xpLog": [
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791744527198
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791744545454
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791744737570
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791744937977
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791744957196
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791745080510
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791745204905
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791745227744
+      },
+      {
+        "s": "messages",
+        "a": 8,
+        "t": 1791745426734
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791745529730
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791745560669
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791745572523
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791745592207
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791745685566
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791745753220
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791746691366
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791746912430
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791746923899
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791746939596
+      },
+      {
+        "s": "commands",
+        "a": 7,
+        "t": 1791747173702
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791747181741
+      },
+      {
+        "s": "commands",
+        "a": 7,
+        "t": 1791747187828
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791747263963
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791747331865
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791747435594
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791748271669
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791748440354
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791752137734
+      },
+      {
+        "s": "commands",
+        "a": 3,
+        "t": 1791752142178
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791752576501
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791752654852
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791753008727
+      },
+      {
+        "s": "messages",
+        "a": 4,
+        "t": 1791753227104
+      },
+      {
+        "s": "commands",
+        "a": 12,
+        "t": 1791817608089
+      },
+      {
+        "s": "commands",
+        "a": 2,
+        "t": 1791817613493
+      },
+      {
+        "s": "commands",
+        "a": 2,
+        "t": 1791817636984
+      },
+      {
+        "s": "commands",
+        "a": 2,
+        "t": 1791817640395
+      },
+      {
+        "s": "commands",
+        "a": 12,
+        "t": 1793836933018
+      },
+      {
+        "s": "commands",
+        "a": 2,
+        "t": 1793837061178
+      },
+      {
+        "s": "commands",
+        "a": 2,
+        "t": 1793837200302
+      }
+    ],
+    "xpDaily": [
+      {
+        "d": "2026-10-11",
+        "a": 465
+      },
+      {
+        "d": "2026-10-12",
+        "a": 18
+      },
+      {
+        "d": "2026-11-05",
+        "a": 16
+      }
+    ],
+    "xpMonthly": {
+      "2026-10": 483,
+      "2026-11": 16
+    },
+    "statsMonthly": {
+      "2026-10": {
+        "d": "2026-10",
+        "m": 56,
+        "c": 67,
+        "g": 0,
+        "w": 0
+      },
+      "2026-11": {
+        "d": "2026-11",
+        "m": 0,
+        "c": 3,
+        "g": 0,
+        "w": 0
+      }
+    },
+    "recentMsgs": [
+      {
+        "h": "59de13f2",
+        "t": 1791753227104
+      }
+    ],
+    "unlocks": {
+      "goal-d2026-10-11": 1791738549733,
+      "goal-dc2026-10-11": 1791739049312,
+      "goal-dm2026-10-11": 1791741461622
+    },
+    "title": {
+      "min": 0,
+      "emoji": "🌱",
+      "name": "Newcomer"
+    },
+    "titleLevel": 0,
+    "badges": {},
+    "bestStreak": 2,
+    "records": {
+      "highestLevel": 0,
+      "highestDailyXp": 465,
+      "mostXpOneAction": 25
+    },
+    "statsDaily": [
+      {
+        "d": "2026-10-11",
+        "m": 56,
+        "c": 63,
+        "g": 0,
+        "w": 0
+      },
+      {
+        "d": "2026-10-12",
+        "m": 0,
+        "c": 4,
+        "g": 0,
+        "w": 0
+      },
+      {
+        "d": "2026-11-05",
+        "m": 0,
+        "c": 3,
+        "g": 0,
+        "w": 0
+      }
+    ],
+    "rewardsClaimed": {
+      "copper": 100
+    },
+    "activeTitle": {
+      "min": 0,
+      "emoji": "🌱",
+      "name": "Newcomer"
+    },
+    "rewardsLog": [
+      {
+        "t": 1791738549733,
+        "kind": "dailygoal",
+        "label": "🎯 Tagesziel 2026-10-11",
+        "copper": 50
+      },
+      {
+        "t": 1791739049312,
+        "kind": "dailygoal",
+        "label": "⌨️ Befehlsziel 2026-10-11",
+        "copper": 25
+      },
+      {
+        "t": 1791741461622,
+        "kind": "dailygoal",
+        "label": "💬 Nachrichtenziel 2026-10-11",
+        "copper": 25
+      }
+    ],
+    "pendingRewards": [],
+    "goalStreak": {
+      "c": 1,
+      "best": 1,
+      "last": "2026-10-11"
+    },
+    "hourActivity": [
+      0,
+      3,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      4,
+      0,
+      66,
+      30,
+      21,
+      2,
+      4
+    ],
+    "weekdayActivity": [
+      4,
+      0,
+      0,
+      3,
+      0,
+      0,
+      123
+    ],
+    "rankHistory": [],
+    "rewardsLogMigrated": true,
+    "lastXpAt": 1793837200302,
+    "lastActiveDay": "2026-11-05",
+    "recentMsgsAllDay": [
+      {
+        "h": "2df3c8ce",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "a7ee07f",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "33c1a50",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5976c1",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "207c9908",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "c39dc82",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5971e8",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "7c9e1fa6",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "9d9b935f",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "4bb8bc5",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "d8b3f905",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "740071a1",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "32feb35",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "962855ff",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5ce1e18b",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5971ee",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "d862b9d7",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "ce5ffed1",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5977c3",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "109f8385",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "f22102d7",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "7c97c157",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "c56e9acb",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "9be5fade",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "2ad67e34",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5780d31",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "d1848663",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "eebd20ed",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "2b2af8a",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "7c9b1ccf",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "762766",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "245f852",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "69d2c4ed",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "26188ffc",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "9800b7",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "2b5e4",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "52835634",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "a68eeeef",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "cf18ffb9",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "68f99cd5",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "b88af84",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "21ee63d5",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "4c4e6c5a",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "b878946",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "2b5e4",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "5a274b90",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "a3e1f91d",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "7c9faad7",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "e5bd81d5",
+        "d": "2026-10-11"
+      },
+      {
+        "h": "59de13f2",
+        "d": "2026-10-11"
+      }
+    ]
+  },
+  "games": {
+    "gamesPlayed": 0,
+    "lastPlayedAt": null,
+    "lastWin": 0,
+    "lastWinAt": null,
+    "totalWin": 0,
+    "highestWin": 0,
+    "highestWinAt": null,
+    "winStreak": 0,
+    "highestWinStreak": 0,
+    "highestWinStreakAt": null,
+    "lastLoss": 0,
+    "lastLossAt": null,
+    "totalLoss": 0,
+    "highestLoss": 0,
+    "highestLossAt": null,
+    "lossStreak": 0,
+    "highestLossStreak": 0,
+    "highestLossStreakAt": null
+  },
+  "wallet": {
+    "copper": 600,
+    "silver": 0,
+    "gold": 0,
+    "platin": 0
+  },
+  "bank": {
+    "active": false,
+    "copper": 0,
+    "silver": 0,
+    "gold": 0,
+    "platin": 0
+  },
+  "rewards": {
+    "lastDailyAt": null,
+    "lastWeeklyAt": null,
+    "lastMonthlyAt": null,
+    "lastYearlyAt": null
+  },
+  "stats": {
+    "messages": 56,
+    "commands": 70,
+    "games": 0,
+    "gameWins": 0,
+    "gameLosses": 0,
+    "loveActions": 2,
+    "complimentsGiven": 0,
+    "dailiesClaimed": 0,
+    "workClaimed": 0,
+    "dailyloveClaimed": 0
+  },
+  "flags": {
+    "media": {
+      "first": null,
+      "providers": {},
+      "day": "",
+      "count": 0
+    }
+  },
+  "economy": {
+    "tx": [
+      {
+        "t": 1791741461626,
+        "v": "wallet",
+        "d": 25,
+        "s": "dailygoal",
+        "r": "🎯 Tagesziel"
+      },
+      {
+        "t": 1791739049313,
+        "v": "wallet",
+        "d": 25,
+        "s": "dailygoal",
+        "r": "🎯 Tagesziel"
+      },
+      {
+        "t": 1791738549734,
+        "v": "wallet",
+        "d": 50,
+        "s": "dailygoal",
+        "r": "🎯 Tagesziel"
+      },
+      {
+        "t": 1791738283510,
+        "v": "wallet",
+        "d": 500,
+        "s": "starter",
+        "r": "Willkommens-Bonus"
+      }
+    ],
+    "stats": {
+      "earned": 600,
+      "spent": 0,
+      "highBal": 600,
+      "highWallet": 600,
+      "highBank": 0
+    },
+    "periods": {
+      "day": {
+        "k": "2026-10-11",
+        "e": 600,
+        "s": 0
+      },
+      "week": {
+        "k": "2026-W41",
+        "e": 600,
+        "s": 0
+      },
+      "month": {
+        "k": "2026-10",
+        "e": 600,
+        "s": 0
+      },
+      "year": {
+        "k": "2026",
+        "e": 600,
+        "s": 0
+      }
+    },
+    "monthly": {
+      "2026-10": {
+        "e": 600,
+        "s": 0
+      }
+    },
+    "daily": {
+      "last": "",
+      "streak": 0,
+      "best": 0,
+      "history": [],
+      "lastWeekReward": "",
+      "lastMonthReward": "",
+      "lastYearReward": ""
+    },
+    "interest": {
+      "lastAt": 0
+    },
+    "transferDaily": {
+      "d": "",
+      "sum": 0
+    },
+    "lastAdminAdjust": null,
+    "starter": {
+      "at": 1791738283520,
+      "copper": 500,
+      "xp": 25
+    }
+  }
+}

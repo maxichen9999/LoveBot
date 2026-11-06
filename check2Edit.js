@@ -466,8 +466,8 @@ export async function createCheckBanEdit({
   if (videoPath) await fs.access(videoPath);
   if (!ffmpegPath) throw new Error('FFmpeg ist für die Erstellung des Checkban-Edits nicht verfügbar.');
 
-  /* Audio-Dauer ermitteln (mit ffprobe) – das Edit läuft so lang wie der Song. */
-  let audioDuration = 12;
+  /* Audio-Dauer ermitteln (mit ffprobe) */
+  let audioDuration = 202; /* Default 3:22 Min */
   try {
     const ffprobePath = ffmpegPath.replace('ffmpeg', 'ffprobe') || 'ffprobe';
     const { stdout } = await execFileAsync(ffprobePath, [
@@ -479,7 +479,7 @@ export async function createCheckBanEdit({
     const parsed = parseFloat(String(stdout || '').trim());
     if (Number.isFinite(parsed) && parsed > 0) audioDuration = parsed;
   } catch (e) {
-    /* Fallback auf 12s, falls ffprobe nicht verfügbar. */
+    /* Fallback auf 3:22 Min */
   }
 
   const timestamp = checkedAt.toISOString().replace(/[-:.]/g, '').replace('T', '-').replace('Z', '');
@@ -487,8 +487,9 @@ export async function createCheckBanEdit({
   const stem = `checkban-${safePhone}-${timestamp}`;
   const imagePath = path.join(outputDirectory, `${stem}.png`);
   const videoPathOut = path.join(outputDirectory, `${stem}.mp4`);
-  const svg = buildCheckBanSvg({ phone: `+${safePhone}`, signals, checkedAt, songText, audioDuration, apkSignal, isSelfCheck });
-  const videoSvg = buildCheckBanSvg({ phone: `+${safePhone}`, signals, checkedAt, videoOverlay: true, songText, audioDuration, apkSignal, isSelfCheck });
+  const editDuration = 202; /* Exakt 3:22 Min für das edit */
+  const svg = buildCheckBanSvg({ phone: `+${safePhone}`, signals, checkedAt, songText, audioDuration: editDuration, apkSignal, isSelfCheck });
+  const videoSvg = buildCheckBanSvg({ phone: `+${safePhone}`, signals, checkedAt, videoOverlay: true, songText, audioDuration: editDuration, apkSignal, isSelfCheck });
 
   await fs.mkdir(outputDirectory, { recursive: true });
   const [image, videoOverlay] = await Promise.all([
@@ -519,7 +520,7 @@ export async function createCheckBanEdit({
   }
 
   ffmpegArgs.push(
-    '-t', String(audioDuration),
+    '-t', String(editDuration),
     '-c:v', 'libx264',
     '-preset', 'veryfast',
     '-profile:v', 'baseline',
@@ -549,4 +550,253 @@ export async function createCheckBanEdit({
     fs.readFile(videoPathOut)
   ]);
   return { imagePath, videoPath: videoPathOut, imageBuffer, videoBuffer };
+}
+
+function wrapSvgText(value, maxLength, maxLines = 2) {
+  const words = String(value ?? '').replace(/[\r\n]+/g, ' ').trim().split(/\s+/).filter(Boolean);
+  const lines = [];
+  let line = '';
+
+  for (const word of words) {
+    let remaining = word;
+    while (remaining.length > maxLength) {
+      if (line) {
+        lines.push(line);
+        line = '';
+      }
+      lines.push(remaining.slice(0, maxLength));
+      remaining = remaining.slice(maxLength);
+    }
+
+    if (!remaining) continue;
+    if (!line) {
+      line = remaining;
+    } else if (`${line} ${remaining}`.length <= maxLength) {
+      line += ` ${remaining}`;
+    } else {
+      lines.push(line);
+      line = remaining;
+    }
+  }
+  if (line) lines.push(line);
+
+  if (lines.length > maxLines) {
+    lines.length = maxLines;
+    lines[maxLines - 1] = `${lines[maxLines - 1].slice(0, Math.max(0, maxLength - 1))}…`;
+  }
+  return lines;
+}
+
+export function buildDatabaseBanCheckSvg({ target, ban, checkedAt = new Date(), videoOverlay = false }) {
+  const isBanned = Boolean(ban);
+  const accent = isBanned ? '#ff6685' : '#72e6b1';
+  const status = isBanned ? 'BAN AKTIV' : 'NICHT GEBANNT';
+  const timestamp = new Date(checkedAt).toLocaleString('de-DE', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+    timeZone: 'Europe/Berlin'
+  });
+  const targetLines = wrapSvgText(target || 'Eigene Identität', 27, 2);
+  const reasonLines = wrapSvgText(ban?.reason || 'Kein Grund angegeben', 55, 2);
+  const bannedAt = ban?.bannedAt
+    ? new Date(ban.bannedAt).toLocaleString('de-DE', { dateStyle: 'medium', timeStyle: 'short', timeZone: 'Europe/Berlin' })
+    : 'Unbekannt';
+  const rawBannedByJid = String(ban?.bannedBy || '');
+  const bannedBy = (rawBannedByJid.toLowerCase().endsWith('@s.whatsapp.net')
+    ? rawBannedByJid
+    : 'JID nicht gespeichert')
+    .replace(/[\r\n]+/g, ' ')
+    .trim()
+    .slice(0, 60);
+  const detailRows = isBanned
+    ? `<text x="94" y="836" fill="#f2d8e7" font-family="Arial,sans-serif" font-size="15" font-weight="700" letter-spacing="2">BAN-GRUND</text>
+       ${reasonLines.map((line, index) => `<text x="94" y="${870 + index * 27}" fill="#fff5fa" font-family="Arial,sans-serif" font-size="20">${escapeXml(line)}</text>`).join('')}
+       <path d="M94 922H626" stroke="#fff" stroke-opacity=".12"/>
+       <text x="94" y="956" fill="#f2d8e7" font-family="Arial,sans-serif" font-size="14">SEIT</text>
+       <text x="94" y="983" fill="#fff5fa" font-family="Arial,sans-serif" font-size="17">${escapeXml(bannedAt)}</text>
+       <text x="390" y="956" fill="#f2d8e7" font-family="Arial,sans-serif" font-size="14">GEBANNT VON · JID</text>
+       <text x="390" y="983" fill="#fff5fa" font-family="Arial,sans-serif" font-size="15">${escapeXml(bannedBy)}</text>
+       <text x="94" y="1005" fill="#c4aec2" font-family="Arial,sans-serif" font-size="13">Quelle: LoveBot-Datenbank · Botzugriff gesperrt</text>`
+    : `<path d="M94 842h18l10 10 18-21" fill="none" stroke="${accent}" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+       <text x="154" y="850" fill="#fff5fa" font-family="Arial,sans-serif" font-size="21" font-weight="700">Alles gut — kein aktiver Bann.</text>
+       <text x="94" y="897" fill="#c4aec2" font-family="Arial,sans-serif" font-size="17">In der LoveBot-Datenbank liegt kein Ban-Eintrag.</text>
+       <text x="94" y="927" fill="#c4aec2" font-family="Arial,sans-serif" font-size="17">Geprüft wurde nur der Bot-Ban-Status.</text>`;
+  const background = videoOverlay
+    ? '<rect width="720" height="1280" fill="#100b1b" fill-opacity=".32"/>'
+    : '<rect width="720" height="1280" fill="url(#banBackground)"/>';
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280" viewBox="0 0 720 1280">
+    <defs>
+      <linearGradient id="banBackground" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#130c20"/><stop offset=".48" stop-color="#28112e"/><stop offset="1" stop-color="#0b1425"/>
+      </linearGradient>
+      <linearGradient id="banPink" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#ff9bcc"/><stop offset=".55" stop-color="#ef70c0"/><stop offset="1" stop-color="#bd92ff"/>
+      </linearGradient>
+      <linearGradient id="banCard" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#21172f" stop-opacity=".84"/><stop offset="1" stop-color="#111525" stop-opacity=".87"/>
+      </linearGradient>
+      <radialGradient id="banGlow">
+        <stop offset="0" stop-color="#f472c4" stop-opacity=".32"/><stop offset="1" stop-color="#f472c4" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="banBlur" x="-60%" y="-60%" width="220%" height="220%"><feGaussianBlur stdDeviation="35"/></filter>
+    </defs>
+    ${background}
+    <circle cx="610" cy="270" r="210" fill="url(#banGlow)" filter="url(#banBlur)"/>
+    <circle cx="60" cy="1040" r="240" fill="url(#banGlow)" filter="url(#banBlur)" opacity=".8"/>
+    <path d="M40 172H680M40 1105H680" stroke="#fff" stroke-opacity=".07"/>
+    <path d="M58 208l7-15 7 15 15 7-15 7-7 15-7-15-15-7zM638 300l5-11 5 11 11 5-11 5-5 11-5-11-11-5zM78 1045l5-11 5 11 11 5-11 5-5 11-5-11-11-5z" fill="#ffd7f0" opacity=".56"/>
+    <path d="M360 74c-18-22-49 7 0 42 49-35 18-64 0-42Z" fill="url(#banPink)" opacity=".96"/>
+    <text x="360" y="151" text-anchor="middle" fill="#fff0f8" font-family="Arial,sans-serif" font-size="23" font-weight="800" letter-spacing="4">HELLOKITTY BABY MAXI</text>
+    <text x="360" y="184" text-anchor="middle" fill="#c9b8cf" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="5">LOVE BOT  ·  DATABASE CHECK</text>
+
+    <rect x="34" y="224" width="652" height="792" rx="38" fill="url(#banCard)" stroke="#ff9bcc" stroke-opacity=".38" stroke-width="2"/>
+    <path d="M76 225H644" stroke="url(#banPink)" stroke-width="4" stroke-linecap="round"/>
+    <rect x="76" y="270" width="140" height="34" rx="17" fill="#f472c4" fill-opacity=".12" stroke="#f9a8d4" stroke-opacity=".35"/>
+    <circle cx="96" cy="287" r="5" fill="#ffb5d7"/>
+    <text x="111" y="292" fill="#ffd7eb" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">LIVE-ABFRAGE</text>
+    <text x="76" y="365" fill="#fff4fa" font-family="Arial,sans-serif" font-size="38" font-weight="800" letter-spacing="1">BOT BAN CHECK</text>
+    <text x="78" y="397" fill="#bba9bf" font-family="Arial,sans-serif" font-size="15" letter-spacing="1">Nur der interne LoveBot-Ban wird geprüft.</text>
+
+    <rect x="70" y="432" width="580" height="132" rx="24" fill="#ffffff" fill-opacity=".045" stroke="#ffffff" stroke-opacity=".11"/>
+    <text x="96" y="468" fill="#e7bfd8" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3">GEPRÜFTE JID</text>
+    ${targetLines.map((line, index) => `<text x="96" y="${index === 0 ? 511 : 541}" fill="#fff8fc" font-family="Arial,sans-serif" font-size="${line.length > 23 ? 19 : 23}" font-weight="700">${escapeXml(line)}</text>`).join('')}
+
+    <rect x="70" y="590" width="580" height="132" rx="26" fill="${accent}" fill-opacity=".09" stroke="${accent}" stroke-opacity=".5" stroke-width="2"/>
+    <circle cx="119" cy="656" r="24" fill="${accent}" fill-opacity=".18"/>
+    ${isBanned
+      ? '<path d="M109 646l20 20m0-20l-20 20" stroke="#ff9caf" stroke-width="4" stroke-linecap="round"/>'
+      : '<path d="M108 656l8 8 15-18" fill="none" stroke="#a3f4cb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>'}
+    <text x="160" y="642" fill="#cbb4c9" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3">STATUS IN DER BOT-DATENBANK</text>
+    <text x="160" y="685" fill="${accent}" font-family="Arial,sans-serif" font-size="29" font-weight="800" letter-spacing=".5">${status}</text>
+
+    <text x="94" y="782" fill="#f7cde4" font-family="Arial,sans-serif" font-size="13" font-weight="700" letter-spacing="3">${isBanned ? 'BAN-DETAILS' : 'PRÜF-ERGEBNIS'}</text>
+    ${detailRows}
+
+    <rect x="70" y="1040" width="580" height="84" rx="22" fill="#ffffff" fill-opacity=".035" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="94" y="1075" fill="#c9b8cf" font-family="Arial,sans-serif" font-size="12" font-weight="700" letter-spacing="2">PRÜFUNG ABGESCHLOSSEN</text>
+    <text x="94" y="1102" fill="#fff0f8" font-family="Arial,sans-serif" font-size="17" font-weight="700">${escapeXml(timestamp)}</text>
+    <rect x="499" y="1062" width="127" height="38" rx="19" fill="url(#banPink)" fill-opacity=".18" stroke="#f9a8d4" stroke-opacity=".4"/>
+    <text x="562" y="1087" text-anchor="middle" fill="#ffe2f2" font-family="Arial,sans-serif" font-size="14" font-weight="800" letter-spacing="1">3:22 EDIT</text>
+    <text x="360" y="1175" text-anchor="middle" fill="#e8cce1" font-family="Arial,sans-serif" font-size="16" font-weight="700">Mit Liebe gecheckt · HelloKitty Baby Maxi</text>
+    <text x="360" y="1206" text-anchor="middle" fill="#8f8298" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">LOVEBOT ORIGINAL  ·  DATABASE ONLY</text>
+  </svg>`;
+}
+
+export async function createDatabaseBanCheckEdit({
+  target,
+  ban,
+  checkedAt = new Date(),
+  audioPath,
+  outputDirectory = path.resolve('edit', 'database-ban-check'),
+  ffmpegPath
+}) {
+  if (!target) throw new Error('Für den Bot-Ban-Edit fehlt die geprüfte Identität.');
+  if (!audioPath) throw new Error('Die Musikdatei für den Bot-Ban-Edit ist nicht konfiguriert.');
+  if (!ffmpegPath) throw new Error('FFmpeg ist für die Erstellung des Bot-Ban-Edits nicht verfügbar.');
+  await fs.access(audioPath);
+
+  const timestamp = new Date(checkedAt).toISOString().replace(/[-:.]/g, '').replace('T', '-').replace('Z', '');
+  const safeTarget = String(target).replace(/[^a-zA-Z0-9_-]/g, '_').slice(0, 40) || 'user';
+  const stem = `checkban-${safeTarget}-${timestamp}`;
+  const imagePath = path.join(outputDirectory, `${stem}.png`);
+  const videoPath = path.join(outputDirectory, `${stem}.mp4`);
+  const backgroundPath = path.join(process.cwd(), 'Database', 'media.json');
+  let customBackground = '';
+  try {
+    const mediaConfig = JSON.parse(await fs.readFile(backgroundPath, 'utf8'));
+    customBackground = String(mediaConfig?.config?.staticImage || '').trim();
+  } catch (error) {
+    if (error?.code !== 'ENOENT' && !(error instanceof SyntaxError)) throw error;
+  }
+  const backgroundCandidates = customBackground
+    ? [path.resolve(customBackground)]
+    : ['Assets/max.jpeg', 'Bilder/max.jpeg', 'tmp/max.jpeg'].map((file) => path.resolve(file));
+  let backgroundImage = null;
+  for (const candidate of backgroundCandidates) {
+    try {
+      const stat = await fs.stat(candidate);
+      if (stat.isFile() && stat.size > 0) {
+        backgroundImage = candidate;
+        break;
+      }
+    } catch (error) {
+      if (error?.code !== 'ENOENT') throw error;
+    }
+  }
+
+  const svgOverlay = Buffer.from(buildDatabaseBanCheckSvg({ target, ban, checkedAt, videoOverlay: true }));
+  const overlayBuffer = await sharp(svgOverlay).png().toBuffer();
+  let backgroundBuffer;
+  if (backgroundImage) {
+    backgroundBuffer = await sharp(backgroundImage)
+      .resize(720, 1280, { fit: 'cover', position: 'centre' })
+      .modulate({ brightness: 0.62, saturation: 1.12 })
+      .png()
+      .toBuffer();
+  } else {
+    backgroundBuffer = await sharp(Buffer.from(
+      '<svg xmlns="http://www.w3.org/2000/svg" width="720" height="1280">' +
+      '<defs><linearGradient id="fallback" x1="0" y1="0" x2="1" y2="1">' +
+      '<stop stop-color="#130c20"/><stop offset="1" stop-color="#0b1425"/>' +
+      '</linearGradient></defs><rect width="720" height="1280" fill="url(#fallback)"/></svg>'
+    ))
+      .png()
+      .toBuffer();
+  }
+  const imageBuffer = await sharp(backgroundBuffer)
+    .composite([{ input: overlayBuffer }])
+    .png()
+    .toBuffer();
+
+  await fs.mkdir(outputDirectory, { recursive: true });
+  await fs.writeFile(imagePath, imageBuffer);
+  const backgroundPathOut = path.join(outputDirectory, `${stem}.background.png`);
+  const overlayPath = path.join(outputDirectory, `${stem}.overlay.png`);
+  await Promise.all([
+    fs.writeFile(backgroundPathOut, backgroundBuffer),
+    fs.writeFile(overlayPath, overlayBuffer)
+  ]);
+  try {
+    await execFileAsync(ffmpegPath, [
+      '-y',
+      '-loop', '1',
+      '-framerate', '30',
+      '-i', backgroundPathOut,
+      '-stream_loop', '-1',
+      '-i', audioPath,
+      '-loop', '1',
+      '-framerate', '30',
+      '-i', overlayPath,
+      '-filter_complex',
+      "[0:v]scale=720:1280:force_original_aspect_ratio=increase,crop=720:1280,zoompan=z='min(zoom+0.000006,1.035)':d=1:s=720x1280:fps=30,eq=brightness=-0.06:saturation=1.1[bg];[bg][2:v]overlay=0:0:shortest=1,format=yuv420p[v]",
+      '-map', '[v]',
+      '-map', '1:a:0',
+      '-t', '202',
+      '-c:v', 'libx264',
+      '-preset', 'veryfast',
+      '-tune', 'stillimage',
+      '-crf', '28',
+      '-pix_fmt', 'yuv420p',
+      '-r', '30',
+      '-c:a', 'aac',
+      '-b:a', '128k',
+      '-ar', '44100',
+      '-ac', '2',
+      '-movflags', '+faststart',
+      videoPath
+    ], { timeout: 240000, maxBuffer: 8 * 1024 * 1024 });
+  } catch (error) {
+    await fs.rm(videoPath, { force: true });
+    await Promise.all([
+      fs.rm(backgroundPathOut, { force: true }),
+      fs.rm(overlayPath, { force: true })
+    ]);
+    throw new Error(`FFmpeg konnte den Bot-Ban-Edit nicht erstellen: ${String(error?.message || error).slice(0, 240)}`);
+  }
+
+  await Promise.all([
+    fs.rm(backgroundPathOut, { force: true }),
+    fs.rm(overlayPath, { force: true })
+  ]);
+  return { imagePath, videoPath, imageBuffer, videoBuffer: await fs.readFile(videoPath) };
 }

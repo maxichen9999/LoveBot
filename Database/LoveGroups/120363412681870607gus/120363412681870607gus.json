@@ -1,0 +1,343 @@
+{
+  "groupId": "120363412681870607",
+  "groupJid": "120363412681870607@g.us",
+  "subject": "♡ 𝟗𝟏𝟎𝓶𝓪𝔁𝓲’𝓼 𝓗𝓮𝓪𝓻𝓽 𝓦𝓸𝓻𝓵𝓭 💗🦋",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-10-17T13:28:14.912Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-10-17T10:17:07.705Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": true,
+    "antiflood": true,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": true,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 974,
+    "level": 2,
+    "msgs": 487,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 208,
+        "xp": 416,
+        "games": 0,
+        "last": 1792852310880
+      },
+      "117153923608702": {
+        "m": 59,
+        "xp": 118,
+        "games": 0,
+        "last": 1792760416447
+      },
+      "257565715894382": {
+        "m": 44,
+        "xp": 88,
+        "games": 0,
+        "last": 1792749480440
+      },
+      "197461842862188": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792262987763
+      },
+      "6481525141537": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1792264308117
+      },
+      "257466679955665": {
+        "m": 32,
+        "xp": 64,
+        "games": 0,
+        "last": 1792501079413
+      },
+      "171412899770383": {
+        "m": 109,
+        "xp": 218,
+        "games": 0,
+        "last": 1792778014070
+      },
+      "11562823758022": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1792512334003
+      },
+      "108813734645801": {
+        "m": 15,
+        "xp": 30,
+        "games": 0,
+        "last": 1792618069702
+      },
+      "62011224400114": {
+        "m": 3,
+        "xp": 6,
+        "games": 0,
+        "last": 1792774269483
+      },
+      "98148676571164": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792695551631
+      },
+      "110226393034821": {
+        "m": 2,
+        "xp": 4,
+        "games": 0,
+        "last": 1792779158647
+      }
+    },
+    "week": {
+      "k": "2026-W44",
+      "xp": 4
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 974
+    },
+    "daily": {
+      "k": "2026-10-24",
+      "msgs": 2
+    },
+    "streak": {
+      "c": 8,
+      "last": "2026-10-24"
+    },
+    "history": {
+      "2026-10-17": 128,
+      "2026-10-18": 8,
+      "2026-10-19": 126,
+      "2026-10-20": 154,
+      "2026-10-21": 398,
+      "2026-10-22": 68,
+      "2026-10-23": 88,
+      "2026-10-24": 4
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-24",
+      "target": 50,
+      "progress": 2,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W44",
+      "target": 200,
+      "progress": 4,
+      "claimed": false
+    }
+  },
+  "gach": {
+    "gmsg_100": 1792438932647,
+    "gstreak_7": 1792746604110
+  },
+  "gbadges": {
+    "g_active": 1792746604110
+  },
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1792232227945,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    },
+    {
+      "ts": 1792243090739,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1792264241586,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → an"
+    },
+    {
+      "ts": 1792436573678,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1792438932647,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1792439611953,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1792511536925,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1792574598497,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    }
+  ],
+  "gtreasury": {
+    "balance": 2530,
+    "log": [
+      {
+        "ts": 1792264241585,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1792438932647,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1792438932647,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1792439611953,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1792492032701,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      },
+      {
+        "ts": 1792511536925,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1792574598497,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1792575727112,
+        "delta": 120,
+        "reason": "Group-Level 2"
+      },
+      {
+        "ts": 1792746604110,
+        "delta": 150,
+        "reason": "Achievement Aktive Woche"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 12,
+  "adminCount": 3,
+  "metaAt": 1792852311096,
+  "autodl": true,
+  "welcome": true,
+  "goodbye": true,
+  "kick": true,
+  "promote": true,
+  "demote": true,
+  "liebe": true,
+  "fun": true,
+  "media": true,
+  "tools": true,
+  "badwords": false,
+  "antilink": true,
+  "night": true,
+  "afk": true,
+  "warns": {}
+}

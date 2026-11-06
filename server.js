@@ -2780,6 +2780,8 @@ async function handleApi(req, res, pathname) {
           out.push({
             bid,
             name: prof?.registration?.name || prof?.identity?.username || '',
+            jid: prof?.identity?.jid || '',
+            lid: prof?.identity?.lid || '',
             registered: !!prof?.registration?.registered,
             level: prof?.progression?.level || 0,
             prestige: prof?.progression?.prestige || 0,
@@ -5310,8 +5312,10 @@ async function handleApi(req, res, pathname) {
     const canSeeNumbers = perm(session, 'accounts.manage');
     const accNumbers = new Set(rbac.listAccounts().map((a) => String(a.number || '').replace(/\D/g, '')));
     const botUsers = scanUserProfiles().map((u) => {
-      const digits = String(u.bid || '').replace(/\D/g, '');
-      const phone = digits.slice(0, 12);
+      const jid = String(u.jid || '');
+      const phone = jid.endsWith('@s.whatsapp.net')
+        ? jid.slice(0, jid.indexOf('@')).replace(/\D/g, '')
+        : String(u.bid || '').match(/^\d+/)?.[0] || '';
       return {
         bid: u.bid,
         name: u.name || '',
@@ -5372,6 +5376,21 @@ async function handleApi(req, res, pathname) {
     return null;
   }
 
+  function findProfileByBid(bid) {
+    if (!/^[a-zA-Z0-9._-]{1,200}$/.test(bid) || bid === '.' || bid === '..') return null;
+    const root = path.resolve('Database', 'LoveUser');
+    const profileDir = path.resolve(root, bid);
+    if (path.dirname(profileDir) !== root) return null;
+    try {
+      if (!fs.statSync(profileDir).isDirectory()) return null;
+      const data = JSON.parse(fs.readFileSync(path.join(profileDir, bid + '.json'), 'utf8'));
+      return { bid, data };
+    } catch (error) {
+      if (error.code === 'ENOENT' || error.code === 'ENOTDIR') return null;
+      throw error;
+    }
+  }
+
   if (pathname.startsWith('/api/accounts/') && pathname.endsWith('/detail') && req.method === 'GET') {
     if (!perm(session, 'accounts.view')) return sendJson(res, 403, { error: 'Keine Berechtigung.' });
     const id = pathname.split('/')[3];
@@ -5403,12 +5422,31 @@ async function handleApi(req, res, pathname) {
      Aufruf — Grundlage der 12-Tab-Ansicht im Control Center. */
   if (pathname.startsWith('/api/accounts/') && pathname.endsWith('/detail/full') && req.method === 'GET') {
     if (!perm(session, 'accounts.view')) return sendJson(res, 403, { error: 'Keine Berechtigung (accounts.view).' });
-    const id = pathname.split('/')[3];
-    const acc = rbac.getAccount(id);
+    let id;
+    try { id = decodeURIComponent(pathname.split('/')[3] || ''); }
+    catch (error) { return sendJson(res, 400, { error: 'Ungültige Account-ID.' }); }
+    let acc = rbac.getAccount(id);
+    let botProfileOnly = false;
+    let found = null;
+    if (!acc && id.startsWith('bot_')) {
+      found = findProfileByBid(id.slice(4));
+      if (!found) return sendJson(res, 404, { error: 'Bot-Profil nicht gefunden.' });
+      botProfileOnly = true;
+      const profileName = found.data?.registration?.name || found.data?.identity?.username || found.bid;
+      acc = {
+        id,
+        username: profileName,
+        number: String(found.data?.identity?.jid || '').split('@')[0].replace(/\D/g, ''),
+        role: 'user',
+        status: 'active',
+        createdAt: found.data?.registration?.registeredAt || null,
+        effectivePerms: []
+      };
+    }
     if (!acc) return sendJson(res, 404, { error: 'Account nicht gefunden.' });
     const canManage = perm(session, 'accounts.manage');
     const number = String(acc.number || '');
-    const found = findProfileByNumber(number);
+    if (!found && number) found = findProfileByNumber(number);
     const pr = found?.data || null;
     const profileBid = found?.bid || null;
     const lp = readLoveplus();
@@ -5446,6 +5484,7 @@ async function handleApi(req, res, pathname) {
       account: {
         id: acc.id, username: acc.username, number: canManage ? number : maskNumber(number),
         role: acc.role, scope: acc.scope, status: acc.status || 'active',
+        isBotProfile: botProfileOnly,
         restrictions: acc.restrictions || [], mustChange: !!acc.mustChange,
         createdAt: acc.createdAt, lastLoginAt: acc.lastLoginAt, passwordChangedAt: acc.passwordChangedAt || null,
         lockedReason: acc.lockedReason || null,
@@ -5464,11 +5503,14 @@ async function handleApi(req, res, pathname) {
         dsgvo: pr?.status?.dsgvo?.accepted === true,
         level: pr?.progression?.level || 0,
         prestige: pr?.progression?.prestige || 0,
+        rank: rankFor(pr?.progression?.prestige || 0, pr?.progression?.level || 0).full,
         xp: pr?.progression?.xp || 0,
         totalXp: pr?.progression?.totalXp || 0,
         xpSources: pr?.progression?.xpSources || {},
         streak: pr?.progression?.streak || 0,
         wallet: pr?.wallet || {},
+        jid: canManage ? pr?.identity?.jid || '' : '',
+        lid: canManage ? pr?.identity?.lid || '' : '',
         married: pr?.love?.married === true,
         spouse: pr?.love?.spouseName || null,
         marriedAt: pr?.love?.marriedAt || null

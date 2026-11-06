@@ -1,0 +1,285 @@
+{
+  "groupId": "120363413916486684",
+  "groupJid": "120363413916486684@g.us",
+  "subject": "🎀 910maxi’s Pink Paradise 🩷✨",
+  "creator": "31568731070677@lid",
+  "owner": "31568731070677@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-11-05T18:09:07.096Z",
+  "activatedBy": "4915679515914@s.whatsapp.net",
+  "createdAt": "2026-11-03T13:07:31.709Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": true,
+    "antiflood": true,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": true,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 492,
+    "level": 1,
+    "msgs": 246,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 116,
+        "xp": 232,
+        "games": 0,
+        "last": 1793996502997
+      },
+      "55508325134445": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793878635551
+      },
+      "168895914721394": {
+        "m": 13,
+        "xp": 26,
+        "games": 0,
+        "last": 1793892990860
+      },
+      "200227147542649": {
+        "m": 8,
+        "xp": 16,
+        "games": 0,
+        "last": 1793970326525
+      },
+      "34502193709122": {
+        "m": 13,
+        "xp": 26,
+        "games": 0,
+        "last": 1793970333249
+      },
+      "199591676932179": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1793896206998
+      },
+      "124094540435524": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1793970333298
+      },
+      "239268970651718": {
+        "m": 67,
+        "xp": 134,
+        "games": 0,
+        "last": 1793996504675
+      },
+      "274144205795521": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1793901596621
+      },
+      "85766571049175": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1793901472358
+      },
+      "256478971691210": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793970328259
+      },
+      "242863774425235": {
+        "m": 1,
+        "xp": 2,
+        "games": 0,
+        "last": 1793970333205
+      },
+      "18387409309848": {
+        "m": 6,
+        "xp": 12,
+        "games": 0,
+        "last": 1793979537997
+      }
+    },
+    "week": {
+      "k": "2026-W45",
+      "xp": 492
+    },
+    "month": {
+      "k": "2026-11",
+      "xp": 492
+    },
+    "daily": {
+      "k": "2026-11-06",
+      "msgs": 63
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-11-06"
+    },
+    "history": {
+      "2026-11-03": 2,
+      "2026-11-05": 364,
+      "2026-11-06": 126
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-11-06",
+      "target": 50,
+      "progress": 63,
+      "claimed": true
+    },
+    "weekly": {
+      "k": "2026-W45",
+      "target": 200,
+      "progress": 492,
+      "claimed": true
+    }
+  },
+  "gach": {
+    "gmsg_100": 1793901164216
+  },
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1793711251936,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    },
+    {
+      "ts": 1793877421925,
+      "actor": "system",
+      "action": "setting",
+      "detail": "logsEnabled → an"
+    },
+    {
+      "ts": 1793891704453,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    },
+    {
+      "ts": 1793901164216,
+      "actor": "system",
+      "action": "goal",
+      "detail": "weekly-Ziel (200) erreicht, +1000 Treasury"
+    },
+    {
+      "ts": 1793978739620,
+      "actor": "36688382423052",
+      "action": "kick",
+      "detail": "Gekickt: 4915222357465"
+    },
+    {
+      "ts": 1793979507554,
+      "actor": "system",
+      "action": "goal",
+      "detail": "daily-Ziel (50) erreicht, +250 Treasury"
+    }
+  ],
+  "gtreasury": {
+    "balance": 1760,
+    "log": [
+      {
+        "ts": 1793891704453,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      },
+      {
+        "ts": 1793901164216,
+        "delta": 1000,
+        "reason": "weekly-Ziel erreicht"
+      },
+      {
+        "ts": 1793901164216,
+        "delta": 150,
+        "reason": "Achievement Gesprächig"
+      },
+      {
+        "ts": 1793901971286,
+        "delta": 110,
+        "reason": "Group-Level 1"
+      },
+      {
+        "ts": 1793979507554,
+        "delta": 250,
+        "reason": "daily-Ziel erreicht"
+      }
+    ]
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 33,
+  "adminCount": 8,
+  "metaAt": 1793979223714,
+  "autodl": true,
+  "welcome": true,
+  "goodbye": true,
+  "kick": true,
+  "promote": true,
+  "demote": true,
+  "liebe": true,
+  "fun": true,
+  "media": true,
+  "tools": true,
+  "badwords": true,
+  "antilink": true,
+  "night": true,
+  "afk": true,
+  "setupAt": "2026-11-05T18:09:07.096Z",
+  "setupBy": "4915679515914@s.whatsapp.net",
+  "setupByName": "Owner",
+  "setupDescription": "╭─ 🎀 *HELLOKITTY BABY MAXI* ─╮\n│ ✨ Jetzt aktiv in *🎀 910maxi’s Pink Paradise 🩷✨*\n│\n│ 💜 Schön, dass ich euch begleiten darf!\n│ 📜 Infos zu Datenschutz & Freischaltung:\n│    *$dsgvo* · *$verify*\n├────────────────────\n│ 🕒 Eingerichtet: Do., 05.11.2026, 19:09:07\n│ 👑 Von: Owner\n│ 🆔 JID: 4915679515914@s.whatsapp.net\n│ 🔗 LID: 36688382423052@lid\n╰─ 🌙 Habt eine schöne gemeinsame Zeit!",
+  "warns": {
+    "200227147542649": [
+      {
+        "reason": "Gruppen-Einladungslink",
+        "by": "HelloKitty Baby Maxi 💔 Automod 🤖",
+        "at": "2026-11-06T20:21:44.095Z"
+      }
+    ]
+  }
+}

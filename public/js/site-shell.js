@@ -36,7 +36,7 @@
 
   /* ── Konfiguration: HIER ändern, gilt überall ─────────────────────── */
   var BRAND = {
-    name: 'HELLOKITTY BABY MAXI',
+    name: '𝟗𝟏𝟎𝓜𝓪𝔁𝓲',
     logo: '/assets/img/Menu.png',
     alt: 'HelloKitty Baby Maxi',
     href: '/'
@@ -125,7 +125,6 @@
       '    <span class="akzente" id="akzente" role="group" aria-label="Akzentfarbe">\n' +
       '      <button class="akzent" data-akzent="pink" type="button" title="Pink" aria-label="Akzent Pink"></button>\n' +
       '      <button class="akzent" data-akzent="rosa" type="button" title="Rosa" aria-label="Akzent Rosa"></button>\n' +
-      '      <button class="akzent" data-akzent="tuerkis" type="button" title="Türkis" aria-label="Akzent Türkis"></button>\n' +
       '    </span>\n' +
       '  </div>\n' +
       '  <button class="nav-burger" id="navBurger" aria-label="Menü" aria-expanded="false" aria-controls="navLinks">☰</button>\n' +
@@ -144,7 +143,7 @@
       });
     }
 
-    /* 🎀 Akzentfarbe: Pink · Rosa · Türkis — der Punkt zeigt die Wahl */
+    /* 🎀 Akzentfarbe: Pink · Rosa — der Punkt zeigt die Wahl */
     var punkte = el.querySelectorAll('#akzente .akzent');
     var akzentZeichen = function () {
       var gewaehlt = window.LoveBotTheme ? window.LoveBotTheme.getAkzent() : 'pink';

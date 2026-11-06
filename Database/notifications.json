@@ -1,0 +1,1418 @@
+{
+  "4915155894714jid269574108926096lid": [
+    {
+      "id": "n_mw54rw93roa9",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793978995719,
+      "read": false
+    },
+    {
+      "id": "n_mw53fzs54707",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793976760805,
+      "read": false
+    },
+    {
+      "id": "n_mw3q6gv3b4h8",
+      "type": "daily",
+      "title": "🏆 Wochenziel erreicht!",
+      "text": "+250 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793894015199,
+      "read": false
+    },
+    {
+      "id": "n_mw3q493cnqcm",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793893911816,
+      "read": false
+    },
+    {
+      "id": "n_mw2xd7r8aau8",
+      "type": "levelup",
+      "title": "⭐ Level 102 erreicht!",
+      "text": "Neuer Rang: 🌹 Rose des Herzens · +400 Kupfer",
+      "link": "/level.html",
+      "ts": 1793845621124,
+      "read": false
+    },
+    {
+      "id": "n_mw2t00g65z3p",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793838286662,
+      "read": false
+    },
+    {
+      "id": "n_mw2sv1mjyjd0",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793838054907,
+      "read": false
+    },
+    {
+      "id": "n_mw2sl7xhas8w",
+      "type": "achievement",
+      "title": "🏆 Stammtisch freigeschaltet!",
+      "text": "1.000 Nachrichten geschrieben.",
+      "link": "/level.html",
+      "ts": 1793837596517,
+      "read": false
+    },
+    {
+      "id": "n_mw2sl7xb6yvz",
+      "type": "achievement",
+      "title": "🏅 Neues Badge: Stammtisch",
+      "text": "1.000 Nachrichten geschrieben",
+      "link": "/level.html",
+      "ts": 1793837596511,
+      "read": false
+    },
+    {
+      "id": "n_mvxuuzz10jdu",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793539081117,
+      "read": false
+    },
+    {
+      "id": "n_mvxtznjzutdi",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793537618687,
+      "read": false
+    },
+    {
+      "id": "n_mvw5qkqqukk1",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793436418178,
+      "read": false
+    },
+    {
+      "id": "n_mvw5mqo0s0b5",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793436239232,
+      "read": false
+    },
+    {
+      "id": "n_mvvi0riwtor6",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793396582744,
+      "read": false
+    },
+    {
+      "id": "n_mvvhz8v95kaa",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793396511909,
+      "read": false
+    },
+    {
+      "id": "n_mvmibwz3fdjy",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792852907439,
+      "read": false
+    },
+    {
+      "id": "n_mvmcrbxhhy8f",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792843548965,
+      "read": false
+    },
+    {
+      "id": "n_mvlbpejde5p1",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792781313242,
+      "read": false
+    },
+    {
+      "id": "n_mvkr47ab950e",
+      "type": "daily",
+      "title": "🏆 Wochenziel erreicht!",
+      "text": "+250 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792746731747,
+      "read": false
+    },
+    {
+      "id": "n_mvkr47a60vf3",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792746731742,
+      "read": false
+    },
+    {
+      "id": "n_mvjwp741559m",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792695643201,
+      "read": false
+    },
+    {
+      "id": "n_mvjwp73ns7qv",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792695643187,
+      "read": false
+    },
+    {
+      "id": "n_mviq2fmahn9t",
+      "type": "levelup",
+      "title": "⭐ Level 101 erreicht!",
+      "text": "Neuer Rang: 🌹 Rose des Herzens · +400 Kupfer",
+      "link": "/level.html",
+      "ts": 1792624037266,
+      "read": false
+    },
+    {
+      "id": "n_mvipziukpaag",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792623901484,
+      "read": false
+    },
+    {
+      "id": "n_mvip7h08t6mr",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792622592728,
+      "read": false
+    },
+    {
+      "id": "n_mvhx712w7les",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792575542840,
+      "read": false
+    },
+    {
+      "id": "n_mvglr302pzqh",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792495856882,
+      "read": false
+    },
+    {
+      "id": "n_mvgjcxwab70z",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792491837850,
+      "read": false
+    },
+    {
+      "id": "n_mvgj0wj49wxz",
+      "type": "achievement",
+      "title": "🏆 Stammgast freigeschaltet!",
+      "text": "An 30 Tagen XP gesammelt.",
+      "link": "/level.html",
+      "ts": 1792491276208,
+      "read": false
+    },
+    {
+      "id": "n_mvfnw7fnrmc0",
+      "type": "achievement",
+      "title": "🏆 Bot-Flüsterer freigeschaltet!",
+      "text": "1.000 Befehle benutzt.",
+      "link": "/level.html",
+      "ts": 1792438988963,
+      "read": false
+    },
+    {
+      "id": "n_mvfmqozis8k3",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792437052158,
+      "read": false
+    },
+    {
+      "id": "n_mvfmpnehpvwg",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792437003449,
+      "read": false
+    },
+    {
+      "id": "n_mve1gdn24sr3",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792340832782,
+      "read": false
+    },
+    {
+      "id": "n_mvdvcrslvlb1",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792330586805,
+      "read": false
+    },
+    {
+      "id": "n_mvdvchb9wxov",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792330573221,
+      "read": false
+    },
+    {
+      "id": "n_mvced09mbvc4",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792241578139,
+      "read": false
+    },
+    {
+      "id": "n_mvcebjufcs52",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792241510199,
+      "read": false
+    },
+    {
+      "id": "n_mv8dmr5u8loi",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791998488578,
+      "read": false
+    },
+    {
+      "id": "n_mv8dcwxrq5jw",
+      "type": "daily",
+      "title": "🏆 Wochenziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791998029503,
+      "read": false
+    },
+    {
+      "id": "n_mv889anci4t4",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791989462568,
+      "read": false
+    }
+  ],
+  "491793904099jid269724751503435lid": [
+    {
+      "id": "n_mtzlv55gtnae",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1789291338964,
+      "read": false
+    }
+  ],
+  "420606990992jid108813734645801lid": [
+    {
+      "id": "n_mv437fdqxa2x",
+      "type": "achievement",
+      "title": "🏅 Neues Badge: Erste Schritte",
+      "text": "Level 1 erreicht",
+      "link": "/level.html",
+      "ts": 1791739112606,
+      "read": false
+    },
+    {
+      "id": "n_mv437fdncp6f",
+      "type": "levelup",
+      "title": "⭐ Level 1 erreicht!",
+      "text": "Neuer Rang: 🐣 Neuling · +25 Kupfer",
+      "link": "/level.html",
+      "ts": 1791739112603,
+      "read": false
+    },
+    {
+      "id": "n_mu43u34wzmgh",
+      "type": "achievement",
+      "title": "🏆 Wochen-Planer freigeschaltet!",
+      "text": "7 Tagesziele geschafft.",
+      "link": "/level.html",
+      "ts": 1789563387488,
+      "read": false
+    },
+    {
+      "id": "n_mu43u34s3rxw",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789563387484,
+      "read": false
+    },
+    {
+      "id": "n_mu2ommhdz2s3",
+      "type": "achievement",
+      "title": "🏆 Gesprächig freigeschaltet!",
+      "text": "100 Nachrichten geschrieben.",
+      "link": "/level.html",
+      "ts": 1789477378898,
+      "read": false
+    },
+    {
+      "id": "n_mu2ktzk99evi",
+      "type": "achievement",
+      "title": "🏆 Mitspieler freigeschaltet!",
+      "text": "Erstes Spiel gespielt.",
+      "link": "/level.html",
+      "ts": 1789471003977,
+      "read": false
+    },
+    {
+      "id": "n_mu2ktzk7lpu8",
+      "type": "achievement",
+      "title": "🏆 Kupferkönig freigeschaltet!",
+      "text": "1.000 Kupfer besessen.",
+      "link": "/level.html",
+      "ts": 1789471003975,
+      "read": false
+    },
+    {
+      "id": "n_mu2ktbx2vme2",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789470973334,
+      "read": false
+    },
+    {
+      "id": "n_mu2iiqc73e1b",
+      "type": "achievement",
+      "title": "🏆 Ziel-Streak ×3 freigeschaltet!",
+      "text": "3 Tage in Folge ein Ziel geschafft.",
+      "link": "/level.html",
+      "ts": 1789467119575,
+      "read": false
+    },
+    {
+      "id": "n_mu2iiqc29oki",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789467119570,
+      "read": false
+    },
+    {
+      "id": "n_mu1uyjvigflx",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789427546910,
+      "read": false
+    },
+    {
+      "id": "n_mu1uo8n25oh0",
+      "type": "achievement",
+      "title": "🏆 Tag & Nacht freigeschaltet!",
+      "text": "Zu 12 verschiedenen Stunden aktiv gewesen.",
+      "link": "/level.html",
+      "ts": 1789427065790,
+      "read": false
+    },
+    {
+      "id": "n_mu16ycqnhdrr",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789387226879,
+      "read": false
+    },
+    {
+      "id": "n_mu0cht8kcs97",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789336066628,
+      "read": false
+    },
+    {
+      "id": "n_mu07ap2z1cwz",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1789327336571,
+      "read": false
+    },
+    {
+      "id": "n_mu05pb12y2go",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1789324658966,
+      "read": false
+    },
+    {
+      "id": "n_mu05pb0x763k",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789324658961,
+      "read": false
+    },
+    {
+      "id": "n_mu05hr51pm43",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789324306597,
+      "read": false
+    }
+  ],
+  "4555207028jid69415898980503lid": [
+    {
+      "id": "n_mu06p63thfjc",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789326332201,
+      "read": false
+    }
+  ],
+  "41767076660jid87089790083286lid": [
+    {
+      "id": "n_mu06viksm8wa",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789326628300,
+      "read": false
+    }
+  ],
+  "420721199654jid155019043160306lid": [
+    {
+      "id": "n_mu85t4niwy08",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789808566734,
+      "read": false
+    },
+    {
+      "id": "n_mu2ddld7li00",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1789458481771,
+      "read": false
+    },
+    {
+      "id": "n_mu2ddld2jvcn",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789458481766,
+      "read": false
+    },
+    {
+      "id": "n_mu17g2es5xqz",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1789388053300,
+      "read": false
+    }
+  ],
+  "4915222360533jid97642273091831lid": [
+    {
+      "id": "n_mu1umu9aud03",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1789427000494,
+      "read": false
+    },
+    {
+      "id": "n_mu1umu96kdws",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1789427000490,
+      "read": false
+    },
+    {
+      "id": "n_mu1ul1zwghz5",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1789426917212,
+      "read": false
+    },
+    {
+      "id": "n_mu1u8n2cx6e5",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789426337988,
+      "read": false
+    }
+  ],
+  "4915751515239jid119864568102927lid": [
+    {
+      "id": "n_mveko93gfav6",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792373112844,
+      "read": false
+    },
+    {
+      "id": "n_mve0qzg2vafl",
+      "type": "achievement",
+      "title": "🏆 Ein Monat verheiratet freigeschaltet!",
+      "text": "30 Tage zusammen.",
+      "link": "/level.html",
+      "ts": 1792339647986,
+      "read": false
+    },
+    {
+      "id": "n_mv19rsf2dhz2",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791568741790,
+      "read": false
+    },
+    {
+      "id": "n_mv19rsep0f3w",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791568741777,
+      "read": false
+    },
+    {
+      "id": "n_muwb6wwrj0sr",
+      "type": "achievement",
+      "title": "🏆 Tag & Nacht freigeschaltet!",
+      "text": "Zu 12 verschiedenen Stunden aktiv gewesen.",
+      "link": "/level.html",
+      "ts": 1791268796187,
+      "read": false
+    },
+    {
+      "id": "n_mu1uq5m7lino",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1789427155183,
+      "read": false
+    },
+    {
+      "id": "n_mu1upyfl6wru",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1789427145873,
+      "read": false
+    }
+  ],
+  "4917625006811jid126002143486166lid": [
+    {
+      "id": "n_mv44lrwmgwmt",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791741461638,
+      "read": false
+    },
+    {
+      "id": "n_mv4362jw1epk",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791739049324,
+      "read": false
+    },
+    {
+      "id": "n_mv42vd2z3ktx",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791738549755,
+      "read": false
+    },
+    {
+      "id": "n_mv42vd2owfbq",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791738549744,
+      "read": false
+    },
+    {
+      "id": "n_mv42qb6z14qg",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791738314027,
+      "read": false
+    },
+    {
+      "id": "n_mv42pr1z1ceo",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791738287927,
+      "read": false
+    }
+  ],
+  "14142849426jid159769276993573lid": [
+    {
+      "id": "n_mv61z1c2vy88",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791857973890,
+      "read": false
+    },
+    {
+      "id": "n_mv61oqxfueqx",
+      "type": "achievement",
+      "title": "🏅 Neues Badge: Erste Schritte",
+      "text": "Level 1 erreicht",
+      "link": "/level.html",
+      "ts": 1791857493843,
+      "read": false
+    },
+    {
+      "id": "n_mv61oqxbxxi3",
+      "type": "levelup",
+      "title": "⭐ Level 1 erreicht!",
+      "text": "Neuer Rang: 🐣 Neuling · +25 Kupfer",
+      "link": "/level.html",
+      "ts": 1791857493839,
+      "read": false
+    },
+    {
+      "id": "n_mv61azvqfs09",
+      "type": "achievement",
+      "title": "🏆 Tag & Nacht freigeschaltet!",
+      "text": "Zu 12 verschiedenen Stunden aktiv gewesen.",
+      "link": "/level.html",
+      "ts": 1791856852262,
+      "read": false
+    },
+    {
+      "id": "n_mv60ij9xlerm",
+      "type": "achievement",
+      "title": "🏆 Ziel-Streak ×3 freigeschaltet!",
+      "text": "3 Tage in Folge ein Ziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791855524373,
+      "read": false
+    },
+    {
+      "id": "n_mv60ij9n8igq",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791855524363,
+      "read": false
+    },
+    {
+      "id": "n_mv5hs2rqgmtl",
+      "type": "achievement",
+      "title": "🏆 Gesprächig freigeschaltet!",
+      "text": "100 Nachrichten geschrieben.",
+      "link": "/level.html",
+      "ts": 1791824056838,
+      "read": false
+    },
+    {
+      "id": "n_mv5hoeo9kbp9",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791823885641,
+      "read": false
+    },
+    {
+      "id": "n_mv5f08ohg1os",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791819398897,
+      "read": false
+    },
+    {
+      "id": "n_mv47opxitba4",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791746637894,
+      "read": false
+    },
+    {
+      "id": "n_mv42x43c381b",
+      "type": "achievement",
+      "title": "🏆 Guter Start freigeschaltet!",
+      "text": "Erstes Daily abgeholt.",
+      "link": "/level.html",
+      "ts": 1791738631416,
+      "read": false
+    },
+    {
+      "id": "n_mv42x438s4po",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791738631412,
+      "read": false
+    },
+    {
+      "id": "n_mv42wcsqm90i",
+      "type": "daily",
+      "title": "📅 Daily gesammelt: +200 Kupfer",
+      "text": "Serie 1 Tage · Level 0",
+      "link": "/account.html",
+      "ts": 1791738596042,
+      "read": false
+    },
+    {
+      "id": "n_mv42wcsefrev",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791738596030,
+      "read": false
+    },
+    {
+      "id": "n_mv42wcm9zkzp",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791738595809,
+      "read": false
+    },
+    {
+      "id": "n_mv42ritdvccg",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791738370561,
+      "read": false
+    }
+  ],
+  "436502240179jid256478971691210lid": [
+    {
+      "id": "n_mv43kl6wypcp",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791739726664,
+      "read": false
+    },
+    {
+      "id": "n_mv43kl6o75zl",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791739726656,
+      "read": false
+    },
+    {
+      "id": "n_mv43ij1n789y",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791739630571,
+      "read": false
+    },
+    {
+      "id": "n_mv43bwga0rht",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791739321354,
+      "read": false
+    },
+    {
+      "id": "n_mv4369nojehw",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791739058532,
+      "read": false
+    }
+  ],
+  "491778197605jid197461842862188lid": [
+    {
+      "id": "n_mv64kzs4vhnk",
+      "type": "achievement",
+      "title": "🏆 Ziel-Streak ×3 freigeschaltet!",
+      "text": "3 Tage in Folge ein Ziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791862357540,
+      "read": false
+    },
+    {
+      "id": "n_mv64kzs0ciil",
+      "type": "achievement",
+      "title": "🏆 Wochen-Planer freigeschaltet!",
+      "text": "7 Tagesziele geschafft.",
+      "link": "/level.html",
+      "ts": 1791862357536,
+      "read": false
+    },
+    {
+      "id": "n_mv64kzrtdr3s",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791862357529,
+      "read": false
+    },
+    {
+      "id": "n_mv5j8rptjmaz",
+      "type": "achievement",
+      "title": "🏆 Gesprächig freigeschaltet!",
+      "text": "100 Nachrichten geschrieben.",
+      "link": "/level.html",
+      "ts": 1791826515282,
+      "read": false
+    },
+    {
+      "id": "n_mv5hzsp1dewy",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791824417029,
+      "read": false
+    },
+    {
+      "id": "n_mv5hoboieh1k",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791823881762,
+      "read": false
+    },
+    {
+      "id": "n_mv5f5b4qi0v9",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791819635354,
+      "read": false
+    },
+    {
+      "id": "n_mv46ohve8uhd",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791744947834,
+      "read": false
+    },
+    {
+      "id": "n_mv45kanws250",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791743072252,
+      "read": false
+    },
+    {
+      "id": "n_mv43jwikej3h",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791739694684,
+      "read": false
+    },
+    {
+      "id": "n_mv43jwi6es0z",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791739694670,
+      "read": false
+    },
+    {
+      "id": "n_mv43hoiotlvf",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791739591008,
+      "read": false
+    },
+    {
+      "id": "n_mv43fvnohl70",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791739506948,
+      "read": false
+    }
+  ],
+  "4915679757119jid51231108165710lid": [
+    {
+      "id": "n_mv48mqr0hed1",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791748225260,
+      "read": false
+    },
+    {
+      "id": "n_mv48mqqw3jbi",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791748225256,
+      "read": false
+    },
+    {
+      "id": "n_mv48mqqjpthf",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791748225243,
+      "read": false
+    },
+    {
+      "id": "n_mv473qhn4k3x",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791745658843,
+      "read": false
+    }
+  ],
+  "4917676859287jid117153923608702lid": [
+    {
+      "id": "n_mvkr25aqe7jo",
+      "type": "achievement",
+      "title": "🏆 Warmlaufen freigeschaltet!",
+      "text": "7 Tage Aktivitäts-Streak.",
+      "link": "/level.html",
+      "ts": 1792746635858,
+      "read": false
+    },
+    {
+      "id": "n_mvkr25ae8kax",
+      "type": "achievement",
+      "title": "🏅 Neues Badge: 7-Tage-Streak",
+      "text": "7 Tage in Folge aktiv",
+      "link": "/level.html",
+      "ts": 1792746635846,
+      "read": false
+    },
+    {
+      "id": "n_mvkr25aa6ddh",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792746635842,
+      "read": false
+    },
+    {
+      "id": "n_mvhxqpf25q4d",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792576460846,
+      "read": false
+    },
+    {
+      "id": "n_mve8s33ob7jo",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792353136308,
+      "read": false
+    },
+    {
+      "id": "n_mve8s33eq9da",
+      "type": "achievement",
+      "title": "🏆 XP-Starter freigeschaltet!",
+      "text": "1.000 XP Lifetime gesammelt.",
+      "link": "/level.html",
+      "ts": 1792353136298,
+      "read": false
+    },
+    {
+      "id": "n_mve1555yaxxo",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792340308582,
+      "read": false
+    },
+    {
+      "id": "n_mvdv1u2aa885",
+      "type": "achievement",
+      "title": "🏆 Wochen-Planer freigeschaltet!",
+      "text": "7 Tagesziele geschafft.",
+      "link": "/level.html",
+      "ts": 1792330076530,
+      "read": false
+    },
+    {
+      "id": "n_mvdv1u1y2v33",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792330076518,
+      "read": false
+    },
+    {
+      "id": "n_mvduwg8imgpa",
+      "type": "daily",
+      "title": "🏆 Wochenziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792329825330,
+      "read": false
+    },
+    {
+      "id": "n_mvcl6g5n5812",
+      "type": "achievement",
+      "title": "🏅 Neues Badge: Erste Schritte",
+      "text": "Level 1 erreicht",
+      "link": "/level.html",
+      "ts": 1792253029451,
+      "read": false
+    },
+    {
+      "id": "n_mvcl6g2u9b59",
+      "type": "levelup",
+      "title": "⭐ Level 1 erreicht!",
+      "text": "Neuer Rang: 🐣 Neuling · +25 Kupfer",
+      "link": "/level.html",
+      "ts": 1792253029350,
+      "read": false
+    },
+    {
+      "id": "n_mvcfhs4314x3",
+      "type": "achievement",
+      "title": "🏆 Kupferkönig freigeschaltet!",
+      "text": "1.000 Kupfer besessen.",
+      "link": "/level.html",
+      "ts": 1792243480467,
+      "read": false
+    },
+    {
+      "id": "n_mvcfhs3odvdp",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1792243480452,
+      "read": false
+    },
+    {
+      "id": "n_mv8c7fr6s0sz",
+      "type": "achievement",
+      "title": "🏆 Ziel-Streak ×3 freigeschaltet!",
+      "text": "3 Tage in Folge ein Ziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791996094338,
+      "read": false
+    },
+    {
+      "id": "n_mv8c7fqw8fzo",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791996094328,
+      "read": false
+    },
+    {
+      "id": "n_mv80ylp748d6",
+      "type": "achievement",
+      "title": "🏆 Tag & Nacht freigeschaltet!",
+      "text": "Zu 12 verschiedenen Stunden aktiv gewesen.",
+      "link": "/level.html",
+      "ts": 1791977206363,
+      "read": false
+    },
+    {
+      "id": "n_mv80ylp3lx4d",
+      "type": "achievement",
+      "title": "🏆 Ein Jahr verheiratet freigeschaltet!",
+      "text": "365 Tage zusammen.",
+      "link": "/level.html",
+      "ts": 1791977206359,
+      "read": false
+    },
+    {
+      "id": "n_mv80ylozynt7",
+      "type": "achievement",
+      "title": "🏆 Ein Monat verheiratet freigeschaltet!",
+      "text": "30 Tage zusammen.",
+      "link": "/level.html",
+      "ts": 1791977206355,
+      "read": false
+    },
+    {
+      "id": "n_mv6y84pk6ur7",
+      "type": "achievement",
+      "title": "🏆 Wochen-Champion freigeschaltet!",
+      "text": "Erstes Wochenziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791912145880,
+      "read": false
+    },
+    {
+      "id": "n_mv6y84pa9mfn",
+      "type": "daily",
+      "title": "🏆 Wochenziel erreicht!",
+      "text": "+250 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791912145871,
+      "read": false
+    },
+    {
+      "id": "n_mv6uw1wrvvvf",
+      "type": "achievement",
+      "title": "🏆 Gesprächig freigeschaltet!",
+      "text": "100 Nachrichten geschrieben.",
+      "link": "/level.html",
+      "ts": 1791906543531,
+      "read": false
+    },
+    {
+      "id": "n_mv6rop20jbm3",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791901161432,
+      "read": false
+    },
+    {
+      "id": "n_mv6osp5dzypv",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791896309329,
+      "read": false
+    },
+    {
+      "id": "n_mv5mgsvv0358",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+25 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791831928891,
+      "read": false
+    },
+    {
+      "id": "n_mv5fo0gutczg",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1791820507998,
+      "read": false
+    },
+    {
+      "id": "n_mv5fo0gkqv3h",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1791820507988,
+      "read": false
+    },
+    {
+      "id": "n_mv5fkisvxeyw",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1791820345135,
+      "read": false
+    },
+    {
+      "id": "n_mv5fezx1elvd",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1791820087381,
+      "read": false
+    }
+  ],
+  "12056770279jid31568731070677lid": [
+    {
+      "id": "n_mw0pkyldstkt",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793711613217,
+      "read": false
+    },
+    {
+      "id": "n_mvzqzm8q56a7",
+      "type": "achievement",
+      "title": "🏆 Zielstürmer freigeschaltet!",
+      "text": "Erstes Tagesziel geschafft.",
+      "link": "/level.html",
+      "ts": 1793653510490,
+      "read": false
+    },
+    {
+      "id": "n_mvzqzm8ki3sz",
+      "type": "daily",
+      "title": "🎯 Tagesziel erreicht!",
+      "text": "+50 Kupfer Belohnung",
+      "link": "/level.html",
+      "ts": 1793653510484,
+      "read": false
+    },
+    {
+      "id": "n_mvznbiy0h2ko",
+      "type": "achievement",
+      "title": "🏆 Hallo Welt freigeschaltet!",
+      "text": "Erste Nachricht geschrieben.",
+      "link": "/level.html",
+      "ts": 1793647347624,
+      "read": false
+    },
+    {
+      "id": "n_mvz7sx9aqurb",
+      "type": "achievement",
+      "title": "🏆 Knöpfchendrücker freigeschaltet!",
+      "text": "Ersten Befehl benutzt.",
+      "link": "/level.html",
+      "ts": 1793621285470,
+      "read": false
+    }
+  ]
+}

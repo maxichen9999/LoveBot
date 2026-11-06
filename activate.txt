@@ -1,0 +1,140 @@
+Aktivierungsbefehle aus Love.js
+===============================
+
+Dieser Ausschnitt enthält die Registrierung sowie die vollständigen
+activate-, deactivate- und Gruppenstatus-Handler aus Love.js.
+Die Handler gehören in den vorhandenen Command-switch. Sie sind kein
+eigenständiges Programm: Die unten aufgeführten Variablen und Helfer werden
+vom bestehenden Bot bereitgestellt.
+
+Registrierung in der Kategorie „GRUPPE & MODERATION“:
+
+        r('activate', `${pref}activate`, 'Bot aktivieren'),
+        r('deactivate', `${pref}deactivate`, 'Bot deaktivieren'),
+
+Handler:
+
+            case 'activate': {
+              if (!isGroup) {
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.'
+                }, {
+                  quoted: msg
+                });
+                break;
+              }
+              if (userRole !== 'host' && userRole !== 'superadmin' && userRole !== 'admin') {
+                await sock.sendMessage(from, {
+                  text: '> ⛔ *Zugriff verweigert:* Nur Admins, der Superadmin oder der Host können den Bot aktivieren.'
+                }, {
+                  quoted: msg
+                });
+                break;
+              }
+              if (groupProfile) {
+                groupProfile.active = true;
+                groupProfile.activatedAt = new Date().toISOString();
+                groupProfile.activatedBy = senderJid;
+                saveGroupProfile(groupProfile);
+              }
+              await announceGroupProcess(sock, from, {
+                action: 'Freigeschaltet (Aktiviert)',
+                targetId: from,
+                actorId: senderJid,
+                groupName: groupProfile?.subject,
+                actorUsername: senderUn,
+                quoted: msg,
+                sessionPath
+              });
+              await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
+              console.log(c.bold + c.brightGreen + `[activate] Gruppe ${from} aktiviert.` + c.reset);
+              break;
+            }
+
+case 'botstatus':
+case 'groupstatus': {
+  if (!isGroup) {
+    await sock.sendMessage(from, {
+      text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.'
+    }, { quoted: msg });
+    break;
+  }
+
+  const active = groupProfile?.active !== false;
+  const isCloseFriends = groupProfile?.closeFriends === true;
+  const whenOn = groupProfile?.activatedAt
+    ? new Date(groupProfile.activatedAt).toLocaleString('de-DE')
+    : '—';
+  const whenOff = groupProfile?.deactivatedAt
+    ? new Date(groupProfile.deactivatedAt).toLocaleString('de-DE')
+    : '—';
+  const whenCloseFriends = groupProfile?.closeFriendsAt
+    ? new Date(groupProfile.closeFriendsAt).toLocaleString('de-DE')
+    : '—';
+  const activatedBy = groupProfile?.activatedBy || '—';
+  const deactivatedBy = groupProfile?.deactivatedBy || '—';
+  const closeFriendsBy = groupProfile?.closeFriendsBy || '—';
+
+  await sock.sendMessage(from, {
+    text:
+      `> 🛡️ *BOT STATUS*\n\n` +
+      `Gruppe: *${groupProfile?.subject || from}*\n` +
+      `Status: ${active ? '✅ *Aktiv*' : '🔒 *Deaktiviert*'}\n` +
+      `Enge Freunde: ${isCloseFriends ? '💜 *Ja*' : '❌ *Nein*'}\n` +
+      `Aktiviert: ${whenOn}\n` +
+      `Aktiviert von: ${activatedBy}\n` +
+      `Deaktiviert: ${whenOff}\n` +
+      `Deaktiviert von: ${deactivatedBy}\n` +
+      `Enge Freunde geändert: ${whenCloseFriends}\n` +
+      `Enge Freunde geändert von: ${closeFriendsBy}\n\n` +
+      `_Admin: ${pref}activate · ${pref}deactivate · ${pref}engestatus on/off_`
+  }, { quoted: msg });
+  break;
+}
+
+            case 'deactivate': {
+              if (!isGroup) {
+                await sock.sendMessage(from, {
+                  text: '> ❌ *Fehler:* Dieser Befehl funktioniert nur in Gruppen.'
+                }, {
+                  quoted: msg
+                });
+                break;
+              }
+              if (userRole !== 'host' && userRole !== 'superadmin' && userRole !== 'admin') {
+                await sock.sendMessage(from, {
+                  text: '> ⛔ *Zugriff verweigert:* Nur Admins, der Superadmin oder der Host können den Bot deaktivieren.'
+                }, {
+                  quoted: msg
+                });
+                break;
+              }
+              if (groupProfile) {
+                groupProfile.active = false;
+                groupProfile.deactivatedAt = new Date().toISOString();
+                groupProfile.deactivatedBy = senderJid;
+                saveGroupProfile(groupProfile);
+              }
+              await announceGroupProcess(sock, from, {
+                action: 'Gesperrt (Deaktiviert)',
+                targetId: from,
+                actorId: senderJid,
+                groupName: groupProfile?.subject,
+                actorUsername: senderUn,
+                quoted: msg,
+                sessionPath
+              });
+              await sendReaction(sock, from, reactions.completion.reactions.withoutAnyProblems, msg.key);
+              console.log(c.bold + c.brightYellow + `[deactivate] Gruppe ${from} deaktiviert.` + c.reset);
+              break;
+            }
+
+Benötigte Werte und Helfer aus dem bestehenden Bot-Kontext:
+- Werte: pref, isGroup, userRole, groupProfile, senderJid, senderUn,
+  sessionPath, sock, from, msg, reactions und c.
+- Funktionen: saveGroupProfile(...), announceGroupProcess(...),
+  sendReaction(...).
+- groupProfile verwendet unter anderem active, activatedAt, activatedBy,
+  deactivatedAt, deactivatedBy, closeFriends, closeFriendsAt, closeFriendsBy
+  und subject. saveGroupProfile und announceGroupProcess sind im Projekt
+  definiert und werden hier nicht dupliziert.

@@ -1,10 +1,10 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   🎀  TESTS  —  Bot-Stil (sachlich · pink · Mädchen-Stil)
+   🎀  TESTS  —  Bot-Stil (fröhlich · pink · Kawaii-Stil)
    ───────────────────────────────────────────────────────────────────────
    Läuft in einem eigenen Verzeichnis, damit Database/ unberührt bleibt.
 
-   Vorgabe seit 02.10.2026:  Stimmung „neutral" = SACHLICH, ohne Gefühle,
-   dazu pinker Mädchen-Stil und eine Schleife am Anfang jeder Nachricht.
+   Standard: freundliche Stimmung, pinker Kawaii-Stil und eine Schleife
+   am Anfang jeder Nachricht.
    ═══════════════════════════════════════════════════════════════════════ */
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -25,9 +25,9 @@ const {
 const kern = (t) => (typeof t === 'string' && t.startsWith('🎀 ') ? t.slice(2) : t);
 
 /* ── Vorgaben ───────────────────────────────────────────────────────── */
-test('Vorgabe: sachlich, Auto-Reaktionen aus, pink an, Schleife an', () => {
+test('Vorgabe: fröhlich, Auto-Reaktionen aus, pink an, Schleife an', () => {
   const s = loadStyle();
-  assert.equal(s.mood, 'neutral', 'sachlich ist die Vorgabe');
+  assert.equal(s.mood, 'happy', 'freundlich ist die Vorgabe');
   assert.equal(s.autoReactions, false, 'Auto-Reaktionen sind standardmäßig AUS');
   assert.equal(s.helloKitty, true, 'pinker Mädchen-Stil an');
   assert.equal(s.deko, true, 'Schleife vor jeder Nachricht');

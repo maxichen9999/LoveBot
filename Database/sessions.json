@@ -1,0 +1,2584 @@
+{
+  "config": {
+    "spawn": {
+      "enabled": true,
+      "command": "node",
+      "args": [
+        "Love.js"
+      ]
+    }
+  },
+  "sessions": {
+    "main": {
+      "id": "main",
+      "name": "MainBot",
+      "status": "CONNECTED",
+      "source": "live",
+      "createdAt": 1788651061273,
+      "connectedAt": 1793904726848,
+      "lastSeen": 1793997301222,
+      "jid": "12055435446@s.whatsapp.net",
+      "lid": "214478570418232@lid",
+      "phone": "12055435446",
+      "messages": 30075,
+      "commands": 1841,
+      "groups": 3,
+      "reconnects": 168,
+      "errors": 67,
+      "memoryMb": 179.6,
+      "isDefault": true,
+      "pid": null,
+      "desiredState": "running",
+      "autoStart": true,
+      "tags": [],
+      "env": "production",
+      "connectedMs": 4776878831,
+      "qr": null,
+      "qrAt": null,
+      "announcedQr": false,
+      "pairCode": null,
+      "pairAt": null
+    },
+    "adminsave": {
+      "id": "adminsave",
+      "name": "adminsave",
+      "status": "DISCONNECTED",
+      "source": "external",
+      "createdAt": 1793395900116,
+      "connectedAt": null,
+      "lastSeen": 1793539808472,
+      "jid": "12056770279@s.whatsapp.net",
+      "lid": "31568731070677@lid",
+      "phone": "12056770279",
+      "messages": 690,
+      "commands": 0,
+      "groups": 1,
+      "reconnects": 2,
+      "errors": 0,
+      "memoryMb": 134.2,
+      "isDefault": false,
+      "pid": 3860,
+      "desiredState": "running",
+      "sessionMode": "admin-save",
+      "autoStart": false,
+      "tags": [],
+      "env": "production",
+      "qr": null,
+      "qrAt": null,
+      "pairCode": null,
+      "pairAt": null,
+      "announcedQr": false,
+      "announceOnConnect": false,
+      "connectedMs": 143866136
+    }
+  },
+  "activity": [
+    {
+      "ts": 1792262941413,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792264750088,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792264756035,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792264841220,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: soh is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1792329543377,
+      "type": "session",
+      "text": "🟡 Session „MainBot“ → QR_REQUIRED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792329552617,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792329558076,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792343175896,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792343220618,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792347651699,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792362933234,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'sticker')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792362983276,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792362987733,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792436279108,
+      "type": "session",
+      "text": "🟡 Session „MainBot“ → QR_REQUIRED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792436285541,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792436290982,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792443970299,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792443974426,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792450184628,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792450189009,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792458557310,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792458561597,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792512285291,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792519421616,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792519426021,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792524277537,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'sticker')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792532788005,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792532792668,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792533617243,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792539639354,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792539643706,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792545003392,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792545007467,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792548081325,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792548085465,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792551373899,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792551378355,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792571978028,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792571982233,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792591182004,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792591186117,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792605977465,
+      "type": "session",
+      "text": "🗑️ Session „adminsave“ (adminsave) aus der Registry entfernt. Credentials bleiben unberührt."
+    },
+    {
+      "ts": 1792605992059,
+      "type": "session",
+      "text": "🆕 Session „AdminSave“ angelegt (adminsave, web)"
+    },
+    {
+      "ts": 1792605992072,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 3184)"
+    },
+    {
+      "ts": 1792605993829,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606053873,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606073912,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606092723,
+      "type": "session",
+      "text": "🛑 Gespawnte Session adminsave gestoppt (SIGTERM)."
+    },
+    {
+      "ts": 1792606092735,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 2464)"
+    },
+    {
+      "ts": 1792606094607,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606154638,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606174667,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606176198,
+      "type": "session",
+      "text": "🛑 Gespawnte Session adminsave gestoppt (SIGTERM)."
+    },
+    {
+      "ts": 1792606176200,
+      "type": "session",
+      "text": "🗑️ Session „AdminSave“ (adminsave) aus der Registry entfernt. Credentials bleiben unberührt."
+    },
+    {
+      "ts": 1792606188096,
+      "type": "session",
+      "text": "🆕 Session „AdminSave“ angelegt (adminsave, web)"
+    },
+    {
+      "ts": 1792606188106,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 3060)"
+    },
+    {
+      "ts": 1792606189708,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606249711,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606269731,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606289749,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606309767,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606329774,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606349938,
+      "type": "session",
+      "text": "🔴 Session „AdminSave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606353348,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606377268,
+      "type": "session",
+      "text": "🛑 Gespawnte Session adminsave gestoppt (SIGTERM)."
+    },
+    {
+      "ts": 1792606377270,
+      "type": "session",
+      "text": "🗑️ Session „AdminSave“ (adminsave) aus der Registry entfernt. Credentials bleiben unberührt."
+    },
+    {
+      "ts": 1792606531663,
+      "type": "session",
+      "text": "🆕 Session „AdminSave“ angelegt (adminsave, web)"
+    },
+    {
+      "ts": 1792606531673,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 524)"
+    },
+    {
+      "ts": 1792606534001,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606556451,
+      "type": "session",
+      "text": "🔴 Session „AdminSave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792606562265,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792610798677,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792610803011,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792610855285,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792610859354,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792620610296,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792620614713,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792620640013,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792620644344,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792620880863,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792620885153,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792629210151,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792629214607,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792629401670,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792629405684,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792633184965,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792633189254,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792634395720,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792634399849,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792635777134,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792635781213,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792637156067,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792637160607,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792639983423,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792639987633,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792641185106,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792641189444,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792648060453,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792648064719,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792670326921,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'trim')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792682970879,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792682974946,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792697076113,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792697080691,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792698101433,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: rate-overlimit",
+      "sid": "main"
+    },
+    {
+      "ts": 1792703627099,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792703631331,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792708800139,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792708804353,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792716290012,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792716294063,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792778706056,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792781772485,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792781776646,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792788846314,
+      "type": "session",
+      "text": "🗑️ Session „adminsave“ (adminsave) aus der Registry entfernt. Credentials bleiben unberührt."
+    },
+    {
+      "ts": 1792788867892,
+      "type": "session",
+      "text": "🆕 Session „AdminSave“ angelegt (adminsave, web)"
+    },
+    {
+      "ts": 1792788867903,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 2204)"
+    },
+    {
+      "ts": 1792788872625,
+      "type": "session",
+      "text": "🔴 Session „AdminSave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792788883570,
+      "type": "session",
+      "text": "🛑 Gespawnte Session adminsave gestoppt (SIGTERM)."
+    },
+    {
+      "ts": 1792788883576,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 5792)"
+    },
+    {
+      "ts": 1792788884829,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792788892322,
+      "type": "session",
+      "text": "🔴 Session „AdminSave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792788897460,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (4917•••614)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1792793396693,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'sticker')",
+      "sid": "main"
+    },
+    {
+      "ts": 1792793417266,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1792793421451,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••023)",
+      "sid": "main"
+    },
+    {
+      "ts": 1792827232327,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: rate-overlimit",
+      "sid": "main"
+    },
+    {
+      "ts": 1792827232836,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: rate-overlimit",
+      "sid": "main"
+    },
+    {
+      "ts": 1792853165443,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793395773210,
+      "type": "session",
+      "text": "🟡 Session „MainBot“ → QR_REQUIRED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793395784445,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793395789511,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (4917•••800)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793395884864,
+      "type": "session",
+      "text": "🗑️ Session „adminsave“ (adminsave) aus der Registry entfernt. Credentials bleiben unberührt."
+    },
+    {
+      "ts": 1793395900116,
+      "type": "session",
+      "text": "🆕 Session „AdminSave“ angelegt (adminsave, web)"
+    },
+    {
+      "ts": 1793395900122,
+      "type": "session",
+      "text": "🚀 Session adminsave gestartet (PID 3860)"
+    },
+    {
+      "ts": 1793395901312,
+      "type": "session",
+      "text": "🟡 Session „AdminSave“ → QR_REQUIRED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1793395937569,
+      "type": "session",
+      "text": "🔴 Session „AdminSave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1793395942337,
+      "type": "session",
+      "text": "🟢 Session „adminsave“ verbunden (1205•••279)",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1793435546761,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: to is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793435581852,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: to is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793447856060,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'sticker')",
+      "sid": "main"
+    },
+    {
+      "ts": 1793452922174,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1793539441857,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793539808473,
+      "type": "session",
+      "text": "🔴 Session „adminsave“ → DISCONNECTED",
+      "sid": "adminsave"
+    },
+    {
+      "ts": 1793608747437,
+      "type": "session",
+      "text": "🟡 Session „MainBot“ → QR_REQUIRED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793608755587,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793608761316,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793654973915,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793654977861,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793658859416,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793658863488,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793660865032,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793660868939,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793676354593,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793676358526,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793683195529,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793683199920,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793716030219,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793716038144,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793716045127,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793716053457,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793738500707,
+      "type": "session",
+      "text": "🟡 Session „MainBot“ → QR_REQUIRED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793738527523,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793738532887,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793743697894,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Invalid media type",
+      "sid": "main"
+    },
+    {
+      "ts": 1793743973826,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot use 'in' operator to search for 'contextInfo' in undefined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793747030809,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793747034747,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793747863327,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793747867216,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793766998287,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793767002692,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793769790642,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793769795006,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793777135198,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793777139057,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793779408587,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793779412709,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793786082138,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: AI icon on message are only allowed in private chat",
+      "sid": "main"
+    },
+    {
+      "ts": 1793817026627,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793817030787,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793819806283,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: Cannot read properties of undefined (reading 'tomp4')",
+      "sid": "main"
+    },
+    {
+      "ts": 1793821917382,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793821921351,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793829708623,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: editResult is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793829789017,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: editResult is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836053081,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836057069,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836664251,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836680247,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836788700,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793836792599,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793852510641,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793877429519,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: LOVEBOT_JOKES is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793877435309,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: LOVEBOT_JOKES is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793877438731,
+      "type": "error",
+      "text": "🐞 Fehler in „MainBot“: LOVEBOT_JOKES is not defined",
+      "sid": "main"
+    },
+    {
+      "ts": 1793901520057,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793901524103,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    },
+    {
+      "ts": 1793904722700,
+      "type": "session",
+      "text": "🔴 Session „MainBot“ → DISCONNECTED",
+      "sid": "main"
+    },
+    {
+      "ts": 1793904726848,
+      "type": "session",
+      "text": "🟢 Session „MainBot“ verbunden (1205•••446)",
+      "sid": "main"
+    }
+  ],
+  "locks": {},
+  "audit": [
+    {
+      "ts": 1788651296878,
+      "sid": "test910",
+      "actor": "owner",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1789022359908,
+      "sid": "test910",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1789762515423,
+      "sid": "test",
+      "actor": "terminal",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1789808020471,
+      "sid": "test",
+      "actor": "maxichen",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1789808544384,
+      "sid": "maxichen10",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1789808690826,
+      "sid": "maxichen10",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1790017287362,
+      "sid": "support",
+      "actor": "owner",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791571850275,
+      "sid": "support",
+      "actor": "910maxi",
+      "action": "RESTART_FAILED_TRIGGERED",
+      "detail": ""
+    },
+    {
+      "ts": 1791616195780,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617031462,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617057557,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617069280,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617434715,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617818210,
+      "sid": "qrtest",
+      "actor": "test",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791617818226,
+      "sid": "qrtest",
+      "actor": "test",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791618293442,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791618360814,
+      "sid": "adminsave_2",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791656763348,
+      "sid": "adminsave_2",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791656767031,
+      "sid": "support",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791656769985,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791656820031,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791779865806,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791779883555,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791816988013,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791817016182,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791971519179,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791971564479,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1791971632704,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1791971649470,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1792605977465,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1792605992059,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1792606176201,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1792606188096,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1792606377270,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1792606531663,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1792788846314,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1792788867892,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    },
+    {
+      "ts": 1793395884864,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "DELETED",
+      "detail": ""
+    },
+    {
+      "ts": 1793395900116,
+      "sid": "adminsave",
+      "actor": "910maxi",
+      "action": "CREATED",
+      "detail": ""
+    }
+  ],
+  "commandStats": {
+    "1": 2,
+    "3": 2,
+    "me": 119,
+    "offline": 6,
+    "help": 28,
+    "delowner": 5,
+    "online": 6,
+    "menu": 34,
+    "all": 27,
+    "sticker": 30,
+    "afk": 85,
+    "ban": 10,
+    "pet": 17,
+    "sessions": 9,
+    "ping": 29,
+    "dsgvo": 38,
+    "verify": 31,
+    "play": 68,
+    "user": 1,
+    "sys": 10,
+    "i2": 77,
+    "give": 6,
+    "mr": 1,
+    "da8ly": 1,
+    "daily": 5,
+    "weekly": 1,
+    "monthky": 1,
+    "monthly": 1,
+    "yearly": 1,
+    "level": 1,
+    "liebe": 1,
+    "gxp": 2,
+    "pett": 1,
+    "flirt": 2,
+    "hug": 24,
+    "kiss": 26,
+    "aus": 27,
+    "kickall": 6,
+    "mw": 1,
+    "setup": 14,
+    "activate": 10,
+    "sss": 5,
+    "leave": 18,
+    "ownerlist": 10,
+    "relink": 1,
+    "resetlink": 1,
+    "revoke": 3,
+    "mute": 14,
+    "ai": 23,
+    "setteam": 8,
+    "delrang": 5,
+    "drang": 1,
+    "unmute": 6,
+    "register": 23,
+    "unregister": 7,
+    "tomp3": 1,
+    "open": 1,
+    "audio": 5,
+    "groupxp": 1,
+    "xp": 4,
+    "bank": 5,
+    "gcp": 1,
+    "link": 7,
+    "tomp4": 13,
+    "i4": 5,
+    "del": 1,
+    "addmeta": 15,
+    "team": 2,
+    "teamlist": 1,
+    "rangs": 1,
+    "uptime": 2,
+    "id": 14,
+    "off": 1,
+    "sohv001": 3,
+    "prodmenu": 9,
+    "an": 29,
+    "block": 2,
+    "i7": 2,
+    "gban": 1,
+    "loadingaiimg": 5,
+    "loadingaivid": 5,
+    "m": 1,
+    "m7": 6,
+    "kill": 19,
+    "add": 22,
+    "cfs": 1,
+    "kanal": 3,
+    "getrang": 1,
+    "raub": 2,
+    "slot": 3,
+    "on": 1,
+    "gsettings": 1,
+    "admin": 1,
+    "badword": 1,
+    "warn": 13,
+    "unwarn": 21,
+    "warns": 5,
+    "selfpromote": 1,
+    "promoteme": 1,
+    "gi": 9,
+    "relationship": 2,
+    "setname": 1,
+    "marry": 9,
+    "fp": 7,
+    "git": 2,
+    "merry": 4,
+    "addowner": 15,
+    "gid": 1,
+    "gcid": 1,
+    "login": 2,
+    "owner": 3,
+    "promoteall": 2,
+    "post": 1,
+    "ticket": 2,
+    "tickets": 1,
+    "jid": 1,
+    "ids": 2,
+    "deposit": 1,
+    "menunew": 27,
+    "kick": 10,
+    "check2": 23,
+    "load8ngaipic": 1,
+    "delsession": 5,
+    "flett": 1,
+    "fleet": 1,
+    "sessionhealth": 1,
+    "onimai": 6,
+    "join": 20,
+    "test": 11,
+    "sticket": 1,
+    "logs": 1,
+    "newsession": 1,
+    "get": 2,
+    "poll": 3,
+    "fpay": 1,
+    "giveme": 1,
+    "mutelist": 3,
+    "!menu": 15,
+    "!setmessagehelp": 3,
+    "!showmessages": 1,
+    "promote": 4,
+    "demote": 1,
+    "pensi": 1,
+    "!menugruppe": 1,
+    "session": 5,
+    "restart": 1,
+    "savelist": 5,
+    "ask": 1,
+    "tagadmin": 1,
+    "unban": 1,
+    "joinreq": 1,
+    "sesson": 1,
+    "test2": 4,
+    "konto": 1,
+    "shop": 1,
+    "members": 1,
+    "unsave": 8,
+    "save": 23,
+    "register.vinci.mutterhausen": 1,
+    "addowmer": 2,
+    "kampf": 2,
+    "wahrheitoderpflicht": 3,
+    "warheit": 1,
+    "kickmeta": 5,
+    "kkckmeta": 1,
+    "bancbat": 1,
+    "blockcase": 1,
+    "unbnachat": 1,
+    "opencase": 1,
+    "slap": 11,
+    "slag": 1,
+    "gziele": 1,
+    "sticked": 1,
+    "scheidung": 2,
+    "setrang": 9,
+    "close": 1,
+    "stickef": 1,
+    "listowner": 4,
+    "owners": 1,
+    "listowners": 1,
+    "@78817112645806": 1,
+    "gtop": 1,
+    "fuck": 18,
+    "freaky": 13,
+    "whois": 7,
+    "welcome": 3,
+    "say": 4,
+    "sleep": 9,
+    "aufstehen": 5,
+    "schlafen": 1,
+    "sleep...": 1,
+    "girl": 3,
+    "setbday": 3,
+    "set": 1,
+    "setnday": 1,
+    "top": 1,
+    "derang": 1,
+    "rang": 1,
+    "listrang": 3,
+    "listrangs": 2,
+    "ranglist": 1,
+    "sm": 2,
+    "mach": 1,
+    "wuff": 3,
+    "miau": 4,
+    "mau": 1,
+    "paare": 1,
+    "bl": 2,
+    "loadinaiimg": 1,
+    "test9": 16,
+    "iw": 1,
+    "test10": 13,
+    "test11": 16,
+    "test12": 16,
+    "activatw": 1,
+    "testq2": 1,
+    "test13": 3,
+    "werbung": 2,
+    "test8": 3,
+    "sohsp00": 2,
+    "sohsp001": 1,
+    "deathnote": 3,
+    "whoami": 1,
+    "test1": 1,
+    "github": 3,
+    "paly": 1,
+    "status": 2,
+    "sts": 1,
+    "i3": 2,
+    "i5": 1,
+    "i6": 1,
+    "adm": 2,
+    "sp": 1,
+    "stickercrash": 2,
+    "crash": 6,
+    "afk........": 1,
+    "afk......": 1,
+    "afk😔😔😞😪😪🥺😫": 1,
+    "nuk": 1,
+    "demoteall": 2,
+    "m3": 1,
+    "activaze": 1,
+    "vt": 1,
+    ".prefix": 1,
+    "aua": 1,
+    "oc": 2,
+    "ownersent": 1,
+    "ownersend": 3,
+    "babe": 5,
+    "pissen": 1,
+    "fetch": 1,
+    "test910": 15,
+    "ne": 1,
+    "check": 3,
+    "check3": 2,
+    "cehck2": 1,
+    "leavw": 1,
+    "test920": 1,
+    "test919": 1,
+    "checkban": 17,
+    "i": 1,
+    "meta": 2,
+    "testmenu": 12,
+    "wetter": 1,
+    "snake": 1,
+    "snak": 11,
+    "menu_category_games": 1,
+    "menu_command_mode": 1,
+    "menu_command_punkte": 1,
+    "menu_command_blackjack": 1,
+    "democode": 1,
+    "demotxt": 1,
+    "demosearch": 1,
+    "aidemo": 1,
+    "br": 4,
+    "brkwser": 1,
+    "browser": 5,
+    "botstatus": 6,
+    "efstatus": 1,
+    "witz": 4,
+    "see": 1,
+    "vv": 11,
+    "warns2": 3,
+    "pp": 1,
+    "penis": 1
+  },
+  "commandStatsDaily": {
+    "2026-09-14": {
+      "i2": 15,
+      "block": 2,
+      "i7": 1,
+      "i4": 1,
+      "gban": 1,
+      "sys": 2,
+      "loadingaiimg": 1,
+      "loadingaivid": 1,
+      "m": 1,
+      "me": 7,
+      "m7": 1,
+      "kill": 1,
+      "sticker": 2,
+      "add": 10,
+      "addmeta": 3,
+      "cfs": 1,
+      "kanal": 3,
+      "ping": 1,
+      "getrang": 1,
+      "raub": 1,
+      "slot": 2,
+      "on": 1,
+      "an": 2,
+      "gsettings": 1,
+      "menu": 1,
+      "admin": 1,
+      "help": 1,
+      "badword": 1,
+      "warn": 1,
+      "unwarn": 2,
+      "warns": 1,
+      "selfpromote": 1,
+      "promoteme": 1,
+      "id": 2,
+      "gi": 1,
+      "setup": 1,
+      "relationship": 2,
+      "dsgvo": 8,
+      "verify": 5,
+      "register": 5,
+      "unregister": 1,
+      "setname": 1,
+      "hug": 2,
+      "aus": 1,
+      "play": 1,
+      "link": 1,
+      "marry": 4,
+      "ai": 3,
+      "fp": 5,
+      "git": 1,
+      "merry": 3,
+      "setteam": 1,
+      "afk": 8,
+      "sss": 3,
+      "addowner": 1,
+      "gid": 1,
+      "gcid": 1
+    },
+    "2026-09-15": {
+      "login": 1,
+      "owner": 1,
+      "add": 1,
+      "afk": 5,
+      "leave": 1,
+      "promoteall": 2,
+      "me": 3,
+      "unregister": 2,
+      "all": 1,
+      "post": 1,
+      "sss": 1,
+      "menu": 2,
+      "help": 1,
+      "ticket": 2,
+      "tickets": 1,
+      "jid": 1,
+      "ids": 1,
+      "sticker": 5,
+      "kill": 1,
+      "raub": 1,
+      "bank": 2,
+      "deposit": 1,
+      "menunew": 1,
+      "ai": 2,
+      "kick": 1,
+      "offline": 1
+    },
+    "2026-09-16": {
+      "i2": 1,
+      "mute": 1,
+      "kick": 1,
+      "unmute": 1,
+      "leave": 1
+    },
+    "2026-09-17": {
+      "check2": 1,
+      "loadingaivid": 1,
+      "load8ngaipic": 1,
+      "help": 2,
+      "loadingaiimg": 1,
+      "ban": 1
+    },
+    "2026-09-19": {
+      "delsession": 3
+    },
+    "2026-09-20": {
+      "1": 1,
+      "3": 1,
+      "i2": 6,
+      "setup": 1,
+      "me": 2,
+      "sessions": 1,
+      "gi": 1,
+      "loadingaivid": 2,
+      "ids": 1,
+      "flett": 1,
+      "fleet": 1,
+      "sessionhealth": 1,
+      "ai": 4,
+      "sticker": 1,
+      "sys": 1,
+      "hug": 1,
+      "offline": 1,
+      "onimai": 3,
+      "loadingaiimg": 1,
+      "help": 2,
+      "menu": 1,
+      "afk": 2,
+      "play": 2,
+      "tomp4": 3,
+      "all": 1
+    },
+    "2026-09-21": {
+      "me": 1,
+      "ping": 3,
+      "online": 1,
+      "leave": 2,
+      "join": 1,
+      "dsgvo": 2,
+      "verify": 2,
+      "i2": 8,
+      "test": 1,
+      "afk": 1,
+      "ban": 2,
+      "sticket": 1,
+      "sticker": 1,
+      "logs": 1,
+      "aus": 1,
+      "play": 2,
+      "an": 1,
+      "addmeta": 1,
+      "i4": 1,
+      "slot": 1,
+      "all": 1,
+      "newsession": 1,
+      "sessions": 1,
+      "delsession": 2
+    },
+    "2026-09-22": {
+      "setup": 1,
+      "give": 3,
+      "get": 1,
+      "m7": 1,
+      "me": 1,
+      "play": 18,
+      "join": 8,
+      "leave": 3,
+      "poll": 2,
+      "link": 1,
+      "afk": 2,
+      "kiss": 2,
+      "hug": 3,
+      "kill": 3,
+      "offline": 1,
+      "online": 1,
+      "all": 1
+    },
+    "2026-09-23": {
+      "an": 6,
+      "i2": 1,
+      "play": 5,
+      "afk": 2,
+      "me": 1,
+      "sticker": 1,
+      "join": 1,
+      "audio": 1,
+      "leave": 1,
+      "aus": 1,
+      "fpay": 1,
+      "loadingaiimg": 1,
+      "menunew": 1,
+      "menu": 3,
+      "give": 1,
+      "giveme": 1,
+      "mute": 1,
+      "mutelist": 1,
+      "sys": 1,
+      "tomp4": 1
+    },
+    "2026-10-10": {
+      "ping": 2,
+      "me": 1,
+      "check2": 2,
+      "help": 1,
+      "ai": 2,
+      "link": 1,
+      "i2": 1,
+      "afk": 1,
+      "!menu": 5,
+      "!setmessagehelp": 1,
+      "!showmessages": 1,
+      "kill": 1,
+      "promote": 3,
+      "demote": 1,
+      "gi": 1
+    },
+    "2026-10-11": {
+      "1": 1,
+      "3": 1,
+      "!menu": 9,
+      "pensi": 1,
+      "me": 19,
+      "!setmessagehelp": 1,
+      "!menugruppe": 1,
+      "menu": 7,
+      "sessions": 4,
+      "session": 4,
+      "restart": 1,
+      "savelist": 2,
+      "help": 3,
+      "ask": 1,
+      "tagadmin": 1,
+      "sys": 1,
+      "unmute": 2,
+      "unban": 1,
+      "joinreq": 1,
+      "daily": 2,
+      "sesson": 1,
+      "afk": 6,
+      "test": 4,
+      "test2": 3,
+      "bank": 1,
+      "konto": 1,
+      "shop": 1,
+      "members": 1,
+      "mutelist": 1,
+      "unsave": 4,
+      "save": 11,
+      "kill": 2,
+      "gi": 2,
+      "kick": 3,
+      "i2": 2,
+      "dsgvo": 8,
+      "verify": 9,
+      "register": 8,
+      "register.vinci.mutterhausen": 1,
+      "aus": 3,
+      "all": 3,
+      "promote": 1,
+      "unregister": 2,
+      "setup": 1,
+      "marry": 4,
+      "an": 4,
+      "activate": 1,
+      "mute": 3,
+      "delowner": 1,
+      "addowmer": 2,
+      "kampf": 2,
+      "wahrheitoderpflicht": 3,
+      "warheit": 1,
+      "add": 4,
+      "warns": 2,
+      "addmeta": 2,
+      "sticker": 4,
+      "kickmeta": 3,
+      "kkckmeta": 1,
+      "bancbat": 1,
+      "blockcase": 1,
+      "owner": 1,
+      "unbnachat": 1,
+      "opencase": 1,
+      "warn": 1,
+      "unwarn": 8,
+      "addowner": 2,
+      "kiss": 2,
+      "slap": 7,
+      "slag": 1,
+      "gziele": 1,
+      "sticked": 1,
+      "kickall": 1
+    },
+    "2026-10-12": {
+      "me": 11,
+      "scheidung": 1,
+      "kill": 3,
+      "mute": 3,
+      "setrang": 9,
+      "test": 2,
+      "close": 1,
+      "online": 1,
+      "slap": 3,
+      "sticker": 3,
+      "stickef": 1,
+      "all": 6,
+      "an": 3,
+      "merry": 1,
+      "dsgvo": 5,
+      "verify": 3,
+      "register": 3,
+      "listowner": 2,
+      "owner": 1,
+      "owners": 1,
+      "listowners": 1,
+      "addowner": 2,
+      "ownerlist": 1,
+      "check2": 1,
+      "i2": 1,
+      "link": 2,
+      "marry": 1,
+      "add": 5,
+      "warn": 4,
+      "afk": 4,
+      "@78817112645806": 1,
+      "gtop": 1,
+      "save": 3,
+      "fuck": 6,
+      "freaky": 12,
+      "gi": 2,
+      "kiss": 6,
+      "unwarn": 5,
+      "whois": 7,
+      "leave": 2,
+      "join": 2,
+      "addmeta": 2,
+      "welcome": 3,
+      "aus": 1,
+      "savelist": 1,
+      "setup": 2,
+      "say": 4,
+      "poll": 1,
+      "sleep": 7,
+      "aufstehen": 4,
+      "schlafen": 1,
+      "sleep...": 1,
+      "ban": 2,
+      "give": 1,
+      "get": 1
+    },
+    "2026-10-13": {
+      "me": 6,
+      "menu": 7,
+      "warn": 5,
+      "mute": 1,
+      "unwarn": 4,
+      "i2": 2,
+      "girl": 3,
+      "setbday": 3,
+      "sticker": 1,
+      "set": 1,
+      "setnday": 1,
+      "kickall": 1,
+      "test": 1,
+      "test2": 1,
+      "onimai": 3,
+      "!setmessagehelp": 1,
+      "!menu": 1,
+      "afk": 6,
+      "ban": 1,
+      "an": 1,
+      "top": 1,
+      "derang": 1,
+      "rang": 1,
+      "listrang": 3,
+      "listrangs": 2,
+      "team": 1,
+      "ranglist": 1,
+      "delrang": 1,
+      "save": 2,
+      "fuck": 1,
+      "kiss": 1,
+      "sleep": 1,
+      "aufstehen": 1,
+      "sm": 2,
+      "leave": 3,
+      "join": 3,
+      "savelist": 1,
+      "ping": 1,
+      "aus": 1,
+      "setup": 1,
+      "activate": 1,
+      "fp": 2,
+      "freaky": 1,
+      "mach": 1,
+      "wuff": 2,
+      "miau": 3,
+      "mau": 1
+    },
+    "2026-10-14": {
+      "paare": 1,
+      "me": 4,
+      "fuck": 1,
+      "leave": 3,
+      "afk": 1,
+      "tomp4": 1,
+      "play": 2,
+      "an": 2,
+      "kick": 3,
+      "join": 1,
+      "mute": 3,
+      "unmute": 2,
+      "sleep": 1,
+      "bl": 2
+    },
+    "2026-10-17": {
+      "aus": 3,
+      "kill": 1,
+      "all": 2,
+      "me": 7,
+      "loadinaiimg": 1,
+      "ping": 1,
+      "i2": 7,
+      "test9": 7,
+      "sticker": 4,
+      "iw": 1,
+      "test10": 5,
+      "test11": 5,
+      "an": 1,
+      "fuck": 1,
+      "miau": 1,
+      "wuff": 1,
+      "hug": 2,
+      "kiss": 1,
+      "test12": 13,
+      "activatw": 1,
+      "activate": 1,
+      "help": 1,
+      "addmeta": 2,
+      "afk": 1,
+      "testq2": 1,
+      "test13": 2,
+      "werbung": 2,
+      "delowner": 2,
+      "ownerlist": 3,
+      "test8": 1,
+      "dsgvo": 1,
+      "verify": 1,
+      "sohsp00": 2,
+      "sohsp001": 1,
+      "deathnote": 2,
+      "addowner": 1,
+      "whoami": 1
+    },
+    "2026-10-18": {
+      "i2": 3,
+      "test8": 1,
+      "test9": 2,
+      "kiss": 7,
+      "hug": 5,
+      "test1": 1,
+      "test10": 2,
+      "test12": 1,
+      "test11": 3,
+      "menunew": 14,
+      "deathnote": 1,
+      "test": 1,
+      "an": 2,
+      "afk": 2,
+      "offline": 1,
+      "addowner": 1,
+      "online": 1,
+      "fuck": 1,
+      "addmeta": 1,
+      "git": 1,
+      "github": 3,
+      "paly": 1,
+      "ping": 1,
+      "play": 10,
+      "kickmeta": 1,
+      "tomp4": 3,
+      "m7": 3,
+      "me": 1,
+      "aus": 1,
+      "sticker": 1
+    },
+    "2026-10-19": {
+      "test11": 1,
+      "m7": 1,
+      "me": 1,
+      "an": 2,
+      "activate": 1,
+      "hug": 2,
+      "kiss": 1,
+      "i2": 8,
+      "addowner": 1,
+      "afk": 6,
+      "aus": 1,
+      "unwarn": 1
+    },
+    "2026-10-20": {
+      "me": 5,
+      "addowner": 2,
+      "ownerlist": 1,
+      "status": 2,
+      "sts": 1,
+      "menu": 1,
+      "help": 1,
+      "i2": 3,
+      "kiss": 3,
+      "i3": 1,
+      "i4": 1,
+      "i5": 1,
+      "i6": 1,
+      "i7": 1,
+      "afk": 8,
+      "tomp4": 1,
+      "all": 1,
+      "sticker": 1,
+      "join": 1,
+      "play": 1,
+      "an": 1,
+      "setup": 1,
+      "activate": 1
+    },
+    "2026-10-21": {
+      "afk": 3,
+      "i2": 1,
+      "dsgvo": 1,
+      "verify": 1,
+      "kiss": 1,
+      "mute": 1,
+      "addowner": 1,
+      "me": 3,
+      "kill": 1,
+      "adm": 2,
+      "sp": 1,
+      "xp": 3,
+      "test9": 1,
+      "join": 1
+    },
+    "2026-10-22": {
+      "play": 1,
+      "me": 1,
+      "stickercrash": 2,
+      "crash": 4,
+      "afk........": 1,
+      "afk......": 1,
+      "aus": 2,
+      "test10": 1,
+      "test11": 1,
+      "test12": 1,
+      "test8": 1,
+      "test9": 1,
+      "afk😔😔😞😪😪🥺😫": 1,
+      "afk": 4,
+      "nuk": 1,
+      "demoteall": 2,
+      "kiss": 1,
+      "hug": 2
+    },
+    "2026-10-23": {
+      "ping": 3,
+      "link": 1,
+      "afk": 5,
+      "tomp4": 1,
+      "sessions": 2,
+      "session": 1,
+      "save": 7,
+      "aus": 1,
+      "unsave": 4,
+      "kick": 1,
+      "kill": 1,
+      "ownerlist": 2,
+      "delowner": 1,
+      "addowner": 1,
+      "listowner": 1,
+      "m3": 1,
+      "join": 1,
+      "activaze": 1,
+      "activate": 1,
+      "vt": 1,
+      "savelist": 1,
+      "an": 1,
+      "gi": 1,
+      "sticker": 1
+    },
+    "2026-10-24": {
+      "afk": 3,
+      "test": 1,
+      "ping": 1,
+      "me": 3,
+      "addowner": 1,
+      ".prefix": 1,
+      "kill": 4,
+      "aua": 1,
+      "aus": 1
+    },
+    "2026-10-30": {
+      "join": 1,
+      "setup": 1,
+      "gi": 1,
+      "activate": 1,
+      "addmeta": 1,
+      "scheidung": 1,
+      "an": 1,
+      "i2": 4,
+      "test9": 4,
+      "test10": 3,
+      "test11": 4,
+      "test12": 1,
+      "test13": 1,
+      "oc": 2,
+      "listowner": 1,
+      "ownerlist": 1,
+      "addowner": 1,
+      "ownersent": 1,
+      "ownersend": 3,
+      "afk": 1
+    },
+    "2026-10-31": {
+      "all": 1,
+      "i2": 5,
+      "babe": 3,
+      "crash": 2,
+      "fuck": 7,
+      "pissen": 1,
+      "afk": 1,
+      "id": 2,
+      "i3": 1,
+      "i4": 1,
+      "fetch": 1,
+      "sticker": 1,
+      "play": 1,
+      "addowner": 1,
+      "me": 1,
+      "ban": 2,
+      "tomp4": 1,
+      "ping": 3,
+      "help": 1,
+      "slap": 1,
+      "hug": 1
+    },
+    "2026-11-01": {
+      "aus": 2,
+      "afk": 1,
+      "test910": 6,
+      "menunew": 3
+    },
+    "2026-11-02": {
+      "dsgvo": 1,
+      "verify": 1,
+      "babe": 2,
+      "id": 1,
+      "test10": 1,
+      "test9": 1,
+      "test11": 1,
+      "menunew": 1,
+      "test": 1,
+      "login": 1,
+      "ne": 1,
+      "me": 2,
+      "register": 1,
+      "check2": 1,
+      "check": 2,
+      "check3": 1,
+      "cehck2": 1
+    },
+    "2026-11-03": {
+      "me": 1,
+      "sys": 1,
+      "uptime": 1,
+      "aus": 3,
+      "kill": 1,
+      "afk": 1,
+      "leavw": 1,
+      "leave": 1,
+      "warns": 1,
+      "mutelist": 1,
+      "ping": 1,
+      "check2": 5,
+      "check3": 1,
+      "test910": 9,
+      "test920": 1,
+      "test919": 1,
+      "all": 1
+    },
+    "2026-11-04": {
+      "ping": 7,
+      "test10": 1,
+      "test11": 1,
+      "me": 1,
+      "activate": 2,
+      "setup": 1,
+      "tomp4": 1,
+      "dsgvo": 3,
+      "verify": 3,
+      "play": 1,
+      "check2": 13,
+      "checkban": 9,
+      "addmeta": 1,
+      "id": 4
+    },
+    "2026-11-05": {
+      "dsgvo": 4,
+      "verify": 2,
+      "id": 3,
+      "i": 1,
+      "i2": 5,
+      "checkban": 8,
+      "me": 1,
+      "ownerlist": 1,
+      "meta": 2,
+      "ai": 6,
+      "setup": 3,
+      "testmenu": 12,
+      "help": 2,
+      "menu": 8,
+      "menunew": 7,
+      "wetter": 1,
+      "snake": 1,
+      "snak": 11,
+      "menu_category_games": 1,
+      "menu_command_mode": 1,
+      "menu_command_punkte": 1,
+      "menu_command_blackjack": 1,
+      "loadingaiimg": 1,
+      "loadingaivid": 1,
+      "democode": 1,
+      "demotxt": 1,
+      "demosearch": 1,
+      "aidemo": 1,
+      "br": 4,
+      "brkwser": 1,
+      "browser": 5,
+      "botstatus": 6,
+      "efstatus": 1,
+      "check": 1,
+      "witz": 4,
+      "an": 1,
+      "all": 2,
+      "fuck": 1,
+      "see": 1,
+      "vv": 1,
+      "kickmeta": 1,
+      "addmeta": 1,
+      "afk": 1
+    },
+    "2026-11-06": {
+      "all": 1,
+      "me": 4,
+      "warn": 2,
+      "warns2": 3,
+      "unwarn": 1,
+      "kick": 1,
+      "warns": 1,
+      "add": 2,
+      "pp": 1,
+      "penis": 1,
+      "afk": 1,
+      "vv": 10,
+      "i2": 1,
+      "help": 1,
+      "audio": 3
+    }
+  }
+}

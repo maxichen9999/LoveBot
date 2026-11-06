@@ -24,10 +24,10 @@ body.portal-home .home-hero {
   gap: 9px;
   min-height: 36px;
   padding: 8px 13px;
-  border: 1px solid rgba(85, 217, 220, .3);
+  border: 1px solid rgba(255, 105, 180, .34);
   border-radius: 999px;
-  background: rgba(85, 217, 220, .07);
-  color: #9be7e8;
+  background: rgba(255, 105, 180, .09);
+  color: #ffc9e4;
   font-size: 12px;
   font-weight: 750;
 }
@@ -90,7 +90,7 @@ body.portal-home .home-hero .home-hero-copy h1 {
 
 .home-hero-note code {
   padding: 2px 7px;
-  color: #9be7e8;
+  color: #ffacd2;
   font-family: var(--mono);
 }
 
@@ -132,7 +132,7 @@ body.portal-home .home-hero .home-hero-copy h1 {
 }
 
 .home-hero-art figcaption span:first-child {
-  color: #9be7e8;
+  color: #ffacd2;
   font-family: var(--mono);
   font-size: 9px;
 }

@@ -1,13 +1,12 @@
 /* ═══════════════════════════════════════════════════════════════════════
-   🎀  BOT-STIL  —  sachlich · pink · Mädchen-Stil
+   🎀  BOT-STIL  —  fröhlich · pink · Kawaii-Stil
    ───────────────────────────────────────────────────────────────────────
    Eine zentrale Stelle für vier Dinge, die vorher über tausende Zeilen
    verteilt waren:
 
-     1. 🎭 Stimmung      —  neutral (Vorgabe) · happy · aus
-                            neutral = SACHLICH, ohne Gefühle: keine Trauer,
-                            keine Liebessprache, keine Kosenamen — nur die
-                            Aussage, die übrig bleibt.
+     1. 🎭 Stimmung      —  happy (Vorgabe) · neutral · aus
+                            happy = freundlich, mit Gefühl; neutral bleibt
+                            als sachliche Alternative verfügbar.
      2. 🔇 Auto-Reaktionen — aus (Vorgabe). 274 Stellen im Code rufen
                             sendReaction() auf; hier ist der Schalter,
                             alle Aufrufe bleiben unangetastet.
@@ -32,7 +31,7 @@ import path from 'node:path';
 const DB_DIR = process.env.BOTSTYLE_DB_DIR || path.join(process.cwd(), 'Database');
 const DB_FILE = path.join(DB_DIR, 'botstyle.json');
 
-export const DEFAULTS = { mood: 'neutral', autoReactions: false, helloKitty: true, deko: true };
+export const DEFAULTS = { mood: 'happy', autoReactions: false, helloKitty: true, deko: true };
 export const MOODS = {
   neutral: '🎀 Sachlich & pink — keine Gefühle, nur die Aussage',
   happy: '😊 Fröhlich — freundlich, mit Gefühl',

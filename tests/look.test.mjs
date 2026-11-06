@@ -73,12 +73,12 @@ test('theme.js: kennt Modus und Akzent und spricht mit dem Server', () => {
   assert.match(src, /window\.LoveBotTheme\s*=\s*api/, 'die alte Schnittstelle bleibt erhalten');
 });
 
-test('Navigation: Dark Mode ist fest und drei Akzentfarben bleiben wählbar', () => {
+test('Navigation: Dark Mode ist fest und nur Pink-Style-Akzente sind wählbar', () => {
   const src = fs.readFileSync(new URL('../public/js/site-shell.js', import.meta.url), 'utf8');
   assert.match(src, /look-switch/, 'der Umschalter ist eingebaut');
   assert.match(src, /data-akzent="pink"/);
   assert.match(src, /data-akzent="rosa"/);
-  assert.match(src, /data-akzent="tuerkis"/);
+  assert.doesNotMatch(src, /data-akzent="tuerkis"/);
   assert.match(src, /setAkzent/, 'die Punkte sind verdrahtet');
   assert.doesNotMatch(src, /#themeToggle/, 'es gibt keinen Hell/Dunkel-Umschalter');
 });

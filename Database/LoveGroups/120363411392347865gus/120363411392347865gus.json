@@ -1,0 +1,118 @@
+{
+  "groupId": "120363411392347865",
+  "groupJid": "120363411392347865@g.us",
+  "subject": "🥀 HelloKitty Baby Maxi 💔 — Community ",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": true,
+  "activatedAt": "2026-09-22T20:36:04.222Z",
+  "activatedBy": "4915155894714@s.whatsapp.net",
+  "createdAt": "2026-09-22T20:36:02.718Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": true,
+    "autoreply": false,
+    "mentionGuard": false,
+    "commandProtection": false,
+    "aiEnabled": false,
+    "economyEnabled": true,
+    "progressionEnabled": true,
+    "logsEnabled": true
+  },
+  "xp": {
+    "total": 48,
+    "level": 0,
+    "msgs": 24,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 20,
+        "xp": 40,
+        "games": 0,
+        "last": 1790985935758
+      },
+      "200412552556578": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1790113703940
+      }
+    },
+    "week": {
+      "k": "2026-W41",
+      "xp": 2
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 4
+    },
+    "daily": {
+      "k": "2026-10-03",
+      "msgs": 1
+    },
+    "streak": {
+      "c": 2,
+      "last": "2026-10-03"
+    },
+    "history": {
+      "2026-09-22": 38,
+      "2026-09-23": 6,
+      "2026-10-02": 2,
+      "2026-10-03": 2
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-03",
+      "target": 50,
+      "progress": 1,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W41",
+      "target": 200,
+      "progress": 2,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 39,
+  "adminCount": 3,
+  "metaAt": 1790985935977,
+  "setupAt": "2026-09-22T20:36:04.222Z",
+  "setupBy": "4915155894714@s.whatsapp.net",
+  "setupByName": "269574108926096",
+  "setupDescription": "🖤 *LoveBot* ist in @🎀 𓆩♡𓆪 𝑴𝒂𝒙𝒊𝒄𝒉𝒆𝒏’𝒔 𝑷𝒊𝒏𝒌 𝑾𝒐𝒓𝒍𝒅 𓆩♡𓆪 🎀 aktiv 🤖\nNutze *$dsgvo* / *$verify* für weitere Infos.\n\n⏱️ *Setup gesetzt:* Di., 22.09.2026, 22:36:04\n🎮 *von:* 269574108926096",
+  "autodl": true,
+  "welcome": true,
+  "goodbye": true,
+  "kick": true,
+  "promote": true,
+  "demote": true,
+  "liebe": true,
+  "fun": true,
+  "media": true,
+  "tools": true,
+  "badwords": true,
+  "antilink": true,
+  "night": true,
+  "afk": true
+}

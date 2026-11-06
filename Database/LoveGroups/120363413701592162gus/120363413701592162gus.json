@@ -1,0 +1,146 @@
+{
+  "groupId": "120363413701592162",
+  "groupJid": "120363413701592162@g.us",
+  "subject": "Admintestv3",
+  "creator": "269574108926096@lid",
+  "owner": "269574108926096@lid",
+  "ownerUsername": null,
+  "active": false,
+  "activatedAt": null,
+  "activatedBy": null,
+  "createdAt": "2026-10-23T18:43:49.098Z",
+  "gset": {
+    "welcome": true,
+    "goodbye": true,
+    "antilink": false,
+    "antispam": false,
+    "antiflood": false,
+    "automod": false,
+    "autoreply": false,
+    "mentionGuard": false,
+    "economyEnabled": false,
+    "progressionEnabled": false,
+    "logsEnabled": false
+  },
+  "xp": {
+    "total": 8,
+    "level": 0,
+    "msgs": 4,
+    "games": 0,
+    "members": {
+      "269574108926096": {
+        "m": 4,
+        "xp": 8,
+        "games": 0,
+        "last": 1792781294411
+      }
+    },
+    "week": {
+      "k": "2026-W43",
+      "xp": 8
+    },
+    "month": {
+      "k": "2026-10",
+      "xp": 8
+    },
+    "daily": {
+      "k": "2026-10-23",
+      "msgs": 4
+    },
+    "streak": {
+      "c": 1,
+      "last": "2026-10-23"
+    },
+    "history": {
+      "2026-10-23": 8
+    }
+  },
+  "goals": {
+    "daily": {
+      "k": "2026-10-23",
+      "target": 50,
+      "progress": 4,
+      "claimed": false
+    },
+    "weekly": {
+      "k": "2026-W43",
+      "target": 200,
+      "progress": 8,
+      "claimed": false
+    }
+  },
+  "gach": {},
+  "gbadges": {},
+  "gevents": [],
+  "gaudit": [
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "automod → aus"
+    },
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antispam → aus"
+    },
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "antiflood → aus"
+    },
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "mentionGuard → aus"
+    },
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "progressionEnabled → aus"
+    },
+    {
+      "ts": 1792781294709,
+      "actor": "system",
+      "action": "setting",
+      "detail": "economyEnabled → aus"
+    },
+    {
+      "ts": 1792781352641,
+      "actor": "269574108926096",
+      "action": "kick",
+      "detail": "Gekickt: 4917625020614"
+    }
+  ],
+  "gtreasury": {
+    "balance": 0,
+    "log": []
+  },
+  "gbanned": {},
+  "warnCfg": {
+    "w1": "warn",
+    "w2": "warn",
+    "w3": "kick"
+  },
+  "memberCount": 4,
+  "adminCount": 3,
+  "metaAt": 1792781313216,
+  "autodl": false,
+  "welcome": false,
+  "goodbye": false,
+  "kick": false,
+  "promote": false,
+  "demote": false,
+  "liebe": false,
+  "fun": false,
+  "media": false,
+  "tools": false,
+  "badwords": false,
+  "antilink": false,
+  "night": false,
+  "afk": false
+}
